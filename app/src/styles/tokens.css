@@ -1,0 +1,72 @@
+/**
+ * Design tokens for 보훈데이터 아케이드.
+ * Values are taken directly from the Claude Design source
+ * (project/보훈데이터 아케이드 모바일.dc.html) so the production build
+ * stays visually faithful to the approved design.
+ */
+:root {
+  /* ---- Palette: mint / deep-green ("veterans arcade" tone) ---- */
+  --color-bg: #f2f8f5; /* page background */
+  --color-surface: #ffffff; /* cards */
+  --color-line: #e3ede8; /* hairline borders */
+
+  --color-ink: #1f2b29; /* primary text / "NAVY" in source */
+  --color-ink-soft: #4a5c77; /* secondary ink */
+  --color-muted: #6b7a78; /* body copy, muted */
+  --color-muted-2: #98a8a4; /* faint labels, numbering */
+
+  --color-accent: #2abf9e; /* primary mint - buttons, progress */
+  --color-accent-strong: #0f9c80; /* eyebrow labels, links */
+  --color-accent-soft: #45cbaa; /* bright progress fill */
+  --color-accent-pale: #a9d3c7; /* outline-text stroke, faint icon fill */
+
+  --color-tint-1: #eaf5f0; /* icon tile background */
+  --color-tint-2: #e9f8f3;
+  --color-tint-3: #ddf3ec;
+
+  --color-dark-1: #0d3b33; /* dark mint gradient stops */
+  --color-dark-2: #092e27;
+  --color-dark-3: #061f1a;
+
+  --color-real: #2abf9e; /* "O" / real answer */
+  --color-fake: #d0705f; /* "X" / fake answer */
+  --color-pin: #c4574b; /* map pin */
+
+  --color-grade-grad-1: #eaf5f0;
+  --color-grade-grad-2: #dcefe7;
+  --color-grade-border: #cfe7de;
+  --color-grade-ink: #0e6b54;
+  --color-grade-muted: #6c7a4a;
+  --color-grade-track: rgba(154, 122, 30, 0.18);
+
+  --color-danger-bg: #fbedec;
+  --color-danger-ink: #8e332e;
+
+  --color-chip-line: #d8e0ec;
+  --color-map-bg: #edf2f8;
+
+  /* ---- Type ---- */
+  --font-sans: 'Pretendard Variable', Pretendard, system-ui, -apple-system, 'Apple SD Gothic Neo',
+    'Malgun Gothic', sans-serif;
+
+  /* ---- Shape / elevation ---- */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 18px;
+  --shadow-card: 0 2px 12px rgba(18, 58, 49, 0.07);
+  --shadow-pop: 0 16px 38px rgba(8, 20, 38, 0.32);
+
+  /* ---- Layout ---- */
+  --content-max: 1080px;
+  --header-h: 64px;
+}
+
+/* 원본 디자인(웹 1280 목업)은 데스크톱에서 페이지 배경을 흰색으로 쓰고,
+   민트(--color-bg)는 모바일·태블릿 전용이다(찐병원 가짜병원 화면은 자체
+   다크 그라데이션 배경을 쓰므로 이 토큰의 영향을 받지 않는다). */
+@media (min-width: 1024px) {
+  :root {
+    --color-bg: #ffffff;
+  }
+}

@@ -1,0 +1,62 @@
+.wrap {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .wrap {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+    max-width: calc(var(--content-max) - 88px);
+    margin: 22px auto 0;
+    background: #fff;
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-lg);
+    padding: 10px;
+  }
+  .wrap.onDark {
+    background: rgba(255, 255, 255, 0.07);
+    border-color: rgba(255, 255, 255, 0.12);
+  }
+  .back {
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    flex: none;
+    border-radius: 50%;
+    border: none;
+    background: var(--color-ink);
+    color: #fff;
+    font: 600 15px 'Pretendard Variable';
+  }
+  .back.onDark {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+  }
+  .content {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .pause {
+    cursor: pointer;
+    flex: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid var(--color-chip-line);
+    background: #fff;
+    color: var(--color-ink);
+    font-size: 11px;
+    letter-spacing: 1px;
+  }
+  .pause.onDark {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+  }
+}

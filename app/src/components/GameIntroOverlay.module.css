@@ -1,0 +1,85 @@
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  background: rgba(6, 15, 13, 0.68);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: rise 0.18s ease both;
+}
+
+.panel {
+  width: 100%;
+  max-width: 420px;
+  background: #fff;
+  border-radius: 22px;
+  padding: 32px 26px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 10px;
+  box-shadow: var(--shadow-pop);
+}
+
+.count {
+  font: 600 46px 'Pretendard Variable';
+  color: var(--color-accent-strong);
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.title {
+  font: 600 17px 'Pretendard Variable';
+  color: var(--color-ink);
+  letter-spacing: -0.02em;
+  margin-bottom: 4px;
+}
+
+.rules {
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.rule {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  text-align: left;
+  font: 500 12.5px/1.55 'Pretendard Variable';
+  color: var(--color-ink);
+}
+
+.rule b {
+  font-weight: 600;
+  color: var(--color-accent-strong);
+}
+
+.dot {
+  flex: none;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-top: 4px;
+}
+
+.note {
+  font: 500 11px/1.6 'Pretendard Variable';
+  color: var(--color-muted);
+  margin-top: 4px;
+}
+
+.skip {
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  color: var(--color-muted);
+  font: 600 11.5px 'Pretendard Variable';
+  padding: 6px;
+  margin-top: 8px;
+}

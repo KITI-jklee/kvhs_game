@@ -1,0 +1,29 @@
+{
+  "witak": {
+    "title": "보훈병원_위탁병원정보",
+    "total_count": 1021,
+    "per_page": 1000,
+    "total_pages": 2,
+    "collected": 1021,
+    "json_file": "witak_보훈병원_위탁병원정보.json",
+    "csv_file": "witak_보훈병원_위탁병원정보.csv"
+  },
+  "witak2": {
+    "title": "보훈병원_위탁병원정보_위경도포함",
+    "total_count": 1043,
+    "per_page": 1000,
+    "total_pages": 2,
+    "collected": 1043,
+    "json_file": "witak2_보훈병원_위탁병원정보_위경도포함.json",
+    "csv_file": "witak2_보훈병원_위탁병원정보_위경도포함.csv"
+  },
+  "suga": {
+    "title": "보훈병원_비급여수가정보",
+    "total_count": 5077,
+    "per_page": 1000,
+    "total_pages": 6,
+    "collected": 5077,
+    "json_file": "suga_보훈병원_비급여수가정보.json",
+    "csv_file": "suga_보훈병원_비급여수가정보.csv"
+  }
+}

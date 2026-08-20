@@ -1,0 +1,356 @@
+[
+  {
+    "id": "term_0001",
+    "item_name": "1인실 입원료",
+    "kind_mid": "기본진료료",
+    "cost": 150360
+  },
+  {
+    "id": "term_0002",
+    "item_name": "세미리지드 연결체",
+    "kind_mid": "치과의 보철료",
+    "cost": 150000
+  },
+  {
+    "id": "term_0003",
+    "item_name": "자율훈련법",
+    "kind_mid": "한방 시술 및 처치료",
+    "cost": 30000
+  },
+  {
+    "id": "term_0004",
+    "item_name": "메낙트라주",
+    "kind_mid": "약제",
+    "cost": 100000
+  },
+  {
+    "id": "term_0005",
+    "item_name": "IPL 2회째",
+    "kind_mid": "처치 및 수술료",
+    "cost": 50000
+  },
+  {
+    "id": "term_0006",
+    "item_name": "전산화인지 재활치료",
+    "kind_mid": "이학요법료(물리치료료)",
+    "cost": 35000
+  },
+  {
+    "id": "term_0007",
+    "item_name": "기립경사훈련",
+    "kind_mid": "이학요법료(물리치료료)",
+    "cost": 6000
+  },
+  {
+    "id": "term_0008",
+    "item_name": "Pin 핀",
+    "kind_mid": "치과의 보철료",
+    "cost": 10000
+  },
+  {
+    "id": "term_0009",
+    "item_name": "전립선·정낭 경복부",
+    "kind_mid": "초음파 검사료",
+    "cost": 61660
+  },
+  {
+    "id": "term_0010",
+    "item_name": "유도초음파",
+    "kind_mid": "초음파 검사료",
+    "cost": 51070
+  },
+  {
+    "id": "term_0011",
+    "item_name": "MRI 척추강",
+    "kind_mid": "영상진단·방사선료",
+    "cost": 388870
+  },
+  {
+    "id": "term_0012",
+    "item_name": "대동맥 도플러 초음파",
+    "kind_mid": "초음파 검사료",
+    "cost": 82530
+  },
+  {
+    "id": "term_0013",
+    "item_name": "여드름 치료",
+    "kind_mid": "처치 및 수술료",
+    "cost": 10000
+  },
+  {
+    "id": "term_0014",
+    "item_name": "심미 레진 충전",
+    "kind_mid": "치과 처치·수술료",
+    "cost": 250000
+  },
+  {
+    "id": "term_0015",
+    "item_name": "복부 초음파 항문 초음파만",
+    "kind_mid": "초음파 검사료",
+    "cost": 105290
+  },
+  {
+    "id": "term_0016",
+    "item_name": "인플루엔자바이러스 A&B",
+    "kind_mid": "검사료",
+    "cost": 114495
+  },
+  {
+    "id": "term_0017",
+    "item_name": "진정내시경 환자관리료IV",
+    "kind_mid": "검사료",
+    "cost": 165440
+  },
+  {
+    "id": "term_0018",
+    "item_name": "체외충격파치료",
+    "kind_mid": "처치 및 수술료",
+    "cost": 50000
+  },
+  {
+    "id": "term_0019",
+    "item_name": "의치수리",
+    "kind_mid": "치과 처치·수술료",
+    "cost": 100000
+  },
+  {
+    "id": "term_0020",
+    "item_name": "MRI뇌혈관",
+    "kind_mid": "자기공명영상진단료(MRI)",
+    "cost": 403410
+  },
+  {
+    "id": "term_0021",
+    "item_name": "특별병실 입원료",
+    "kind_mid": "기본진료료",
+    "cost": 295810
+  },
+  {
+    "id": "term_0022",
+    "item_name": "서바릭스프리필드시린지백신",
+    "kind_mid": "약제",
+    "cost": 80000
+  },
+  {
+    "id": "term_0023",
+    "item_name": "MRI경부혈관",
+    "kind_mid": "자기공명영상진단료(MRI)",
+    "cost": 330860
+  },
+  {
+    "id": "term_0024",
+    "item_name": "싱그릭스 주",
+    "kind_mid": "약제",
+    "cost": 200000
+  },
+  {
+    "id": "term_0025",
+    "item_name": "기본 체외조사 치료계획",
+    "kind_mid": "영상진단·방사선료",
+    "cost": 41239
+  },
+  {
+    "id": "term_0026",
+    "item_name": "전산화 인지재활치료",
+    "kind_mid": "이학요법료(물리치료료)",
+    "cost": 35000
+  },
+  {
+    "id": "term_0027",
+    "item_name": "자석장치",
+    "kind_mid": "치과의 보철료",
+    "cost": 340000
+  },
+  {
+    "id": "term_0028",
+    "item_name": "니코틴",
+    "kind_mid": "검사료",
+    "cost": 8364
+  },
+  {
+    "id": "term_0029",
+    "item_name": "MRI 경추",
+    "kind_mid": "영상진단·방사선료",
+    "cost": 486350
+  },
+  {
+    "id": "term_0030",
+    "item_name": "관절 초음파 고관절Hip",
+    "kind_mid": "초음파 검사료",
+    "cost": 86450
+  },
+  {
+    "id": "term_0031",
+    "item_name": "안구운동 민감소실및 재처리요법",
+    "kind_mid": "정신요법료",
+    "cost": 150000
+  },
+  {
+    "id": "term_0032",
+    "item_name": "치아 매식 진단료",
+    "kind_mid": "치과 처치·수술료",
+    "cost": 100000
+  },
+  {
+    "id": "term_0033",
+    "item_name": "진정내시경 환자관리료 Ⅳ",
+    "kind_mid": "처치 및 수술료",
+    "cost": 165440
+  },
+  {
+    "id": "term_0034",
+    "item_name": "코박스폴리오PF주",
+    "kind_mid": "약제",
+    "cost": 30000
+  },
+  {
+    "id": "term_0035",
+    "item_name": "최종폐쇄장치",
+    "kind_mid": "치과의 보철료",
+    "cost": 1500000
+  },
+  {
+    "id": "term_0036",
+    "item_name": "매식치 귀금속 도재관",
+    "kind_mid": "치과의 보철료",
+    "cost": 800000
+  },
+  {
+    "id": "term_0037",
+    "item_name": "보령디티에이피백신주",
+    "kind_mid": "약제",
+    "cost": 30000
+  },
+  {
+    "id": "term_0038",
+    "item_name": "신장분사치료",
+    "kind_mid": "이학요법료(물리치료료)",
+    "cost": 18000
+  },
+  {
+    "id": "term_0039",
+    "item_name": "이중조영",
+    "kind_mid": "영상진단·방사선료",
+    "cost": 450000
+  },
+  {
+    "id": "term_0040",
+    "item_name": "이명 재훈련 치료",
+    "kind_mid": "이학요법료(물리치료료)",
+    "cost": 50000
+  },
+  {
+    "id": "term_0041",
+    "item_name": "만성신부전증환자교육",
+    "kind_mid": "기본진료료",
+    "cost": 100000
+  },
+  {
+    "id": "term_0042",
+    "item_name": "초음파 골재생 촉진술",
+    "kind_mid": "치과 처치·수술료",
+    "cost": 100000
+  },
+  {
+    "id": "term_0043",
+    "item_name": "교합안정장치 관리",
+    "kind_mid": "치과 처치·수술료",
+    "cost": 30000
+  },
+  {
+    "id": "term_0044",
+    "item_name": "매식치 비귀금속 도재관",
+    "kind_mid": "치과의 보철료",
+    "cost": 600000
+  },
+  {
+    "id": "term_0045",
+    "item_name": "광치료",
+    "kind_mid": "정신요법료",
+    "cost": 15000
+  },
+  {
+    "id": "term_0046",
+    "item_name": "바이오피드백",
+    "kind_mid": "정신요법료",
+    "cost": 60000
+  },
+  {
+    "id": "term_0047",
+    "item_name": "MRI 요천추",
+    "kind_mid": "영상진단·방사선료",
+    "cost": 486350
+  },
+  {
+    "id": "term_0048",
+    "item_name": "1인실",
+    "kind_mid": "기본진료료",
+    "cost": 70000
+  },
+  {
+    "id": "term_0049",
+    "item_name": "서지컬 스텐트복잡",
+    "kind_mid": "치과 처치·수술료",
+    "cost": 100000
+  },
+  {
+    "id": "term_0050",
+    "item_name": "유리체주입술",
+    "kind_mid": "처치 및 수술료",
+    "cost": 84300
+  },
+  {
+    "id": "term_0051",
+    "item_name": "약침술",
+    "kind_mid": "한방 시술 및 처치료",
+    "cost": 15000
+  },
+  {
+    "id": "term_0052",
+    "item_name": "광중합형 복합레진 충전",
+    "kind_mid": "처치 및 수술료",
+    "cost": 80000
+  },
+  {
+    "id": "term_0053",
+    "item_name": "진정내시경 환자관리료Ⅲ",
+    "kind_mid": "검사료",
+    "cost": 129750
+  },
+  {
+    "id": "term_0054",
+    "item_name": "맥동파순서열 추가촬영 1개",
+    "kind_mid": "영상진단·방사선료",
+    "cost": 62010
+  },
+  {
+    "id": "term_0055",
+    "item_name": "유박스비주",
+    "kind_mid": "약제",
+    "cost": 20000
+  },
+  {
+    "id": "term_0056",
+    "item_name": "연하재활 기능적전기자극치료",
+    "kind_mid": "이학요법료(물리치료료)",
+    "cost": 50000
+  },
+  {
+    "id": "term_0057",
+    "item_name": "초음파내시경검사",
+    "kind_mid": "검사료",
+    "cost": 250000
+  },
+  {
+    "id": "term_0058",
+    "item_name": "응급·중환자 복합 표적 초음파",
+    "kind_mid": "초음파 검사료",
+    "cost": 153950
+  },
+  {
+    "id": "term_0059",
+    "item_name": "성인 진단적 언어능력 검사",
+    "kind_mid": "검사료",
+    "cost": 20000
+  }
+]

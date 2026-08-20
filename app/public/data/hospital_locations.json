@@ -1,0 +1,7299 @@
+[
+  {
+    "id": "hosp_0001",
+    "name": "강진의료원",
+    "addr_hint": "전라남도 강진군",
+    "latitude": 34.637255,
+    "longitude": 126.757457
+  },
+  {
+    "id": "hosp_0002",
+    "name": "곡성사랑병원",
+    "addr_hint": "전라남도 곡성군",
+    "latitude": 35.27633,
+    "longitude": 127.288295
+  },
+  {
+    "id": "hosp_0003",
+    "name": "광양병원",
+    "addr_hint": "전라남도 광양시",
+    "latitude": 34.971105,
+    "longitude": 127.58214
+  },
+  {
+    "id": "hosp_0004",
+    "name": "구례병원",
+    "addr_hint": "전라남도 구례군",
+    "latitude": 35.21599,
+    "longitude": 127.463487
+  },
+  {
+    "id": "hosp_0005",
+    "name": "녹동현대병원",
+    "addr_hint": "전라남도 고흥군",
+    "latitude": 34.546525,
+    "longitude": 127.145747
+  },
+  {
+    "id": "hosp_0006",
+    "name": "담양사랑병원",
+    "addr_hint": "전라남도 담양군",
+    "latitude": 35.315264,
+    "longitude": 126.982747
+  },
+  {
+    "id": "hosp_0007",
+    "name": "벌교삼호병원",
+    "addr_hint": "전라남도 보성군",
+    "latitude": 34.83369,
+    "longitude": 127.345983
+  },
+  {
+    "id": "hosp_0008",
+    "name": "보성아산병원",
+    "addr_hint": "전라남도 보성군",
+    "latitude": 34.775539,
+    "longitude": 127.105156
+  },
+  {
+    "id": "hosp_0009",
+    "name": "신안대우병원",
+    "addr_hint": "전라남도 신안군",
+    "latitude": 34.722384,
+    "longitude": 125.933001
+  },
+  {
+    "id": "hosp_0010",
+    "name": "서울의원(신안)",
+    "addr_hint": "전라남도 신안군",
+    "latitude": 35.060632,
+    "longitude": 126.211592
+  },
+  {
+    "id": "hosp_0011",
+    "name": "완도대성병원",
+    "addr_hint": "전라남도 완도군",
+    "latitude": 34.317056,
+    "longitude": 126.735688
+  },
+  {
+    "id": "hosp_0012",
+    "name": "익산제일병원",
+    "addr_hint": "전북특별자치도 익산시",
+    "latitude": 35.931323,
+    "longitude": 126.952676
+  },
+  {
+    "id": "hosp_0013",
+    "name": "장성병원",
+    "addr_hint": "전라남도 장성군",
+    "latitude": 35.302903,
+    "longitude": 126.79504
+  },
+  {
+    "id": "hosp_0014",
+    "name": "정읍사랑병원",
+    "addr_hint": "전북특별자치도 정읍시",
+    "latitude": 35.56072,
+    "longitude": 126.866201
+  },
+  {
+    "id": "hosp_0015",
+    "name": "(의) 남우의료재단 진도전남병원",
+    "addr_hint": "전라남도 진도군",
+    "latitude": 34.479295,
+    "longitude": 126.265208
+  },
+  {
+    "id": "hosp_0016",
+    "name": "함평성심병원",
+    "addr_hint": "전라남도 함평군",
+    "latitude": 35.061996,
+    "longitude": 126.519885
+  },
+  {
+    "id": "hosp_0017",
+    "name": "혜성병원",
+    "addr_hint": "전북특별자치도 부안군",
+    "latitude": 35.732782,
+    "longitude": 126.746074
+  },
+  {
+    "id": "hosp_0018",
+    "name": "화순고려병원",
+    "addr_hint": "전라남도 화순군",
+    "latitude": 35.056193,
+    "longitude": 126.989612
+  },
+  {
+    "id": "hosp_0019",
+    "name": "무주군보건의료원",
+    "addr_hint": "전북특별자치도 무주군",
+    "latitude": 36.005882,
+    "longitude": 127.671709
+  },
+  {
+    "id": "hosp_0020",
+    "name": "완도금일보건지소",
+    "addr_hint": "전라남도 완도군",
+    "latitude": 34.349251,
+    "longitude": 127.029999
+  },
+  {
+    "id": "hosp_0021",
+    "name": "완도신노화의원",
+    "addr_hint": "전라남도 완도군",
+    "latitude": 34.177341,
+    "longitude": 126.572172
+  },
+  {
+    "id": "hosp_0022",
+    "name": "임실군보건의료원",
+    "addr_hint": "전북특별자치도 임실군",
+    "latitude": 35.612703,
+    "longitude": 127.287325
+  },
+  {
+    "id": "hosp_0023",
+    "name": "장수군보건의료원",
+    "addr_hint": "전북특별자치도 장수군",
+    "latitude": 35.654228,
+    "longitude": 127.519762
+  },
+  {
+    "id": "hosp_0024",
+    "name": "조도면보건지소",
+    "addr_hint": "전라남도 진도군",
+    "latitude": 34.294957,
+    "longitude": 126.046657
+  },
+  {
+    "id": "hosp_0025",
+    "name": "중앙가정의학과의원",
+    "addr_hint": "전북특별자치도 남원시",
+    "latitude": 35.413608,
+    "longitude": 127.385572
+  },
+  {
+    "id": "hosp_0026",
+    "name": "흑산면보건지소",
+    "addr_hint": "전라남도 신안군",
+    "latitude": 34.687349,
+    "longitude": 125.44587
+  },
+  {
+    "id": "hosp_0027",
+    "name": "고창병원",
+    "addr_hint": "전북특별자치도 고창군",
+    "latitude": 35.436421,
+    "longitude": 126.693663
+  },
+  {
+    "id": "hosp_0028",
+    "name": "고흥종합병원",
+    "addr_hint": "전라남도 고흥군",
+    "latitude": 34.621004,
+    "longitude": 127.29394
+  },
+  {
+    "id": "hosp_0029",
+    "name": "광양사랑병원",
+    "addr_hint": "전라남도 광양시",
+    "latitude": 34.93528,
+    "longitude": 127.695667
+  },
+  {
+    "id": "hosp_0030",
+    "name": "군산의료원",
+    "addr_hint": "전북특별자치도 군산시",
+    "latitude": 35.95489,
+    "longitude": 126.711917
+  },
+  {
+    "id": "hosp_0031",
+    "name": "나주종합병원",
+    "addr_hint": "전라남도 나주시",
+    "latitude": 35.036251,
+    "longitude": 126.719255
+  },
+  {
+    "id": "hosp_0032",
+    "name": "남원의료원",
+    "addr_hint": "전북특별자치도 남원시",
+    "latitude": 35.42144,
+    "longitude": 127.394597
+  },
+  {
+    "id": "hosp_0033",
+    "name": "목포시의료원",
+    "addr_hint": "전라남도 목포시",
+    "latitude": 34.804124,
+    "longitude": 126.405352
+  },
+  {
+    "id": "hosp_0034",
+    "name": "대송의료재단 무안병원",
+    "addr_hint": "전라남도 무안군",
+    "latitude": 34.991438,
+    "longitude": 126.489153
+  },
+  {
+    "id": "hosp_0035",
+    "name": "익산병원",
+    "addr_hint": "전북특별자치도 익산시",
+    "latitude": 35.958036,
+    "longitude": 126.962237
+  },
+  {
+    "id": "hosp_0036",
+    "name": "장흥종합병원",
+    "addr_hint": "전라남도 장흥군",
+    "latitude": 34.67709,
+    "longitude": 126.911192
+  },
+  {
+    "id": "hosp_0037",
+    "name": "전주예수병원",
+    "addr_hint": "전북특별자치도 전주시",
+    "latitude": 35.815472,
+    "longitude": 127.126196
+  },
+  {
+    "id": "hosp_0038",
+    "name": "정읍아산병원",
+    "addr_hint": "전북특별자치도 정읍시",
+    "latitude": 35.572059,
+    "longitude": 126.84903
+  },
+  {
+    "id": "hosp_0039",
+    "name": "해남종합병원",
+    "addr_hint": "전라남도 해남군",
+    "latitude": 34.571603,
+    "longitude": 126.61302
+  },
+  {
+    "id": "hosp_0040",
+    "name": "(의)명성의료재단 영양병원",
+    "addr_hint": "경상북도 영양군",
+    "latitude": 36.662519,
+    "longitude": 129.11725
+  },
+  {
+    "id": "hosp_0041",
+    "name": "(의)봉화해성병원",
+    "addr_hint": "경상북도 봉화군",
+    "latitude": 36.891621,
+    "longitude": 128.733393
+  },
+  {
+    "id": "hosp_0042",
+    "name": "(의)석촌의료재단 성주병원",
+    "addr_hint": "경상북도 성주군",
+    "latitude": 35.918804,
+    "longitude": 128.286417
+  },
+  {
+    "id": "hosp_0043",
+    "name": "세명종합병원",
+    "addr_hint": "경상북도 경산시",
+    "latitude": 35.826073,
+    "longitude": 128.737206
+  },
+  {
+    "id": "hosp_0044",
+    "name": "예천권병원",
+    "addr_hint": "경상북도 예천군",
+    "latitude": 36.657314,
+    "longitude": 128.459026
+  },
+  {
+    "id": "hosp_0045",
+    "name": "울진군의료원",
+    "addr_hint": "경상북도 울진군",
+    "latitude": 36.992749,
+    "longitude": 129.410066
+  },
+  {
+    "id": "hosp_0046",
+    "name": "고령영생병원",
+    "addr_hint": "경상북도 고령군",
+    "latitude": 35.726141,
+    "longitude": 128.262953
+  },
+  {
+    "id": "hosp_0047",
+    "name": "김천남산종합의원",
+    "addr_hint": "경상북도 김천시",
+    "latitude": 36.12388,
+    "longitude": 128.111764
+  },
+  {
+    "id": "hosp_0048",
+    "name": "삼성연합의원",
+    "addr_hint": "경상북도 구미시",
+    "latitude": 36.098917,
+    "longitude": 128.452212
+  },
+  {
+    "id": "hosp_0049",
+    "name": "울릉군보건의료원",
+    "addr_hint": "경상북도 울릉군",
+    "latitude": 37.489937,
+    "longitude": 130.898521,
+    "region_note": "최동단 위탁병원"
+  },
+  {
+    "id": "hosp_0050",
+    "name": "상주제일안과",
+    "addr_hint": "경상북도 상주시",
+    "latitude": 36.413289,
+    "longitude": 128.15925
+  },
+  {
+    "id": "hosp_0051",
+    "name": "진연합의원",
+    "addr_hint": "경상북도 의성군",
+    "latitude": 36.35552,
+    "longitude": 128.693831
+  },
+  {
+    "id": "hosp_0052",
+    "name": "청송군보건의료원",
+    "addr_hint": "경상북도 청송군",
+    "latitude": 36.43106,
+    "longitude": 129.052275
+  },
+  {
+    "id": "hosp_0053",
+    "name": "태전정형외과연합의원",
+    "addr_hint": "대구광역시 북구",
+    "latitude": 35.912152,
+    "longitude": 128.548976
+  },
+  {
+    "id": "hosp_0054",
+    "name": "(의)삼백의료재단 상주성모병원",
+    "addr_hint": "경상북도 상주시",
+    "latitude": 36.420796,
+    "longitude": 128.159975
+  },
+  {
+    "id": "hosp_0055",
+    "name": "동국대학교 경주병원",
+    "addr_hint": "경상북도 경주시",
+    "latitude": 35.858307,
+    "longitude": 129.195441
+  },
+  {
+    "id": "hosp_0056",
+    "name": "동춘의료재단 문경제일병원",
+    "addr_hint": "경상북도 문경시",
+    "latitude": 36.584326,
+    "longitude": 128.189184
+  },
+  {
+    "id": "hosp_0057",
+    "name": "순천향대학교 구미병원",
+    "addr_hint": "경상북도 구미시",
+    "latitude": 36.10407,
+    "longitude": 128.384347
+  },
+  {
+    "id": "hosp_0058",
+    "name": "안동의료원",
+    "addr_hint": "경상북도 안동시",
+    "latitude": 36.568104,
+    "longitude": 128.731869
+  },
+  {
+    "id": "hosp_0059",
+    "name": "영남대학교부속 영천병원",
+    "addr_hint": "경상북도 영천시",
+    "latitude": 35.957991,
+    "longitude": 128.91312
+  },
+  {
+    "id": "hosp_0060",
+    "name": "포항의료원",
+    "addr_hint": "경상북도 포항시",
+    "latitude": 36.035094,
+    "longitude": 129.354487
+  },
+  {
+    "id": "hosp_0061",
+    "name": "삼성연합의원(의성)",
+    "addr_hint": "경상북도 의성군",
+    "latitude": 36.386302,
+    "longitude": 128.434615
+  },
+  {
+    "id": "hosp_0062",
+    "name": "건양대학교 부여병원",
+    "addr_hint": "충청남도 부여군",
+    "latitude": 36.275721,
+    "longitude": 126.90107
+  },
+  {
+    "id": "hosp_0063",
+    "name": "괴산성모병원",
+    "addr_hint": "충청북도 괴산군",
+    "latitude": 36.815414,
+    "longitude": 127.784238
+  },
+  {
+    "id": "hosp_0064",
+    "name": "당진성모병원",
+    "addr_hint": "충청남도 당진시",
+    "latitude": 36.898638,
+    "longitude": 126.632994
+  },
+  {
+    "id": "hosp_0065",
+    "name": "정민의료재단 보은한양병원",
+    "addr_hint": "충청북도 보은군",
+    "latitude": 36.483278,
+    "longitude": 127.718287
+  },
+  {
+    "id": "hosp_0066",
+    "name": "영동병원",
+    "addr_hint": "충청북도 영동군",
+    "latitude": 36.185222,
+    "longitude": 127.781006
+  },
+  {
+    "id": "hosp_0067",
+    "name": "예산명지병원",
+    "addr_hint": "충청남도 예산군",
+    "latitude": 36.712916,
+    "longitude": 126.833862
+  },
+  {
+    "id": "hosp_0068",
+    "name": "예일병원",
+    "addr_hint": "충청남도 천안시",
+    "latitude": 36.793017,
+    "longitude": 127.121754
+  },
+  {
+    "id": "hosp_0069",
+    "name": "(의)태성의료재단 제일조은병원",
+    "addr_hint": "충청북도 음성군",
+    "latitude": 36.997478,
+    "longitude": 127.598521
+  },
+  {
+    "id": "hosp_0070",
+    "name": "서해병원",
+    "addr_hint": "충청남도 서천군",
+    "latitude": 36.08448,
+    "longitude": 126.687631
+  },
+  {
+    "id": "hosp_0071",
+    "name": "(의)건명의료재단 중앙제일병원",
+    "addr_hint": "충청북도 진천군",
+    "latitude": 36.858312,
+    "longitude": 127.44062
+  },
+  {
+    "id": "hosp_0072",
+    "name": "충주시노인전문병원",
+    "addr_hint": "충청북도 충주시",
+    "latitude": 37.048397,
+    "longitude": 127.930957
+  },
+  {
+    "id": "hosp_0073",
+    "name": "고려병원",
+    "addr_hint": "충청남도 논산시",
+    "latitude": 36.204304,
+    "longitude": 127.0837
+  },
+  {
+    "id": "hosp_0074",
+    "name": "김봉천정형외과의원",
+    "addr_hint": "대전광역시 서구",
+    "latitude": 36.302335,
+    "longitude": 127.352164
+  },
+  {
+    "id": "hosp_0075",
+    "name": "서외과의원",
+    "addr_hint": "충청북도 영동군",
+    "latitude": 36.173483,
+    "longitude": 127.772942
+  },
+  {
+    "id": "hosp_0076",
+    "name": "이내과의원",
+    "addr_hint": "세종특별자치시",
+    "latitude": 36.592492,
+    "longitude": 127.292133
+  },
+  {
+    "id": "hosp_0077",
+    "name": "청양군보건의료원",
+    "addr_hint": "충청남도 청양군",
+    "latitude": 36.455152,
+    "longitude": 126.804931
+  },
+  {
+    "id": "hosp_0078",
+    "name": "태안군보건의료원",
+    "addr_hint": "충청남도 태안군",
+    "latitude": 36.751944,
+    "longitude": 126.322939
+  },
+  {
+    "id": "hosp_0079",
+    "name": "건국대학교충주병원",
+    "addr_hint": "충청북도 충주시",
+    "latitude": 36.989144,
+    "longitude": 127.928746
+  },
+  {
+    "id": "hosp_0080",
+    "name": "공주의료원",
+    "addr_hint": "충청남도 공주시",
+    "latitude": 36.451873,
+    "longitude": 127.124819
+  },
+  {
+    "id": "hosp_0081",
+    "name": "백제종합병원",
+    "addr_hint": "충청남도 논산시",
+    "latitude": 36.192348,
+    "longitude": 127.09439
+  },
+  {
+    "id": "hosp_0082",
+    "name": "보령아산병원",
+    "addr_hint": "충청남도 보령시",
+    "latitude": 36.38055,
+    "longitude": 126.623285
+  },
+  {
+    "id": "hosp_0083",
+    "name": "서산의료원",
+    "addr_hint": "충청남도 서산시",
+    "latitude": 36.784499,
+    "longitude": 126.450317
+  },
+  {
+    "id": "hosp_0084",
+    "name": "(의)힐링의료재단 옥천성모병원",
+    "addr_hint": "충청북도 옥천군",
+    "latitude": 36.313707,
+    "longitude": 127.571949
+  },
+  {
+    "id": "hosp_0085",
+    "name": "홍성의료원",
+    "addr_hint": "충청남도 홍성군",
+    "latitude": 36.598802,
+    "longitude": 126.674332
+  },
+  {
+    "id": "hosp_0086",
+    "name": "365병원",
+    "addr_hint": "경상남도 창원시",
+    "latitude": 35.230022,
+    "longitude": 128.580266
+  },
+  {
+    "id": "hosp_0087",
+    "name": "강병원",
+    "addr_hint": "경상남도 고성군",
+    "latitude": 34.974173,
+    "longitude": 128.325216
+  },
+  {
+    "id": "hosp_0088",
+    "name": "거창적십자병원",
+    "addr_hint": "경상남도 거창군",
+    "latitude": 35.686629,
+    "longitude": 127.91002
+  },
+  {
+    "id": "hosp_0089",
+    "name": "구포부민병원",
+    "addr_hint": "부산광역시 북구",
+    "latitude": 35.198275,
+    "longitude": 128.990632
+  },
+  {
+    "id": "hosp_0090",
+    "name": "기장병원",
+    "addr_hint": "부산광역시 기장군",
+    "latitude": 35.235881,
+    "longitude": 129.216446
+  },
+  {
+    "id": "hosp_0091",
+    "name": "남해병원",
+    "addr_hint": "경상남도 남해군",
+    "latitude": 34.846164,
+    "longitude": 127.894392
+  },
+  {
+    "id": "hosp_0092",
+    "name": "메트로병원",
+    "addr_hint": "경상남도 창원시",
+    "latitude": 35.260815,
+    "longitude": 128.625848
+  },
+  {
+    "id": "hosp_0093",
+    "name": "반도병원",
+    "addr_hint": "경상남도 진주시",
+    "latitude": 35.191778,
+    "longitude": 128.088162
+  },
+  {
+    "id": "hosp_0094",
+    "name": "서귀포열린병원",
+    "addr_hint": "제주특별자치도 서귀포시",
+    "latitude": 33.252321,
+    "longitude": 126.572395,
+    "region_note": "도서·벽지 위탁병원"
+  },
+  {
+    "id": "hosp_0095",
+    "name": "(의)에스엠씨의료재단 울산세민병원",
+    "addr_hint": "울산광역시 중구",
+    "latitude": 35.556588,
+    "longitude": 129.330978
+  },
+  {
+    "id": "hosp_0096",
+    "name": "제주의료원",
+    "addr_hint": "제주특별자치도 제주시",
+    "latitude": 33.445271,
+    "longitude": 126.560145,
+    "region_note": "도서·벽지 위탁병원"
+  },
+  {
+    "id": "hosp_0097",
+    "name": "중앙U병원",
+    "addr_hint": "부산광역시 사하구",
+    "latitude": 35.084204,
+    "longitude": 129.009679
+  },
+  {
+    "id": "hosp_0098",
+    "name": "진해세광병원",
+    "addr_hint": "경상남도 창원시",
+    "latitude": 35.149786,
+    "longitude": 128.660943
+  },
+  {
+    "id": "hosp_0099",
+    "name": "통영적십자병원",
+    "addr_hint": "경상남도 통영시",
+    "latitude": 34.842244,
+    "longitude": 128.419918
+  },
+  {
+    "id": "hosp_0100",
+    "name": "함양성심병원",
+    "addr_hint": "경상남도 함양군",
+    "latitude": 35.520859,
+    "longitude": 127.730243
+  },
+  {
+    "id": "hosp_0101",
+    "name": "행복한병원",
+    "addr_hint": "경상남도 밀양시",
+    "latitude": 35.374686,
+    "longitude": 128.71137
+  },
+  {
+    "id": "hosp_0102",
+    "name": "푸른요양병원",
+    "addr_hint": "경상남도 창원시",
+    "latitude": 35.237872,
+    "longitude": 128.657382
+  },
+  {
+    "id": "hosp_0103",
+    "name": "복음의원",
+    "addr_hint": "경상남도 의령군",
+    "latitude": 35.318288,
+    "longitude": 128.261913
+  },
+  {
+    "id": "hosp_0104",
+    "name": "수도의원",
+    "addr_hint": "부산광역시 영도구",
+    "latitude": 35.093418,
+    "longitude": 129.046179
+  },
+  {
+    "id": "hosp_0105",
+    "name": "청송의원",
+    "addr_hint": "경상남도 산청군",
+    "latitude": 35.415632,
+    "longitude": 127.875882
+  },
+  {
+    "id": "hosp_0106",
+    "name": "대우병원",
+    "addr_hint": "경상남도 거제시",
+    "latitude": 34.872241,
+    "longitude": 128.721703
+  },
+  {
+    "id": "hosp_0107",
+    "name": "마산의료원",
+    "addr_hint": "경상남도 창원시",
+    "latitude": 35.198895,
+    "longitude": 128.566271
+  },
+  {
+    "id": "hosp_0108",
+    "name": "서귀포의료원",
+    "addr_hint": "제주특별자치도 서귀포시",
+    "latitude": 33.256096,
+    "longitude": 126.563064,
+    "region_note": "도서·벽지 위탁병원"
+  },
+  {
+    "id": "hosp_0109",
+    "name": "서울산보람병원",
+    "addr_hint": "울산광역시 울주군",
+    "latitude": 35.559617,
+    "longitude": 129.120575
+  },
+  {
+    "id": "hosp_0110",
+    "name": "울산병원",
+    "addr_hint": "울산광역시 남구",
+    "latitude": 35.546209,
+    "longitude": 129.323078
+  },
+  {
+    "id": "hosp_0111",
+    "name": "제주대학교병원",
+    "addr_hint": "제주특별자치도 제주시",
+    "latitude": 33.467043,
+    "longitude": 126.545756,
+    "region_note": "도서·벽지 위탁병원"
+  },
+  {
+    "id": "hosp_0112",
+    "name": "제주한라병원",
+    "addr_hint": "제주특별자치도 제주시",
+    "latitude": 33.48932,
+    "longitude": 126.482175,
+    "region_note": "도서·벽지 위탁병원"
+  },
+  {
+    "id": "hosp_0113",
+    "name": "연세에스병원",
+    "addr_hint": "경상남도 창원시",
+    "latitude": 35.154545,
+    "longitude": 128.698345
+  },
+  {
+    "id": "hosp_0114",
+    "name": "원주세브란스기독병원",
+    "addr_hint": "강원특별자치도 원주시",
+    "latitude": 37.348469,
+    "longitude": 127.945184
+  },
+  {
+    "id": "hosp_0115",
+    "name": "인제대학교 일산백병원",
+    "addr_hint": "경기도 고양시",
+    "latitude": 37.674229,
+    "longitude": 126.750367
+  },
+  {
+    "id": "hosp_0116",
+    "name": "강화병원",
+    "addr_hint": "인천광역시 강화군",
+    "latitude": 37.74331,
+    "longitude": 126.495415
+  },
+  {
+    "id": "hosp_0117",
+    "name": "근로복지공단 정선병원",
+    "addr_hint": "강원특별자치도 정선군",
+    "latitude": 37.383017,
+    "longitude": 128.658756
+  },
+  {
+    "id": "hosp_0118",
+    "name": "메디힐병원",
+    "addr_hint": "서울특별시 양천구",
+    "latitude": 37.537307,
+    "longitude": 126.827724
+  },
+  {
+    "id": "hosp_0119",
+    "name": "사랑의병원",
+    "addr_hint": "서울특별시 관악구",
+    "latitude": 37.483739,
+    "longitude": 126.942697
+  },
+  {
+    "id": "hosp_0120",
+    "name": "새서울연합의원",
+    "addr_hint": "서울특별시 노원구",
+    "latitude": 37.658747,
+    "longitude": 127.063541
+  },
+  {
+    "id": "hosp_0121",
+    "name": "아가페의료재단 시티병원",
+    "addr_hint": "경기도 의왕시",
+    "latitude": 37.350246,
+    "longitude": 126.976775
+  },
+  {
+    "id": "hosp_0122",
+    "name": "양주예쓰병원",
+    "addr_hint": "경기도 양주시",
+    "latitude": 37.837736,
+    "longitude": 127.064518
+  },
+  {
+    "id": "hosp_0123",
+    "name": "양평병원",
+    "addr_hint": "경기도 양평군",
+    "latitude": 37.49398,
+    "longitude": 127.503338
+  },
+  {
+    "id": "hosp_0124",
+    "name": "원병원",
+    "addr_hint": "경기도 남양주시",
+    "latitude": 37.651876,
+    "longitude": 127.304356
+  },
+  {
+    "id": "hosp_0125",
+    "name": "(의)영등포병원",
+    "addr_hint": "서울특별시 영등포구",
+    "latitude": 37.526801,
+    "longitude": 126.895916
+  },
+  {
+    "id": "hosp_0126",
+    "name": "인성병원",
+    "addr_hint": "강원특별자치도 춘천시",
+    "latitude": 37.881411,
+    "longitude": 127.726559
+  },
+  {
+    "id": "hosp_0127",
+    "name": "인제고려병원",
+    "addr_hint": "강원특별자치도 인제군",
+    "latitude": 38.067868,
+    "longitude": 128.173399
+  },
+  {
+    "id": "hosp_0128",
+    "name": "인천광역시의료원 백령병원",
+    "addr_hint": "인천광역시 옹진군",
+    "latitude": 37.972842,
+    "longitude": 124.718271,
+    "region_note": "최서단 위탁병원"
+  },
+  {
+    "id": "hosp_0129",
+    "name": "HJ매그놀리아국제병원",
+    "addr_hint": "경기도 가평군",
+    "latitude": 37.690825,
+    "longitude": 127.521689
+  },
+  {
+    "id": "hosp_0130",
+    "name": "햇살병원",
+    "addr_hint": "경기도 하남시",
+    "latitude": 37.546402,
+    "longitude": 127.209475
+  },
+  {
+    "id": "hosp_0131",
+    "name": "현대유비스병원",
+    "addr_hint": "인천광역시 미추홀구",
+    "latitude": 37.450671,
+    "longitude": 126.647376
+  },
+  {
+    "id": "hosp_0132",
+    "name": "현대중앙병원",
+    "addr_hint": "강원특별자치도 원주시",
+    "latitude": 37.369165,
+    "longitude": 127.938878
+  },
+  {
+    "id": "hosp_0133",
+    "name": "횡성대성병원",
+    "addr_hint": "강원특별자치도 횡성군",
+    "latitude": 37.478317,
+    "longitude": 127.979788
+  },
+  {
+    "id": "hosp_0134",
+    "name": "봄날요양병원",
+    "addr_hint": "인천광역시 남동구",
+    "latitude": 37.449294,
+    "longitude": 126.725247
+  },
+  {
+    "id": "hosp_0135",
+    "name": "(의)유라의료재단 온누리요양병원",
+    "addr_hint": "서울특별시 성북구",
+    "latitude": 37.605287,
+    "longitude": 127.040335
+  },
+  {
+    "id": "hosp_0136",
+    "name": "가평성모의원",
+    "addr_hint": "경기도 가평군",
+    "latitude": 37.826447,
+    "longitude": 127.514862
+  },
+  {
+    "id": "hosp_0137",
+    "name": "김내과의원",
+    "addr_hint": "서울특별시 용산구",
+    "latitude": 37.539738,
+    "longitude": 126.960719
+  },
+  {
+    "id": "hosp_0138",
+    "name": "김일중내과의원",
+    "addr_hint": "서울특별시 서초구",
+    "latitude": 37.485546,
+    "longitude": 127.011801
+  },
+  {
+    "id": "hosp_0139",
+    "name": "박상수내과의원",
+    "addr_hint": "서울특별시 마포구",
+    "latitude": 37.546711,
+    "longitude": 126.932856
+  },
+  {
+    "id": "hosp_0140",
+    "name": "밝은미래안과",
+    "addr_hint": "서울특별시 노원구",
+    "latitude": 37.658747,
+    "longitude": 127.063541
+  },
+  {
+    "id": "hosp_0141",
+    "name": "노원삼성드림이비인후과의원",
+    "addr_hint": "서울특별시 노원구",
+    "latitude": 37.654609,
+    "longitude": 127.064793
+  },
+  {
+    "id": "hosp_0142",
+    "name": "양양정형외과",
+    "addr_hint": "강원특별자치도 양양군",
+    "latitude": 38.078381,
+    "longitude": 128.627175
+  },
+  {
+    "id": "hosp_0143",
+    "name": "어비뇨기과",
+    "addr_hint": "서울특별시 노원구",
+    "latitude": 37.667663,
+    "longitude": 127.05807
+  },
+  {
+    "id": "hosp_0144",
+    "name": "연세조내과의원",
+    "addr_hint": "서울특별시 금천구",
+    "latitude": 37.453708,
+    "longitude": 126.901536
+  },
+  {
+    "id": "hosp_0145",
+    "name": "연천군보건의료원",
+    "addr_hint": "경기도 연천군",
+    "latitude": 38.023365,
+    "longitude": 127.061244
+  },
+  {
+    "id": "hosp_0146",
+    "name": "윤문수비뇨기과의원",
+    "addr_hint": "서울특별시 영등포구",
+    "latitude": 37.529316,
+    "longitude": 126.905144
+  },
+  {
+    "id": "hosp_0147",
+    "name": "퇴촌중앙의원",
+    "addr_hint": "경기도 광주시",
+    "latitude": 37.470813,
+    "longitude": 127.31088
+  },
+  {
+    "id": "hosp_0148",
+    "name": "평창군보건의료원",
+    "addr_hint": "강원특별자치도 평창군",
+    "latitude": 37.360705,
+    "longitude": 128.389025
+  },
+  {
+    "id": "hosp_0149",
+    "name": "한양그린내과의원",
+    "addr_hint": "서울특별시 서대문구",
+    "latitude": 37.58306,
+    "longitude": 126.947527
+  },
+  {
+    "id": "hosp_0150",
+    "name": "현대중앙의원",
+    "addr_hint": "서울특별시 동대문구",
+    "latitude": 37.57709,
+    "longitude": 127.061822
+  },
+  {
+    "id": "hosp_0151",
+    "name": "화천군보건의료원",
+    "addr_hint": "강원특별자치도 화천군",
+    "latitude": 38.107531,
+    "longitude": 127.709113
+  },
+  {
+    "id": "hosp_0152",
+    "name": "제이씨빛소망안과",
+    "addr_hint": "서울특별시 영등포구",
+    "latitude": 37.520761,
+    "longitude": 126.926893
+  },
+  {
+    "id": "hosp_0153",
+    "name": "강릉동인병원",
+    "addr_hint": "강원특별자치도 강릉시",
+    "latitude": 37.77434,
+    "longitude": 128.907048
+  },
+  {
+    "id": "hosp_0154",
+    "name": "강원대학교병원",
+    "addr_hint": "강원특별자치도 춘천시",
+    "latitude": 37.870012,
+    "longitude": 127.740498
+  },
+  {
+    "id": "hosp_0155",
+    "name": "경기도립의료원 포천병원",
+    "addr_hint": "경기도 포천시",
+    "latitude": 37.903164,
+    "longitude": 127.198123
+  },
+  {
+    "id": "hosp_0156",
+    "name": "경기도립의료원 수원병원",
+    "addr_hint": "경기도 수원시",
+    "latitude": 37.292014,
+    "longitude": 126.996646
+  },
+  {
+    "id": "hosp_0157",
+    "name": "경기도의료원 안성병원",
+    "addr_hint": "경기도 안성시",
+    "latitude": 37.014886,
+    "longitude": 127.256402
+  },
+  {
+    "id": "hosp_0158",
+    "name": "경기도립의료원 의정부병원",
+    "addr_hint": "경기도 의정부시",
+    "latitude": 37.741039,
+    "longitude": 127.042524
+  },
+  {
+    "id": "hosp_0159",
+    "name": "경기도의료원 파주병원",
+    "addr_hint": "경기도 파주시",
+    "latitude": 37.756841,
+    "longitude": 126.779484
+  },
+  {
+    "id": "hosp_0160",
+    "name": "광명성애병원",
+    "addr_hint": "경기도 광명시",
+    "latitude": 37.473155,
+    "longitude": 126.868955
+  },
+  {
+    "id": "hosp_0161",
+    "name": "근로복지공단 태백병원",
+    "addr_hint": "강원특별자치도 태백시",
+    "latitude": 37.103424,
+    "longitude": 129.005278
+  },
+  {
+    "id": "hosp_0162",
+    "name": "김포우리병원",
+    "addr_hint": "경기도 김포시",
+    "latitude": 37.632349,
+    "longitude": 126.71077
+  },
+  {
+    "id": "hosp_0163",
+    "name": "(의)영문의료재단 다보스병원",
+    "addr_hint": "경기도 용인시",
+    "latitude": 37.231468,
+    "longitude": 127.211367
+  },
+  {
+    "id": "hosp_0164",
+    "name": "동수원병원",
+    "addr_hint": "경기도 수원시",
+    "latitude": 37.278098,
+    "longitude": 127.036388
+  },
+  {
+    "id": "hosp_0165",
+    "name": "동해동인병원",
+    "addr_hint": "강원특별자치도 동해시",
+    "latitude": 37.53014,
+    "longitude": 129.107399
+  },
+  {
+    "id": "hosp_0166",
+    "name": "부평세림병원",
+    "addr_hint": "인천광역시 부평구",
+    "latitude": 37.50733,
+    "longitude": 126.718917
+  },
+  {
+    "id": "hosp_0167",
+    "name": "삼척의료원",
+    "addr_hint": "강원특별자치도 삼척시",
+    "latitude": 37.43776,
+    "longitude": 129.161415
+  },
+  {
+    "id": "hosp_0168",
+    "name": "안양샘병원",
+    "addr_hint": "경기도 안양시",
+    "latitude": 37.393499,
+    "longitude": 126.924537
+  },
+  {
+    "id": "hosp_0169",
+    "name": "서울적십자병원",
+    "addr_hint": "서울특별시 종로구",
+    "latitude": 37.56714,
+    "longitude": 126.967057
+  },
+  {
+    "id": "hosp_0170",
+    "name": "성남중앙병원",
+    "addr_hint": "경기도 성남시",
+    "latitude": 37.4527,
+    "longitude": 127.162074
+  },
+  {
+    "id": "hosp_0171",
+    "name": "센트럴병원",
+    "addr_hint": "경기도 시흥시",
+    "latitude": 37.336725,
+    "longitude": 126.728167
+  },
+  {
+    "id": "hosp_0172",
+    "name": "속초의료원",
+    "addr_hint": "강원특별자치도 속초시",
+    "latitude": 38.21641,
+    "longitude": 128.588535
+  },
+  {
+    "id": "hosp_0173",
+    "name": "영월의료원",
+    "addr_hint": "강원특별자치도 영월군",
+    "latitude": 37.186531,
+    "longitude": 128.46511
+  },
+  {
+    "id": "hosp_0174",
+    "name": "용인강남병원",
+    "addr_hint": "경기도 용인시",
+    "latitude": 37.282432,
+    "longitude": 127.109715
+  },
+  {
+    "id": "hosp_0175",
+    "name": "(의)인성의료재단 한림병원",
+    "addr_hint": "인천광역시 계양구",
+    "latitude": 37.563962,
+    "longitude": 126.734223
+  },
+  {
+    "id": "hosp_0176",
+    "name": "인천광역시의료원",
+    "addr_hint": "인천광역시 동구",
+    "latitude": 37.484578,
+    "longitude": 126.65474
+  },
+  {
+    "id": "hosp_0177",
+    "name": "철원병원",
+    "addr_hint": "강원특별자치도 철원군",
+    "latitude": 38.150253,
+    "longitude": 127.307734
+  },
+  {
+    "id": "hosp_0178",
+    "name": "화성중앙병원",
+    "addr_hint": "경기도 화성시",
+    "latitude": 37.131315,
+    "longitude": 126.910772
+  },
+  {
+    "id": "hosp_0179",
+    "name": "금산365의원",
+    "addr_hint": "충청남도 금산군",
+    "latitude": 36.10614,
+    "longitude": 127.488114
+  },
+  {
+    "id": "hosp_0180",
+    "name": "이신경외과의원",
+    "addr_hint": "충청남도 태안군",
+    "latitude": 36.749711,
+    "longitude": 126.301989
+  },
+  {
+    "id": "hosp_0181",
+    "name": "손장원정형외과의원",
+    "addr_hint": "서울특별시 관악구",
+    "latitude": 37.483463,
+    "longitude": 126.953766
+  },
+  {
+    "id": "hosp_0182",
+    "name": "순천성가롤로병원",
+    "addr_hint": "전라남도 순천시",
+    "latitude": 34.964266,
+    "longitude": 127.542876
+  },
+  {
+    "id": "hosp_0183",
+    "name": "메디홀스요양병원",
+    "addr_hint": "경기도 부천시",
+    "latitude": 37.483186,
+    "longitude": 126.767484
+  },
+  {
+    "id": "hosp_0184",
+    "name": "명지의료재단 명지병원",
+    "addr_hint": "충청북도 제천시",
+    "latitude": 37.139273,
+    "longitude": 128.207143
+  },
+  {
+    "id": "hosp_0185",
+    "name": "홍천아산병원",
+    "addr_hint": "강원특별자치도 홍천군",
+    "latitude": 37.690666,
+    "longitude": 127.894651
+  },
+  {
+    "id": "hosp_0186",
+    "name": "강서힘찬병원",
+    "addr_hint": "서울특별시 강서구",
+    "latitude": 37.559152,
+    "longitude": 126.840656
+  },
+  {
+    "id": "hosp_0187",
+    "name": "서울신경외과의원",
+    "addr_hint": "충청남도 당진시",
+    "latitude": 36.898638,
+    "longitude": 126.632994
+  },
+  {
+    "id": "hosp_0188",
+    "name": "부산성소병원",
+    "addr_hint": "부산광역시 남구",
+    "latitude": 35.13606,
+    "longitude": 129.086446
+  },
+  {
+    "id": "hosp_0189",
+    "name": "공정형외과의원",
+    "addr_hint": "충청남도 서천군",
+    "latitude": 36.076313,
+    "longitude": 126.689449
+  },
+  {
+    "id": "hosp_0190",
+    "name": "(의)라움의료재단 세웅병원",
+    "addr_hint": "부산광역시 금정구",
+    "latitude": 35.214399,
+    "longitude": 129.104084
+  },
+  {
+    "id": "hosp_0191",
+    "name": "신세계요양병원",
+    "addr_hint": "경상남도 양산시",
+    "latitude": 35.364827,
+    "longitude": 129.150556
+  },
+  {
+    "id": "hosp_0192",
+    "name": "예담정형외과의원",
+    "addr_hint": "서울특별시 마포구",
+    "latitude": 37.546711,
+    "longitude": 126.932856
+  },
+  {
+    "id": "hosp_0193",
+    "name": "김광석외과의원",
+    "addr_hint": "충청남도 계룡시",
+    "latitude": 36.28825,
+    "longitude": 127.243553
+  },
+  {
+    "id": "hosp_0194",
+    "name": "진주제일병원",
+    "addr_hint": "경상남도 진주시",
+    "latitude": 35.179394,
+    "longitude": 128.089972
+  },
+  {
+    "id": "hosp_0195",
+    "name": "동두천중앙성모병원",
+    "addr_hint": "경기도 동두천시",
+    "latitude": 37.908855,
+    "longitude": 127.053944
+  },
+  {
+    "id": "hosp_0196",
+    "name": "(의)성하의료재단 누가병원",
+    "addr_hint": "전북특별자치도 군산시",
+    "latitude": 35.975073,
+    "longitude": 126.73353
+  },
+  {
+    "id": "hosp_0197",
+    "name": "소안면 보건지소",
+    "addr_hint": "전라남도 완도군",
+    "latitude": 34.171992,
+    "longitude": 126.652727
+  },
+  {
+    "id": "hosp_0198",
+    "name": "맑은샘병원",
+    "addr_hint": "경상남도 거제시",
+    "latitude": 34.90966,
+    "longitude": 128.65558
+  },
+  {
+    "id": "hosp_0199",
+    "name": "효성병원",
+    "addr_hint": "충청북도 청주시",
+    "latitude": 36.624447,
+    "longitude": 127.495529
+  },
+  {
+    "id": "hosp_0200",
+    "name": "더플러스병원",
+    "addr_hint": "경기도 광주시",
+    "latitude": 37.409554,
+    "longitude": 127.25619
+  },
+  {
+    "id": "hosp_0201",
+    "name": "경북도립경산노인전문요양병원",
+    "addr_hint": "경상북도 경산시",
+    "latitude": 35.829117,
+    "longitude": 128.734837
+  },
+  {
+    "id": "hosp_0202",
+    "name": "양구성심병원",
+    "addr_hint": "강원특별자치도 양구군",
+    "latitude": 38.104502,
+    "longitude": 127.991149
+  },
+  {
+    "id": "hosp_0203",
+    "name": "세브란의원",
+    "addr_hint": "강원특별자치도 고성군",
+    "latitude": 38.447513,
+    "longitude": 128.45475,
+    "region_note": "최북단 위탁병원"
+  },
+  {
+    "id": "hosp_0204",
+    "name": "21세기내과의원",
+    "addr_hint": "경기도 양주시",
+    "latitude": 37.795609,
+    "longitude": 127.080106
+  },
+  {
+    "id": "hosp_0205",
+    "name": "마디정형외과의원",
+    "addr_hint": "울산광역시 동구",
+    "latitude": 35.493499,
+    "longitude": 129.426494
+  },
+  {
+    "id": "hosp_0206",
+    "name": "김형근예병원",
+    "addr_hint": "경기도 안양시",
+    "latitude": 37.401804,
+    "longitude": 126.955434
+  },
+  {
+    "id": "hosp_0207",
+    "name": "송원요양병원",
+    "addr_hint": "충청북도 충주시",
+    "latitude": 36.971714,
+    "longitude": 127.794122
+  },
+  {
+    "id": "hosp_0208",
+    "name": "권경수내과의원",
+    "addr_hint": "서울특별시 구로구",
+    "latitude": 37.495363,
+    "longitude": 126.858792
+  },
+  {
+    "id": "hosp_0209",
+    "name": "아산충무병원",
+    "addr_hint": "충청남도 아산시",
+    "latitude": 36.782799,
+    "longitude": 127.019793
+  },
+  {
+    "id": "hosp_0210",
+    "name": "연세메디하임병원",
+    "addr_hint": "강원특별자치도 원주시",
+    "latitude": 37.302546,
+    "longitude": 127.808915
+  },
+  {
+    "id": "hosp_0211",
+    "name": "성심중앙병원",
+    "addr_hint": "경기도 평택시",
+    "latitude": 36.983921,
+    "longitude": 126.928403
+  },
+  {
+    "id": "hosp_0212",
+    "name": "김제우석병원",
+    "addr_hint": "전북특별자치도 김제시",
+    "latitude": 35.807355,
+    "longitude": 126.880241
+  },
+  {
+    "id": "hosp_0213",
+    "name": "영암내과의원",
+    "addr_hint": "전라남도 영암군",
+    "latitude": 34.799111,
+    "longitude": 126.697638
+  },
+  {
+    "id": "hosp_0214",
+    "name": "중앙요양병원",
+    "addr_hint": "경상북도 경주시",
+    "latitude": 35.844062,
+    "longitude": 129.206361
+  },
+  {
+    "id": "hosp_0215",
+    "name": "세종여주병원",
+    "addr_hint": "경기도 여주시",
+    "latitude": 37.301526,
+    "longitude": 127.626088
+  },
+  {
+    "id": "hosp_0216",
+    "name": "서울안과",
+    "addr_hint": "경상남도 하동군",
+    "latitude": 35.070488,
+    "longitude": 127.750602
+  },
+  {
+    "id": "hosp_0217",
+    "name": "하동중앙의원",
+    "addr_hint": "경상남도 하동군",
+    "latitude": 35.071377,
+    "longitude": 127.753241
+  },
+  {
+    "id": "hosp_0218",
+    "name": "창원파티마병원",
+    "addr_hint": "경상남도 창원시",
+    "latitude": 35.237318,
+    "longitude": 128.645902
+  },
+  {
+    "id": "hosp_0219",
+    "name": "김종웅내과의원",
+    "addr_hint": "서울특별시 광진구",
+    "latitude": 37.557585,
+    "longitude": 127.08816
+  },
+  {
+    "id": "hosp_0220",
+    "name": "청주현대병원",
+    "addr_hint": "충청북도 청주시",
+    "latitude": 36.632887,
+    "longitude": 127.424581
+  },
+  {
+    "id": "hosp_0221",
+    "name": "울산시티병원",
+    "addr_hint": "울산광역시 북구",
+    "latitude": 35.582894,
+    "longitude": 129.358855
+  },
+  {
+    "id": "hosp_0222",
+    "name": "진안군의료원",
+    "addr_hint": "전북특별자치도 진안군",
+    "latitude": 35.795205,
+    "longitude": 127.435602
+  },
+  {
+    "id": "hosp_0223",
+    "name": "서울드림의원",
+    "addr_hint": "강원특별자치도 홍천군",
+    "latitude": 37.690325,
+    "longitude": 127.881519
+  },
+  {
+    "id": "hosp_0224",
+    "name": "호성전주병원",
+    "addr_hint": "전북특별자치도 전주시",
+    "latitude": 35.86543,
+    "longitude": 127.147918
+  },
+  {
+    "id": "hosp_0225",
+    "name": "큰마디큰병원",
+    "addr_hint": "경상북도 경주시",
+    "latitude": 35.844172,
+    "longitude": 129.215058
+  },
+  {
+    "id": "hosp_0226",
+    "name": "서울으뜸정형외과의원",
+    "addr_hint": "서울특별시 금천구",
+    "latitude": 37.465731,
+    "longitude": 126.902378
+  },
+  {
+    "id": "hosp_0227",
+    "name": "(의)상원의료재단 부산힘찬병원",
+    "addr_hint": "부산광역시 동래구",
+    "latitude": 35.20131,
+    "longitude": 129.087191
+  },
+  {
+    "id": "hosp_0228",
+    "name": "신풍내과의원",
+    "addr_hint": "서울특별시 영등포구",
+    "latitude": 37.495156,
+    "longitude": 126.909076
+  },
+  {
+    "id": "hosp_0229",
+    "name": "해남한국병원",
+    "addr_hint": "전라남도 해남군",
+    "latitude": 34.566863,
+    "longitude": 126.597123
+  },
+  {
+    "id": "hosp_0230",
+    "name": "광명새움병원",
+    "addr_hint": "경기도 광명시",
+    "latitude": 37.446937,
+    "longitude": 126.881234
+  },
+  {
+    "id": "hosp_0231",
+    "name": "본서부병원",
+    "addr_hint": "서울특별시 은평구",
+    "latitude": 37.600696,
+    "longitude": 126.922568
+  },
+  {
+    "id": "hosp_0232",
+    "name": "아이비이비인후과의원",
+    "addr_hint": "서울특별시 영등포구",
+    "latitude": 37.519909,
+    "longitude": 126.931783
+  },
+  {
+    "id": "hosp_0233",
+    "name": "박원종내과의원",
+    "addr_hint": "경기도 김포시",
+    "latitude": 37.690641,
+    "longitude": 126.598692
+  },
+  {
+    "id": "hosp_0234",
+    "name": "참사랑의원",
+    "addr_hint": "경상남도 함안군",
+    "latitude": 35.276145,
+    "longitude": 128.407208
+  },
+  {
+    "id": "hosp_0235",
+    "name": "무척조은병원",
+    "addr_hint": "경기도 파주시",
+    "latitude": 37.863948,
+    "longitude": 126.780931
+  },
+  {
+    "id": "hosp_0236",
+    "name": "새롬재활요양병원(의료법인유천의료재단)",
+    "addr_hint": "경상남도 함안군",
+    "latitude": 35.275759,
+    "longitude": 128.533318
+  },
+  {
+    "id": "hosp_0237",
+    "name": "박정빈외과의원",
+    "addr_hint": "강원특별자치도 강릉시",
+    "latitude": 37.755675,
+    "longitude": 128.897182
+  },
+  {
+    "id": "hosp_0238",
+    "name": "이명호내과의원",
+    "addr_hint": "강원특별자치도 강릉시",
+    "latitude": 37.763844,
+    "longitude": 128.875524
+  },
+  {
+    "id": "hosp_0239",
+    "name": "여수전남병원",
+    "addr_hint": "전라남도 여수시",
+    "latitude": 34.745121,
+    "longitude": 127.728194
+  },
+  {
+    "id": "hosp_0240",
+    "name": "다인병원",
+    "addr_hint": "경기도 수원시",
+    "latitude": 37.291922,
+    "longitude": 127.027524
+  },
+  {
+    "id": "hosp_0241",
+    "name": "하나안과의원",
+    "addr_hint": "전라남도 영암군",
+    "latitude": 34.796157,
+    "longitude": 126.702385
+  },
+  {
+    "id": "hosp_0242",
+    "name": "바로본병원",
+    "addr_hint": "대구광역시 동구",
+    "latitude": 35.868422,
+    "longitude": 128.615182
+  },
+  {
+    "id": "hosp_0243",
+    "name": "(의)자운의료재단강남요양병원",
+    "addr_hint": "경기도 시흥시",
+    "latitude": 37.438199,
+    "longitude": 126.788213
+  },
+  {
+    "id": "hosp_0244",
+    "name": "효성시티병원",
+    "addr_hint": "부산광역시 해운대구",
+    "latitude": 35.185192,
+    "longitude": 129.121465
+  },
+  {
+    "id": "hosp_0245",
+    "name": "서울본내과의원",
+    "addr_hint": "서울특별시 마포구",
+    "latitude": 37.555231,
+    "longitude": 126.920983
+  },
+  {
+    "id": "hosp_0246",
+    "name": "경기도의료원 이천병원",
+    "addr_hint": "경기도 이천시",
+    "latitude": 37.282823,
+    "longitude": 127.433238
+  },
+  {
+    "id": "hosp_0247",
+    "name": "성모윌병원",
+    "addr_hint": "경기도 성남시",
+    "latitude": 37.434448,
+    "longitude": 127.128287
+  },
+  {
+    "id": "hosp_0248",
+    "name": "원광대학교 산본병원",
+    "addr_hint": "경기도 군포시",
+    "latitude": 37.359413,
+    "longitude": 126.933603
+  },
+  {
+    "id": "hosp_0249",
+    "name": "완도소안의원",
+    "addr_hint": "전라남도 완도군",
+    "latitude": 34.173312,
+    "longitude": 126.649687
+  },
+  {
+    "id": "hosp_0250",
+    "name": "한솔의원",
+    "addr_hint": "전북특별자치도 완주군",
+    "latitude": 35.975251,
+    "longitude": 127.20594
+  },
+  {
+    "id": "hosp_0251",
+    "name": "노병연내과의원",
+    "addr_hint": "충청북도 제천시",
+    "latitude": 37.141406,
+    "longitude": 128.212027
+  },
+  {
+    "id": "hosp_0252",
+    "name": "서울나은병원",
+    "addr_hint": "서울특별시 동대문구",
+    "latitude": 37.578569,
+    "longitude": 127.038731
+  },
+  {
+    "id": "hosp_0253",
+    "name": "영덕아산병원",
+    "addr_hint": "경상북도 영덕군",
+    "latitude": 36.52368,
+    "longitude": 129.402343
+  },
+  {
+    "id": "hosp_0254",
+    "name": "건강한성심의원",
+    "addr_hint": "서울특별시 중랑구",
+    "latitude": 37.596111,
+    "longitude": 127.09992
+  },
+  {
+    "id": "hosp_0255",
+    "name": "조은오산병원",
+    "addr_hint": "경기도 오산시",
+    "latitude": 37.154202,
+    "longitude": 127.068202
+  },
+  {
+    "id": "hosp_0256",
+    "name": "좋은선린요양병원",
+    "addr_hint": "경상북도 포항시",
+    "latitude": 36.046507,
+    "longitude": 129.366696
+  },
+  {
+    "id": "hosp_0257",
+    "name": "신내과의원",
+    "addr_hint": "울산광역시 동구",
+    "latitude": 35.499996,
+    "longitude": 129.42825
+  },
+  {
+    "id": "hosp_0258",
+    "name": "의료법인지평의료재단 메가병원",
+    "addr_hint": "경상남도 김해시",
+    "latitude": 35.191331,
+    "longitude": 128.803886
+  },
+  {
+    "id": "hosp_0259",
+    "name": "(의)희경의료재단 성베드로병원",
+    "addr_hint": "경기도 의정부시",
+    "latitude": 37.747516,
+    "longitude": 127.045857
+  },
+  {
+    "id": "hosp_0260",
+    "name": "나주비뇨기과의원",
+    "addr_hint": "전라남도 나주시",
+    "latitude": 35.036745,
+    "longitude": 126.721562
+  },
+  {
+    "id": "hosp_0261",
+    "name": "(의)승연의료재단 삼천포서울병원",
+    "addr_hint": "경상남도 사천시",
+    "latitude": 34.933109,
+    "longitude": 128.08014
+  },
+  {
+    "id": "hosp_0262",
+    "name": "비에스종합병원",
+    "addr_hint": "인천광역시 강화군",
+    "latitude": 37.736064,
+    "longitude": 126.48573
+  },
+  {
+    "id": "hosp_0263",
+    "name": "연세빛가정의학과의원",
+    "addr_hint": "경상남도 양산시",
+    "latitude": 35.3093,
+    "longitude": 129.0063
+  },
+  {
+    "id": "hosp_0264",
+    "name": "(의)용성의료재단 삼성합천병원",
+    "addr_hint": "경상남도 합천군",
+    "latitude": 35.56647,
+    "longitude": 128.163334
+  },
+  {
+    "id": "hosp_0265",
+    "name": "상명내과의원",
+    "addr_hint": "강원특별자치도 양양군",
+    "latitude": 38.075513,
+    "longitude": 128.622214
+  },
+  {
+    "id": "hosp_0266",
+    "name": "탑내과의원",
+    "addr_hint": "경기도 과천시",
+    "latitude": 37.423046,
+    "longitude": 126.993522
+  },
+  {
+    "id": "hosp_0267",
+    "name": "윤석주내과의원",
+    "addr_hint": "경기도 의정부시",
+    "latitude": 37.744064,
+    "longitude": 127.052361
+  },
+  {
+    "id": "hosp_0268",
+    "name": "보강재활의학과의원",
+    "addr_hint": "부산광역시 연제구",
+    "latitude": 35.175116,
+    "longitude": 129.08609
+  },
+  {
+    "id": "hosp_0269",
+    "name": "남악하나내과의원",
+    "addr_hint": "전라남도 무안군",
+    "latitude": 34.813152,
+    "longitude": 126.466392
+  },
+  {
+    "id": "hosp_0270",
+    "name": "서울연합의원",
+    "addr_hint": "전라남도 영광군",
+    "latitude": 35.217147,
+    "longitude": 126.374166
+  },
+  {
+    "id": "hosp_0271",
+    "name": "대동의원",
+    "addr_hint": "전북특별자치도 순창군",
+    "latitude": 35.373206,
+    "longitude": 127.140707
+  },
+  {
+    "id": "hosp_0272",
+    "name": "용상황금연합의원",
+    "addr_hint": "경상북도 안동시",
+    "latitude": 36.561031,
+    "longitude": 128.749938
+  },
+  {
+    "id": "hosp_0273",
+    "name": "동탄시티병원",
+    "addr_hint": "경기도 화성시",
+    "latitude": 37.20848,
+    "longitude": 127.062622
+  },
+  {
+    "id": "hosp_0274",
+    "name": "덕산의료재단 김천제일병원",
+    "addr_hint": "경상북도 김천시",
+    "latitude": 36.135519,
+    "longitude": 128.118711
+  },
+  {
+    "id": "hosp_0275",
+    "name": "김성진내과의원",
+    "addr_hint": "경기도 군포시",
+    "latitude": 37.372092,
+    "longitude": 126.935022
+  },
+  {
+    "id": "hosp_0276",
+    "name": "더베스트내과의원",
+    "addr_hint": "경기도 안산시",
+    "latitude": 37.310271,
+    "longitude": 126.830736
+  },
+  {
+    "id": "hosp_0277",
+    "name": "코코이비인후과의원",
+    "addr_hint": "경기도 수원시",
+    "latitude": 37.267678,
+    "longitude": 127.051078
+  },
+  {
+    "id": "hosp_0278",
+    "name": "비젼내과의원",
+    "addr_hint": "경기도 용인시",
+    "latitude": 37.319959,
+    "longitude": 127.115159
+  },
+  {
+    "id": "hosp_0279",
+    "name": "수내과의원",
+    "addr_hint": "충청남도 서산시",
+    "latitude": 36.782217,
+    "longitude": 126.458162
+  },
+  {
+    "id": "hosp_0280",
+    "name": "덕영내과의원",
+    "addr_hint": "경상남도 의령군",
+    "latitude": 35.3199,
+    "longitude": 128.260362
+  },
+  {
+    "id": "hosp_0281",
+    "name": "힐링연합의원",
+    "addr_hint": "광주광역시 남구",
+    "latitude": 35.12429,
+    "longitude": 126.897751
+  },
+  {
+    "id": "hosp_0282",
+    "name": "나눔내과의원",
+    "addr_hint": "전라남도 담양군",
+    "latitude": 35.301739,
+    "longitude": 126.932084
+  },
+  {
+    "id": "hosp_0283",
+    "name": "한양내과의원",
+    "addr_hint": "전라남도 화순군",
+    "latitude": 35.061795,
+    "longitude": 126.984862
+  },
+  {
+    "id": "hosp_0284",
+    "name": "오케이내과의원",
+    "addr_hint": "전라남도 강진군",
+    "latitude": 34.638117,
+    "longitude": 126.768019
+  },
+  {
+    "id": "hosp_0285",
+    "name": "해남복음내과의원",
+    "addr_hint": "전라남도 해남군",
+    "latitude": 34.571458,
+    "longitude": 126.606978
+  },
+  {
+    "id": "hosp_0286",
+    "name": "김종성비뇨기과의원",
+    "addr_hint": "전북특별자치도 익산시",
+    "latitude": 35.958825,
+    "longitude": 126.976011
+  },
+  {
+    "id": "hosp_0287",
+    "name": "임실내과의원",
+    "addr_hint": "전북특별자치도 임실군",
+    "latitude": 35.61481,
+    "longitude": 127.280098
+  },
+  {
+    "id": "hosp_0288",
+    "name": "참가정의학과의원",
+    "addr_hint": "전북특별자치도 장수군",
+    "latitude": 35.73137,
+    "longitude": 127.58224
+  },
+  {
+    "id": "hosp_0289",
+    "name": "서울정형외과의원(영암)",
+    "addr_hint": "전라남도 영암군",
+    "latitude": 34.801827,
+    "longitude": 126.699562
+  },
+  {
+    "id": "hosp_0290",
+    "name": "현대가정의학과의원",
+    "addr_hint": "전북특별자치도 부안군",
+    "latitude": 35.727139,
+    "longitude": 126.732199
+  },
+  {
+    "id": "hosp_0291",
+    "name": "권태우정형외과의원",
+    "addr_hint": "경기도 안양시",
+    "latitude": 37.391948,
+    "longitude": 126.951598
+  },
+  {
+    "id": "hosp_0292",
+    "name": "박지영내과의원",
+    "addr_hint": "경기도 하남시",
+    "latitude": 37.567606,
+    "longitude": 127.190701
+  },
+  {
+    "id": "hosp_0293",
+    "name": "손경수내과의원",
+    "addr_hint": "강원특별자치도 원주시",
+    "latitude": 37.342369,
+    "longitude": 127.954121
+  },
+  {
+    "id": "hosp_0294",
+    "name": "한림의원",
+    "addr_hint": "강원특별자치도 인제군",
+    "latitude": 38.1242,
+    "longitude": 128.2076
+  },
+  {
+    "id": "hosp_0295",
+    "name": "화천내과의원",
+    "addr_hint": "강원특별자치도 화천군",
+    "latitude": 38.104371,
+    "longitude": 127.706368
+  },
+  {
+    "id": "hosp_0296",
+    "name": "횡성정형외과의원",
+    "addr_hint": "강원특별자치도 횡성군",
+    "latitude": 37.491842,
+    "longitude": 127.986474
+  },
+  {
+    "id": "hosp_0297",
+    "name": "영남의원",
+    "addr_hint": "경상북도 예천군",
+    "latitude": 36.658615,
+    "longitude": 128.457124
+  },
+  {
+    "id": "hosp_0298",
+    "name": "정일성의원",
+    "addr_hint": "경상남도 고성군",
+    "latitude": 34.976926,
+    "longitude": 128.325982
+  },
+  {
+    "id": "hosp_0299",
+    "name": "고려정형외과의원(거창)",
+    "addr_hint": "경상남도 거창군",
+    "latitude": 35.685458,
+    "longitude": 127.918357
+  },
+  {
+    "id": "hosp_0300",
+    "name": "성심메디컬의원",
+    "addr_hint": "경상남도 진주시",
+    "latitude": 35.190957,
+    "longitude": 128.056072
+  },
+  {
+    "id": "hosp_0301",
+    "name": "한마음연합의원",
+    "addr_hint": "경상남도 함양군",
+    "latitude": 35.519929,
+    "longitude": 127.731911
+  },
+  {
+    "id": "hosp_0302",
+    "name": "서울비뇨기과의원(구리점)",
+    "addr_hint": "경기도 구리시",
+    "latitude": 37.601512,
+    "longitude": 127.140625
+  },
+  {
+    "id": "hosp_0303",
+    "name": "청담비뇨기과의원",
+    "addr_hint": "경기도 남양주시",
+    "latitude": 37.654659,
+    "longitude": 127.244107
+  },
+  {
+    "id": "hosp_0304",
+    "name": "새벽의원",
+    "addr_hint": "경기도 양평군",
+    "latitude": 37.4891,
+    "longitude": 127.492829
+  },
+  {
+    "id": "hosp_0305",
+    "name": "강비뇨기과의원(연천)",
+    "addr_hint": "경기도 연천군",
+    "latitude": 38.0268,
+    "longitude": 127.068
+  },
+  {
+    "id": "hosp_0306",
+    "name": "한성내과의원",
+    "addr_hint": "경기도 포천시",
+    "latitude": 37.831101,
+    "longitude": 127.149257
+  },
+  {
+    "id": "hosp_0307",
+    "name": "의)한솔의료재단 한서재활요양병원",
+    "addr_hint": "경상남도 김해시",
+    "latitude": 35.292421,
+    "longitude": 128.752992
+  },
+  {
+    "id": "hosp_0308",
+    "name": "민들레안과의원",
+    "addr_hint": "충청북도 보은군",
+    "latitude": 36.48298,
+    "longitude": 127.721652
+  },
+  {
+    "id": "hosp_0309",
+    "name": "메디안내과의원",
+    "addr_hint": "대전광역시 유성구",
+    "latitude": 36.374932,
+    "longitude": 127.318372
+  },
+  {
+    "id": "hosp_0310",
+    "name": "드림이비인후과의원",
+    "addr_hint": "충청북도 옥천군",
+    "latitude": 36.299761,
+    "longitude": 127.566293
+  },
+  {
+    "id": "hosp_0311",
+    "name": "JS메디칼내과외과정형외과의원",
+    "addr_hint": "충청남도 천안시",
+    "latitude": 36.877584,
+    "longitude": 127.152236
+  },
+  {
+    "id": "hosp_0312",
+    "name": "성윤업내과의원",
+    "addr_hint": "강원특별자치도 영월군",
+    "latitude": 37.183166,
+    "longitude": 128.466437
+  },
+  {
+    "id": "hosp_0313",
+    "name": "닥터음가정의학과의원",
+    "addr_hint": "강원특별자치도 속초시",
+    "latitude": 38.191127,
+    "longitude": 128.579316
+  },
+  {
+    "id": "hosp_0314",
+    "name": "윤이비인후과의원",
+    "addr_hint": "경기도 안산시",
+    "latitude": 37.317954,
+    "longitude": 126.836488
+  },
+  {
+    "id": "hosp_0315",
+    "name": "연세안과의원",
+    "addr_hint": "경상남도 남해군",
+    "latitude": 34.838973,
+    "longitude": 127.893887
+  },
+  {
+    "id": "hosp_0316",
+    "name": "의)창녕서울의료원 창녕서울병원",
+    "addr_hint": "경상남도 창녕군",
+    "latitude": 35.535037,
+    "longitude": 128.497818
+  },
+  {
+    "id": "hosp_0317",
+    "name": "창녕원이비인후과의원",
+    "addr_hint": "경상남도 창녕군",
+    "latitude": 35.542848,
+    "longitude": 128.492063
+  },
+  {
+    "id": "hosp_0318",
+    "name": "강서고려비뇨의학과의원",
+    "addr_hint": "서울특별시 강서구",
+    "latitude": 37.542039,
+    "longitude": 126.839635
+  },
+  {
+    "id": "hosp_0319",
+    "name": "우리내과의원",
+    "addr_hint": "서울특별시 양천구",
+    "latitude": 37.524808,
+    "longitude": 126.871959
+  },
+  {
+    "id": "hosp_0320",
+    "name": "서울중앙의료의원",
+    "addr_hint": "서울특별시 중구",
+    "latitude": 37.561764,
+    "longitude": 126.982099
+  },
+  {
+    "id": "hosp_0321",
+    "name": "하나비뇨기과의원",
+    "addr_hint": "전라남도 순천시",
+    "latitude": 34.954755,
+    "longitude": 127.522941
+  },
+  {
+    "id": "hosp_0322",
+    "name": "정남진정형외과의원",
+    "addr_hint": "전라남도 여수시",
+    "latitude": 34.736164,
+    "longitude": 127.720667
+  },
+  {
+    "id": "hosp_0323",
+    "name": "문영래정형외과병원",
+    "addr_hint": "광주광역시 서구",
+    "latitude": 35.145877,
+    "longitude": 126.857289
+  },
+  {
+    "id": "hosp_0324",
+    "name": "이진홍내과의원",
+    "addr_hint": "전북특별자치도 고창군",
+    "latitude": 35.435052,
+    "longitude": 126.700646
+  },
+  {
+    "id": "hosp_0325",
+    "name": "제주의료원 부속요양병원",
+    "addr_hint": "제주특별자치도 제주시",
+    "latitude": 33.445498,
+    "longitude": 126.560107,
+    "region_note": "도서·벽지 위탁병원"
+  },
+  {
+    "id": "hosp_0326",
+    "name": "최선365의원",
+    "addr_hint": "제주특별자치도 서귀포시",
+    "latitude": 33.449728,
+    "longitude": 126.914539,
+    "region_note": "도서·벽지 위탁병원"
+  },
+  {
+    "id": "hosp_0327",
+    "name": "강북힘찬병원",
+    "addr_hint": "서울특별시 도봉구",
+    "latitude": 37.645751,
+    "longitude": 127.033366
+  },
+  {
+    "id": "hosp_0328",
+    "name": "드림권내과의원",
+    "addr_hint": "서울특별시 송파구",
+    "latitude": 37.497013,
+    "longitude": 127.115574
+  },
+  {
+    "id": "hosp_0329",
+    "name": "시온정형외과의원",
+    "addr_hint": "서울특별시 송파구",
+    "latitude": 37.505706,
+    "longitude": 127.12119
+  },
+  {
+    "id": "hosp_0330",
+    "name": "한사랑내과의원",
+    "addr_hint": "강원특별자치도 양구군",
+    "latitude": 38.1078,
+    "longitude": 127.9883
+  },
+  {
+    "id": "hosp_0331",
+    "name": "강남아이원안과의원",
+    "addr_hint": "강원특별자치도 철원군",
+    "latitude": 38.148,
+    "longitude": 127.3081
+  },
+  {
+    "id": "hosp_0332",
+    "name": "에스탑치과의원",
+    "addr_hint": "서울특별시 구로구",
+    "latitude": 37.496368,
+    "longitude": 126.859147
+  },
+  {
+    "id": "hosp_0333",
+    "name": "경기도립노인전문동두천병원",
+    "addr_hint": "경기도 동두천시",
+    "latitude": 37.900888,
+    "longitude": 127.136213
+  },
+  {
+    "id": "hosp_0334",
+    "name": "추부의원",
+    "addr_hint": "충청남도 금산군",
+    "latitude": 36.191297,
+    "longitude": 127.467057
+  },
+  {
+    "id": "hosp_0335",
+    "name": "금호의원",
+    "addr_hint": "경상북도 영천시",
+    "latitude": 35.931178,
+    "longitude": 128.872391
+  },
+  {
+    "id": "hosp_0336",
+    "name": "용이비인후과의원",
+    "addr_hint": "경상북도 문경시",
+    "latitude": 36.601848,
+    "longitude": 128.203203
+  },
+  {
+    "id": "hosp_0337",
+    "name": "준내과의원",
+    "addr_hint": "대구광역시 수성구",
+    "latitude": 35.859859,
+    "longitude": 128.624559
+  },
+  {
+    "id": "hosp_0338",
+    "name": "마디연합정형외과의원",
+    "addr_hint": "경상북도 청도군",
+    "latitude": 35.647479,
+    "longitude": 128.738241
+  },
+  {
+    "id": "hosp_0339",
+    "name": "고려마취통증의학과의원",
+    "addr_hint": "대구광역시 군위군",
+    "latitude": 36.237227,
+    "longitude": 128.567317
+  },
+  {
+    "id": "hosp_0340",
+    "name": "유가제일연합의원",
+    "addr_hint": "대구광역시 달성군",
+    "latitude": 35.684126,
+    "longitude": 128.451228
+  },
+  {
+    "id": "hosp_0341",
+    "name": "구미시립노인요양병원",
+    "addr_hint": "경상북도 구미시",
+    "latitude": 36.153253,
+    "longitude": 128.290238
+  },
+  {
+    "id": "hosp_0342",
+    "name": "우리연합의원",
+    "addr_hint": "경상북도 포항시",
+    "latitude": 35.967968,
+    "longitude": 129.416087
+  },
+  {
+    "id": "hosp_0343",
+    "name": "바른정형외과의원",
+    "addr_hint": "충청북도 진천군",
+    "latitude": 36.860399,
+    "longitude": 127.439764
+  },
+  {
+    "id": "hosp_0344",
+    "name": "김영태신경외과의원",
+    "addr_hint": "충청북도 청주시",
+    "latitude": 36.626587,
+    "longitude": 127.492944
+  },
+  {
+    "id": "hosp_0345",
+    "name": "덕인의원",
+    "addr_hint": "대전광역시 동구",
+    "latitude": 36.329689,
+    "longitude": 127.433802
+  },
+  {
+    "id": "hosp_0346",
+    "name": "고려정형외과의원(증평)",
+    "addr_hint": "충청북도 증평군",
+    "latitude": 36.786042,
+    "longitude": 127.58322
+  },
+  {
+    "id": "hosp_0347",
+    "name": "박봉안내과의원",
+    "addr_hint": "충청북도 충주시",
+    "latitude": 36.981213,
+    "longitude": 127.915598
+  },
+  {
+    "id": "hosp_0348",
+    "name": "평택성모병원",
+    "addr_hint": "경기도 평택시",
+    "latitude": 37.008479,
+    "longitude": 127.074084
+  },
+  {
+    "id": "hosp_0349",
+    "name": "동탄서울내과의원",
+    "addr_hint": "경기도 화성시",
+    "latitude": 37.215129,
+    "longitude": 127.044308
+  },
+  {
+    "id": "hosp_0350",
+    "name": "김병호내과의원",
+    "addr_hint": "강원특별자치도 태백시",
+    "latitude": 37.174193,
+    "longitude": 128.990667
+  },
+  {
+    "id": "hosp_0351",
+    "name": "신세계의원",
+    "addr_hint": "강원특별자치도 동해시",
+    "latitude": 37.486045,
+    "longitude": 129.110245
+  },
+  {
+    "id": "hosp_0352",
+    "name": "사북제일의원",
+    "addr_hint": "강원특별자치도 정선군",
+    "latitude": 37.227592,
+    "longitude": 128.819796
+  },
+  {
+    "id": "hosp_0353",
+    "name": "김태우신경과의원",
+    "addr_hint": "전라남도 목포시",
+    "latitude": 34.807193,
+    "longitude": 126.414213
+  },
+  {
+    "id": "hosp_0354",
+    "name": "오복치과의원",
+    "addr_hint": "경상북도 의성군",
+    "latitude": 36.35617,
+    "longitude": 128.694467
+  },
+  {
+    "id": "hosp_0355",
+    "name": "금일마취통증의학과의원",
+    "addr_hint": "전라남도 완도군",
+    "latitude": 34.349561,
+    "longitude": 127.029761
+  },
+  {
+    "id": "hosp_0356",
+    "name": "진안치과의원",
+    "addr_hint": "전북특별자치도 진안군",
+    "latitude": 35.791845,
+    "longitude": 127.429
+  },
+  {
+    "id": "hosp_0357",
+    "name": "성모정형외과의원",
+    "addr_hint": "서울특별시 동작구",
+    "latitude": 37.499978,
+    "longitude": 126.929495
+  },
+  {
+    "id": "hosp_0358",
+    "name": "강남가드비뇨기과의원",
+    "addr_hint": "서울특별시 동작구",
+    "latitude": 37.486952,
+    "longitude": 126.981652
+  },
+  {
+    "id": "hosp_0359",
+    "name": "누가의원",
+    "addr_hint": "경상북도 울진군",
+    "latitude": 37.101385,
+    "longitude": 129.371797
+  },
+  {
+    "id": "hosp_0360",
+    "name": "서울아산내과의원",
+    "addr_hint": "세종특별자치시",
+    "latitude": 36.60067,
+    "longitude": 127.298071
+  },
+  {
+    "id": "hosp_0361",
+    "name": "강북21세기병원",
+    "addr_hint": "서울특별시 중랑구",
+    "latitude": 37.594293,
+    "longitude": 127.085865
+  },
+  {
+    "id": "hosp_0362",
+    "name": "청주원광효도요양병원",
+    "addr_hint": "충청북도 청주시",
+    "latitude": 36.636468,
+    "longitude": 127.452858
+  },
+  {
+    "id": "hosp_0363",
+    "name": "공주서울내과의원",
+    "addr_hint": "충청남도 공주시",
+    "latitude": 36.456956,
+    "longitude": 127.125232
+  },
+  {
+    "id": "hosp_0364",
+    "name": "서울정형외과의원(홍천)",
+    "addr_hint": "강원특별자치도 홍천군",
+    "latitude": 37.688834,
+    "longitude": 127.884963
+  },
+  {
+    "id": "hosp_0365",
+    "name": "서부영남내과의원",
+    "addr_hint": "대구광역시 남구",
+    "latitude": 35.837722,
+    "longitude": 128.55884
+  },
+  {
+    "id": "hosp_0366",
+    "name": "대동에스정형외과의원",
+    "addr_hint": "대구광역시 동구",
+    "latitude": 35.887746,
+    "longitude": 128.640227
+  },
+  {
+    "id": "hosp_0367",
+    "name": "밀양선비뇨기과의원",
+    "addr_hint": "경상남도 밀양시",
+    "latitude": 35.496674,
+    "longitude": 128.747776
+  },
+  {
+    "id": "hosp_0368",
+    "name": "위드내과의원",
+    "addr_hint": "강원특별자치도 강릉시",
+    "latitude": 37.765256,
+    "longitude": 128.877984
+  },
+  {
+    "id": "hosp_0369",
+    "name": "우리이비인후과의원",
+    "addr_hint": "전라남도 목포시",
+    "latitude": 34.802526,
+    "longitude": 126.392209
+  },
+  {
+    "id": "hosp_0370",
+    "name": "예루살렘정형외과의원",
+    "addr_hint": "서울특별시 서초구",
+    "latitude": 37.483585,
+    "longitude": 127.036376
+  },
+  {
+    "id": "hosp_0371",
+    "name": "로뎀나무내과의원",
+    "addr_hint": "경기도 평택시",
+    "latitude": 36.993809,
+    "longitude": 127.092245
+  },
+  {
+    "id": "hosp_0372",
+    "name": "노상필내과의원",
+    "addr_hint": "충청북도 영동군",
+    "latitude": 36.174489,
+    "longitude": 127.776608
+  },
+  {
+    "id": "hosp_0373",
+    "name": "서내과의원",
+    "addr_hint": "대구광역시 서구",
+    "latitude": 35.862146,
+    "longitude": 128.570283
+  },
+  {
+    "id": "hosp_0374",
+    "name": "파티마연합속내과의원",
+    "addr_hint": "경상북도 경산시",
+    "latitude": 35.914171,
+    "longitude": 128.819638
+  },
+  {
+    "id": "hosp_0375",
+    "name": "압해연합의원",
+    "addr_hint": "전라남도 신안군",
+    "latitude": 34.864777,
+    "longitude": 126.313633
+  },
+  {
+    "id": "hosp_0376",
+    "name": "주영민비뇨기과의원",
+    "addr_hint": "경상남도 거제시",
+    "latitude": 34.890582,
+    "longitude": 128.622366
+  },
+  {
+    "id": "hosp_0377",
+    "name": "굿모닝내과의원",
+    "addr_hint": "경상남도 김해시",
+    "latitude": 35.233715,
+    "longitude": 128.881065
+  },
+  {
+    "id": "hosp_0378",
+    "name": "우리메디컬의원",
+    "addr_hint": "경상남도 사천시",
+    "latitude": 35.083652,
+    "longitude": 128.08575
+  },
+  {
+    "id": "hosp_0379",
+    "name": "박경대내과의원",
+    "addr_hint": "경상북도 경주시",
+    "latitude": 35.844577,
+    "longitude": 129.209521
+  },
+  {
+    "id": "hosp_0380",
+    "name": "최성식재활의학과의원",
+    "addr_hint": "전라남도 곡성군",
+    "latitude": 35.282012,
+    "longitude": 127.296867
+  },
+  {
+    "id": "hosp_0381",
+    "name": "무주신경외과의원",
+    "addr_hint": "전북특별자치도 무주군",
+    "latitude": 36.007323,
+    "longitude": 127.66275
+  },
+  {
+    "id": "hosp_0382",
+    "name": "혁신오케이정형외과의원",
+    "addr_hint": "전북특별자치도 완주군",
+    "latitude": 35.838341,
+    "longitude": 127.05781
+  },
+  {
+    "id": "hosp_0383",
+    "name": "현대의원",
+    "addr_hint": "전라남도 광양시",
+    "latitude": 34.988929,
+    "longitude": 127.70111
+  },
+  {
+    "id": "hosp_0384",
+    "name": "참좋은정형외과신경과의원",
+    "addr_hint": "부산광역시 사상구",
+    "latitude": 35.186003,
+    "longitude": 128.990724
+  },
+  {
+    "id": "hosp_0385",
+    "name": "연합내과의원",
+    "addr_hint": "광주광역시 동구",
+    "latitude": 35.132889,
+    "longitude": 126.928671
+  },
+  {
+    "id": "hosp_0386",
+    "name": "류마내과의원",
+    "addr_hint": "서울특별시 강동구",
+    "latitude": 37.535879,
+    "longitude": 127.134088
+  },
+  {
+    "id": "hosp_0387",
+    "name": "더바름정형외과의원",
+    "addr_hint": "서울특별시 광진구",
+    "latitude": 37.538739,
+    "longitude": 127.092308
+  },
+  {
+    "id": "hosp_0388",
+    "name": "남기헌정형외과의원",
+    "addr_hint": "서울특별시 서대문구",
+    "latitude": 37.592294,
+    "longitude": 126.942118
+  },
+  {
+    "id": "hosp_0389",
+    "name": "안성제일정형외과의원",
+    "addr_hint": "경기도 안성시",
+    "latitude": 37.006299,
+    "longitude": 127.268415
+  },
+  {
+    "id": "hosp_0390",
+    "name": "마디온정형외과의원",
+    "addr_hint": "강원특별자치도 춘천시",
+    "latitude": 37.854511,
+    "longitude": 127.729453
+  },
+  {
+    "id": "hosp_0391",
+    "name": "삼성우리내과의원",
+    "addr_hint": "경기도 광명시",
+    "latitude": 37.476398,
+    "longitude": 126.869807
+  },
+  {
+    "id": "hosp_0392",
+    "name": "한길정형외과의원",
+    "addr_hint": "인천광역시 서구",
+    "latitude": 37.494688,
+    "longitude": 126.68128
+  },
+  {
+    "id": "hosp_0393",
+    "name": "하나의료조합영흥우리의원",
+    "addr_hint": "인천광역시 옹진군",
+    "latitude": 37.258716,
+    "longitude": 126.493416,
+    "region_note": "도서·벽지 위탁병원"
+  },
+  {
+    "id": "hosp_0394",
+    "name": "강비뇨기과의원(태안)",
+    "addr_hint": "충청남도 태안군",
+    "latitude": 36.748599,
+    "longitude": 126.303575
+  },
+  {
+    "id": "hosp_0395",
+    "name": "태강내과의원",
+    "addr_hint": "울산광역시 중구",
+    "latitude": 35.564468,
+    "longitude": 129.33485
+  },
+  {
+    "id": "hosp_0396",
+    "name": "신선정형외과의원",
+    "addr_hint": "대전광역시 서구",
+    "latitude": 36.298837,
+    "longitude": 127.335173
+  },
+  {
+    "id": "hosp_0397",
+    "name": "김학영정형외과의원",
+    "addr_hint": "대전광역시 중구",
+    "latitude": 36.319238,
+    "longitude": 127.417045
+  },
+  {
+    "id": "hosp_0398",
+    "name": "청담내과의원",
+    "addr_hint": "대전광역시 대덕구",
+    "latitude": 36.367481,
+    "longitude": 127.431583
+  },
+  {
+    "id": "hosp_0399",
+    "name": "분당연세비뇨의학과의원",
+    "addr_hint": "경기도 성남시",
+    "latitude": 37.386057,
+    "longitude": 127.12167
+  },
+  {
+    "id": "hosp_0400",
+    "name": "두리이비인후과의원(양주)",
+    "addr_hint": "경기도 양주시",
+    "latitude": 37.819359,
+    "longitude": 127.091837
+  },
+  {
+    "id": "hosp_0401",
+    "name": "강북보아스이비인후과의원",
+    "addr_hint": "서울특별시 강북구",
+    "latitude": 37.631286,
+    "longitude": 127.023894
+  },
+  {
+    "id": "hosp_0402",
+    "name": "서울의원(서울)",
+    "addr_hint": "서울특별시 노원구",
+    "latitude": 37.631103,
+    "longitude": 127.06099
+  },
+  {
+    "id": "hosp_0403",
+    "name": "맑은성심피부과의원",
+    "addr_hint": "서울특별시 중랑구",
+    "latitude": 37.59642,
+    "longitude": 127.099877
+  },
+  {
+    "id": "hosp_0404",
+    "name": "김제욱피부비뇨기과의원",
+    "addr_hint": "경상북도 영주시",
+    "latitude": 36.826017,
+    "longitude": 128.626076
+  },
+  {
+    "id": "hosp_0405",
+    "name": "서광정형외과의원",
+    "addr_hint": "충청남도 보령시",
+    "latitude": 36.345889,
+    "longitude": 126.602473
+  },
+  {
+    "id": "hosp_0406",
+    "name": "가온내과의원",
+    "addr_hint": "경상남도 창원시",
+    "latitude": 35.205527,
+    "longitude": 128.702992
+  },
+  {
+    "id": "hosp_0407",
+    "name": "서병기내과의원",
+    "addr_hint": "전라남도 보성군",
+    "latitude": 34.768044,
+    "longitude": 127.08269
+  },
+  {
+    "id": "hosp_0408",
+    "name": "한양마취통증의학과의원",
+    "addr_hint": "전라남도 구례군",
+    "latitude": 35.2122,
+    "longitude": 127.464827
+  },
+  {
+    "id": "hosp_0409",
+    "name": "이신내과의원",
+    "addr_hint": "부산광역시 부산진구",
+    "latitude": 35.163442,
+    "longitude": 129.063966
+  },
+  {
+    "id": "hosp_0410",
+    "name": "통영서울병원",
+    "addr_hint": "경상남도 통영시",
+    "latitude": 34.870211,
+    "longitude": 128.41546
+  },
+  {
+    "id": "hosp_0411",
+    "name": "부강비뇨의학과의원",
+    "addr_hint": "부산광역시 해운대구",
+    "latitude": 35.165902,
+    "longitude": 129.168321
+  },
+  {
+    "id": "hosp_0412",
+    "name": "수이비인후과의원",
+    "addr_hint": "부산광역시 기장군",
+    "latitude": 35.326067,
+    "longitude": 129.170485
+  },
+  {
+    "id": "hosp_0413",
+    "name": "삼성나비뇨의학과의원",
+    "addr_hint": "서울특별시 도봉구",
+    "latitude": 37.654602,
+    "longitude": 127.037757
+  },
+  {
+    "id": "hosp_0414",
+    "name": "한국한센복지협회부설의원",
+    "addr_hint": "경기도 의왕시",
+    "latitude": 37.36248,
+    "longitude": 126.971257
+  },
+  {
+    "id": "hosp_0415",
+    "name": "건강제일내과의원",
+    "addr_hint": "대구광역시 중구",
+    "latitude": 35.865234,
+    "longitude": 128.581938
+  },
+  {
+    "id": "hosp_0416",
+    "name": "강남비뇨기과의원",
+    "addr_hint": "경상북도 상주시",
+    "latitude": 36.414974,
+    "longitude": 128.158999
+  },
+  {
+    "id": "hosp_0417",
+    "name": "미래연합의원",
+    "addr_hint": "전북특별자치도 남원시",
+    "latitude": 35.411432,
+    "longitude": 127.392923
+  },
+  {
+    "id": "hosp_0418",
+    "name": "영덕경대안과의원",
+    "addr_hint": "경상북도 영덕군",
+    "latitude": 36.412715,
+    "longitude": 129.367551
+  },
+  {
+    "id": "hosp_0419",
+    "name": "용산성모내과의원",
+    "addr_hint": "서울특별시 용산구",
+    "latitude": 37.530444,
+    "longitude": 126.967695
+  },
+  {
+    "id": "hosp_0420",
+    "name": "라임비뇨기과의원",
+    "addr_hint": "서울특별시 중구",
+    "latitude": 37.565594,
+    "longitude": 127.015482
+  },
+  {
+    "id": "hosp_0421",
+    "name": "구파발정형외과의원",
+    "addr_hint": "서울특별시 은평구",
+    "latitude": 37.638468,
+    "longitude": 126.917824
+  },
+  {
+    "id": "hosp_0422",
+    "name": "다사랑내과의원",
+    "addr_hint": "부산광역시 강서구",
+    "latitude": 35.105354,
+    "longitude": 128.921541
+  },
+  {
+    "id": "hosp_0423",
+    "name": "의료법인 하람의료재단 청주탑요양병원",
+    "addr_hint": "충청북도 청주시",
+    "latitude": 36.60098,
+    "longitude": 127.478542
+  },
+  {
+    "id": "hosp_0424",
+    "name": "의료법인태종의료재단 순창요양병원",
+    "addr_hint": "전북특별자치도 순창군",
+    "latitude": 35.365265,
+    "longitude": 127.141126
+  },
+  {
+    "id": "hosp_0425",
+    "name": "참좋은정형외과의원(영도)",
+    "addr_hint": "부산광역시 영도구",
+    "latitude": 35.092956,
+    "longitude": 129.044324
+  },
+  {
+    "id": "hosp_0426",
+    "name": "안신경외과의원",
+    "addr_hint": "울산광역시 동구",
+    "latitude": 35.513348,
+    "longitude": 129.430904
+  },
+  {
+    "id": "hosp_0427",
+    "name": "장사랑연합내과의원",
+    "addr_hint": "충청남도 아산시",
+    "latitude": 36.784568,
+    "longitude": 127.013308
+  },
+  {
+    "id": "hosp_0428",
+    "name": "서문365정형외과의원",
+    "addr_hint": "세종특별자치시",
+    "latitude": 36.471411,
+    "longitude": 127.275871
+  },
+  {
+    "id": "hosp_0429",
+    "name": "청록의료재단신세계요양병원",
+    "addr_hint": "경상남도 창원시",
+    "latitude": 35.258919,
+    "longitude": 128.509425
+  },
+  {
+    "id": "hosp_0430",
+    "name": "연세정형외과의원",
+    "addr_hint": "인천광역시 연수구",
+    "latitude": 37.427968,
+    "longitude": 126.656413
+  },
+  {
+    "id": "hosp_0431",
+    "name": "시지율정신건강의학과의원",
+    "addr_hint": "대구광역시 수성구",
+    "latitude": 35.84038,
+    "longitude": 128.705314
+  },
+  {
+    "id": "hosp_0432",
+    "name": "의성군공립요양병원",
+    "addr_hint": "경상북도 의성군",
+    "latitude": 36.359553,
+    "longitude": 128.681278
+  },
+  {
+    "id": "hosp_0433",
+    "name": "삼성유신경외과의원",
+    "addr_hint": "서울특별시 동작구",
+    "latitude": 37.510666,
+    "longitude": 126.93969
+  },
+  {
+    "id": "hosp_0434",
+    "name": "김홍열내과의원",
+    "addr_hint": "서울특별시 금천구",
+    "latitude": 37.4521,
+    "longitude": 126.90198
+  },
+  {
+    "id": "hosp_0435",
+    "name": "더원요양병원",
+    "addr_hint": "경기도 용인시",
+    "latitude": 37.287798,
+    "longitude": 127.108688
+  },
+  {
+    "id": "hosp_0436",
+    "name": "(구미)고려마취통증의학과의원",
+    "addr_hint": "경상북도 구미시",
+    "latitude": 36.127498,
+    "longitude": 128.336922
+  },
+  {
+    "id": "hosp_0437",
+    "name": "성모안과의원",
+    "addr_hint": "전라남도 순천시",
+    "latitude": 34.954214,
+    "longitude": 127.518398
+  },
+  {
+    "id": "hosp_0438",
+    "name": "플러스내과의원",
+    "addr_hint": "전라남도 순천시",
+    "latitude": 34.960698,
+    "longitude": 127.519899
+  },
+  {
+    "id": "hosp_0439",
+    "name": "전내과의원",
+    "addr_hint": "울산광역시 남구",
+    "latitude": 35.535033,
+    "longitude": 129.326725
+  },
+  {
+    "id": "hosp_0440",
+    "name": "지정신건강의학과의원",
+    "addr_hint": "대전광역시 중구",
+    "latitude": 36.322524,
+    "longitude": 127.413572
+  },
+  {
+    "id": "hosp_0441",
+    "name": "천안충무병원",
+    "addr_hint": "충청남도 천안시",
+    "latitude": 36.797536,
+    "longitude": 127.131591
+  },
+  {
+    "id": "hosp_0443",
+    "name": "연세차내과의원",
+    "addr_hint": "제주특별자치도 제주시",
+    "latitude": 33.484425,
+    "longitude": 126.430722,
+    "region_note": "도서·벽지 위탁병원"
+  },
+  {
+    "id": "hosp_0444",
+    "name": "새희망마취통증의학과의원",
+    "addr_hint": "경기도 가평군",
+    "latitude": 37.82991,
+    "longitude": 127.513353
+  },
+  {
+    "id": "hosp_0445",
+    "name": "광주제일내과의원",
+    "addr_hint": "경기도 광주시",
+    "latitude": 37.409011,
+    "longitude": 127.258378
+  },
+  {
+    "id": "hosp_0446",
+    "name": "사천중앙요양병원",
+    "addr_hint": "경상남도 사천시",
+    "latitude": 35.079366,
+    "longitude": 128.09703
+  },
+  {
+    "id": "hosp_0447",
+    "name": "비타민마취통증의학과의원",
+    "addr_hint": "부산광역시 동구",
+    "latitude": 35.12094,
+    "longitude": 129.043183
+  },
+  {
+    "id": "hosp_0448",
+    "name": "이지숨이비인후과의원",
+    "addr_hint": "부산광역시 중구",
+    "latitude": 35.098457,
+    "longitude": 129.031591
+  },
+  {
+    "id": "hosp_0449",
+    "name": "베스트이비인후과의원",
+    "addr_hint": "부산광역시 동래구",
+    "latitude": 35.201294,
+    "longitude": 129.087715
+  },
+  {
+    "id": "hosp_0450",
+    "name": "여수한국병원",
+    "addr_hint": "전라남도 여수시",
+    "latitude": 34.761457,
+    "longitude": 127.675128
+  },
+  {
+    "id": "hosp_0451",
+    "name": "연합의원",
+    "addr_hint": "충청남도 홍성군",
+    "latitude": 36.600469,
+    "longitude": 126.665827
+  },
+  {
+    "id": "hosp_0452",
+    "name": "청양훈요양병원",
+    "addr_hint": "충청남도 청양군",
+    "latitude": 36.450896,
+    "longitude": 126.793771
+  },
+  {
+    "id": "hosp_0454",
+    "name": "메트로적추병원",
+    "addr_hint": "부산광역시 수영구",
+    "latitude": 35.1412,
+    "longitude": 129.1075
+  },
+  {
+    "id": "hosp_0455",
+    "name": "속바른내과의원",
+    "addr_hint": "부산광역시 서구",
+    "latitude": 35.0964,
+    "longitude": 129.0242
+  },
+  {
+    "id": "hosp_0456",
+    "name": "라라정신건강의학과의원",
+    "addr_hint": "부산광역시 연제구",
+    "latitude": 35.1844,
+    "longitude": 129.0789
+  },
+  {
+    "id": "hosp_0457",
+    "name": "드림내과의원",
+    "addr_hint": "경기도 시흥시",
+    "latitude": 37.3522,
+    "longitude": 126.7398
+  },
+  {
+    "id": "hosp_0458",
+    "name": "한호수내과의원",
+    "addr_hint": "전북특별자치도 완주군",
+    "latitude": 35.9099,
+    "longitude": 127.0747
+  },
+  {
+    "id": "hosp_0459",
+    "name": "의료법인열린의료재단서연의원",
+    "addr_hint": "제주특별자치도 서귀포시",
+    "latitude": 33.2488,
+    "longitude": 126.5696,
+    "region_note": "도서·벽지 위탁병원"
+  },
+  {
+    "id": "hosp_0460",
+    "name": "정흥채재활의학과의원",
+    "addr_hint": "경상북도 경주시",
+    "latitude": 35.8459,
+    "longitude": 129.2072
+  },
+  {
+    "id": "hosp_0461",
+    "name": "박상훈내과의원",
+    "addr_hint": "광주광역시 서구",
+    "latitude": 35.12799,
+    "longitude": 126.85493
+  },
+  {
+    "id": "hosp_0462",
+    "name": "조민석내과의원",
+    "addr_hint": "광주광역시 남구",
+    "latitude": 35.121352,
+    "longitude": 126.899101
+  },
+  {
+    "id": "hosp_0463",
+    "name": "뉴스타정형외과의원",
+    "addr_hint": "광주광역시 북구",
+    "latitude": 35.2122,
+    "longitude": 126.8729
+  },
+  {
+    "id": "hosp_0464",
+    "name": "연세세브란스치과의원",
+    "addr_hint": "광주광역시 광산구",
+    "latitude": 35.1911,
+    "longitude": 126.838
+  },
+  {
+    "id": "hosp_0465",
+    "name": "박지우플란트치과의원",
+    "addr_hint": "전라남도 나주시",
+    "latitude": 35.0174,
+    "longitude": 126.6369
+  },
+  {
+    "id": "hosp_0466",
+    "name": "아라이비인후과의원",
+    "addr_hint": "전라남도 여수시",
+    "latitude": 34.7636,
+    "longitude": 127.6625
+  },
+  {
+    "id": "hosp_0467",
+    "name": "부부요양병원",
+    "addr_hint": "전라남도 목포시",
+    "latitude": 34.8208,
+    "longitude": 126.4221
+  },
+  {
+    "id": "hosp_0468",
+    "name": "김홍기가정의학과의원",
+    "addr_hint": "전북특별자치도 진안군",
+    "latitude": 35.7927,
+    "longitude": 127.427
+  },
+  {
+    "id": "hosp_0469",
+    "name": "청해의원",
+    "addr_hint": "경상남도 하동군",
+    "latitude": 35.0291,
+    "longitude": 127.9035
+  },
+  {
+    "id": "hosp_0470",
+    "name": "김안과의원",
+    "addr_hint": "충청북도 청주시",
+    "latitude": 36.6348,
+    "longitude": 127.4571
+  },
+  {
+    "id": "hosp_0471",
+    "name": "쌍용우리이비인후과의원",
+    "addr_hint": "충청남도 천안시",
+    "latitude": 36.795,
+    "longitude": 127.1264
+  },
+  {
+    "id": "hosp_0472",
+    "name": "허브연합내과의원",
+    "addr_hint": "세종특별자치시",
+    "latitude": 36.529,
+    "longitude": 127.265
+  },
+  {
+    "id": "hosp_0473",
+    "name": "영암한국병원",
+    "addr_hint": "전라남도 영암군",
+    "latitude": 34.7944,
+    "longitude": 126.7009
+  },
+  {
+    "id": "hosp_0474",
+    "name": "김천참좋은마취통증의학과의원",
+    "addr_hint": "경상북도 김천시",
+    "latitude": 36.134708,
+    "longitude": 128.11786
+  },
+  {
+    "id": "hosp_0475",
+    "name": "거창수이비인후과의원",
+    "addr_hint": "경상남도 거창군",
+    "latitude": 35.6886,
+    "longitude": 127.9065
+  },
+  {
+    "id": "hosp_0476",
+    "name": "(의)학산의료재단아라한국병원",
+    "addr_hint": "경상남도 함안군",
+    "latitude": 35.2743,
+    "longitude": 128.4318
+  },
+  {
+    "id": "hosp_0477",
+    "name": "조성원내과의원",
+    "addr_hint": "인천광역시 서구",
+    "latitude": 37.592,
+    "longitude": 126.6767
+  },
+  {
+    "id": "hosp_0478",
+    "name": "김정수이비인후과의원",
+    "addr_hint": "대구광역시 북구",
+    "latitude": 35.9419,
+    "longitude": 128.563
+  },
+  {
+    "id": "hosp_0479",
+    "name": "속안심내과연합의원",
+    "addr_hint": "대구광역시 동구",
+    "latitude": 35.8678,
+    "longitude": 128.7244
+  },
+  {
+    "id": "hosp_0480",
+    "name": "이성원피부비뇨기과의원",
+    "addr_hint": "대구광역시 서구",
+    "latitude": 35.8804,
+    "longitude": 128.5712
+  },
+  {
+    "id": "hosp_0481",
+    "name": "원형마취통증의학과의원",
+    "addr_hint": "대구광역시 남구",
+    "latitude": 35.8447,
+    "longitude": 128.5894
+  },
+  {
+    "id": "hosp_0482",
+    "name": "완쾌신경과의원",
+    "addr_hint": "대구광역시 달서구",
+    "latitude": 35.8178,
+    "longitude": 128.5328
+  },
+  {
+    "id": "hosp_0483",
+    "name": "다올연합의원",
+    "addr_hint": "대구광역시 수성구",
+    "latitude": 35.8179,
+    "longitude": 128.6444
+  },
+  {
+    "id": "hosp_0484",
+    "name": "청도탑연합비뇨의학과의원",
+    "addr_hint": "경상북도 청도군",
+    "latitude": 35.6428,
+    "longitude": 128.7447
+  },
+  {
+    "id": "hosp_0485",
+    "name": "현풍경대비뇨기과의원",
+    "addr_hint": "대구광역시 달성군",
+    "latitude": 35.6913,
+    "longitude": 128.4535
+  },
+  {
+    "id": "hosp_0486",
+    "name": "왜관병원",
+    "addr_hint": "경상북도 칠곡군",
+    "latitude": 35.9963,
+    "longitude": 128.4015
+  },
+  {
+    "id": "hosp_0487",
+    "name": "경대연합내과의원",
+    "addr_hint": "경상북도 포항시",
+    "latitude": 36.0639,
+    "longitude": 129.3803
+  },
+  {
+    "id": "hosp_0488",
+    "name": "수완탑정형외과의원",
+    "addr_hint": "광주광역시 광산구",
+    "latitude": 35.1912,
+    "longitude": 126.8245
+  },
+  {
+    "id": "hosp_0489",
+    "name": "황인용신경과의원",
+    "addr_hint": "전라남도 순천시",
+    "latitude": 34.9542,
+    "longitude": 127.519
+  },
+  {
+    "id": "hosp_0490",
+    "name": "장하림의원",
+    "addr_hint": "전북특별자치도 전주시",
+    "latitude": 35.8058,
+    "longitude": 127.117
+  },
+  {
+    "id": "hosp_0491",
+    "name": "한샘내과의원",
+    "addr_hint": "대전광역시 유성구",
+    "latitude": 36.361,
+    "longitude": 127.3363
+  },
+  {
+    "id": "hosp_0492",
+    "name": "브레인요양병원",
+    "addr_hint": "대전광역시 유성구",
+    "latitude": 36.3518,
+    "longitude": 127.3387
+  },
+  {
+    "id": "hosp_0493",
+    "name": "마디신경외과의원",
+    "addr_hint": "대전광역시 동구",
+    "latitude": 36.2801,
+    "longitude": 127.4686
+  },
+  {
+    "id": "hosp_0494",
+    "name": "햇살이비인후과의원",
+    "addr_hint": "대전광역시 중구",
+    "latitude": 36.3379,
+    "longitude": 127.4096
+  },
+  {
+    "id": "hosp_0495",
+    "name": "바른생각병원",
+    "addr_hint": "대전광역시 서구",
+    "latitude": 36.3597,
+    "longitude": 127.378
+  },
+  {
+    "id": "hosp_0496",
+    "name": "진해프라임비뇨기과의원",
+    "addr_hint": "경상남도 창원시",
+    "latitude": 35.1519,
+    "longitude": 128.6663
+  },
+  {
+    "id": "hosp_0497",
+    "name": "누네빛안과의원",
+    "addr_hint": "부산광역시 진구",
+    "latitude": 35.157,
+    "longitude": 129.0566
+  },
+  {
+    "id": "hosp_0498",
+    "name": "(의)열린의료재단연산열린의원",
+    "addr_hint": "부산광역시 연제구",
+    "latitude": 35.1856,
+    "longitude": 129.0807
+  },
+  {
+    "id": "hosp_0499",
+    "name": "바른이김대식치과의원",
+    "addr_hint": "부산광역시 수영구",
+    "latitude": 35.1476,
+    "longitude": 129.1101
+  },
+  {
+    "id": "hosp_0500",
+    "name": "굿모닝이비인후과의원",
+    "addr_hint": "부산광역시 진구",
+    "latitude": 35.1526,
+    "longitude": 129.0589
+  },
+  {
+    "id": "hosp_0501",
+    "name": "늘편한내과의원",
+    "addr_hint": "부산광역시 남구",
+    "latitude": 35.1356,
+    "longitude": 129.092
+  },
+  {
+    "id": "hosp_0502",
+    "name": "덕천요편한비뇨기과의원",
+    "addr_hint": "부산광역시 북구",
+    "latitude": 35.2126,
+    "longitude": 129.0154
+  },
+  {
+    "id": "hosp_0503",
+    "name": "조이비인후과의원",
+    "addr_hint": "부산광역시 수영구",
+    "latitude": 35.1518,
+    "longitude": 129.1113
+  },
+  {
+    "id": "hosp_0504",
+    "name": "이손요양병원",
+    "addr_hint": "울산광역시 울주군",
+    "latitude": 35.5066,
+    "longitude": 129.0904
+  },
+  {
+    "id": "hosp_0505",
+    "name": "연세추의원",
+    "addr_hint": "인천광역시 연수구",
+    "latitude": 37.3836,
+    "longitude": 126.6407
+  },
+  {
+    "id": "hosp_0506",
+    "name": "오케이365정형외과의원",
+    "addr_hint": "경기도 수원시",
+    "latitude": 37.267441,
+    "longitude": 127.002717
+  },
+  {
+    "id": "hosp_0507",
+    "name": "삼성우리이비인후과의원",
+    "addr_hint": "서울특별시 강서구",
+    "latitude": 37.5688,
+    "longitude": 126.8129
+  },
+  {
+    "id": "hosp_0508",
+    "name": "(의)열린의료재단 분당열린의원",
+    "addr_hint": "경기도 성남시",
+    "latitude": 37.3844,
+    "longitude": 127.1229
+  },
+  {
+    "id": "hosp_0509",
+    "name": "나래비뇨기과의원",
+    "addr_hint": "경기도 군포시",
+    "latitude": 37.372,
+    "longitude": 126.9363
+  },
+  {
+    "id": "hosp_0510",
+    "name": "수지엘내과의원",
+    "addr_hint": "경기도 용인시",
+    "latitude": 37.323,
+    "longitude": 127.0767
+  },
+  {
+    "id": "hosp_0511",
+    "name": "서울본정형외과의원",
+    "addr_hint": "경기도 하남시",
+    "latitude": 37.5397,
+    "longitude": 127.2021
+  },
+  {
+    "id": "hosp_0513",
+    "name": "에스메디센터내과외과의원",
+    "addr_hint": "서울특별시 성북구",
+    "latitude": 37.6109,
+    "longitude": 127.0351
+  },
+  {
+    "id": "hosp_0514",
+    "name": "김종원치과의원",
+    "addr_hint": "대구광역시 달서구",
+    "latitude": 35.8072,
+    "longitude": 128.5377
+  },
+  {
+    "id": "hosp_0515",
+    "name": "상인요양병원",
+    "addr_hint": "대구광역시 달서구",
+    "latitude": 35.8203,
+    "longitude": 128.5404
+  },
+  {
+    "id": "hosp_0516",
+    "name": "이튼연합치과의원남산점",
+    "addr_hint": "대구광역시 중구",
+    "latitude": 35.8623,
+    "longitude": 128.5821
+  },
+  {
+    "id": "hosp_0517",
+    "name": "이재형봄빛내과",
+    "addr_hint": "강원특별자치도 횡성군",
+    "latitude": 37.4874,
+    "longitude": 127.9866
+  },
+  {
+    "id": "hosp_0518",
+    "name": "정평경대연합신경외과의원",
+    "addr_hint": "경상북도 경산시",
+    "latitude": 35.8337,
+    "longitude": 128.728
+  },
+  {
+    "id": "hosp_0519",
+    "name": "영천이플란트치과의원",
+    "addr_hint": "경상북도 영천시",
+    "latitude": 35.9665,
+    "longitude": 128.9393
+  },
+  {
+    "id": "hosp_0520",
+    "name": "장수요양병원",
+    "addr_hint": "충청남도 홍성군",
+    "latitude": 36.5526,
+    "longitude": 126.569
+  },
+  {
+    "id": "hosp_0521",
+    "name": "아이코이비인후과의원",
+    "addr_hint": "서울특별시 광진구",
+    "latitude": 37.5515,
+    "longitude": 127.0918
+  },
+  {
+    "id": "hosp_0522",
+    "name": "가온삼성비뇨의학과의원",
+    "addr_hint": "서울특별시 성동구",
+    "latitude": 37.5476,
+    "longitude": 127.0227
+  },
+  {
+    "id": "hosp_0523",
+    "name": "내일맑음재활의학과의원",
+    "addr_hint": "서울특별시 강북구",
+    "latitude": 37.6203,
+    "longitude": 127.0152
+  },
+  {
+    "id": "hosp_0524",
+    "name": "송파본내과의원",
+    "addr_hint": "서울특별시 송파구",
+    "latitude": 37.5016,
+    "longitude": 127.1097
+  },
+  {
+    "id": "hosp_0525",
+    "name": "창동제일의원",
+    "addr_hint": "서울특별시 도봉구",
+    "latitude": 37.6519,
+    "longitude": 127.0455
+  },
+  {
+    "id": "hosp_0526",
+    "name": "삼성속편한내과의원",
+    "addr_hint": "서울특별시 중랑구",
+    "latitude": 37.5803,
+    "longitude": 127.0888
+  },
+  {
+    "id": "hosp_0527",
+    "name": "삼성수의원",
+    "addr_hint": "강원특별자치도 영월군",
+    "latitude": 37.1824,
+    "longitude": 128.4656
+  },
+  {
+    "id": "hosp_0528",
+    "name": "밝음나눔안과의원",
+    "addr_hint": "서울특별시 서초구",
+    "latitude": 37.4965,
+    "longitude": 127.0287
+  },
+  {
+    "id": "hosp_0529",
+    "name": "강릉연세요양병원",
+    "addr_hint": "강원특별자치도 강릉시",
+    "latitude": 37.7623,
+    "longitude": 128.9008
+  },
+  {
+    "id": "hosp_0530",
+    "name": "우신향병원",
+    "addr_hint": "서울특별시 성북구",
+    "latitude": 37.5848,
+    "longitude": 127.0311
+  },
+  {
+    "id": "hosp_0531",
+    "name": "한도병원",
+    "addr_hint": "경기도 안산시",
+    "latitude": 37.334,
+    "longitude": 126.8077
+  },
+  {
+    "id": "hosp_0532",
+    "name": "센텀플러스신경외과의원",
+    "addr_hint": "경상남도 양산시",
+    "latitude": 35.3173,
+    "longitude": 129.0028
+  },
+  {
+    "id": "hosp_0533",
+    "name": "우리들마취통증의학과의원",
+    "addr_hint": "전북특별자치도 고창군",
+    "latitude": 35.434982,
+    "longitude": 126.698002
+  },
+  {
+    "id": "hosp_0534",
+    "name": "오강렬내과의원",
+    "addr_hint": "전북특별자치도 익산시",
+    "latitude": 35.9436,
+    "longitude": 126.9488
+  },
+  {
+    "id": "hosp_0535",
+    "name": "이상희재활의학과의원",
+    "addr_hint": "전북특별자치도 순창군",
+    "latitude": 35.376,
+    "longitude": 127.1422
+  },
+  {
+    "id": "hosp_0536",
+    "name": "더봄구강악안면외과치과의원",
+    "addr_hint": "대전광역시 서구",
+    "latitude": 36.3533,
+    "longitude": 127.38
+  },
+  {
+    "id": "hosp_0537",
+    "name": "동서신경외과의원",
+    "addr_hint": "경기도 양평군",
+    "latitude": 37.4901,
+    "longitude": 127.4957
+  },
+  {
+    "id": "hosp_0538",
+    "name": "가장편한내과의원",
+    "addr_hint": "서울특별시 동작구",
+    "latitude": 37.5052,
+    "longitude": 126.9462
+  },
+  {
+    "id": "hosp_0539",
+    "name": "금촌비뇨기과의원",
+    "addr_hint": "경기도 파주시",
+    "latitude": 37.7634,
+    "longitude": 126.7757
+  },
+  {
+    "id": "hosp_0540",
+    "name": "조은비뇨기과의원",
+    "addr_hint": "경기도 동두천시",
+    "latitude": 37.8927,
+    "longitude": 127.0538
+  },
+  {
+    "id": "hosp_0541",
+    "name": "메가비뇨의학과의원",
+    "addr_hint": "서울특별시 관악구",
+    "latitude": 37.4845,
+    "longitude": 126.9288
+  },
+  {
+    "id": "hosp_0542",
+    "name": "방배연내과의원",
+    "addr_hint": "서울특별시 서초구",
+    "latitude": 37.4819,
+    "longitude": 126.997
+  },
+  {
+    "id": "hosp_0543",
+    "name": "구로삼성정형외과의원",
+    "addr_hint": "서울특별시 구로구",
+    "latitude": 37.4959,
+    "longitude": 126.8439
+  },
+  {
+    "id": "hosp_0544",
+    "name": "미치과의원",
+    "addr_hint": "서울특별시 성북구",
+    "latitude": 37.6027,
+    "longitude": 127.0418
+  },
+  {
+    "id": "hosp_0545",
+    "name": "박영수비뇨기과의원",
+    "addr_hint": "부산광역시 사하구",
+    "latitude": 35.1052,
+    "longitude": 128.969
+  },
+  {
+    "id": "hosp_0546",
+    "name": "더본정형외과의원",
+    "addr_hint": "부산광역시 기장군",
+    "latitude": 35.3219,
+    "longitude": 129.1757
+  },
+  {
+    "id": "hosp_0547",
+    "name": "정원정형외과의원",
+    "addr_hint": "부산광역시 서구",
+    "latitude": 35.1094,
+    "longitude": 129.0167
+  },
+  {
+    "id": "hosp_0548",
+    "name": "하이울산신경과의원",
+    "addr_hint": "울산광역시 중구",
+    "latitude": 35.5641,
+    "longitude": 129.3366
+  },
+  {
+    "id": "hosp_0549",
+    "name": "울산숲정신건강의학과의원",
+    "addr_hint": "울산광역시 북구",
+    "latitude": 35.6292,
+    "longitude": 129.3514
+  },
+  {
+    "id": "hosp_0550",
+    "name": "시원한비뇨기과의원",
+    "addr_hint": "서울특별시 양천구",
+    "latitude": 37.5199,
+    "longitude": 126.8635
+  },
+  {
+    "id": "hosp_0551",
+    "name": "정승기정형외과의원",
+    "addr_hint": "서울특별시 은평구",
+    "latitude": 37.6093,
+    "longitude": 126.9312
+  },
+  {
+    "id": "hosp_0552",
+    "name": "동인내과의원",
+    "addr_hint": "서울특별시 동대문구",
+    "latitude": 37.5659,
+    "longitude": 127.0547
+  },
+  {
+    "id": "hosp_0553",
+    "name": "현대정형외과의원",
+    "addr_hint": "경상남도 김해시",
+    "latitude": 35.249,
+    "longitude": 128.8709
+  },
+  {
+    "id": "hosp_0554",
+    "name": "청도대남병원",
+    "addr_hint": "경상북도 청도군",
+    "latitude": 35.648617,
+    "longitude": 128.736829
+  },
+  {
+    "id": "hosp_0555",
+    "name": "장성기독의원",
+    "addr_hint": "전라남도 장성군",
+    "latitude": 35.3023,
+    "longitude": 126.785
+  },
+  {
+    "id": "hosp_0556",
+    "name": "의료법인거명의료재단 영광기독병원",
+    "addr_hint": "전라남도 영광군",
+    "latitude": 35.275,
+    "longitude": 126.5109
+  },
+  {
+    "id": "hosp_0557",
+    "name": "삼성외과의원",
+    "addr_hint": "대전광역시 서구",
+    "latitude": 36.3487,
+    "longitude": 127.3777
+  },
+  {
+    "id": "hosp_0558",
+    "name": "서울정형외과의원(용산)",
+    "addr_hint": "서울특별시 용산구",
+    "latitude": 37.5415,
+    "longitude": 126.9724
+  },
+  {
+    "id": "hosp_0559",
+    "name": "한양정형외과의원",
+    "addr_hint": "서울특별시 동대문구",
+    "latitude": 37.5611,
+    "longitude": 127.0697
+  },
+  {
+    "id": "hosp_0560",
+    "name": "서울플란트치과의원",
+    "addr_hint": "경기도 용인시",
+    "latitude": 37.2992,
+    "longitude": 127.108
+  },
+  {
+    "id": "hosp_0561",
+    "name": "강남드림내과의원",
+    "addr_hint": "서울특별시 강남구",
+    "latitude": 37.4721,
+    "longitude": 127.0963
+  },
+  {
+    "id": "hosp_0562",
+    "name": "강동본터치정형외과의원",
+    "addr_hint": "서울특별시 강동구",
+    "latitude": 37.5547,
+    "longitude": 127.1546
+  },
+  {
+    "id": "hosp_0563",
+    "name": "홍제연세참비뇨의학과의원",
+    "addr_hint": "서울특별시 서대문구",
+    "latitude": 37.5876,
+    "longitude": 126.9451
+  },
+  {
+    "id": "hosp_0564",
+    "name": "강북으뜸병원",
+    "addr_hint": "서울특별시 강북구",
+    "latitude": 37.6253,
+    "longitude": 127.0262
+  },
+  {
+    "id": "hosp_0565",
+    "name": "연세수정형외과의원",
+    "addr_hint": "서울특별시 마포구",
+    "latitude": 37.5545,
+    "longitude": 126.9344
+  },
+  {
+    "id": "hosp_0566",
+    "name": "오아로피부과의원",
+    "addr_hint": "서울특별시 노원구",
+    "latitude": 37.6554,
+    "longitude": 127.064
+  },
+  {
+    "id": "hosp_0567",
+    "name": "이주형내과의원",
+    "addr_hint": "울산광역시 울주군",
+    "latitude": 35.4103,
+    "longitude": 129.2834
+  },
+  {
+    "id": "hosp_0568",
+    "name": "구리센트럴병원",
+    "addr_hint": "경기도 구리시",
+    "latitude": 37.5973,
+    "longitude": 127.144
+  },
+  {
+    "id": "hosp_0569",
+    "name": "다대튼튼치과의원",
+    "addr_hint": "부산광역시 사하구",
+    "latitude": 35.0486,
+    "longitude": 128.9654
+  },
+  {
+    "id": "hosp_0570",
+    "name": "가톨릭정형외과의원",
+    "addr_hint": "경기도 부천시",
+    "latitude": 37.4846,
+    "longitude": 126.8133
+  },
+  {
+    "id": "hosp_0571",
+    "name": "밀양윤병원",
+    "addr_hint": "경상남도 밀양시",
+    "latitude": 35.4844,
+    "longitude": 128.7556
+  },
+  {
+    "id": "hosp_0572",
+    "name": "류재규내과의원",
+    "addr_hint": "전북특별자치도 순창군",
+    "latitude": 35.3756,
+    "longitude": 127.143
+  },
+  {
+    "id": "hosp_0573",
+    "name": "하나이비인후과의원",
+    "addr_hint": "경상북도 구미시",
+    "latitude": 36.1278,
+    "longitude": 128.3345
+  },
+  {
+    "id": "hosp_0574",
+    "name": "153신경외과의원",
+    "addr_hint": "인천광역시 남동구",
+    "latitude": 37.4563,
+    "longitude": 126.7199
+  },
+  {
+    "id": "hosp_0575",
+    "name": "정의원",
+    "addr_hint": "전라남도 장흥군",
+    "latitude": 34.5634,
+    "longitude": 126.9387
+  },
+  {
+    "id": "hosp_0576",
+    "name": "하나이비인후과의원",
+    "addr_hint": "전북특별자치도 김제시",
+    "latitude": 35.7989,
+    "longitude": 126.8864
+  },
+  {
+    "id": "hosp_0577",
+    "name": "평촌연세365내과의원",
+    "addr_hint": "경기도 안양시",
+    "latitude": 37.3903,
+    "longitude": 126.954
+  },
+  {
+    "id": "hosp_0578",
+    "name": "다산이엠365의원",
+    "addr_hint": "경기도 남양주시",
+    "latitude": 37.6197,
+    "longitude": 127.1633
+  },
+  {
+    "id": "hosp_0579",
+    "name": "구리백내과의원",
+    "addr_hint": "경기도 구리시",
+    "latitude": 37.5975,
+    "longitude": 127.1436
+  },
+  {
+    "id": "hosp_0580",
+    "name": "아산퍼스트마취통증의학과의원",
+    "addr_hint": "강원특별자치도 삼척시",
+    "latitude": 37.4425,
+    "longitude": 129.1638
+  },
+  {
+    "id": "hosp_0581",
+    "name": "뉴대성병원",
+    "addr_hint": "경기도 부천시",
+    "latitude": 37.492546,
+    "longitude": 126.784181
+  },
+  {
+    "id": "hosp_0582",
+    "name": "박현수정형외과의원",
+    "addr_hint": "인천광역시 부평구",
+    "latitude": 37.4872,
+    "longitude": 126.7398
+  },
+  {
+    "id": "hosp_0583",
+    "name": "손발척척정형외과의원",
+    "addr_hint": "경기도 김포시",
+    "latitude": 37.6067,
+    "longitude": 126.7251
+  },
+  {
+    "id": "hosp_0584",
+    "name": "엘앤에스비뇨기과의원",
+    "addr_hint": "서울특별시 강북구",
+    "latitude": 37.6281,
+    "longitude": 127.0252
+  },
+  {
+    "id": "hosp_0585",
+    "name": "도봉연세위내과의원",
+    "addr_hint": "서울특별시 도봉구",
+    "latitude": 37.6653,
+    "longitude": 127.0438
+  },
+  {
+    "id": "hosp_0586",
+    "name": "노태호바오로내과의원",
+    "addr_hint": "서울특별시 동대문구",
+    "latitude": 37.5807,
+    "longitude": 127.0448
+  },
+  {
+    "id": "hosp_0587",
+    "name": "굿데이이비인후과의원",
+    "addr_hint": "서울특별시 성북구",
+    "latitude": 37.6067,
+    "longitude": 127.061
+  },
+  {
+    "id": "hosp_0588",
+    "name": "서울베스트안과의원",
+    "addr_hint": "서울특별시 동대문구",
+    "latitude": 37.5794,
+    "longitude": 127.0421
+  },
+  {
+    "id": "hosp_0589",
+    "name": "서울안과의원",
+    "addr_hint": "경상남도 김해시",
+    "latitude": 35.2374,
+    "longitude": 128.8676
+  },
+  {
+    "id": "hosp_0590",
+    "name": "이동헌비뇨기과의원",
+    "addr_hint": "경상남도 창원시",
+    "latitude": 35.2194,
+    "longitude": 128.5711
+  },
+  {
+    "id": "hosp_0591",
+    "name": "중앙마취통증의학과의원",
+    "addr_hint": "경상남도 창녕군",
+    "latitude": 35.5425,
+    "longitude": 128.4965
+  },
+  {
+    "id": "hosp_0592",
+    "name": "장현진정형외과의원",
+    "addr_hint": "세종특별자치시",
+    "latitude": 36.6024,
+    "longitude": 127.3035
+  },
+  {
+    "id": "hosp_0593",
+    "name": "새봄안과의원",
+    "addr_hint": "대전광역시 유성구",
+    "latitude": 36.3527,
+    "longitude": 127.3431
+  },
+  {
+    "id": "hosp_0594",
+    "name": "군산원광효도요양병원",
+    "addr_hint": "전북특별자치도 군산시",
+    "latitude": 35.9676,
+    "longitude": 126.7356
+  },
+  {
+    "id": "hosp_0595",
+    "name": "달팽이이비인후과의원",
+    "addr_hint": "전북특별자치도 군산시",
+    "latitude": 35.9762,
+    "longitude": 126.7441
+  },
+  {
+    "id": "hosp_0596",
+    "name": "배양규비뇨의학과의원",
+    "addr_hint": "울산광역시 남구",
+    "latitude": 35.5373,
+    "longitude": 129.3259
+  },
+  {
+    "id": "hosp_0597",
+    "name": "삼성바른정형외과의원",
+    "addr_hint": "충청북도 제천시",
+    "latitude": 37.1388,
+    "longitude": 128.2106
+  },
+  {
+    "id": "hosp_0598",
+    "name": "중앙외과의원",
+    "addr_hint": "충청북도 괴산군",
+    "latitude": 36.8098,
+    "longitude": 127.7936
+  },
+  {
+    "id": "hosp_0599",
+    "name": "조은내과의원",
+    "addr_hint": "충청북도 음성군",
+    "latitude": 36.9675,
+    "longitude": 127.4859
+  },
+  {
+    "id": "hosp_0600",
+    "name": "의령병원",
+    "addr_hint": "경상남도 의령군",
+    "latitude": 35.3186,
+    "longitude": 128.2588
+  },
+  {
+    "id": "hosp_0601",
+    "name": "굿앤센신경외과신경과내과의원",
+    "addr_hint": "경상남도 진주시",
+    "latitude": 35.1786,
+    "longitude": 128.0936
+  },
+  {
+    "id": "hosp_0602",
+    "name": "신등하나의원",
+    "addr_hint": "경상남도 산청군",
+    "latitude": 35.3775,
+    "longitude": 128.0104
+  },
+  {
+    "id": "hosp_0603",
+    "name": "현대의원",
+    "addr_hint": "경상남도 합천군",
+    "latitude": 35.4137,
+    "longitude": 128.1229
+  },
+  {
+    "id": "hosp_0604",
+    "name": "일등내과의원",
+    "addr_hint": "경상남도 남해군",
+    "latitude": 34.84,
+    "longitude": 127.8951
+  },
+  {
+    "id": "hosp_0605",
+    "name": "고성비뇨기과의원",
+    "addr_hint": "경상남도 고성군",
+    "latitude": 34.9754,
+    "longitude": 128.3257
+  },
+  {
+    "id": "hosp_0606",
+    "name": "현대요양병원",
+    "addr_hint": "충청남도 공주시",
+    "latitude": 36.4689,
+    "longitude": 127.133
+  },
+  {
+    "id": "hosp_0607",
+    "name": "박언비뇨의학과의원",
+    "addr_hint": "부산광역시 남구",
+    "latitude": 35.1374,
+    "longitude": 129.0881
+  },
+  {
+    "id": "hosp_0608",
+    "name": "비에스숨이비인후과의원",
+    "addr_hint": "부산광역시 사하구",
+    "latitude": 35.106,
+    "longitude": 128.9676
+  },
+  {
+    "id": "hosp_0609",
+    "name": "한솔내과의원",
+    "addr_hint": "부산광역시 금정구",
+    "latitude": 35.2466,
+    "longitude": 129.089
+  },
+  {
+    "id": "hosp_0610",
+    "name": "우리고운피부과의원",
+    "addr_hint": "전라남도 목포시",
+    "latitude": 34.8026,
+    "longitude": 126.3934
+  },
+  {
+    "id": "hosp_0611",
+    "name": "위드유이비인후과의원",
+    "addr_hint": "전라남도 무안군",
+    "latitude": 34.8036,
+    "longitude": 126.4835
+  },
+  {
+    "id": "hosp_0612",
+    "name": "문경드림비뇨기과의원",
+    "addr_hint": "경상북도 문경시",
+    "latitude": 36.5965,
+    "longitude": 128.2
+  },
+  {
+    "id": "hosp_0613",
+    "name": "좋은연합정형외과의원",
+    "addr_hint": "대구광역시 달서구",
+    "latitude": 35.8458,
+    "longitude": 128.5448
+  },
+  {
+    "id": "hosp_0614",
+    "name": "세이치과의원",
+    "addr_hint": "경상북도 김천시",
+    "latitude": 36.1209,
+    "longitude": 128.1183
+  },
+  {
+    "id": "hosp_0615",
+    "name": "세명치과의원",
+    "addr_hint": "경상북도 경산시",
+    "latitude": 35.826,
+    "longitude": 128.7371
+  },
+  {
+    "id": "hosp_0616",
+    "name": "손사랑연합의원",
+    "addr_hint": "전라남도 순천시",
+    "latitude": 34.9665,
+    "longitude": 127.5205
+  },
+  {
+    "id": "hosp_0617",
+    "name": "박혜의원",
+    "addr_hint": "전라남도 고흥군",
+    "latitude": 34.6077,
+    "longitude": 127.2913
+  },
+  {
+    "id": "hosp_0618",
+    "name": "메디팜요양병원",
+    "addr_hint": "전라남도 순천시",
+    "latitude": 34.8974,
+    "longitude": 127.4782
+  },
+  {
+    "id": "hosp_0619",
+    "name": "장인수가정의학과의원",
+    "addr_hint": "전북특별자치도 전주시",
+    "latitude": 35.8742,
+    "longitude": 127.0721
+  },
+  {
+    "id": "hosp_0620",
+    "name": "중앙안과의원",
+    "addr_hint": "전북특별자치도 남원시",
+    "latitude": 35.4101,
+    "longitude": 127.3886
+  },
+  {
+    "id": "hosp_0621",
+    "name": "남원의원",
+    "addr_hint": "제주특별자치도 서귀포시",
+    "latitude": 33.2778,
+    "longitude": 126.7146,
+    "region_note": "도서·벽지 위탁병원"
+  },
+  {
+    "id": "hosp_0622",
+    "name": "청주웰치과의원",
+    "addr_hint": "충청북도 청주시",
+    "latitude": 36.6414,
+    "longitude": 127.4371
+  },
+  {
+    "id": "hosp_0623",
+    "name": "내포아산의원",
+    "addr_hint": "충청남도 예산군",
+    "latitude": 36.6721,
+    "longitude": 126.6854
+  },
+  {
+    "id": "hosp_0624",
+    "name": "마스터연세정형외과의원",
+    "addr_hint": "서울특별시 금천구",
+    "latitude": 37.4509,
+    "longitude": 126.9025
+  },
+  {
+    "id": "hosp_0625",
+    "name": "코사랑이비인후과의원",
+    "addr_hint": "서울특별시 동작구",
+    "latitude": 37.4995,
+    "longitude": 126.928
+  },
+  {
+    "id": "hosp_0626",
+    "name": "타임안과의원",
+    "addr_hint": "서울특별시 구로구",
+    "latitude": 37.497,
+    "longitude": 126.8632
+  },
+  {
+    "id": "hosp_0627",
+    "name": "센트럴요양병원",
+    "addr_hint": "경기도 시흥시",
+    "latitude": 37.3369,
+    "longitude": 126.7283
+  },
+  {
+    "id": "hosp_0628",
+    "name": "맨스톤비뇨의학과의원",
+    "addr_hint": "경기도 용인시",
+    "latitude": 37.3202,
+    "longitude": 127.109
+  },
+  {
+    "id": "hosp_0629",
+    "name": "서울아산이비인후과의원",
+    "addr_hint": "경기도 의정부시",
+    "latitude": 37.7401,
+    "longitude": 127.0476
+  },
+  {
+    "id": "hosp_0630",
+    "name": "동울산영상의학과의원",
+    "addr_hint": "울산광역시 동구",
+    "latitude": 35.4984,
+    "longitude": 129.4277
+  },
+  {
+    "id": "hosp_0631",
+    "name": "백인정형외과의원",
+    "addr_hint": "울산광역시 울주군",
+    "latitude": 35.5643,
+    "longitude": 129.1226
+  },
+  {
+    "id": "hosp_0632",
+    "name": "이광욱내과의원",
+    "addr_hint": "부산광역시 기장군",
+    "latitude": 35.2454,
+    "longitude": 129.2159
+  },
+  {
+    "id": "hosp_0633",
+    "name": "덕천치과의원",
+    "addr_hint": "부산광역시 북구",
+    "latitude": 35.2108,
+    "longitude": 129.007
+  },
+  {
+    "id": "hosp_0634",
+    "name": "애플치과의원",
+    "addr_hint": "부산광역시 중구",
+    "latitude": 35.098233,
+    "longitude": 129.028896
+  },
+  {
+    "id": "hosp_0635",
+    "name": "김호일정형외과의원",
+    "addr_hint": "부산광역시 북구",
+    "latitude": 35.2046,
+    "longitude": 129.0041
+  },
+  {
+    "id": "hosp_0636",
+    "name": "조은금강병원",
+    "addr_hint": "경상남도 김해시",
+    "latitude": 35.2623,
+    "longitude": 128.8617
+  },
+  {
+    "id": "hosp_0637",
+    "name": "푸른정형외과의원",
+    "addr_hint": "충청남도 보령시",
+    "latitude": 36.344,
+    "longitude": 126.6001
+  },
+  {
+    "id": "hosp_0638",
+    "name": "큰나무정형외과의원",
+    "addr_hint": "충청남도 아산시",
+    "latitude": 36.7757,
+    "longitude": 127.0629
+  },
+  {
+    "id": "hosp_0639",
+    "name": "더속편한내과의원",
+    "addr_hint": "경상북도 칠곡군",
+    "latitude": 36.0756,
+    "longitude": 128.3943
+  },
+  {
+    "id": "hosp_0640",
+    "name": "에스신경외과의원",
+    "addr_hint": "대구광역시 수성구",
+    "latitude": 35.8379,
+    "longitude": 128.6247
+  },
+  {
+    "id": "hosp_0641",
+    "name": "더퍼스트병원",
+    "addr_hint": "대구광역시 달성군",
+    "latitude": 35.7982,
+    "longitude": 128.4877
+  },
+  {
+    "id": "hosp_0642",
+    "name": "하하정형외과의원",
+    "addr_hint": "경상북도 고령군",
+    "latitude": 35.8254,
+    "longitude": 128.4522
+  },
+  {
+    "id": "hosp_0643",
+    "name": "퍼스트내과의원",
+    "addr_hint": "경기도 김포시",
+    "latitude": 37.6457,
+    "longitude": 126.6254
+  },
+  {
+    "id": "hosp_0644",
+    "name": "주안성모이비인후과의원",
+    "addr_hint": "인천광역시 미추홀구",
+    "latitude": 37.4672,
+    "longitude": 126.679
+  },
+  {
+    "id": "hosp_0645",
+    "name": "마음속내과의원",
+    "addr_hint": "인천광역시 계양구",
+    "latitude": 37.545,
+    "longitude": 126.7381
+  },
+  {
+    "id": "hosp_0646",
+    "name": "원더이비인후과의원",
+    "addr_hint": "인천광역시 부평구",
+    "latitude": 37.4931,
+    "longitude": 126.7226
+  },
+  {
+    "id": "hosp_0647",
+    "name": "꽃보다이비인후과의원",
+    "addr_hint": "인천광역시 남동구",
+    "latitude": 37.4527,
+    "longitude": 126.7085
+  },
+  {
+    "id": "hosp_0648",
+    "name": "탑비뇨기과의원",
+    "addr_hint": "서울특별시 강동구",
+    "latitude": 37.5385,
+    "longitude": 127.1251
+  },
+  {
+    "id": "hosp_0649",
+    "name": "잠실서울비뇨의학과의원",
+    "addr_hint": "서울특별시 송파구",
+    "latitude": 37.5153,
+    "longitude": 127.0996
+  },
+  {
+    "id": "hosp_0650",
+    "name": "연세안안과의원",
+    "addr_hint": "서울특별시 광진구",
+    "latitude": 37.5362,
+    "longitude": 127.0832
+  },
+  {
+    "id": "hosp_0651",
+    "name": "원주연세의원",
+    "addr_hint": "강원특별자치도 원주시",
+    "latitude": 37.3015,
+    "longitude": 127.9192
+  },
+  {
+    "id": "hosp_0652",
+    "name": "동해제일내과의원",
+    "addr_hint": "강원특별자치도 동해시",
+    "latitude": 37.4858,
+    "longitude": 129.1085
+  },
+  {
+    "id": "hosp_0653",
+    "name": "신준호의원",
+    "addr_hint": "강원특별자치도 삼척시",
+    "latitude": 37.4415,
+    "longitude": 129.1644
+  },
+  {
+    "id": "hosp_0654",
+    "name": "태백밝은안과의원",
+    "addr_hint": "강원특별자치도 태백시",
+    "latitude": 37.1734,
+    "longitude": 128.991
+  },
+  {
+    "id": "hosp_0655",
+    "name": "정선연세외과의원",
+    "addr_hint": "강원특별자치도 정선군",
+    "latitude": 37.3789,
+    "longitude": 128.664
+  },
+  {
+    "id": "hosp_0656",
+    "name": "수서울내과의원",
+    "addr_hint": "경기도 성남시",
+    "latitude": 37.4457,
+    "longitude": 127.1578
+  },
+  {
+    "id": "hosp_0657",
+    "name": "연세플러스비뇨기과의원",
+    "addr_hint": "강원특별자치도 춘천시",
+    "latitude": 37.8791,
+    "longitude": 127.7293
+  },
+  {
+    "id": "hosp_0658",
+    "name": "킹덤치과의원",
+    "addr_hint": "광주광역시 남구",
+    "latitude": 35.1242,
+    "longitude": 126.9076
+  },
+  {
+    "id": "hosp_0659",
+    "name": "화순고인돌정형외과의원",
+    "addr_hint": "전라남도 화순군",
+    "latitude": 35.0612,
+    "longitude": 126.9893
+  },
+  {
+    "id": "hosp_0660",
+    "name": "강진88정형외과의원",
+    "addr_hint": "전라남도 강진군",
+    "latitude": 34.638,
+    "longitude": 126.768
+  },
+  {
+    "id": "hosp_0661",
+    "name": "장흥성심의원",
+    "addr_hint": "전라남도 장흥군",
+    "latitude": 34.6778,
+    "longitude": 126.9101
+  },
+  {
+    "id": "hosp_0662",
+    "name": "김만중내과의원",
+    "addr_hint": "전라남도 해남군",
+    "latitude": 34.5693,
+    "longitude": 126.5983
+  },
+  {
+    "id": "hosp_0663",
+    "name": "속편한내과의원",
+    "addr_hint": "충청남도 금산군",
+    "latitude": 36.1068,
+    "longitude": 127.4893
+  },
+  {
+    "id": "hosp_0664",
+    "name": "대성안과의원",
+    "addr_hint": "경기도 부천시",
+    "latitude": 37.4919,
+    "longitude": 126.7835
+  },
+  {
+    "id": "hosp_0665",
+    "name": "요한비뇨기과의원",
+    "addr_hint": "경기도 의정부시",
+    "latitude": 37.7385,
+    "longitude": 127.0395
+  },
+  {
+    "id": "hosp_0666",
+    "name": "더편한장내과의원",
+    "addr_hint": "경기도 안성시",
+    "latitude": 37.0076,
+    "longitude": 127.2594
+  },
+  {
+    "id": "hosp_0667",
+    "name": "연세탄탄정형외과의원",
+    "addr_hint": "경기도 파주시",
+    "latitude": 37.7292,
+    "longitude": 126.7638
+  },
+  {
+    "id": "hosp_0668",
+    "name": "서울신세계안과의원",
+    "addr_hint": "경기도 의정부시",
+    "latitude": 37.7388,
+    "longitude": 127.0485
+  },
+  {
+    "id": "hosp_0669",
+    "name": "고성제일의원",
+    "addr_hint": "강원특별자치도 고성군",
+    "latitude": 38.3791,
+    "longitude": 128.4724
+  },
+  {
+    "id": "hosp_0670",
+    "name": "경기도립노인전문 남양주병원",
+    "addr_hint": "경기도 남양주시",
+    "latitude": 37.7382,
+    "longitude": 127.3095
+  },
+  {
+    "id": "hosp_0671",
+    "name": "강남서울엔비뇨기과의원",
+    "addr_hint": "서울특별시 강남구",
+    "latitude": 37.4965,
+    "longitude": 127.0287
+  },
+  {
+    "id": "hosp_0672",
+    "name": "허준원엠디피부과의원",
+    "addr_hint": "서울특별시 강남구",
+    "latitude": 37.528,
+    "longitude": 127.0359
+  },
+  {
+    "id": "hosp_0673",
+    "name": "푸른정형외과의원",
+    "addr_hint": "경기도 양평군",
+    "latitude": 37.4903,
+    "longitude": 127.4947
+  },
+  {
+    "id": "hosp_0674",
+    "name": "일산연세참비뇨의학과의원",
+    "addr_hint": "경기도 고양시",
+    "latitude": 37.6509,
+    "longitude": 126.7794
+  },
+  {
+    "id": "hosp_0675",
+    "name": "곽내과의원",
+    "addr_hint": "서울특별시 종로구",
+    "latitude": 37.5812,
+    "longitude": 126.9712
+  },
+  {
+    "id": "hosp_0676",
+    "name": "한마음외과의원",
+    "addr_hint": "경기도 수원시",
+    "latitude": 37.2555,
+    "longitude": 127.0211
+  },
+  {
+    "id": "hosp_0677",
+    "name": "평촌범계연세바로걷는의원",
+    "addr_hint": "경기도 안양시",
+    "latitude": 37.3917,
+    "longitude": 126.9538
+  },
+  {
+    "id": "hosp_0678",
+    "name": "이룸이비인후과의원",
+    "addr_hint": "경기도 남양주시",
+    "latitude": 37.7118,
+    "longitude": 127.1864
+  },
+  {
+    "id": "hosp_0679",
+    "name": "김철수내과의원",
+    "addr_hint": "경기도 시흥시",
+    "latitude": 37.3704,
+    "longitude": 126.8064
+  },
+  {
+    "id": "hosp_0680",
+    "name": "부산신경외과의원",
+    "addr_hint": "부산광역시 사상구",
+    "latitude": 35.1307,
+    "longitude": 128.9722
+  },
+  {
+    "id": "hosp_0681",
+    "name": "해비치의원",
+    "addr_hint": "제주특별자치도 서귀포시",
+    "latitude": 33.3257,
+    "longitude": 126.8331,
+    "region_note": "도서·벽지 위탁병원"
+  },
+  {
+    "id": "hosp_0682",
+    "name": "신세기이비인후과의원",
+    "addr_hint": "부산광역시 해운대구",
+    "latitude": 35.1688,
+    "longitude": 129.1785
+  },
+  {
+    "id": "hosp_0683",
+    "name": "에이치메디컬의원",
+    "addr_hint": "광주광역시 북구",
+    "latitude": 35.1688,
+    "longitude": 126.9047
+  },
+  {
+    "id": "hosp_0684",
+    "name": "서울삼성재활의학과의원",
+    "addr_hint": "제주특별자치도 서귀포시",
+    "latitude": 33.2221,
+    "longitude": 126.254,
+    "region_note": "최남단 위탁병원"
+  },
+  {
+    "id": "hosp_0685",
+    "name": "하늘정형외과의원",
+    "addr_hint": "인천광역시 중구",
+    "latitude": 37.490359,
+    "longitude": 126.56066
+  },
+  {
+    "id": "hosp_0686",
+    "name": "김현장외과의원",
+    "addr_hint": "충청남도 논산시",
+    "latitude": 36.2054,
+    "longitude": 127.0863
+  },
+  {
+    "id": "hosp_0687",
+    "name": "수연합내과의원",
+    "addr_hint": "대구광역시 달서구",
+    "latitude": 35.8191,
+    "longitude": 128.5372
+  },
+  {
+    "id": "hosp_0688",
+    "name": "이움내과의원",
+    "addr_hint": "경기도 고양시",
+    "latitude": 37.6303,
+    "longitude": 126.8332
+  },
+  {
+    "id": "hosp_0689",
+    "name": "베데스다복음병원",
+    "addr_hint": "경상남도 양산시",
+    "latitude": 35.3532,
+    "longitude": 129.0436
+  },
+  {
+    "id": "hosp_0690",
+    "name": "새강북연합정형외과의원",
+    "addr_hint": "대구광역시 북구",
+    "latitude": 35.9421,
+    "longitude": 128.5631
+  },
+  {
+    "id": "hosp_0691",
+    "name": "제일좋은내과의원",
+    "addr_hint": "경상북도 포항시",
+    "latitude": 36.0249,
+    "longitude": 129.3407
+  },
+  {
+    "id": "hosp_0692",
+    "name": "동송제일정형외과의원",
+    "addr_hint": "강원특별자치도 철원군",
+    "latitude": 38.2077,
+    "longitude": 127.2177
+  },
+  {
+    "id": "hosp_0693",
+    "name": "윤성일정형외과의원",
+    "addr_hint": "강원특별자치도 홍천군",
+    "latitude": 37.6882,
+    "longitude": 127.8804
+  },
+  {
+    "id": "hosp_0694",
+    "name": "서울원병원",
+    "addr_hint": "서울특별시 강서구",
+    "latitude": 37.5423,
+    "longitude": 126.8391
+  },
+  {
+    "id": "hosp_0695",
+    "name": "BS삼성안과의원",
+    "addr_hint": "부산광역시 중구",
+    "latitude": 35.0975,
+    "longitude": 129.026
+  },
+  {
+    "id": "hosp_0696",
+    "name": "더바른내과의원",
+    "addr_hint": "경상남도 양산시",
+    "latitude": 35.3737,
+    "longitude": 129.1504
+  },
+  {
+    "id": "hosp_0697",
+    "name": "일산미래내과의원",
+    "addr_hint": "경기도 고양시",
+    "latitude": 37.696,
+    "longitude": 126.7643
+  },
+  {
+    "id": "hosp_0698",
+    "name": "부산노인전문제3병원",
+    "addr_hint": "부산광역시 해운대구",
+    "latitude": 35.1682,
+    "longitude": 129.1475
+  },
+  {
+    "id": "hosp_0699",
+    "name": "부안효요양병원",
+    "addr_hint": "전북특별자치도 부안군",
+    "latitude": 35.7305,
+    "longitude": 126.7213
+  },
+  {
+    "id": "hosp_0700",
+    "name": "플란트유치과의원",
+    "addr_hint": "전북특별자치도 고창군",
+    "latitude": 35.4357,
+    "longitude": 126.6953
+  },
+  {
+    "id": "hosp_0701",
+    "name": "진주역전이비인후과의원",
+    "addr_hint": "경상남도 진주시",
+    "latitude": 35.1521,
+    "longitude": 128.1178
+  },
+  {
+    "id": "hosp_0702",
+    "name": "밝은삼성안과의원",
+    "addr_hint": "경상남도 진주시",
+    "latitude": 35.1798,
+    "longitude": 128.0911
+  },
+  {
+    "id": "hosp_0703",
+    "name": "시그니티요양병원",
+    "addr_hint": "전라남도 무안군",
+    "latitude": 34.803,
+    "longitude": 126.4714
+  },
+  {
+    "id": "hosp_0704",
+    "name": "센텀카이스트재활의학과의원",
+    "addr_hint": "부산광역시 남구",
+    "latitude": 35.1349,
+    "longitude": 129.0917
+  },
+  {
+    "id": "hosp_0705",
+    "name": "오션이비인후과의원",
+    "addr_hint": "부산광역시 영도구",
+    "latitude": 35.0785,
+    "longitude": 129.0708
+  },
+  {
+    "id": "hosp_0706",
+    "name": "맑은유비뇨기과의원",
+    "addr_hint": "부산광역시 사상구",
+    "latitude": 35.1308,
+    "longitude": 128.9721
+  },
+  {
+    "id": "hosp_0707",
+    "name": "서울아산이비인후과의원",
+    "addr_hint": "부산광역시 북구",
+    "latitude": 35.2104,
+    "longitude": 129.0077
+  },
+  {
+    "id": "hosp_0708",
+    "name": "마디와신경외과의원",
+    "addr_hint": "경상북도 구미시",
+    "latitude": 36.1261,
+    "longitude": 128.3385
+  },
+  {
+    "id": "hosp_0709",
+    "name": "속튼튼의원",
+    "addr_hint": "경상북도 청도군",
+    "latitude": 35.6437,
+    "longitude": 128.7426
+  },
+  {
+    "id": "hosp_0710",
+    "name": "브이웰마취통증의학과의원",
+    "addr_hint": "대구광역시 북구",
+    "latitude": 35.8954,
+    "longitude": 128.6174
+  },
+  {
+    "id": "hosp_0711",
+    "name": "장튼튼내과의원",
+    "addr_hint": "인천광역시 중구",
+    "latitude": 37.4872,
+    "longitude": 126.5574
+  },
+  {
+    "id": "hosp_0712",
+    "name": "서울아산정형외과의원",
+    "addr_hint": "제주특별자치도 제주시",
+    "latitude": 33.5416,
+    "longitude": 126.6676,
+    "region_note": "도서·벽지 위탁병원"
+  },
+  {
+    "id": "hosp_0713",
+    "name": "연합치과의원",
+    "addr_hint": "제주특별자치도 서귀포시",
+    "latitude": 33.2549,
+    "longitude": 126.5679,
+    "region_note": "도서·벽지 위탁병원"
+  },
+  {
+    "id": "hosp_0714",
+    "name": "이진정형외과의원",
+    "addr_hint": "경상남도 양산시",
+    "latitude": 35.3703,
+    "longitude": 129.1486
+  },
+  {
+    "id": "hosp_0715",
+    "name": "한빛내과의원",
+    "addr_hint": "부산광역시 동구",
+    "latitude": 35.1181,
+    "longitude": 129.0407
+  },
+  {
+    "id": "hosp_0716",
+    "name": "위드유이비인과의원",
+    "addr_hint": "부산광역시 금정구",
+    "latitude": 35.2718,
+    "longitude": 129.0924
+  },
+  {
+    "id": "hosp_0717",
+    "name": "경북도립안동노인전문요양병원",
+    "addr_hint": "경상북도 안동시",
+    "latitude": 36.5235,
+    "longitude": 128.6893
+  },
+  {
+    "id": "hosp_0718",
+    "name": "서울삼성내과의원",
+    "addr_hint": "경상북도 예천군",
+    "latitude": 36.6564,
+    "longitude": 128.4559
+  },
+  {
+    "id": "hosp_0719",
+    "name": "삼성안과의원",
+    "addr_hint": "경상북도 문경시",
+    "latitude": 36.5969,
+    "longitude": 128.2001
+  },
+  {
+    "id": "hosp_0720",
+    "name": "라임비뇨기과의원",
+    "addr_hint": "대구광역시 동구",
+    "latitude": 35.8833,
+    "longitude": 128.6229
+  },
+  {
+    "id": "hosp_0721",
+    "name": "새하양정형외과의원",
+    "addr_hint": "경상북도 경산시",
+    "latitude": 35.9165,
+    "longitude": 128.8126
+  },
+  {
+    "id": "hosp_0722",
+    "name": "민치과의원",
+    "addr_hint": "경상북도 울진군",
+    "latitude": 36.9923,
+    "longitude": 129.4014
+  },
+  {
+    "id": "hosp_0723",
+    "name": "눈애안과의원",
+    "addr_hint": "인천광역시 연수구",
+    "latitude": 37.4276,
+    "longitude": 126.6458
+  },
+  {
+    "id": "hosp_0724",
+    "name": "연수리더스내과의원",
+    "addr_hint": "인천광역시 연수구",
+    "latitude": 37.4135,
+    "longitude": 126.6826
+  },
+  {
+    "id": "hosp_0725",
+    "name": "우안과의원",
+    "addr_hint": "경상남도 밀양시",
+    "latitude": 35.4915,
+    "longitude": 128.753
+  },
+  {
+    "id": "hosp_0726",
+    "name": "보람가정의학과의원",
+    "addr_hint": "경상남도 함안군",
+    "latitude": 35.3082,
+    "longitude": 128.5184
+  },
+  {
+    "id": "hosp_0727",
+    "name": "미소들노인전문병원",
+    "addr_hint": "서울특별시 구로구",
+    "latitude": 37.5029,
+    "longitude": 126.8412
+  },
+  {
+    "id": "hosp_0728",
+    "name": "화이팅정형외과의원",
+    "addr_hint": "서울특별시 강남구",
+    "latitude": 37.5,
+    "longitude": 127.0354
+  },
+  {
+    "id": "hosp_0729",
+    "name": "신도림하나이비인후과의원",
+    "addr_hint": "서울특별시 구로구",
+    "latitude": 37.5058,
+    "longitude": 126.8896
+  },
+  {
+    "id": "hosp_0730",
+    "name": "다모아치과의원",
+    "addr_hint": "경기도 남양주시",
+    "latitude": 37.6541,
+    "longitude": 127.2446
+  },
+  {
+    "id": "hosp_0731",
+    "name": "건강드림내과의원",
+    "addr_hint": "경기도 평택시",
+    "latitude": 37.0797,
+    "longitude": 127.0621
+  },
+  {
+    "id": "hosp_0732",
+    "name": "우리들내과의원",
+    "addr_hint": "강원특별자치도 강릉시",
+    "latitude": 37.754,
+    "longitude": 128.8945
+  },
+  {
+    "id": "hosp_0733",
+    "name": "누가이비인후과의원",
+    "addr_hint": "강원특별자치도 동해시",
+    "latitude": 37.5222,
+    "longitude": 129.1153
+  },
+  {
+    "id": "hosp_0734",
+    "name": "서울안과의원",
+    "addr_hint": "전라남도 목포시",
+    "latitude": 34.8075,
+    "longitude": 126.4241
+  },
+  {
+    "id": "hosp_0735",
+    "name": "동서재활의학과의원",
+    "addr_hint": "전라남도 목포시",
+    "latitude": 34.8056,
+    "longitude": 126.4142
+  },
+  {
+    "id": "hosp_0736",
+    "name": "하나로플란트치과의원",
+    "addr_hint": "전라남도 함평군",
+    "latitude": 35.0625,
+    "longitude": 126.5211
+  },
+  {
+    "id": "hosp_0737",
+    "name": "복음내과의원",
+    "addr_hint": "전라남도 영광군",
+    "latitude": 35.2758,
+    "longitude": 126.5008
+  },
+  {
+    "id": "hosp_0738",
+    "name": "밝은여수안과",
+    "addr_hint": "전라남도 여수시",
+    "latitude": 34.7428,
+    "longitude": 127.7278
+  },
+  {
+    "id": "hosp_0739",
+    "name": "센텀소중한눈안과의원",
+    "addr_hint": "부산광역시 해운대구",
+    "latitude": 35.1681,
+    "longitude": 129.1313
+  },
+  {
+    "id": "hosp_0740",
+    "name": "윤재웅신경외과의원",
+    "addr_hint": "부산광역시 동래구",
+    "latitude": 35.2085,
+    "longitude": 129.1032
+  },
+  {
+    "id": "hosp_0741",
+    "name": "청춘안과의원",
+    "addr_hint": "부산광역시 동래구",
+    "latitude": 35.2029,
+    "longitude": 129.082
+  },
+  {
+    "id": "hosp_0742",
+    "name": "이기훈내과의원",
+    "addr_hint": "전북특별자치도 익산시",
+    "latitude": 36.0046,
+    "longitude": 126.9445
+  },
+  {
+    "id": "hosp_0743",
+    "name": "양춘호치과의원",
+    "addr_hint": "전북특별자치도 김제시",
+    "latitude": 35.8042,
+    "longitude": 126.8953
+  },
+  {
+    "id": "hosp_0744",
+    "name": "바르다마취통증의학과의원",
+    "addr_hint": "부산광역시 기장군",
+    "latitude": 35.2654,
+    "longitude": 129.2265
+  },
+  {
+    "id": "hosp_0745",
+    "name": "경대믿음정형외과의원",
+    "addr_hint": "대구광역시 서구",
+    "latitude": 35.8806,
+    "longitude": 128.5802
+  },
+  {
+    "id": "hosp_0746",
+    "name": "비앤비뇨의학과의원",
+    "addr_hint": "대구광역시 달서구",
+    "latitude": 35.8501,
+    "longitude": 128.5339
+  },
+  {
+    "id": "hosp_0747",
+    "name": "구지척앤본신경외과의원",
+    "addr_hint": "대구광역시 달성군",
+    "latitude": 35.6556,
+    "longitude": 128.418
+  },
+  {
+    "id": "hosp_0748",
+    "name": "우리삼성안과의원",
+    "addr_hint": "경상북도 칠곡군",
+    "latitude": 35.9891,
+    "longitude": 128.3993
+  },
+  {
+    "id": "hosp_0749",
+    "name": "9988정형외과의원",
+    "addr_hint": "대구광역시 수성구",
+    "latitude": 35.8571,
+    "longitude": 128.6135
+  },
+  {
+    "id": "hosp_0750",
+    "name": "상무탑정형외과의원",
+    "addr_hint": "광주광역시 서구",
+    "latitude": 35.1457,
+    "longitude": 126.8493
+  },
+  {
+    "id": "hosp_0751",
+    "name": "화순튼튼마취통증의학과의원",
+    "addr_hint": "전라남도 화순군",
+    "latitude": 35.0611,
+    "longitude": 126.9825
+  },
+  {
+    "id": "hosp_0752",
+    "name": "서울탑마취통증의학과의원",
+    "addr_hint": "전라남도 해남군",
+    "latitude": 34.5705,
+    "longitude": 126.6074
+  },
+  {
+    "id": "hosp_0753",
+    "name": "임태진내과의원",
+    "addr_hint": "전라남도 완도군",
+    "latitude": 34.3189,
+    "longitude": 126.7447
+  },
+  {
+    "id": "hosp_0754",
+    "name": "전남제일요양병원",
+    "addr_hint": "전라남도 화순군",
+    "latitude": 35.0491,
+    "longitude": 126.9851
+  },
+  {
+    "id": "hosp_0755",
+    "name": "삼봉이치과의원",
+    "addr_hint": "전북특별자치도 완주군",
+    "latitude": 35.922,
+    "longitude": 127.1237
+  },
+  {
+    "id": "hosp_0756",
+    "name": "다사랑의원",
+    "addr_hint": "전북특별자치도 임실군",
+    "latitude": 35.6181,
+    "longitude": 127.2829
+  },
+  {
+    "id": "hosp_0757",
+    "name": "권오연치과의원",
+    "addr_hint": "경상북도 영주시",
+    "latitude": 36.8221,
+    "longitude": 128.6247
+  },
+  {
+    "id": "hosp_0758",
+    "name": "나득영심혈내과의원",
+    "addr_hint": "경상북도 경주시",
+    "latitude": 35.8433,
+    "longitude": 129.2066
+  },
+  {
+    "id": "hosp_0759",
+    "name": "정안과의원",
+    "addr_hint": "경상남도 거제시",
+    "latitude": 34.8884,
+    "longitude": 128.6229
+  },
+  {
+    "id": "hosp_0760",
+    "name": "동인천내과의원",
+    "addr_hint": "인천광역시 동구",
+    "latitude": 37.477,
+    "longitude": 126.6334
+  },
+  {
+    "id": "hosp_0761",
+    "name": "서울연합의원",
+    "addr_hint": "충청북도 음성군",
+    "latitude": 36.9665,
+    "longitude": 127.4942
+  },
+  {
+    "id": "hosp_0762",
+    "name": "대전참사랑요양병원",
+    "addr_hint": "대전광역시 서구",
+    "latitude": 36.3456,
+    "longitude": 127.3804
+  },
+  {
+    "id": "hosp_0763",
+    "name": "백세성모정형외과의원",
+    "addr_hint": "대전광역시 서구",
+    "latitude": 36.332,
+    "longitude": 127.3856
+  },
+  {
+    "id": "hosp_0764",
+    "name": "나상연정형외과의원",
+    "addr_hint": "대전광역시 동구",
+    "latitude": 36.329,
+    "longitude": 127.4412
+  },
+  {
+    "id": "hosp_0765",
+    "name": "하나치과의원",
+    "addr_hint": "충청남도 금산군",
+    "latitude": 36.1033,
+    "longitude": 127.4889
+  },
+  {
+    "id": "hosp_0766",
+    "name": "부여이비인후과의원",
+    "addr_hint": "충청남도 부여군",
+    "latitude": 36.2819,
+    "longitude": 126.9096
+  },
+  {
+    "id": "hosp_0767",
+    "name": "서울더편한치과의원",
+    "addr_hint": "충청북도 영동군",
+    "latitude": 36.1757,
+    "longitude": 127.778
+  },
+  {
+    "id": "hosp_0768",
+    "name": "곽앤신이비인후과의원",
+    "addr_hint": "대구광역시 남구",
+    "latitude": 35.8353,
+    "longitude": 128.5564
+  },
+  {
+    "id": "hosp_0769",
+    "name": "동인요양병원",
+    "addr_hint": "전라남도 여수시",
+    "latitude": 34.7591,
+    "longitude": 127.7107
+  },
+  {
+    "id": "hosp_0770",
+    "name": "구례서울의원",
+    "addr_hint": "전라남도 구례군",
+    "latitude": 35.2096,
+    "longitude": 127.4684
+  },
+  {
+    "id": "hosp_0771",
+    "name": "전용진정형외과의원",
+    "addr_hint": "울산광역시 남구",
+    "latitude": 35.5388,
+    "longitude": 129.3363
+  },
+  {
+    "id": "hosp_0772",
+    "name": "명비뇨기과의원",
+    "addr_hint": "경기도 부천시",
+    "latitude": 37.5044,
+    "longitude": 126.7697
+  },
+  {
+    "id": "hosp_0773",
+    "name": "오이비인후과의원",
+    "addr_hint": "경기도 광명시",
+    "latitude": 37.4358,
+    "longitude": 126.8797
+  },
+  {
+    "id": "hosp_0774",
+    "name": "로하스광명요양병원",
+    "addr_hint": "경기도 광명시",
+    "latitude": 37.4741,
+    "longitude": 126.8702
+  },
+  {
+    "id": "hosp_0775",
+    "name": "안정효내과의원",
+    "addr_hint": "강원특별자치도 춘천시",
+    "latitude": 37.8572,
+    "longitude": 127.7394
+  },
+  {
+    "id": "hosp_0776",
+    "name": "하나큐치과의원",
+    "addr_hint": "강원특별자치도 춘천시",
+    "latitude": 37.8824,
+    "longitude": 127.7478
+  },
+  {
+    "id": "hosp_0777",
+    "name": "춘천시노인전문병원",
+    "addr_hint": "강원특별자치도 춘천시",
+    "latitude": 37.8801,
+    "longitude": 127.7564
+  },
+  {
+    "id": "hosp_0778",
+    "name": "탑정형외과의원",
+    "addr_hint": "강원특별자치도 원주시",
+    "latitude": 37.3473,
+    "longitude": 127.9284
+  },
+  {
+    "id": "hosp_0779",
+    "name": "연세내과의원",
+    "addr_hint": "경기도 수원시",
+    "latitude": 37.2559,
+    "longitude": 127.0747
+  },
+  {
+    "id": "hosp_0780",
+    "name": "안양더샘찬정형외과의원",
+    "addr_hint": "경기도 안양시",
+    "latitude": 37.3999,
+    "longitude": 126.9199
+  },
+  {
+    "id": "hosp_0781",
+    "name": "서울탑재활의학과의원",
+    "addr_hint": "경기도 군포시",
+    "latitude": 37.3592,
+    "longitude": 126.9323
+  },
+  {
+    "id": "hosp_0782",
+    "name": "하나의원",
+    "addr_hint": "경기도 평택시",
+    "latitude": 37.0801,
+    "longitude": 127.0582
+  },
+  {
+    "id": "hosp_0783",
+    "name": "센트럴제일안과",
+    "addr_hint": "경기도 파주시",
+    "latitude": 37.7148,
+    "longitude": 126.7601
+  },
+  {
+    "id": "hosp_0784",
+    "name": "권이비인후과의원",
+    "addr_hint": "서울특별시 중랑구",
+    "latitude": 37.594,
+    "longitude": 127.0751
+  },
+  {
+    "id": "hosp_0785",
+    "name": "랩이비인후과의원",
+    "addr_hint": "서울특별시 마포구",
+    "latitude": 37.5508,
+    "longitude": 126.9151
+  },
+  {
+    "id": "hosp_0786",
+    "name": "연세장안과의원",
+    "addr_hint": "서울특별시 서대문구",
+    "latitude": 37.5711,
+    "longitude": 126.9126
+  },
+  {
+    "id": "hosp_0787",
+    "name": "연세든든내과의원",
+    "addr_hint": "서울특별시 강서구",
+    "latitude": 37.5409,
+    "longitude": 126.8387
+  },
+  {
+    "id": "hosp_0788",
+    "name": "베스트서울이비인후과의원",
+    "addr_hint": "서울특별시 성동구",
+    "latitude": 37.55,
+    "longitude": 127.0165
+  },
+  {
+    "id": "hosp_0789",
+    "name": "열린성모이비인후과의원",
+    "addr_hint": "서울특별시 송파구",
+    "latitude": 37.5119,
+    "longitude": 127.1136
+  },
+  {
+    "id": "hosp_0790",
+    "name": "서울선정형외과의원",
+    "addr_hint": "서울특별시 양천구",
+    "latitude": 37.5466,
+    "longitude": 126.8748
+  },
+  {
+    "id": "hosp_0791",
+    "name": "영등포열린의원",
+    "addr_hint": "서울특별시 영등포구",
+    "latitude": 37.5165,
+    "longitude": 126.9059
+  },
+  {
+    "id": "hosp_0792",
+    "name": "연세큰숲내과의원",
+    "addr_hint": "서울특별시 은평구",
+    "latitude": 37.6117,
+    "longitude": 126.9292
+  },
+  {
+    "id": "hosp_0793",
+    "name": "강서이편한치과의원",
+    "addr_hint": "서울특별시 강서구",
+    "latitude": 37.5483,
+    "longitude": 126.8368
+  },
+  {
+    "id": "hosp_0794",
+    "name": "제니트비뇨기과의원",
+    "addr_hint": "경상남도 창원시",
+    "latitude": 35.2279,
+    "longitude": 128.6803
+  },
+  {
+    "id": "hosp_0795",
+    "name": "샘연합의원",
+    "addr_hint": "전라남도 순천시",
+    "latitude": 34.9462,
+    "longitude": 127.4935
+  },
+  {
+    "id": "hosp_0796",
+    "name": "심병수신경외과의원",
+    "addr_hint": "전라남도 여수시",
+    "latitude": 34.7541,
+    "longitude": 127.7044
+  },
+  {
+    "id": "hosp_0797",
+    "name": "삼성비뇨기과의원",
+    "addr_hint": "충청남도 천안시",
+    "latitude": 36.7943,
+    "longitude": 127.127
+  },
+  {
+    "id": "hosp_0798",
+    "name": "이병진치과의원",
+    "addr_hint": "세종특별자치시",
+    "latitude": 36.6014,
+    "longitude": 127.2976
+  },
+  {
+    "id": "hosp_0799",
+    "name": "세종연합비뇨기과의원",
+    "addr_hint": "세종특별자치시",
+    "latitude": 36.4884,
+    "longitude": 127.2565
+  },
+  {
+    "id": "hosp_0800",
+    "name": "단양군보건의료원",
+    "addr_hint": "충청북도 단양군",
+    "latitude": 36.9815,
+    "longitude": 128.3504
+  },
+  {
+    "id": "hosp_0801",
+    "name": "인천메트로정형외과의원",
+    "addr_hint": "인천광역시 미추홀구",
+    "latitude": 37.4475,
+    "longitude": 126.6494
+  },
+  {
+    "id": "hosp_0802",
+    "name": "김평남내과의원",
+    "addr_hint": "광주광역시 동구",
+    "latitude": 35.1422,
+    "longitude": 126.9202
+  },
+  {
+    "id": "hosp_0803",
+    "name": "첨단메디케어의원",
+    "addr_hint": "광주광역시 광산구",
+    "latitude": 35.2139,
+    "longitude": 126.8507
+  },
+  {
+    "id": "hosp_0804",
+    "name": "대한결핵협회 전북특별자치도지부 복십자의원",
+    "addr_hint": "전북특별자치도 전주시",
+    "latitude": 35.8477,
+    "longitude": 127.1549
+  },
+  {
+    "id": "hosp_0805",
+    "name": "새봄가정의학과의원",
+    "addr_hint": "전북특별자치도 완주군",
+    "latitude": 35.9225,
+    "longitude": 127.1237
+  },
+  {
+    "id": "hosp_0806",
+    "name": "영주기독병원",
+    "addr_hint": "경상북도 영주시",
+    "latitude": 36.8252,
+    "longitude": 128.6212
+  },
+  {
+    "id": "hosp_0807",
+    "name": "서울신세계안과의원(강북)",
+    "addr_hint": "서울특별시 강북구",
+    "latitude": 37.6136,
+    "longitude": 127.0306
+  },
+  {
+    "id": "hosp_0808",
+    "name": "창동으뜸정형외과의원",
+    "addr_hint": "서울특별시 도봉구",
+    "latitude": 37.6578,
+    "longitude": 127.0464
+  },
+  {
+    "id": "hosp_0809",
+    "name": "분당안과의원",
+    "addr_hint": "경기도 성남시",
+    "latitude": 37.4109,
+    "longitude": 127.1292
+  },
+  {
+    "id": "hosp_0810",
+    "name": "주인종내과의원",
+    "addr_hint": "서울특별시 관악구",
+    "latitude": 37.4825,
+    "longitude": 126.9304
+  },
+  {
+    "id": "hosp_0811",
+    "name": "서전성모안과의원",
+    "addr_hint": "서울특별시 관악구",
+    "latitude": 37.4866,
+    "longitude": 126.9475
+  },
+  {
+    "id": "hosp_0812",
+    "name": "강남레옹치과의원",
+    "addr_hint": "서울특별시 서초구",
+    "latitude": 37.4995,
+    "longitude": 127.0263
+  },
+  {
+    "id": "hosp_0813",
+    "name": "서초성모이비인후과의원",
+    "addr_hint": "서울특별시 서초구",
+    "latitude": 37.4896,
+    "longitude": 127.0064
+  },
+  {
+    "id": "hosp_0814",
+    "name": "종로아산본정형외과의원",
+    "addr_hint": "서울특별시 종로구",
+    "latitude": 37.5707,
+    "longitude": 126.9913
+  },
+  {
+    "id": "hosp_0815",
+    "name": "분당센트럴요양병원",
+    "addr_hint": "경기도 성남시",
+    "latitude": 37.3918,
+    "longitude": 127.1262
+  },
+  {
+    "id": "hosp_0816",
+    "name": "감일성모내과의원",
+    "addr_hint": "경기도 하남시",
+    "latitude": 37.5098,
+    "longitude": 127.1613
+  },
+  {
+    "id": "hosp_0817",
+    "name": "광주시원한비뇨의학과의원",
+    "addr_hint": "경기도 광주시",
+    "latitude": 37.4095,
+    "longitude": 127.2602
+  },
+  {
+    "id": "hosp_0818",
+    "name": "안심서울마취통증의학과의원",
+    "addr_hint": "서울특별시 강남구",
+    "latitude": 37.521707,
+    "longitude": 127.032981
+  },
+  {
+    "id": "hosp_0819",
+    "name": "시원한신경과의원",
+    "addr_hint": "경상북도 포항시",
+    "latitude": 36.013,
+    "longitude": 129.3507
+  },
+  {
+    "id": "hosp_0820",
+    "name": "기장뉴욕치과의원",
+    "addr_hint": "부산광역시 기장군",
+    "latitude": 35.2429,
+    "longitude": 129.2153
+  },
+  {
+    "id": "hosp_0821",
+    "name": "박윤하비뇨기과의원",
+    "addr_hint": "부산광역시 연제구",
+    "latitude": 35.1867,
+    "longitude": 129.0821
+  },
+  {
+    "id": "hosp_0822",
+    "name": "수영청담비뇨의학과의원",
+    "addr_hint": "부산광역시 수영구",
+    "latitude": 35.1659,
+    "longitude": 129.1145
+  },
+  {
+    "id": "hosp_0823",
+    "name": "벗이비인후과의원",
+    "addr_hint": "인천광역시 계양구",
+    "latitude": 37.545,
+    "longitude": 126.7382
+  },
+  {
+    "id": "hosp_0824",
+    "name": "메가비뇨의학과의원",
+    "addr_hint": "인천광역시 남동구",
+    "latitude": 37.4014,
+    "longitude": 126.7247
+  },
+  {
+    "id": "hosp_0825",
+    "name": "부평내과의원",
+    "addr_hint": "인천광역시 부평구",
+    "latitude": 37.4921,
+    "longitude": 126.7226
+  },
+  {
+    "id": "hosp_0826",
+    "name": "더윈이비인후과의원",
+    "addr_hint": "광주광역시 남구",
+    "latitude": 35.1195,
+    "longitude": 126.8987
+  },
+  {
+    "id": "hosp_0827",
+    "name": "손치과의원",
+    "addr_hint": "전라남도 고흥군",
+    "latitude": 34.6082,
+    "longitude": 127.2812
+  },
+  {
+    "id": "hosp_0828",
+    "name": "새플란트치과의원",
+    "addr_hint": "서울특별시 중랑구",
+    "latitude": 37.5981,
+    "longitude": 127.0933
+  },
+  {
+    "id": "hosp_0829",
+    "name": "우리안신경외과의원",
+    "addr_hint": "경기도 안산시",
+    "latitude": 37.3015,
+    "longitude": 126.8623
+  },
+  {
+    "id": "hosp_0830",
+    "name": "봉담센트럴내과의원",
+    "addr_hint": "경기도 화성시",
+    "latitude": 37.2251,
+    "longitude": 126.9469
+  },
+  {
+    "id": "hosp_0831",
+    "name": "안종훈내과의원",
+    "addr_hint": "경기도 남양주시",
+    "latitude": 37.6519,
+    "longitude": 127.3083
+  },
+  {
+    "id": "hosp_0832",
+    "name": "리앤홍이비인후과",
+    "addr_hint": "경기도 성남시",
+    "latitude": 37.3655,
+    "longitude": 127.1072
+  },
+  {
+    "id": "hosp_0833",
+    "name": "서울더센트럴치과",
+    "addr_hint": "경기도 광주시",
+    "latitude": 37.3736,
+    "longitude": 127.2994
+  },
+  {
+    "id": "hosp_0834",
+    "name": "연세든든내과",
+    "addr_hint": "경기도 이천시",
+    "latitude": 37.2808,
+    "longitude": 127.4451
+  },
+  {
+    "id": "hosp_0835",
+    "name": "삼성정형외과의원",
+    "addr_hint": "경기도 화성시",
+    "latitude": 37.2222,
+    "longitude": 126.9519
+  },
+  {
+    "id": "hosp_0836",
+    "name": "우리베스트내과의원",
+    "addr_hint": "인천광역시 서구",
+    "latitude": 37.5264,
+    "longitude": 126.671
+  },
+  {
+    "id": "hosp_0837",
+    "name": "김포삼성굿비뇨기과의원",
+    "addr_hint": "경기도 김포시",
+    "latitude": 37.6196,
+    "longitude": 126.7197
+  },
+  {
+    "id": "hosp_0838",
+    "name": "부천메디홀스의원",
+    "addr_hint": "경기도 부천시",
+    "latitude": 37.483,
+    "longitude": 126.7678
+  },
+  {
+    "id": "hosp_0839",
+    "name": "한빛요양병원",
+    "addr_hint": "경상남도 진주시",
+    "latitude": 35.171,
+    "longitude": 128.1186
+  },
+  {
+    "id": "hosp_0840",
+    "name": "통영예일안과의원",
+    "addr_hint": "경상남도 통영시",
+    "latitude": 34.8517,
+    "longitude": 128.4285
+  },
+  {
+    "id": "hosp_0841",
+    "name": "최진화비뇨기과의원",
+    "addr_hint": "경상남도 통영시",
+    "latitude": 34.8416,
+    "longitude": 128.4192
+  },
+  {
+    "id": "hosp_0842",
+    "name": "센트럴안과의원",
+    "addr_hint": "대구광역시 동구",
+    "latitude": 35.8762,
+    "longitude": 128.6268
+  },
+  {
+    "id": "hosp_0843",
+    "name": "삼성가정의학과의원",
+    "addr_hint": "전북특별자치도 전주시",
+    "latitude": 35.7921,
+    "longitude": 127.1172
+  },
+  {
+    "id": "hosp_0844",
+    "name": "안덕의원",
+    "addr_hint": "제주특별자치도 서귀포시",
+    "latitude": 33.2466,
+    "longitude": 126.3343,
+    "region_note": "도서·벽지 위탁병원"
+  },
+  {
+    "id": "hosp_0845",
+    "name": "제천밝은안과의원",
+    "addr_hint": "충청북도 제천시",
+    "latitude": 37.147,
+    "longitude": 128.2146
+  },
+  {
+    "id": "hosp_0846",
+    "name": "서울아산비뇨의학과의원",
+    "addr_hint": "충청북도 청주시",
+    "latitude": 36.6208,
+    "longitude": 127.5154
+  },
+  {
+    "id": "hosp_0847",
+    "name": "콩앤팥내과의원",
+    "addr_hint": "경상남도 김해시",
+    "latitude": 35.1864,
+    "longitude": 128.7976
+  },
+  {
+    "id": "hosp_0848",
+    "name": "맑은이비인후과의원",
+    "addr_hint": "경상북도 영주시",
+    "latitude": 36.826,
+    "longitude": 128.6261
+  },
+  {
+    "id": "hosp_0849",
+    "name": "화이트e치과",
+    "addr_hint": "경상남도 창원시",
+    "latitude": 35.2338,
+    "longitude": 128.5795
+  },
+  {
+    "id": "hosp_0850",
+    "name": "새삼성내과의원",
+    "addr_hint": "경상남도 창원시",
+    "latitude": 35.2336,
+    "longitude": 128.5039
+  },
+  {
+    "id": "hosp_0851",
+    "name": "삼성드림이비인후과의원",
+    "addr_hint": "인천광역시 연수구",
+    "latitude": 37.3967,
+    "longitude": 126.6377
+  },
+  {
+    "id": "hosp_0852",
+    "name": "김판수이비인후과의원",
+    "addr_hint": "전라남도 영광군",
+    "latitude": 35.2751,
+    "longitude": 126.5103
+  },
+  {
+    "id": "hosp_0853",
+    "name": "한용재활의학과의원",
+    "addr_hint": "전라남도 나주시",
+    "latitude": 35.0337,
+    "longitude": 126.721
+  },
+  {
+    "id": "hosp_0854",
+    "name": "박플란트치과의원",
+    "addr_hint": "서울특별시 성동구",
+    "latitude": 37.5624,
+    "longitude": 127.0356
+  },
+  {
+    "id": "hosp_0855",
+    "name": "속초정요양병원",
+    "addr_hint": "강원특별자치도 속초시",
+    "latitude": 38.1899,
+    "longitude": 128.5879
+  },
+  {
+    "id": "hosp_0856",
+    "name": "홍앤권이비인후과의원",
+    "addr_hint": "강원특별자치도 원주시",
+    "latitude": 37.3494,
+    "longitude": 127.9506
+  },
+  {
+    "id": "hosp_0857",
+    "name": "강남내과의원",
+    "addr_hint": "강원특별자치도 춘천시",
+    "latitude": 37.8703,
+    "longitude": 127.725
+  },
+  {
+    "id": "hosp_0858",
+    "name": "서울삼성내과의원",
+    "addr_hint": "경기도 이천시",
+    "latitude": 37.2528,
+    "longitude": 127.3535
+  },
+  {
+    "id": "hosp_0859",
+    "name": "연세송내과",
+    "addr_hint": "경기도 파주시",
+    "latitude": 37.7572,
+    "longitude": 126.7739
+  },
+  {
+    "id": "hosp_0860",
+    "name": "김이비인후과",
+    "addr_hint": "경기도 동두천시",
+    "latitude": 37.892,
+    "longitude": 127.0538
+  },
+  {
+    "id": "hosp_0861",
+    "name": "아산재건정형외과",
+    "addr_hint": "경기도 양주시",
+    "latitude": 37.7949,
+    "longitude": 127.0794
+  },
+  {
+    "id": "hosp_0862",
+    "name": "태릉정원내과의원",
+    "addr_hint": "서울특별시 노원구",
+    "latitude": 37.6199,
+    "longitude": 127.0745
+  },
+  {
+    "id": "hosp_0863",
+    "name": "월곡순정형외과의원",
+    "addr_hint": "서울특별시 성북구",
+    "latitude": 37.6029,
+    "longitude": 127.0421
+  },
+  {
+    "id": "hosp_0864",
+    "name": "햇살요양병원",
+    "addr_hint": "서울특별시 동대문구",
+    "latitude": 37.574,
+    "longitude": 127.0722
+  },
+  {
+    "id": "hosp_0865",
+    "name": "흑석메트로정형외과의원",
+    "addr_hint": "서울특별시 동작구",
+    "latitude": 37.5081,
+    "longitude": 126.9614
+  },
+  {
+    "id": "hosp_0866",
+    "name": "세화정형외과의원",
+    "addr_hint": "제주특별자치도 제주시",
+    "latitude": 33.5233,
+    "longitude": 126.8557,
+    "region_note": "도서·벽지 위탁병원"
+  },
+  {
+    "id": "hosp_0867",
+    "name": "센트럴치과의원",
+    "addr_hint": "제주특별자치도 제주시",
+    "latitude": 33.5126,
+    "longitude": 126.5249,
+    "region_note": "도서·벽지 위탁병원"
+  },
+  {
+    "id": "hosp_0868",
+    "name": "하나가정의학과의원",
+    "addr_hint": "울산광역시 울주군",
+    "latitude": 35.4955,
+    "longitude": 129.2369
+  },
+  {
+    "id": "hosp_0869",
+    "name": "굿모닝빛안과의원",
+    "addr_hint": "울산광역시 남구",
+    "latitude": 35.5388,
+    "longitude": 129.3363
+  },
+  {
+    "id": "hosp_0870",
+    "name": "글로벌비전안과의원",
+    "addr_hint": "인천광역시 부평구",
+    "latitude": 37.491,
+    "longitude": 126.7207
+  },
+  {
+    "id": "hosp_0871",
+    "name": "경기웰니스요양병원",
+    "addr_hint": "경기도 양주시",
+    "latitude": 37.8225,
+    "longitude": 127.0467
+  },
+  {
+    "id": "hosp_0872",
+    "name": "정발산튼튼척의원",
+    "addr_hint": "경기도 고양시",
+    "latitude": 37.6567,
+    "longitude": 126.7732
+  },
+  {
+    "id": "hosp_0873",
+    "name": "효사랑가족요양병원",
+    "addr_hint": "전북특별자치도 전주시",
+    "latitude": 35.8067,
+    "longitude": 127.1189
+  },
+  {
+    "id": "hosp_0874",
+    "name": "당진효자정형외과의원",
+    "addr_hint": "충청남도 당진시",
+    "latitude": 36.8944,
+    "longitude": 126.631
+  },
+  {
+    "id": "hosp_0875",
+    "name": "신세계의원",
+    "addr_hint": "경상북도 영덕군",
+    "latitude": 36.356,
+    "longitude": 129.3804
+  },
+  {
+    "id": "hosp_0876",
+    "name": "김내과의원",
+    "addr_hint": "경상남도 밀양시",
+    "latitude": 35.4975,
+    "longitude": 128.7461
+  },
+  {
+    "id": "hosp_0877",
+    "name": "맨스톤비뇨의학과의원",
+    "addr_hint": "서울특별시 용산구",
+    "latitude": 37.5272,
+    "longitude": 126.9653
+  },
+  {
+    "id": "hosp_0878",
+    "name": "충무로정형외과의원",
+    "addr_hint": "서울특별시 중구",
+    "latitude": 37.5624,
+    "longitude": 126.9917
+  },
+  {
+    "id": "hosp_0879",
+    "name": "김외과의원",
+    "addr_hint": "경기도 가평군",
+    "latitude": 37.8183,
+    "longitude": 127.3482
+  },
+  {
+    "id": "hosp_0880",
+    "name": "서울현대요양병원",
+    "addr_hint": "서울특별시 강동구",
+    "latitude": 37.5422,
+    "longitude": 127.1254
+  },
+  {
+    "id": "hosp_0881",
+    "name": "금호바른정형외과의원",
+    "addr_hint": "서울특별시 성동구",
+    "latitude": 37.5538,
+    "longitude": 127.0193
+  },
+  {
+    "id": "hosp_0882",
+    "name": "서울으뜸내과의원",
+    "addr_hint": "서울특별시 성동구",
+    "latitude": 37.5627,
+    "longitude": 127.0325
+  },
+  {
+    "id": "hosp_0883",
+    "name": "클리어안과의원",
+    "addr_hint": "경기도 평택시",
+    "latitude": 37.0172,
+    "longitude": 127.094
+  },
+  {
+    "id": "hosp_0884",
+    "name": "상록탑정형외과의원",
+    "addr_hint": "경기도 안산시",
+    "latitude": 37.3014,
+    "longitude": 126.8655
+  },
+  {
+    "id": "hosp_0885",
+    "name": "연세요양병원",
+    "addr_hint": "강원특별자치도 원주시",
+    "latitude": 37.3398,
+    "longitude": 127.9519
+  },
+  {
+    "id": "hosp_0886",
+    "name": "조도연정형외과의원",
+    "addr_hint": "강원특별자치도 춘천시",
+    "latitude": 37.863005,
+    "longitude": 127.719667
+  },
+  {
+    "id": "hosp_0887",
+    "name": "옥천김안과의원",
+    "addr_hint": "충청북도 옥천군",
+    "latitude": 36.2991,
+    "longitude": 127.5664
+  },
+  {
+    "id": "hosp_0888",
+    "name": "무주안과의원",
+    "addr_hint": "전북특별자치도 무주군",
+    "latitude": 36.0047,
+    "longitude": 127.6644
+  },
+  {
+    "id": "hosp_0889",
+    "name": "김제속편한내과의원",
+    "addr_hint": "전북특별자치도 김제시",
+    "latitude": 35.8009,
+    "longitude": 126.8855
+  },
+  {
+    "id": "hosp_0890",
+    "name": "서울치과의원",
+    "addr_hint": "충청북도 진천군",
+    "latitude": 36.8574,
+    "longitude": 127.445
+  },
+  {
+    "id": "hosp_0891",
+    "name": "수정안과의원",
+    "addr_hint": "부산광역시 북구",
+    "latitude": 35.2105,
+    "longitude": 129.0059
+  },
+  {
+    "id": "hosp_0892",
+    "name": "경북연합외과의원",
+    "addr_hint": "대구광역시 수성구",
+    "latitude": 35.8472,
+    "longitude": 128.6163
+  },
+  {
+    "id": "hosp_0893",
+    "name": "베스트안과의원",
+    "addr_hint": "대구광역시 남구",
+    "latitude": 35.8349,
+    "longitude": 128.5562
+  },
+  {
+    "id": "hosp_0894",
+    "name": "유앤탑플란트치과의원",
+    "addr_hint": "경상북도 상주시",
+    "latitude": 36.4229,
+    "longitude": 128.1546
+  },
+  {
+    "id": "hosp_0895",
+    "name": "성은효요양병원",
+    "addr_hint": "경상남도 거창군",
+    "latitude": 35.6865,
+    "longitude": 127.916
+  },
+  {
+    "id": "hosp_0896",
+    "name": "영대프라임연합의원",
+    "addr_hint": "경상남도 거창군",
+    "latitude": 35.6878,
+    "longitude": 127.9153
+  },
+  {
+    "id": "hosp_0897",
+    "name": "굿뉴스요양병원",
+    "addr_hint": "경상남도 거제시",
+    "latitude": 34.8577,
+    "longitude": 128.5839
+  },
+  {
+    "id": "hosp_0898",
+    "name": "센텀오딧세이치과의원",
+    "addr_hint": "부산광역시 해운대구",
+    "latitude": 35.1702,
+    "longitude": 129.1377
+  },
+  {
+    "id": "hosp_0899",
+    "name": "수비뇨기과의원",
+    "addr_hint": "경상남도 창녕군",
+    "latitude": 35.5424,
+    "longitude": 128.4938
+  },
+  {
+    "id": "hosp_0900",
+    "name": "이루미치과의원",
+    "addr_hint": "부산광역시 진구",
+    "latitude": 35.1579,
+    "longitude": 129.0603
+  },
+  {
+    "id": "hosp_0901",
+    "name": "경주성모안과의원",
+    "addr_hint": "경상북도 경주시",
+    "latitude": 35.8467,
+    "longitude": 129.217
+  },
+  {
+    "id": "hosp_0902",
+    "name": "대구광역시시지노인전문병원",
+    "addr_hint": "대구광역시 수성구",
+    "latitude": 35.8291,
+    "longitude": 128.7104
+  },
+  {
+    "id": "hosp_0903",
+    "name": "수요양병원",
+    "addr_hint": "전라남도 광양시",
+    "latitude": 34.9686,
+    "longitude": 127.5624
+  },
+  {
+    "id": "hosp_0904",
+    "name": "문치과의원",
+    "addr_hint": "전라남도 여수시",
+    "latitude": 34.7603,
+    "longitude": 127.6567
+  },
+  {
+    "id": "hosp_0905",
+    "name": "보배치과의원",
+    "addr_hint": "전라남도 곡성군",
+    "latitude": 35.2804,
+    "longitude": 127.294
+  },
+  {
+    "id": "hosp_0906",
+    "name": "서울가정의학과의원",
+    "addr_hint": "전북특별자치도 남원시",
+    "latitude": 35.4617,
+    "longitude": 127.6037
+  },
+  {
+    "id": "hosp_0907",
+    "name": "서울바른훈치과의원",
+    "addr_hint": "서울특별시 은평구",
+    "latitude": 37.6191,
+    "longitude": 126.9203
+  },
+  {
+    "id": "hosp_0908",
+    "name": "(의)열린의료재단해운대열린의원",
+    "addr_hint": "부산광역시 해운대구",
+    "latitude": 35.1578,
+    "longitude": 129.1476
+  },
+  {
+    "id": "hosp_0909",
+    "name": "씨에프정훈비뇨기과의원",
+    "addr_hint": "부산광역시 금정구",
+    "latitude": 35.2266,
+    "longitude": 129.0921
+  },
+  {
+    "id": "hosp_0910",
+    "name": "삼성튼튼마취통증의학과의원",
+    "addr_hint": "충청남도 예산군",
+    "latitude": 36.6795,
+    "longitude": 126.8469
+  },
+  {
+    "id": "hosp_0911",
+    "name": "예천정형외과의원",
+    "addr_hint": "경상북도 예천군",
+    "latitude": 36.6558,
+    "longitude": 128.4533
+  },
+  {
+    "id": "hosp_0912",
+    "name": "후이비인후과의원",
+    "addr_hint": "대구광역시 중구",
+    "latitude": 35.8652,
+    "longitude": 128.5977
+  },
+  {
+    "id": "hosp_0913",
+    "name": "서울프라임치과의원",
+    "addr_hint": "경상북도 안동시",
+    "latitude": 36.5635,
+    "longitude": 128.7021
+  },
+  {
+    "id": "hosp_0914",
+    "name": "서울오치과의원",
+    "addr_hint": "충청남도 부여군",
+    "latitude": 36.2805,
+    "longitude": 126.9113
+  },
+  {
+    "id": "hosp_0915",
+    "name": "하나플란트치과의원",
+    "addr_hint": "충청남도 보령시",
+    "latitude": 36.3487,
+    "longitude": 126.5935
+  },
+  {
+    "id": "hosp_0916",
+    "name": "굿플랜치과의원",
+    "addr_hint": "전라남도 보성군",
+    "latitude": 34.8427,
+    "longitude": 127.3462
+  },
+  {
+    "id": "hosp_0917",
+    "name": "남악치과의원",
+    "addr_hint": "전라남도 무안군",
+    "latitude": 34.8125,
+    "longitude": 126.4599
+  },
+  {
+    "id": "hosp_0918",
+    "name": "융구강악안면외과치과의원",
+    "addr_hint": "전북특별자치도 전주시",
+    "latitude": 35.8079,
+    "longitude": 127.1321
+  },
+  {
+    "id": "hosp_0919",
+    "name": "더퍼스트치과의원 음성점",
+    "addr_hint": "충청북도 음성군",
+    "latitude": 36.9092,
+    "longitude": 127.5418
+  },
+  {
+    "id": "hosp_0920",
+    "name": "도담외과의원",
+    "addr_hint": "부산광역시 진구",
+    "latitude": 35.1599,
+    "longitude": 129.0577
+  },
+  {
+    "id": "hosp_0921",
+    "name": "성모이비인후과의원",
+    "addr_hint": "울산광역시 울주군",
+    "latitude": 35.5736,
+    "longitude": 129.2414
+  },
+  {
+    "id": "hosp_0922",
+    "name": "고창노인요양병원",
+    "addr_hint": "전북특별자치도 고창군",
+    "latitude": 35.4372,
+    "longitude": 126.6913
+  },
+  {
+    "id": "hosp_0923",
+    "name": "서울보다치과의원",
+    "addr_hint": "전북특별자치도 정읍시",
+    "latitude": 35.5712,
+    "longitude": 126.8471
+  },
+  {
+    "id": "hosp_0924",
+    "name": "안심리더스요양병원",
+    "addr_hint": "대구광역시 동구",
+    "latitude": 35.8732,
+    "longitude": 128.7022
+  },
+  {
+    "id": "hosp_0925",
+    "name": "금정나라요양병원",
+    "addr_hint": "부산광역시 금정구",
+    "latitude": 35.244,
+    "longitude": 129.0937
+  },
+  {
+    "id": "hosp_0926",
+    "name": "부산노인전문제4병원",
+    "addr_hint": "부산광역시 사하구",
+    "latitude": 35.1024,
+    "longitude": 128.9631
+  },
+  {
+    "id": "hosp_0927",
+    "name": "네이처비뇨의학과의원(은평)",
+    "addr_hint": "서울특별시 은평구",
+    "latitude": 37.6191,
+    "longitude": 126.9203
+  },
+  {
+    "id": "hosp_0928",
+    "name": "더서밋요양병원",
+    "addr_hint": "서울특별시 강서구",
+    "latitude": 37.5497,
+    "longitude": 126.8756
+  },
+  {
+    "id": "hosp_0929",
+    "name": "서강박치과의원",
+    "addr_hint": "서울특별시 마포구",
+    "latitude": 37.5456,
+    "longitude": 126.9328
+  },
+  {
+    "id": "hosp_0930",
+    "name": "삼성안과의원",
+    "addr_hint": "서울특별시 송파구",
+    "latitude": 37.5114,
+    "longitude": 127.0832
+  },
+  {
+    "id": "hosp_0931",
+    "name": "한국효요양병원",
+    "addr_hint": "서울특별시 은평구",
+    "latitude": 37.601,
+    "longitude": 126.9267
+  },
+  {
+    "id": "hosp_0932",
+    "name": "천호이지함피부과의원",
+    "addr_hint": "서울특별시 강동구",
+    "latitude": 37.538,
+    "longitude": 127.1238
+  },
+  {
+    "id": "hosp_0933",
+    "name": "코넬비뇨기과의원",
+    "addr_hint": "서울특별시 마포구",
+    "latitude": 37.5445,
+    "longitude": 126.9527
+  },
+  {
+    "id": "hosp_0934",
+    "name": "강승훈치과의원",
+    "addr_hint": "서울특별시 양천구",
+    "latitude": 37.5187,
+    "longitude": 126.8532
+  },
+  {
+    "id": "hosp_0935",
+    "name": "눈사랑안과의원",
+    "addr_hint": "경기도 의왕시",
+    "latitude": 37.3207,
+    "longitude": 126.9509
+  },
+  {
+    "id": "hosp_0936",
+    "name": "더채움치과의원",
+    "addr_hint": "경기도 수원시",
+    "latitude": 37.3016,
+    "longitude": 127.0097
+  },
+  {
+    "id": "hosp_0937",
+    "name": "공룡치과의원",
+    "addr_hint": "경기도 오산시",
+    "latitude": 37.149,
+    "longitude": 127.076
+  },
+  {
+    "id": "hosp_0938",
+    "name": "미라클요양병원",
+    "addr_hint": "경기도 군포시",
+    "latitude": 37.3364,
+    "longitude": 126.9351
+  },
+  {
+    "id": "hosp_0939",
+    "name": "수원요양병원",
+    "addr_hint": "경기도 수원시",
+    "latitude": 37.2613,
+    "longitude": 127.0651
+  },
+  {
+    "id": "hosp_0940",
+    "name": "더와이즈헬스케어의원",
+    "addr_hint": "경기도 광주시",
+    "latitude": 37.4114,
+    "longitude": 127.258
+  },
+  {
+    "id": "hosp_0941",
+    "name": "서울이비인후과의원",
+    "addr_hint": "경기도 여주시",
+    "latitude": 37.2971,
+    "longitude": 127.6359
+  },
+  {
+    "id": "hosp_0942",
+    "name": "퍼스트치과의원",
+    "addr_hint": "경기도 하남시",
+    "latitude": 37.5633,
+    "longitude": 127.1919
+  },
+  {
+    "id": "hosp_0943",
+    "name": "미사연세이비인후과의원",
+    "addr_hint": "경기도 하남시",
+    "latitude": 37.5615,
+    "longitude": 127.193
+  },
+  {
+    "id": "hosp_0944",
+    "name": "동해요양병원",
+    "addr_hint": "강원특별자치도 동해시",
+    "latitude": 37.5203,
+    "longitude": 129.1157
+  },
+  {
+    "id": "hosp_0945",
+    "name": "대전동부요양병원",
+    "addr_hint": "대전광역시 동구",
+    "latitude": 36.3272,
+    "longitude": 127.467
+  },
+  {
+    "id": "hosp_0946",
+    "name": "백세요양병원",
+    "addr_hint": "대전광역시 동구",
+    "latitude": 36.3238,
+    "longitude": 127.4283
+  },
+  {
+    "id": "hosp_0947",
+    "name": "감인요양병원",
+    "addr_hint": "충청남도 당진시",
+    "latitude": 36.8846,
+    "longitude": 126.6315
+  },
+  {
+    "id": "hosp_0948",
+    "name": "천사요양병원",
+    "addr_hint": "광주광역시 북구",
+    "latitude": 35.1743,
+    "longitude": 126.8835
+  },
+  {
+    "id": "hosp_0949",
+    "name": "고운빛안과의원",
+    "addr_hint": "광주광역시 북구",
+    "latitude": 35.1735,
+    "longitude": 126.9253
+  },
+  {
+    "id": "hosp_0950",
+    "name": "탑팀재활의학과의원",
+    "addr_hint": "광주광역시 북구",
+    "latitude": 35.2036,
+    "longitude": 126.8662
+  },
+  {
+    "id": "hosp_0951",
+    "name": "장정환외과의원",
+    "addr_hint": "광주광역시 광산구",
+    "latitude": 35.2203,
+    "longitude": 126.8448
+  },
+  {
+    "id": "hosp_0952",
+    "name": "강진치과의원",
+    "addr_hint": "전라남도 강진군",
+    "latitude": 34.6386,
+    "longitude": 126.7704
+  },
+  {
+    "id": "hosp_0953",
+    "name": "조광섭치과의원",
+    "addr_hint": "전라남도 영광군",
+    "latitude": 35.2759,
+    "longitude": 126.5015
+  },
+  {
+    "id": "hosp_0954",
+    "name": "나주효사랑요양병원",
+    "addr_hint": "전라남도 나주시",
+    "latitude": 35.0359,
+    "longitude": 126.7715
+  },
+  {
+    "id": "hosp_0955",
+    "name": "신안군공립요양병원",
+    "addr_hint": "전라남도 신안군",
+    "latitude": 34.8531,
+    "longitude": 126.3138
+  },
+  {
+    "id": "hosp_0956",
+    "name": "청담요양병원",
+    "addr_hint": "인천광역시 서구",
+    "latitude": 37.4831,
+    "longitude": 126.6845
+  },
+  {
+    "id": "hosp_0957",
+    "name": "김포서울대효요양병원",
+    "addr_hint": "경기도 김포시",
+    "latitude": 37.6029,
+    "longitude": 126.7689
+  },
+  {
+    "id": "hosp_0958",
+    "name": "팔팔요양병원",
+    "addr_hint": "서울특별시 도봉구",
+    "latitude": 37.6709,
+    "longitude": 127.0435
+  },
+  {
+    "id": "hosp_0959",
+    "name": "탑정형외과의원",
+    "addr_hint": "부산광역시 사하구",
+    "latitude": 35.0995,
+    "longitude": 128.9937
+  },
+  {
+    "id": "hosp_0960",
+    "name": "청하요양병원",
+    "addr_hint": "경상북도 영주시",
+    "latitude": 36.835,
+    "longitude": 128.6091
+  },
+  {
+    "id": "hosp_0961",
+    "name": "달동길메리요양병원",
+    "addr_hint": "울산광역시 남구",
+    "latitude": 35.5402,
+    "longitude": 129.3217
+  },
+  {
+    "id": "hosp_0962",
+    "name": "천안요양병원",
+    "addr_hint": "충청남도 천안시",
+    "latitude": 36.791,
+    "longitude": 127.164
+  },
+  {
+    "id": "hosp_0963",
+    "name": "우리안과의원",
+    "addr_hint": "충청남도 공주시",
+    "latitude": 36.4592,
+    "longitude": 127.1247
+  },
+  {
+    "id": "hosp_0964",
+    "name": "서울봄빛안과의원",
+    "addr_hint": "세종특별자치시",
+    "latitude": 36.4878,
+    "longitude": 127.2568
+  },
+  {
+    "id": "hosp_0965",
+    "name": "천안김안과천안역본점의원",
+    "addr_hint": "충청남도 천안시",
+    "latitude": 36.8066,
+    "longitude": 127.1526
+  },
+  {
+    "id": "hosp_0966",
+    "name": "천안리더스신경외과의원",
+    "addr_hint": "충청남도 천안시",
+    "latitude": 36.8119,
+    "longitude": 127.1069
+  },
+  {
+    "id": "hosp_0967",
+    "name": "새찬요양병원",
+    "addr_hint": "경기도 고양시",
+    "latitude": 37.6216,
+    "longitude": 126.8185
+  },
+  {
+    "id": "hosp_0968",
+    "name": "양평루트치과의원",
+    "addr_hint": "경기도 양평군",
+    "latitude": 37.4897,
+    "longitude": 127.4901
+  },
+  {
+    "id": "hosp_0969",
+    "name": "연세민내과의원",
+    "addr_hint": "강원특별자치도 원주시",
+    "latitude": 37.3489,
+    "longitude": 127.9517
+  },
+  {
+    "id": "hosp_0970",
+    "name": "원주치과의원",
+    "addr_hint": "강원특별자치도 원주시",
+    "latitude": 37.3473,
+    "longitude": 127.9283
+  },
+  {
+    "id": "hosp_0971",
+    "name": "서울원치과의원",
+    "addr_hint": "강원특별자치도 양양군",
+    "latitude": 38.078,
+    "longitude": 128.6266
+  },
+  {
+    "id": "hosp_0972",
+    "name": "이연수내과의원",
+    "addr_hint": "강원특별자치도 동해시",
+    "latitude": 37.5211,
+    "longitude": 129.1143
+  },
+  {
+    "id": "hosp_0973",
+    "name": "이이비인후과의원",
+    "addr_hint": "강원특별자치도 동해시",
+    "latitude": 37.4863,
+    "longitude": 129.1089
+  },
+  {
+    "id": "hosp_0974",
+    "name": "논현새로운내과의원",
+    "addr_hint": "인천광역시 남동구",
+    "latitude": 37.399,
+    "longitude": 126.7253
+  },
+  {
+    "id": "hosp_0975",
+    "name": "삼성성심의원",
+    "addr_hint": "인천광역시 남동구",
+    "latitude": 37.4643,
+    "longitude": 126.7039
+  },
+  {
+    "id": "hosp_0976",
+    "name": "인천퍼스트안과",
+    "addr_hint": "인천광역시 서구",
+    "latitude": 37.5944,
+    "longitude": 126.7171
+  },
+  {
+    "id": "hosp_0977",
+    "name": "일등치과의원",
+    "addr_hint": "인천광역시 계양구",
+    "latitude": 37.5398,
+    "longitude": 126.735
+  },
+  {
+    "id": "hosp_0978",
+    "name": "주안속튼튼내과의원",
+    "addr_hint": "인천광역시 미추홀구",
+    "latitude": 37.4672,
+    "longitude": 126.679
+  },
+  {
+    "id": "hosp_0979",
+    "name": "경희궁삼성마취통증의학과의원",
+    "addr_hint": "서울특별시 서대문구",
+    "latitude": 37.5664,
+    "longitude": 126.9655
+  },
+  {
+    "id": "hosp_0980",
+    "name": "목동서울청내과의원",
+    "addr_hint": "서울특별시 양천구",
+    "latitude": 37.5268,
+    "longitude": 126.8639
+  },
+  {
+    "id": "hosp_0981",
+    "name": "데오플란트치과의원",
+    "addr_hint": "서울특별시 관악구",
+    "latitude": 37.484,
+    "longitude": 126.9031
+  },
+  {
+    "id": "hosp_0982",
+    "name": "메가비뇨의학과의원(이수)",
+    "addr_hint": "서울특별시 서초구",
+    "latitude": 37.4851,
+    "longitude": 126.9827
+  },
+  {
+    "id": "hosp_0983",
+    "name": "백세튼튼정형외과의원",
+    "addr_hint": "서울특별시 관악구",
+    "latitude": 37.4714,
+    "longitude": 126.9336
+  },
+  {
+    "id": "hosp_0984",
+    "name": "서울나무치과의원",
+    "addr_hint": "서울특별시 강남구",
+    "latitude": 37.5039,
+    "longitude": 127.0501
+  },
+  {
+    "id": "hosp_0985",
+    "name": "서초프라임요양병원",
+    "addr_hint": "서울특별시 서초구",
+    "latitude": 37.4767,
+    "longitude": 126.984
+  },
+  {
+    "id": "hosp_0986",
+    "name": "달라스치과의원",
+    "addr_hint": "서울특별시 노원구",
+    "latitude": 37.6504,
+    "longitude": 127.0613
+  },
+  {
+    "id": "hosp_0987",
+    "name": "사과나무치과의원",
+    "addr_hint": "서울특별시 종로구",
+    "latitude": 37.5725,
+    "longitude": 127.0153
+  },
+  {
+    "id": "hosp_0988",
+    "name": "아프로치과의원",
+    "addr_hint": "서울특별시 도봉구",
+    "latitude": 37.6578,
+    "longitude": 127.0465
+  },
+  {
+    "id": "hosp_0989",
+    "name": "양지요양병원",
+    "addr_hint": "경기도 이천시",
+    "latitude": 37.1873,
+    "longitude": 127.3779
+  },
+  {
+    "id": "hosp_0990",
+    "name": "조안과의원",
+    "addr_hint": "경기도 이천시",
+    "latitude": 37.2784,
+    "longitude": 127.4472
+  },
+  {
+    "id": "hosp_0991",
+    "name": "새한정형외과의원",
+    "addr_hint": "충청북도 음성군",
+    "latitude": 37.1191,
+    "longitude": 127.6363
+  },
+  {
+    "id": "hosp_0992",
+    "name": "최선정형외과의원",
+    "addr_hint": "전라남도 나주시",
+    "latitude": 35.016,
+    "longitude": 126.784
+  },
+  {
+    "id": "hosp_0993",
+    "name": "다솜의원",
+    "addr_hint": "경상북도 포항시",
+    "latitude": 36.0369,
+    "longitude": 129.3591
+  },
+  {
+    "id": "hosp_0994",
+    "name": "강민연합치과의원",
+    "addr_hint": "경상북도 구미시",
+    "latitude": 36.1232,
+    "longitude": 128.3623
+  },
+  {
+    "id": "hosp_0995",
+    "name": "솔트의료재단 예성요양병원",
+    "addr_hint": "충청북도 제천시",
+    "latitude": 37.1547,
+    "longitude": 128.2176
+  },
+  {
+    "id": "hosp_0996",
+    "name": "이재호내과의원",
+    "addr_hint": "경상남도 양산시",
+    "latitude": 35.4148,
+    "longitude": 129.1714
+  },
+  {
+    "id": "hosp_0997",
+    "name": "허균흉부외과의원",
+    "addr_hint": "경기도 부천시",
+    "latitude": 37.5044,
+    "longitude": 126.7685
+  },
+  {
+    "id": "hosp_0998",
+    "name": "동김해내과의원",
+    "addr_hint": "경상남도 김해시",
+    "latitude": 35.2431,
+    "longitude": 128.9037
+  },
+  {
+    "id": "hosp_0999",
+    "name": "연세제일안과의원",
+    "addr_hint": "제주특별자치도 제주시",
+    "latitude": 33.4915,
+    "longitude": 126.5374,
+    "region_note": "도서·벽지 위탁병원"
+  },
+  {
+    "id": "hosp_1000",
+    "name": "밝은힐링안과의원",
+    "addr_hint": "경상남도 창원시",
+    "latitude": 35.1519,
+    "longitude": 128.6659
+  },
+  {
+    "id": "hosp_1001",
+    "name": "송치과의원",
+    "addr_hint": "경상북도 영덕군",
+    "latitude": 36.410798,
+    "longitude": 129.369208
+  },
+  {
+    "id": "hosp_1002",
+    "name": "경일신경과내과의원",
+    "addr_hint": "대구광역시 달서구",
+    "latitude": 35.859437,
+    "longitude": 128.563433
+  },
+  {
+    "id": "hosp_1003",
+    "name": "다솜연합치과의원",
+    "addr_hint": "충청북도 충주시",
+    "latitude": 36.9813,
+    "longitude": 127.915781
+  },
+  {
+    "id": "hosp_1004",
+    "name": "더청담마취통증의학과의원",
+    "addr_hint": "경기도 평택시",
+    "latitude": 36.996732,
+    "longitude": 127.087253
+  },
+  {
+    "id": "hosp_1005",
+    "name": "아산탑내과의원",
+    "addr_hint": "경기도 수원시",
+    "latitude": 37.275159,
+    "longitude": 126.974895
+  },
+  {
+    "id": "hosp_1006",
+    "name": "밝음나눔안과의원(안양)",
+    "addr_hint": "경기도 안양시",
+    "latitude": 37.399258,
+    "longitude": 126.920561
+  },
+  {
+    "id": "hosp_1007",
+    "name": "연세조안과의원",
+    "addr_hint": "강원특별자치도 춘천시",
+    "latitude": 37.878984,
+    "longitude": 127.729021
+  },
+  {
+    "id": "hosp_1008",
+    "name": "춘천요양병원",
+    "addr_hint": "강원특별자치도 춘천시",
+    "latitude": 37.898163,
+    "longitude": 127.764313
+  },
+  {
+    "id": "hosp_1009",
+    "name": "서울튼튼재활의학과의원",
+    "addr_hint": "충청북도 증평군",
+    "latitude": 36.7827,
+    "longitude": 127.58
+  },
+  {
+    "id": "hosp_1010",
+    "name": "인플란트치과의원",
+    "addr_hint": "경상남도 김해시",
+    "latitude": 35.2251,
+    "longitude": 128.8833
+  },
+  {
+    "id": "hosp_1011",
+    "name": "서울에스원치과의원",
+    "addr_hint": "경상남도 양산시",
+    "latitude": 35.3373,
+    "longitude": 129.0282
+  },
+  {
+    "id": "hosp_1012",
+    "name": "서면좋은사람안과의원",
+    "addr_hint": "부산광역시 진구",
+    "latitude": 35.1588,
+    "longitude": 129.0576
+  },
+  {
+    "id": "hosp_1013",
+    "name": "제주복지요양병원",
+    "addr_hint": "제주특별자치도 제주시",
+    "latitude": 33.5052,
+    "longitude": 126.5383,
+    "region_note": "도서·벽지 위탁병원"
+  },
+  {
+    "id": "hosp_1014",
+    "name": "인생플란트치과의원",
+    "addr_hint": "경기도 성남시",
+    "latitude": 37.4394,
+    "longitude": 127.1282
+  },
+  {
+    "id": "hosp_1015",
+    "name": "연세척마취통증의학과의원",
+    "addr_hint": "경기도 용인시",
+    "latitude": 37.3207,
+    "longitude": 127.1129
+  },
+  {
+    "id": "hosp_1016",
+    "name": "용인서울안과의원",
+    "addr_hint": "경기도 용인시",
+    "latitude": 37.235,
+    "longitude": 127.206
+  },
+  {
+    "id": "hosp_1017",
+    "name": "신동미소치과의원",
+    "addr_hint": "경기도 가평군",
+    "latitude": 37.8176,
+    "longitude": 127.3494
+  },
+  {
+    "id": "hosp_1018",
+    "name": "신석균사랑내과의원",
+    "addr_hint": "경기도 고양시",
+    "latitude": 37.6521,
+    "longitude": 126.7767
+  },
+  {
+    "id": "hosp_1019",
+    "name": "본치과의원",
+    "addr_hint": "전라남도 순천시",
+    "latitude": 34.9562,
+    "longitude": 127.4918
+  },
+  {
+    "id": "hosp_1020",
+    "name": "우리치과의원",
+    "addr_hint": "전라남도 목포시",
+    "latitude": 34.8178,
+    "longitude": 126.3933
+  },
+  {
+    "id": "hosp_1021",
+    "name": "엘병원",
+    "addr_hint": "경기도 남양주시",
+    "latitude": 37.6487,
+    "longitude": 127.1411
+  },
+  {
+    "id": "hosp_1022",
+    "name": "서울웰이비인후과의원(삼성점)",
+    "addr_hint": "서울특별시 강남구",
+    "latitude": 37.5149,
+    "longitude": 127.0604
+  },
+  {
+    "id": "hosp_1023",
+    "name": "허리편한병원",
+    "addr_hint": "경기도 안성시",
+    "latitude": 36.9944,
+    "longitude": 127.1423
+  },
+  {
+    "id": "hosp_1024",
+    "name": "무안베스트통증의학과의원",
+    "addr_hint": "전라남도 무안군",
+    "latitude": 34.9868,
+    "longitude": 126.4736
+  },
+  {
+    "id": "hosp_1025",
+    "name": "건강한한림연합내과의원",
+    "addr_hint": "제주특별자치도 제주시",
+    "latitude": 33.4087,
+    "longitude": 126.2668,
+    "region_note": "도서·벽지 위탁병원"
+  },
+  {
+    "id": "hosp_1026",
+    "name": "고려대련요양병원",
+    "addr_hint": "경상북도 포항시",
+    "latitude": 36.046,
+    "longitude": 129.331
+  },
+  {
+    "id": "hosp_1027",
+    "name": "일산복음병원",
+    "addr_hint": "경기도 고양시",
+    "latitude": 37.6819,
+    "longitude": 126.78
+  },
+  {
+    "id": "hosp_1028",
+    "name": "최형기성공의원",
+    "addr_hint": "서울특별시 강남구",
+    "latitude": 37.5148,
+    "longitude": 127.0594
+  },
+  {
+    "id": "hosp_1029",
+    "name": "우리성모안과의원",
+    "addr_hint": "충청남도 논산시",
+    "latitude": 36.2054,
+    "longitude": 127.0853
+  },
+  {
+    "id": "hosp_1030",
+    "name": "일점영안과의원",
+    "addr_hint": "대전광역시 중구",
+    "latitude": 36.3196,
+    "longitude": 127.4165
+  },
+  {
+    "id": "hosp_1031",
+    "name": "한치과의원",
+    "addr_hint": "대전광역시 동구",
+    "latitude": 36.2819,
+    "longitude": 127.467
+  },
+  {
+    "id": "hosp_1032",
+    "name": "삼성플란트치과의원",
+    "addr_hint": "경상남도 창녕군",
+    "latitude": 35.54,
+    "longitude": 128.4929
+  },
+  {
+    "id": "hosp_1033",
+    "name": "혜성의원",
+    "addr_hint": "경상남도 의령군",
+    "latitude": 35.3189,
+    "longitude": 128.2638
+  },
+  {
+    "id": "hosp_1034",
+    "name": "박안과의원",
+    "addr_hint": "전라남도 광양시",
+    "latitude": 34.936,
+    "longitude": 127.6977
+  },
+  {
+    "id": "hosp_1035",
+    "name": "삼성치과의원",
+    "addr_hint": "전라남도 구례군",
+    "latitude": 35.2088,
+    "longitude": 127.4667
+  },
+  {
+    "id": "hosp_1036",
+    "name": "연세미치과의원",
+    "addr_hint": "경상남도 함안군",
+    "latitude": 35.2787,
+    "longitude": 128.4096
+  },
+  {
+    "id": "hosp_1037",
+    "name": "조은이비인후과",
+    "addr_hint": "경상남도 창원시",
+    "latitude": 35.1531,
+    "longitude": 128.7062
+  },
+  {
+    "id": "hosp_1038",
+    "name": "밝은김안과의원",
+    "addr_hint": "경상남도 양산시",
+    "latitude": 35.3419,
+    "longitude": 129.0372
+  },
+  {
+    "id": "hosp_1040",
+    "name": "송치과의원",
+    "addr_hint": "전북특별자치도 임실군",
+    "latitude": 35.5396,
+    "longitude": 127.327
+  },
+  {
+    "id": "hosp_1041",
+    "name": "의료법인진천의료재단 진천효병원",
+    "addr_hint": "충청북도 진천군",
+    "latitude": 36.8851,
+    "longitude": 127.4375
+  },
+  {
+    "id": "hosp_1042",
+    "name": "상쾌한이비인후과의원",
+    "addr_hint": "충청북도 영동군",
+    "latitude": 36.175,
+    "longitude": 127.7768
+  },
+  {
+    "id": "hosp_1043",
+    "name": "서울일층치과의원",
+    "addr_hint": "충청북도 보은군",
+    "latitude": 36.4837,
+    "longitude": 127.7181
+  }
+]

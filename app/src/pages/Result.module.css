@@ -1,0 +1,366 @@
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 1023px) {
+  .page {
+    /* Leaves room for the fixed bottom TabBar so it never covers content. */
+    padding-bottom: 76px;
+  }
+}
+
+.hero {
+  position: relative;
+  padding: 34px 20px 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-items: center;
+  text-align: center;
+  overflow: hidden;
+}
+
+.icon {
+  margin-bottom: 4px;
+}
+
+.eyebrow {
+  font: 600 10px 'Pretendard Variable';
+  color: var(--color-accent-strong);
+  letter-spacing: 0.22em;
+}
+
+.title {
+  font: 600 26px 'Pretendard Variable';
+  color: var(--color-ink);
+  letter-spacing: -0.03em;
+}
+
+.subtitle {
+  font: 500 11.5px 'Pretendard Variable';
+  color: var(--color-muted);
+}
+
+.scoreRow {
+  display: flex;
+  align-items: flex-end;
+  gap: 6px;
+  margin-top: 2px;
+}
+
+.scoreVal {
+  font: 600 54px/1 'Pretendard Variable';
+  color: var(--color-ink);
+  letter-spacing: -0.05em;
+}
+
+.scoreMax {
+  font: 600 13px 'Pretendard Variable';
+  color: var(--color-muted);
+  padding-bottom: 8px;
+}
+
+.section {
+  padding: 0 20px 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.statTiles {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.statTile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 6px;
+  background: #fff;
+  border: 1px solid var(--color-line);
+  border-radius: 14px;
+  padding: 16px;
+}
+
+.statTileIcon {
+  width: 26px;
+  height: 26px;
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+  background: var(--color-tint-1);
+  font-size: 13px;
+}
+
+.statTileLabel {
+  font: 500 11px 'Pretendard Variable';
+  color: var(--color-muted);
+}
+
+.statTileValue {
+  font: 600 17px 'Pretendard Variable';
+  color: var(--color-ink);
+  letter-spacing: -0.02em;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.detailsEyebrow {
+  font: 600 10px 'Pretendard Variable';
+  color: var(--color-accent-strong);
+  letter-spacing: 0.2em;
+}
+
+.detailsTitle {
+  font: 600 16px 'Pretendard Variable';
+  color: var(--color-ink);
+  letter-spacing: -0.02em;
+  margin-bottom: 2px;
+}
+
+.detailsRow {
+  display: flex;
+  gap: 9px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+  scrollbar-width: none;
+}
+
+.detailsRow::-webkit-scrollbar {
+  display: none;
+}
+
+.detailChip {
+  flex: none;
+  min-width: 92px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  background: #fff;
+  border: 1px solid var(--color-line);
+  border-radius: 12px;
+  padding: 12px 10px;
+  text-align: center;
+}
+
+.detailChipIcon {
+  font-size: 14px;
+}
+
+.detailChipLabel {
+  font: 600 9.5px 'Pretendard Variable';
+  color: var(--color-muted-2);
+  letter-spacing: 0.08em;
+}
+
+.detailChipValue {
+  font: 600 13px 'Pretendard Variable';
+  color: var(--color-ink);
+}
+
+.detailChipBadge {
+  margin-top: 2px;
+  font: 600 9.5px 'Pretendard Variable';
+  color: var(--color-accent-strong);
+  background: var(--color-tint-1);
+  border-radius: 999px;
+  padding: 3px 8px;
+}
+
+.detailsNote {
+  font: 500 10.5px/1.6 'Pretendard Variable';
+  color: var(--color-muted);
+}
+
+.previewPanel {
+  background: #fff;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.previewText {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.previewEyebrow {
+  font: 600 9.5px 'Pretendard Variable';
+  color: var(--color-accent-strong);
+  letter-spacing: 0.2em;
+}
+
+.previewTitle {
+  font: 600 17px 'Pretendard Variable';
+  color: var(--color-ink);
+  letter-spacing: -0.02em;
+}
+
+.previewDesc {
+  font: 400 11px/1.6 'Pretendard Variable';
+  color: var(--color-muted);
+}
+
+.previewCard {
+  border-radius: 14px;
+  background: linear-gradient(155deg, var(--color-dark-1) 0%, #092e27 100%);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  text-align: center;
+}
+
+.previewCardTag {
+  font: 600 7.5px 'Pretendard Variable';
+  color: #8fbdb0;
+  letter-spacing: 0.18em;
+}
+
+.previewCardLabel {
+  font: 500 10px 'Pretendard Variable';
+  color: #bfddd3;
+}
+
+.previewCardScore {
+  font: 600 24px 'Pretendard Variable';
+  color: var(--color-accent);
+  letter-spacing: -0.02em;
+}
+
+.previewCardGrade {
+  font: 600 10px 'Pretendard Variable';
+  color: #fff;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.infoBox {
+  background: #edf4f1;
+  border: 1px solid #e2e8f1;
+  border-radius: 14px;
+  padding: 18px 20px;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+.infoIcon {
+  width: 30px;
+  height: 30px;
+  flex: none;
+  border-radius: 8px;
+  background: var(--color-ink);
+  display: grid;
+  place-items: center;
+  font: 600 12px 'Pretendard Variable';
+  color: #fff;
+}
+
+.infoText {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.infoTitle {
+  font: 600 11.5px 'Pretendard Variable';
+  color: var(--color-ink);
+}
+
+.infoSub {
+  font: 400 10px 'Pretendard Variable';
+  color: #8b93a3;
+}
+
+.empty {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .hero {
+    padding: 56px 56px 40px;
+  }
+  .title {
+    font-size: 30px;
+  }
+  .scoreVal {
+    font-size: 60px;
+  }
+  .section {
+    padding: 0 56px 44px;
+    gap: 22px;
+  }
+  .previewPanel {
+    flex-direction: row;
+    align-items: center;
+    gap: 24px;
+    padding: 24px 26px;
+  }
+  .previewCard {
+    flex: none;
+    width: 238px;
+    margin-left: auto;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero {
+    padding: 72px 44px 48px;
+    max-width: var(--content-max);
+    margin: 0 auto;
+    width: 100%;
+  }
+  .section {
+    padding: 0 44px 48px;
+    max-width: var(--content-max);
+    margin: 0 auto;
+    width: 100%;
+  }
+  .scoreVal {
+    font-size: 62px;
+  }
+  .statTile {
+    padding: 20px;
+  }
+  .statTileValue {
+    font-size: 19px;
+  }
+  .detailsRow {
+    flex-wrap: wrap;
+    overflow-x: visible;
+  }
+  .detailChip {
+    flex: 1 1 120px;
+  }
+  .actions {
+    flex-direction: row;
+    gap: 14px;
+  }
+}

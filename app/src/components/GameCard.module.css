@@ -1,0 +1,91 @@
+.card {
+  background: #fff;
+  border-radius: 14px;
+  border-top: 3px solid var(--accent);
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-card);
+  text-align: left;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+  border-left: none;
+  border-right: none;
+  border-bottom: none;
+}
+
+@media (hover: hover) {
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(18, 58, 49, 0.11);
+  }
+}
+
+.topRow {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.no {
+  font: 600 12px 'Pretendard Variable';
+  color: var(--color-muted-2);
+  letter-spacing: 0.08em;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  margin-top: 12px;
+  margin-bottom: 20px;
+}
+
+.title {
+  font: 600 17px 'Pretendard Variable';
+  color: var(--color-ink);
+  letter-spacing: -0.025em;
+}
+
+.desc {
+  font: 500 12px/1.6 'Pretendard Variable';
+  color: var(--color-muted);
+}
+
+.play {
+  margin-top: auto;
+  padding-top: 14px;
+  cursor: pointer;
+  border: none;
+  background: var(--accent);
+  color: var(--accent-text);
+  border-radius: 9px;
+  padding: 14px;
+  font: 600 13px 'Pretendard Variable';
+  letter-spacing: 0.02em;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .card {
+    padding: 22px;
+    min-height: 236px;
+  }
+  .body {
+    gap: 9px;
+    margin-top: 12px;
+    margin-bottom: 24px;
+  }
+  .title {
+    font-size: 18px;
+  }
+  .desc {
+    font-size: 12.5px;
+    line-height: 1.65;
+  }
+}
+
+@media (min-width: 1024px) {
+  .card {
+    min-height: 250px;
+  }
+}

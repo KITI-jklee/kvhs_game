@@ -1,0 +1,346 @@
+.page {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 1023px) {
+  .page {
+    /* Leaves room for the fixed bottom TabBar so it never covers content. */
+    padding-bottom: 76px;
+  }
+}
+
+/* ---- Hero ---- */
+.hero {
+  position: relative;
+  padding: 24px 20px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow: hidden;
+}
+
+.decorCircle {
+  display: none;
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font: 600 10px 'Pretendard Variable';
+  color: var(--color-accent-strong);
+  letter-spacing: 0.14em;
+}
+
+.titleGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.title,
+.titleOutline {
+  font: 600 24px/1.15 'Pretendard Variable';
+  letter-spacing: -0.035em;
+}
+
+.title {
+  color: var(--color-ink);
+}
+
+.titleOutline {
+  color: var(--color-ink);
+}
+
+.desc {
+  font: 500 12px/1.85 'Pretendard Variable';
+  color: var(--color-muted);
+}
+
+.chips {
+  display: none;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+
+.chip {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #fff;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-sm);
+  padding: 8px 12px;
+  font: 600 11px 'Pretendard Variable';
+  color: var(--color-ink);
+}
+
+/* ---- Select your game ---- */
+.section {
+  padding: 20px 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.sectionHead {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.sectionHeadMain {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.sectionEyebrow {
+  font: 600 10px 'Pretendard Variable';
+  color: var(--color-accent-strong);
+  letter-spacing: 0.2em;
+}
+
+.sectionTitle {
+  font: 600 19px/1.4 'Pretendard Variable';
+  color: var(--color-ink);
+  letter-spacing: -0.03em;
+  white-space: nowrap;
+}
+
+.sectionDesc {
+  font: 500 11.5px 'Pretendard Variable';
+  color: var(--color-muted);
+}
+
+.cardGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* ---- Grade band ---- */
+.gradeBandPad {
+  padding: 4px 20px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.gradeBand {
+  background: #fff;
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  box-shadow: var(--shadow-card);
+}
+
+.gradeBandHead {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.gradeBandTitle {
+  font: 600 17px/1.45 'Pretendard Variable';
+  color: var(--color-ink);
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+}
+
+/* ---- Grade band (mobile/tablet compact card) ---- */
+.gradeCompact {
+  cursor: pointer;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #fff;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-lg);
+  padding: 14px 16px;
+  text-align: left;
+  box-shadow: var(--shadow-card);
+}
+
+.gradeCompactIcon {
+  width: 40px;
+  height: 40px;
+  flex: none;
+  border-radius: 10px;
+  background: var(--color-tint-1);
+  display: grid;
+  place-items: center;
+  font-size: 18px;
+}
+
+.gradeCompactBody {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.gradeCompactTitle {
+  font: 600 13.5px 'Pretendard Variable';
+  color: var(--color-ink);
+  letter-spacing: -0.01em;
+}
+
+.gradeCompactSub {
+  font: 500 11px 'Pretendard Variable';
+  color: var(--color-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.gradeCompactArrow {
+  flex: none;
+  font-size: 16px;
+  color: var(--color-accent-strong);
+}
+
+/* ---- Footer ---- */
+.footer {
+  margin: 8px 20px 34px;
+  padding: 18px 0 0;
+  border-top: 1px solid var(--color-line);
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-items: center;
+  text-align: center;
+}
+
+.footerTag {
+  font: 600 9px 'Pretendard Variable';
+  color: var(--color-muted-2);
+  letter-spacing: 0.2em;
+}
+
+.footerNote {
+  font: 400 10.5px/1.6 'Pretendard Variable';
+  color: var(--color-muted-2);
+}
+
+@media (min-width: 768px) {
+  .hero {
+    padding: 32px 56px 24px;
+  }
+  .chips {
+    display: flex;
+  }
+  .sectionHead {
+    display: flex;
+  }
+  .title,
+  .titleOutline {
+    font-size: 34px;
+  }
+  .desc {
+    font-size: 13px;
+  }
+  .section {
+    padding: 26px 56px;
+    gap: 22px;
+  }
+  .sectionTitle {
+    font-size: 19px;
+  }
+  .cardGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 18px;
+  }
+  .gradeBandPad {
+    padding: 8px 56px 16px;
+  }
+  .footer {
+    margin: 8px 56px 40px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero {
+    padding: 36px 44px 28px;
+    max-width: var(--content-max);
+    margin: 0 auto;
+    width: 100%;
+  }
+  .decorCircle {
+    display: grid;
+    position: absolute;
+    right: 92px;
+    top: 36px;
+    width: 132px;
+    height: 132px;
+    border-radius: 50%;
+    background: var(--color-tint-2);
+    place-items: center;
+  }
+  .decorCircleInner {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    /* 원본 디자인 값 그대로 고정 - 데스크톱 페이지 배경(흰색)과 무관하게 항상 민트. */
+    background: #f2f8f5;
+  }
+  .title,
+  .titleOutline {
+    font-size: 50px;
+  }
+  .desc {
+    font-size: 13px;
+    line-height: 1.9;
+  }
+  .section {
+    padding: 28px 44px 44px;
+    max-width: var(--content-max);
+    margin: 0 auto;
+    width: 100%;
+  }
+  .sectionHead {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  .sectionTitle {
+    font-size: 26px;
+  }
+  .sectionDesc {
+    white-space: nowrap;
+  }
+  .gradeBandPad {
+    max-width: var(--content-max);
+    margin: 0 auto;
+    width: 100%;
+    padding: 0 44px 40px;
+  }
+  .gradeBand {
+    flex-direction: row;
+    align-items: center;
+    gap: 24px;
+    padding: 26px 30px;
+  }
+  .gradeBandTitle {
+    font-size: 19px;
+  }
+  .gradeBandChips {
+    margin-left: auto;
+  }
+  .footer {
+    max-width: var(--content-max);
+    margin: 20px auto 40px;
+    padding: 20px 44px 0;
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: left;
+  }
+}

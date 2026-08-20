@@ -1,0 +1,214 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.body {
+  padding: 16px 20px 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  flex: 1;
+  min-height: 0;
+}
+
+.deskRound {
+  margin-left: 0;
+}
+.deskRound b {
+  font: 600 15px 'Pretendard Variable';
+  color: var(--color-ink);
+}
+.deskScore {
+  margin-left: auto;
+}
+.deskScore b {
+  font: 600 15px 'Pretendard Variable';
+  color: var(--color-ink);
+}
+.deskRound,
+.deskScore {
+  font: 500 12.5px 'Pretendard Variable';
+  color: var(--color-muted);
+}
+
+.questionPanel {
+  background: #fff;
+  border: 1px solid var(--color-line);
+  border-radius: 14px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.qEyebrow {
+  font: 600 10px 'Pretendard Variable';
+  color: var(--color-accent-strong);
+  letter-spacing: 0.2em;
+}
+
+.qTextGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.qTitle {
+  font: 600 20px/1.35 'Pretendard Variable';
+  color: var(--color-ink);
+  letter-spacing: -0.03em;
+}
+
+.qHint {
+  font: 500 11.5px/1.6 'Pretendard Variable';
+  color: var(--color-muted);
+}
+
+.noteBox {
+  margin-top: auto;
+  background: var(--color-tint-1);
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  gap: 11px;
+  align-items: flex-start;
+}
+
+.noteTitle {
+  font: 600 12px 'Pretendard Variable';
+  color: var(--color-ink);
+}
+
+.noteSub {
+  font: 400 11px 'Pretendard Variable';
+  color: var(--color-muted);
+}
+
+.mapPanel {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  flex: 1;
+  min-height: 0;
+}
+
+.mapLabel {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font: 600 11px 'Pretendard Variable';
+  color: var(--color-ink);
+}
+
+.resultCard {
+  background: #fff;
+  border: 1px solid var(--color-line);
+  border-radius: 16px;
+  padding: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  animation: pop 0.25s ease both;
+}
+
+.verdict {
+  order: 1;
+  font: 600 15px 'Pretendard Variable';
+  color: var(--color-ink);
+}
+
+.gain {
+  order: 2;
+  margin-left: auto;
+  font: 600 20px 'Pretendard Variable';
+  color: var(--color-accent-strong);
+}
+
+.km {
+  order: 3;
+  flex-basis: 100%;
+  font: 400 12px 'Pretendard Variable';
+  color: var(--color-muted);
+}
+
+.next {
+  order: 4;
+  flex-basis: 100%;
+}
+
+.confirmHint {
+  text-align: center;
+  font: 600 12px 'Pretendard Variable';
+  color: var(--color-muted);
+}
+
+.confirmWrap {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+@media (min-width: 768px) {
+  .body {
+    padding: 28px 56px 40px;
+    gap: 18px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .body {
+    padding: 20px 44px 40px;
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 22px;
+    max-width: var(--content-max);
+    margin: 0 auto;
+    width: 100%;
+  }
+  .questionPanel {
+    padding: 26px;
+    gap: 22px;
+    border-radius: var(--radius-lg);
+  }
+  .qTitle {
+    font-size: 27px;
+  }
+  .qHint {
+    font-size: 12.5px;
+    line-height: 1.7;
+    color: #7e8899;
+  }
+  .mapPanel {
+    background: #fff;
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-lg);
+    padding: 18px;
+  }
+  .resultCard {
+    gap: 16px;
+    background: var(--color-tint-1);
+    border: none;
+    border-radius: 12px;
+    padding: 16px 20px;
+  }
+  .km {
+    order: 2;
+    flex-basis: auto;
+  }
+  .gain {
+    order: 3;
+  }
+  .next {
+    order: 4;
+    flex-basis: auto;
+    width: auto;
+    padding: 13px 22px;
+  }
+  .confirmWrap :global(button) {
+    width: auto;
+    padding: 13px 22px;
+  }
+}

@@ -1,0 +1,136 @@
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.heroPad {
+  padding: 22px 20px 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
+  text-align: center;
+}
+
+.pageHeading {
+  display: none;
+}
+
+.heroInner {
+  width: 100%;
+}
+
+.section {
+  padding: 24px 20px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  flex: 1;
+}
+
+.eyebrow {
+  font: 600 10px 'Pretendard Variable';
+  color: var(--color-accent-strong);
+  letter-spacing: 0.2em;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  margin-top: 8px;
+}
+
+.breakdown {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.breakdownRow {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #fff;
+  border: 1px solid var(--color-line);
+  border-radius: 14px;
+  padding: 12px 14px;
+  text-align: left;
+}
+
+.breakdownBody {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+  min-width: 0;
+}
+
+.breakdownName {
+  font: 600 12.5px 'Pretendard Variable';
+  color: var(--color-ink);
+}
+
+.breakdownGrade {
+  font: 500 11px 'Pretendard Variable';
+  color: var(--color-muted);
+}
+
+.breakdownScore {
+  font: 600 15px 'Pretendard Variable';
+  color: var(--color-accent-strong);
+  flex: none;
+}
+
+@media (min-width: 768px) {
+  .heroPad {
+    padding: 40px 56px 28px;
+  }
+  .section {
+    padding: 30px 56px 48px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .heroPad {
+    padding: 56px 44px;
+    max-width: var(--content-max);
+    margin: 0 auto;
+    width: 100%;
+  }
+  .pageHeading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 9px;
+    margin-bottom: 8px;
+  }
+  .pageHeadingTitle {
+    font: 600 30px 'Pretendard Variable';
+    color: var(--color-ink);
+    letter-spacing: -0.03em;
+    text-align: center;
+  }
+  .pageHeadingSub {
+    font: 500 12.5px 'Pretendard Variable';
+    color: var(--color-muted);
+  }
+  .heroInner {
+    max-width: 560px;
+    margin: 0 auto;
+  }
+  .section {
+    padding: 0 44px 52px;
+    max-width: var(--content-max);
+    margin: 0 auto;
+    width: 100%;
+    gap: 22px;
+  }
+  .actions {
+    max-width: 280px;
+    margin: 8px auto 0;
+    width: 100%;
+  }
+}

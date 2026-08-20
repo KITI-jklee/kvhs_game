@@ -1,0 +1,78 @@
+.card {
+  width: 100%;
+  max-width: 560px;
+  align-self: center;
+  background: linear-gradient(150deg, var(--color-grade-grad-1) 0%, var(--color-grade-grad-2) 100%);
+  border: 1px solid var(--color-grade-border);
+  border-radius: var(--radius-xl);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  text-align: center;
+}
+
+.eyebrow {
+  font: 600 9.5px 'Pretendard Variable';
+  color: var(--color-grade-ink);
+  letter-spacing: 0.2em;
+}
+
+.iconCircle {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #fff;
+  display: grid;
+  place-items: center;
+  font-size: 20px;
+}
+
+.name {
+  font: 600 20px 'Pretendard Variable';
+  color: var(--color-grade-ink);
+  letter-spacing: -0.02em;
+}
+
+.sub {
+  font: 500 11.5px 'Pretendard Variable';
+  color: var(--color-grade-muted);
+}
+
+.note {
+  font: 600 10.5px 'Pretendard Variable';
+  color: var(--color-grade-ink);
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 999px;
+  padding: 3px 10px;
+  margin-top: 2px;
+}
+
+.progressWrap {
+  width: 100%;
+  margin-top: 6px;
+}
+
+.toNext {
+  font: 500 10px 'Pretendard Variable';
+  color: var(--color-grade-muted);
+}
+
+@media (min-width: 1024px) {
+  .card {
+    padding: 28px;
+    gap: 9px;
+  }
+  .iconCircle {
+    width: 56px;
+    height: 56px;
+    font-size: 26px;
+  }
+  .name {
+    font-size: 26px;
+  }
+  .sub {
+    font-size: 12px;
+  }
+}
