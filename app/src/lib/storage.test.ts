@@ -1,6 +1,6 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { getGrades } from '../data/provider';
-import { readBestScores, readLastResult, recordResult } from './storage';
+import { overallScoreFromBestScores, readBestScores, readLastResult, recordResult } from './storage';
 
 class MemoryStorage {
   private values = new Map<string, string>();
@@ -35,5 +35,22 @@ describe('localStorage 최고기록', () => {
     expect(result?.score).toBe(500);
     expect(result?.game).toBe('term_match');
     expect(result?.grade).toContain('마스터');
+  });
+});
+
+describe('종합 점수: 플레이해본 게임만 평균', () => {
+  it('하나도 안 플레이했으면 0점이다', () => {
+    expect(overallScoreFromBestScores({ location: 0, medical_cost: 0, term_match: 0 })).toBe(0);
+  });
+
+  it('미도전(0점) 게임은 평균에서 빼고, 플레이한 게임끼리만 평균 낸다', () => {
+    // 500 + 150을 안 해본 term_match(0점)까지 셋이 나누면 217점이 되어
+    // "몰라서 0점"과 "아직 안 해봄"을 같이 취급하는 셈이라 부당하다 -
+    // 플레이한 두 게임(500, 150)만으로 평균 내면 325점이어야 한다.
+    expect(overallScoreFromBestScores({ location: 500, medical_cost: 150, term_match: 0 })).toBe(325);
+  });
+
+  it('전부 플레이했으면 세 게임 평균을 낸다', () => {
+    expect(overallScoreFromBestScores({ location: 300, medical_cost: 300, term_match: 300 })).toBe(300);
   });
 });

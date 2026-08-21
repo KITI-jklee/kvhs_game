@@ -2,7 +2,7 @@ import { useCallback, useMemo, useState } from 'react';
 import type { ReactNode } from 'react';
 import { getGrades } from '../data/provider';
 import { getGradeProgress } from '../lib/grade';
-import { readBestScores, recordResult, type BestScores } from '../lib/storage';
+import { overallScoreFromBestScores, readBestScores, recordResult, type BestScores } from '../lib/storage';
 import { GameContext, type FinishedResult, type GameContextValue, type PlayResult } from './gameState';
 
 export function GameProvider({ children }: { children: ReactNode }) {
@@ -26,7 +26,7 @@ export function GameProvider({ children }: { children: ReactNode }) {
     [grades],
   );
 
-  const overallScore = Math.max(bestScores.location, bestScores.medical_cost, bestScores.term_match);
+  const overallScore = overallScoreFromBestScores(bestScores);
   const overallProgress = useMemo(() => getGradeProgress(overallScore, grades), [overallScore, grades]);
 
   const value = useMemo<GameContextValue>(

@@ -12,9 +12,8 @@ import styles from './Grade.module.css';
 
 export function Grade() {
   const navigate = useNavigate();
-  const { grades, bestScores, overallProgress } = useGame();
+  const { grades, bestScores, overallScore, overallProgress } = useGame();
   const games = getGames();
-  const overallScore = Math.max(bestScores.location, bestScores.medical_cost, bestScores.term_match);
 
   return (
     <div className={styles.page}>
@@ -23,12 +22,12 @@ export function Grade() {
 
       <section className={styles.heroPad}>
         <div className={styles.pageHeading}>
-          <span className={styles.eyebrow}>YOUR VETERANS GRADE</span>
-          <span className={styles.pageHeadingTitle}>세 게임 중 가장 높은 기록으로 등급을 보여드려요</span>
-          <span className={styles.pageHeadingSub}>게임별 최고 점수는 브라우저에 안전하게 저장됩니다.</span>
+          <span className={styles.eyebrow}>YOUR ARCADE GRADE</span>
+          <span className={styles.pageHeadingTitle}>지금 나의 보훈 아케이드 등급은?</span>
+          <span className={styles.pageHeadingSub}>게임을 즐길수록 더 높은 등급에 도전할 수 있어요</span>
         </div>
         <div className={styles.heroInner}>
-          <GradeHeroCard progress={overallProgress} subtitle={`세 게임 중 최고 기록 ${overallScore}점`} />
+          <GradeHeroCard progress={overallProgress} subtitle={`플레이한 게임 평균 ${overallScore}점`} />
         </div>
       </section>
 

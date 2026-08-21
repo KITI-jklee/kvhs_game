@@ -72,7 +72,7 @@ export function Home() {
           <div className={styles.gradeCompactBody}>
             <span className={styles.gradeCompactTitle}>내 보훈 등급 · {overallProgress.grade.name}</span>
             <span className={styles.gradeCompactSub}>
-              최고 기록 {overallScore}점
+              평균 기록 {overallScore}점
               {overallProgress.next ? ` · 다음 등급까지 ${overallProgress.toNext}점` : ' · 최고 등급 달성!'}
             </span>
           </div>

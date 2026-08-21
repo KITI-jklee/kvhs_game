@@ -79,6 +79,16 @@ function writeLastResult(result: LastResult): void {
   }
 }
 
+/** 종합 등급은 세 게임 중 최고점 하나가 아니라, 실제로 플레이해본 게임들의
+ * 평균으로 매긴다(사용자 피드백) - 안 해본 게임까지 0점으로 같이 평균 내면
+ * "몰라서 0점"과 "아직 안 해봄"을 구분 못 해서 부당하게 낮아지므로, 0점인
+ * (=미도전) 게임은 평균에서 뺀다. 하나도 안 해봤으면 0점. */
+export function overallScoreFromBestScores(bestScores: BestScores): number {
+  const played = Object.values(bestScores).filter((score) => score > 0);
+  if (played.length === 0) return 0;
+  return Math.round(played.reduce((sum, score) => sum + score, 0) / played.length);
+}
+
 export interface RecordResultOutcome {
   prevBest: number;
   diff: number;
