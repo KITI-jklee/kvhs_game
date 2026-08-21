@@ -1,6 +1,5 @@
 import { useNavigate } from 'react-router-dom';
 import { BrandBar } from '../components/layout/BrandBar';
-import { TabBar } from '../components/layout/TabBar';
 import { GameCard } from '../components/GameCard';
 import { GradeChipRow } from '../components/grade/GradeChipRow';
 import { getGames } from '../data/provider';
@@ -82,15 +81,8 @@ export function Home() {
       </section>
 
       <footer className={styles.footer}>
-        <span className={styles.footerTag}>MOCK DATA EXPERIENCE</span>
-        <span className={styles.footerNote}>
-          한국보훈복지의료공단 공공데이터를
-          <br />
-          활용한 서비스 콘셉트입니다.
-        </span>
+        <span className={styles.footerNote}>© KITI (주)한국정보화기술원</span>
       </footer>
-
-      <TabBar />
     </div>
   );
 }

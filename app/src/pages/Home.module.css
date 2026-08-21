@@ -3,13 +3,6 @@
   flex-direction: column;
 }
 
-@media (max-width: 1023px) {
-  .page {
-    /* Leaves room for the fixed bottom TabBar so it never covers content. */
-    padding-bottom: 76px;
-  }
-}
-
 /* ---- Hero ---- */
 .hero {
   position: relative;
@@ -216,12 +209,6 @@
   gap: 5px;
   align-items: center;
   text-align: center;
-}
-
-.footerTag {
-  font: 600 9px 'Pretendard Variable';
-  color: var(--color-muted-2);
-  letter-spacing: 0.2em;
 }
 
 .footerNote {

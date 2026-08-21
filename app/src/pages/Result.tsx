@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { BrandBar } from '../components/layout/BrandBar';
-import { TabBar } from '../components/layout/TabBar';
 import { Confetti } from '../components/Confetti';
 import { GameGlyph } from '../components/icons/GameGlyph';
 import { IconTile } from '../components/icons/IconTile';
@@ -40,7 +39,6 @@ export function Result() {
             게임 하러 가기
           </Button>
         </div>
-        <TabBar />
       </div>
     );
   }
@@ -144,8 +142,6 @@ export function Result() {
       </section>
 
       {sharing && <ShareOverlay result={lastResult} grade={grade} onClose={() => setSharing(false)} />}
-
-      <TabBar />
     </div>
   );
 }
