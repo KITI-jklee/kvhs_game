@@ -151,6 +151,9 @@ export function KoreaMap({ region, highlight, pins, selectedId, correctId, revea
   return (
     <div className={styles.wrap} ref={wrapRef}>
       <div className={styles.grid} />
+
+      {/* 땅/강조 영역은 그대로 라벨보다 아래에 둔다(불투명 색이라 라벨보다
+         위로 가면 라벨이 통째로 안 보임). */}
       <svg className={styles.svg} viewBox={`0 0 ${projection.width} ${projection.height}`} role="presentation">
         {landPaths.map((d, i) => (
           <path key={i} className={styles.landmass} d={d} />
@@ -159,7 +162,47 @@ export function KoreaMap({ region, highlight, pins, selectedId, correctId, revea
         {highlightPaths.map((d, i) => (
           <path key={i} className={styles.highlight} d={d} />
         ))}
+      </svg>
 
+      {/* 라벨(이름표)을 핀보다 먼저(=아래) 그린다 - 핀 후보가 서로 가까운
+         동네에선 계단식 오프셋을 줘도 라벨이 옆 핀의 원까지 뒤덮는 경우가
+         있었다(사용자 피드백: "모바일에서 클릭이 글자에 가려져서 안 보이는
+         경우도 있네"). 클릭 판정은 라벨이 pointer-events:none이라 원래도
+         막히지 않았지만, 핀 자체가 안 보이면 눌러야 할 위치를 알 수 없다 -
+         핀 원을 별도 svg로 라벨 위에 그려서 어떤 라벨과 겹치든 클릭 대상이
+         가려지지 않게 한다. */}
+      {pins.map((pin) => {
+        const p = projection.project(pin.center);
+        const isSelected = selectedId === pin.id;
+        const isCorrect = revealed && pin.id === correctId;
+        const isWrongPick = revealed && isSelected && pin.id !== correctId;
+        const labelClass = [
+          styles.pinLabel,
+          isCorrect ? styles.pinLabelCorrect : '',
+          isWrongPick ? styles.pinLabelWrong : '',
+          isSelected && !isCorrect && !isWrongPick ? styles.pinLabelSelected : '',
+        ]
+          .filter(Boolean)
+          .join(' ');
+        const offsetIndex = labelOffsetIndex.get(pin.id) ?? 0;
+        return (
+          <span
+            key={pin.id}
+            className={labelClass}
+            style={
+              {
+                left: `${(p.x / projection.width) * 100}%`,
+                top: `${(p.y / projection.height) * 100}%`,
+                '--label-dy': `${14 + offsetIndex * 22}px`,
+              } as CSSProperties
+            }
+          >
+            {pin.label}
+          </span>
+        );
+      })}
+
+      <svg className={styles.svg} viewBox={`0 0 ${projection.width} ${projection.height}`} role="presentation">
         {pins.map((pin) => {
           const p = projection.project(pin.center);
           const isSelected = selectedId === pin.id;
@@ -199,37 +242,6 @@ export function KoreaMap({ region, highlight, pins, selectedId, correctId, revea
           );
         })}
       </svg>
-
-      {pins.map((pin) => {
-        const p = projection.project(pin.center);
-        const isSelected = selectedId === pin.id;
-        const isCorrect = revealed && pin.id === correctId;
-        const isWrongPick = revealed && isSelected && pin.id !== correctId;
-        const labelClass = [
-          styles.pinLabel,
-          isCorrect ? styles.pinLabelCorrect : '',
-          isWrongPick ? styles.pinLabelWrong : '',
-          isSelected && !isCorrect && !isWrongPick ? styles.pinLabelSelected : '',
-        ]
-          .filter(Boolean)
-          .join(' ');
-        const offsetIndex = labelOffsetIndex.get(pin.id) ?? 0;
-        return (
-          <span
-            key={pin.id}
-            className={labelClass}
-            style={
-              {
-                left: `${(p.x / projection.width) * 100}%`,
-                top: `${(p.y / projection.height) * 100}%`,
-                '--label-dy': `${14 + offsetIndex * 22}px`,
-              } as CSSProperties
-            }
-          >
-            {pin.label}
-          </span>
-        );
-      })}
     </div>
   );
 }
