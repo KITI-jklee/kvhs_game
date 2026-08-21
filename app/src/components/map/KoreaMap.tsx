@@ -1,166 +1,235 @@
-import { useMemo } from 'react';
-import type { MouseEvent } from 'react';
-import type { Bounds, LatLng, Point, Projection } from '../../lib/geo';
-import { MAP_VIEW_HEIGHT, MAP_VIEW_WIDTH, createProjection, project, unproject } from '../../lib/geo';
-import { JEJU_OUTLINE, MAINLAND_OUTLINE, ULLEUNGDO } from './koreaOutline';
+import { useEffect, useMemo, useRef, useState, type CSSProperties } from 'react';
+import type { Bounds, LatLng, Point } from '../../lib/geo';
+import { createProjection, fitBoundsToAspect } from '../../lib/geo';
 import styles from './KoreaMap.module.css';
 
-/** 라운드별 시/군/구 확대 지도 - `lib/cityOutline`에서 지연 로드해 전달한다. */
+/** "가장 가까운 위탁병원 찾기" 게임용 확대 지도 - 관련된 도(道) 경계를 배경으로 보여준다. */
 export interface MapRegion {
-  /** GeoJSON 관례대로 [lng, lat] 순서인 다각형 외곽선들 (분구된 시는 구 여러 개, 다도해 군은 섬 여러 개). */
+  /** GeoJSON 관례대로 [lng, lat] 순서인 다각형 외곽선들. */
   rings: [number, number][][];
   bounds: Bounds;
-  /** 지도 하단 캡션에 쓰이는 지역명, 예: "경기도 고양시". */
+}
+
+/** 병원 후보 핀 하나. */
+export interface MapPin {
+  id: string;
+  center: LatLng;
+  /** 핀 아래 표시되는 병원 이름. */
   label: string;
 }
 
+/** "보훈 대상자"가 있는 동네(읍/면/동) 경계 - 시/군 전체를 강조하면 후보
+ * 병원이 다 그 안에 들어와 판단 근거가 없어지므로(사용자 피드백), 시/군보다
+ * 한 단계 더 좁은 동 하나만 옅게 강조해서 보여준다. */
+export interface MapHighlight {
+  /** GeoJSON 관례대로 [lng, lat] 순서인 다각형 외곽선들. */
+  rings: [number, number][][];
+}
+
+/** 후보가 넓은 범위(도 경계 밖 여러 시/군)에 걸쳐 있는 라운드에서는 지도가
+ * 그만큼 축소되는데, 그 시/군 안의 작은 동(예: 도심 동)은 실제 지리적
+ * 크기가 작아서 화면에서 몇 px짜리 점으로 줄어든다 - 하필 정답 병원 핀이
+ * (동 중심과 가장 가까운 병원이니 자주 그 위에) 그 작은 영역을 통째로
+ * 덮어버려 강조 표시가 안 보이는 문제가 있었다(사용자 피드백: "인근 위치가
+ * 안뜨는데?"). 강조 영역의 화면상 크기가 이 값보다 작으면 중심을 기준으로
+ * 확대해서 최소한 이 정도는 보이게 한다. */
+const MIN_HIGHLIGHT_SIZE_PX = 32;
+
 interface KoreaMapProps {
-  /** 사용자가 찍은 지점(실제 위경도로 변환된 값). */
-  pin: LatLng | null;
-  /** 정답 위치 - `revealed`가 true일 때만 그려진다. */
-  target: LatLng | null;
-  targetLabel?: string;
+  /** 아직 로딩 중이면 null - 로딩 스켈레톤을 보여준다. */
+  region: MapRegion | null;
+  /** "보훈 대상자"가 있는 동(읍/면/동) 영역 - 시/군 전체 지도 위에 그 동만
+   * 옅게 강조해서, 후보 병원 중 그 동에서 가장 가까운 곳을 가늠하게 한다. */
+  highlight: MapHighlight | null;
+  pins: MapPin[];
+  selectedId: string | null;
+  /** `revealed`가 true일 때만 의미 있음. */
+  correctId: string | null;
   revealed: boolean;
   disabled?: boolean;
-  onDropPin: (point: LatLng) => void;
-  /** 없으면(로딩 중·매칭 실패) 전국 지도로 대체한다. */
-  region?: MapRegion | null;
+  onSelect: (id: string) => void;
 }
 
-/** Catmull-Rom → 3차 베지어 변환으로 각진 좌표열을 부드러운 해안선처럼 그린다. */
-function smoothClosedPath(points: Point[]): string {
-  const n = points.length;
-  if (n < 3) return '';
-  const at = (i: number) => points[((i % n) + n) % n];
-  let d = `M ${at(0).x} ${at(0).y}`;
-  for (let i = 0; i < n; i++) {
-    const p0 = at(i - 1);
-    const p1 = at(i);
-    const p2 = at(i + 1);
-    const p3 = at(i + 2);
-    const c1 = { x: p1.x + (p2.x - p0.x) / 6, y: p1.y + (p2.y - p0.y) / 6 };
-    const c2 = { x: p2.x - (p3.x - p1.x) / 6, y: p2.y - (p3.y - p1.y) / 6 };
-    d += ` C ${c1.x} ${c1.y} ${c2.x} ${c2.y} ${p2.x} ${p2.y}`;
-  }
-  return `${d} Z`;
-}
-
-/** 행정 경계는 실측 경계선이라 Catmull-Rom으로 곡선화하지 않고 꼭짓점을 직선으로 잇는다. */
+/** 행정 경계는 실측 경계선이라 곡선으로 다듬지 않고 꼭짓점을 직선으로 잇는다. */
 function polygonPath(points: Point[]): string {
   if (points.length < 3) return '';
   const [first, ...rest] = points;
   return `M ${first.x} ${first.y} ${rest.map((p) => `L ${p.x} ${p.y}`).join(' ')} Z`;
 }
 
-const NATIONWIDE_MAINLAND_PATH = smoothClosedPath(MAINLAND_OUTLINE.map(project));
-const NATIONWIDE_JEJU_PATH = smoothClosedPath(JEJU_OUTLINE.map(project));
-const NATIONWIDE_ULLEUNGDO_POINT = project(ULLEUNGDO);
+export function KoreaMap({ region, highlight, pins, selectedId, correctId, revealed, disabled, onSelect }: KoreaMapProps) {
+  // 컨테이너가 실제로 차지하는 화면 비율을 측정해서, viewBox 비율을 거기에
+  // 정확히 맞춘다(fitBoundsToAspect) - letterbox(빈 여백)도, 강제 늘림(핀이
+  // 타원으로 찌그러짐)도 없이 지도를 꽉 채우려면 둘 중 하나가 아니라
+  // "지리적 범위 자체"를 컨테이너 비율에 맞게 넓혀야 한다.
+  const wrapRef = useRef<HTMLDivElement>(null);
+  const [aspect, setAspect] = useState(1);
+  useEffect(() => {
+    const el = wrapRef.current;
+    if (!el) return;
+    const measure = () => {
+      const rect = el.getBoundingClientRect();
+      if (rect.width > 0 && rect.height > 0) setAspect(rect.width / rect.height);
+    };
+    measure();
+    const observer = new ResizeObserver(measure);
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
-/** Ray-casting polygon test. Boundary-adjacent clicks are treated as land. */
-function isPointInPolygon(point: Point, polygon: Point[]): boolean {
-  let inside = false;
-  for (let i = 0, j = polygon.length - 1; i < polygon.length; j = i, i += 1) {
-    const a = polygon[i];
-    const b = polygon[j];
-    const crosses = (a.y > point.y) !== (b.y > point.y)
-      && point.x <= ((b.x - a.x) * (point.y - a.y)) / (b.y - a.y) + a.x;
-    if (crosses) inside = !inside;
-  }
-  return inside;
-}
-
-export function KoreaMap({ pin, target, targetLabel, revealed, disabled, onDropPin, region }: KoreaMapProps) {
-  const projection: Projection = useMemo(
-    () => (region ? createProjection(region.bounds) : { width: MAP_VIEW_WIDTH, height: MAP_VIEW_HEIGHT, project, unproject }),
-    [region],
+  const projection = useMemo(
+    () => (region ? createProjection(fitBoundsToAspect(region.bounds, aspect)) : null),
+    [region, aspect],
   );
 
   const landPaths = useMemo(() => {
-    if (!region) return [NATIONWIDE_MAINLAND_PATH, NATIONWIDE_JEJU_PATH];
+    if (!region || !projection) return [];
     return region.rings.map((ring) => polygonPath(ring.map(([lng, lat]) => projection.project({ lat, lng }))));
   }, [region, projection]);
 
-  const handleClick = (event: MouseEvent<SVGSVGElement>) => {
-    if (disabled || revealed) return;
-    const rect = event.currentTarget.getBoundingClientRect();
-    const x = ((event.clientX - rect.left) / rect.width) * projection.width;
-    const y = ((event.clientY - rect.top) / rect.height) * projection.height;
-    const clickPoint = { x, y };
-    const landPolygons = region
-      ? region.rings.map((ring) => ring.map(([lng, lat]) => projection.project({ lat, lng })))
-      : [MAINLAND_OUTLINE.map(project), JEJU_OUTLINE.map(project)];
-    const onLand = landPolygons.some((polygon) => isPointInPolygon(clickPoint, polygon));
-    const onUlleungdo = !region
-      && Math.hypot(x - NATIONWIDE_ULLEUNGDO_POINT.x, y - NATIONWIDE_ULLEUNGDO_POINT.y) <= 7;
-    if (!onLand && !onUlleungdo) return;
-    onDropPin(projection.unproject(clickPoint));
-  };
+  // 병원 후보가 실제로 서로 가까울 때(같은 동네에 여러 곳) 라벨(이름표)이
+  // 겹쳐서 안 보이는 문제가 있었다(사용자 피드백) - 핀 좌표 사이 실제 거리가
+  // 규칙(minSeparationKm)을 지켜도, 후보가 아주 넓게 퍼진 라운드에서는 지도가
+  // 그만큼 축소되어 화면상 거리가 다시 가까워질 수 있다. 핀 자체 위치는
+  // 정확해야 하니 그대로 두고, 라벨만 서로 겹치는 핀끼리 계단식으로 아래로
+  // 내려서 겹치지 않게 한다.
+  const labelOffsetIndex = useMemo(() => {
+    if (!projection) return new Map<string, number>();
+    const projected = pins.map((pin) => ({ id: pin.id, p: projection.project(pin.center) }));
+    const CLUSTER_RADIUS = 42; // viewBox 단위 - 핀 히트 영역(18) + 라벨 폭 절반 정도
+    const offsets = new Map<string, number>();
+    for (let i = 0; i < projected.length; i++) {
+      const { id, p } = projected[i];
+      const usedIndices = new Set<number>();
+      for (let j = 0; j < i; j++) {
+        const other = projected[j];
+        const dx = other.p.x - p.x;
+        const dy = other.p.y - p.y;
+        if (Math.hypot(dx, dy) < CLUSTER_RADIUS) usedIndices.add(offsets.get(other.id) ?? 0);
+      }
+      let idx = 0;
+      while (usedIndices.has(idx)) idx++;
+      offsets.set(id, idx);
+    }
+    return offsets;
+  }, [pins, projection]);
 
-  const pinPoint = pin ? projection.project(pin) : null;
-  const targetPoint = revealed && target ? projection.project(target) : null;
-  const mapCaption = region ? `${region.label} 지도 · 위치를 탭해 보세요` : '대한민국 지도 · 위치를 탭해 보세요';
+  const highlightPaths = useMemo(() => {
+    if (!highlight || !projection) return [];
+    const projectedRings = highlight.rings.map((ring) => ring.map(([lng, lat]) => projection.project({ lat, lng })));
+    const allPoints = projectedRings.flat();
+    if (!allPoints.length) return [];
+
+    let minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;
+    for (const p of allPoints) {
+      if (p.x < minX) minX = p.x;
+      if (p.x > maxX) maxX = p.x;
+      if (p.y < minY) minY = p.y;
+      if (p.y > maxY) maxY = p.y;
+    }
+    const width = Math.max(maxX - minX, 1);
+    const height = Math.max(maxY - minY, 1);
+    const scale = Math.max(1, MIN_HIGHLIGHT_SIZE_PX / width, MIN_HIGHLIGHT_SIZE_PX / height);
+    if (scale <= 1) return projectedRings.map((ring) => polygonPath(ring));
+
+    // 너무 작으면 중심 기준으로 확대 - 모양은 그대로 유지하고 크기만 키운다.
+    const cx = (minX + maxX) / 2;
+    const cy = (minY + maxY) / 2;
+    return projectedRings.map((ring) =>
+      polygonPath(ring.map((p) => ({ x: cx + (p.x - cx) * scale, y: cy + (p.y - cy) * scale }))),
+    );
+  }, [highlight, projection]);
+
+  if (!region || !projection) {
+    return (
+      <div className={styles.wrap} ref={wrapRef}>
+        <div className={styles.grid} />
+      </div>
+    );
+  }
 
   return (
-    <div className={styles.wrap}>
+    <div className={styles.wrap} ref={wrapRef}>
       <div className={styles.grid} />
-      <svg
-        className={styles.svg}
-        viewBox={`0 0 ${projection.width} ${projection.height}`}
-        onClick={handleClick}
-        role="presentation"
-      >
+      <svg className={styles.svg} viewBox={`0 0 ${projection.width} ${projection.height}`} role="presentation">
         {landPaths.map((d, i) => (
           <path key={i} className={styles.landmass} d={d} />
         ))}
-        {!region && (
-          <circle
-            className={styles.islet}
-            cx={NATIONWIDE_ULLEUNGDO_POINT.x}
-            cy={NATIONWIDE_ULLEUNGDO_POINT.y}
-            r={4.5}
-          />
-        )}
 
-        {pinPoint && targetPoint && (
-          <line
-            className={styles.link}
-            x1={pinPoint.x}
-            y1={pinPoint.y}
-            x2={targetPoint.x}
-            y2={targetPoint.y}
-          />
-        )}
+        {highlightPaths.map((d, i) => (
+          <path key={i} className={styles.highlight} d={d} />
+        ))}
 
-        {pinPoint && (
-          <g transform={`translate(${pinPoint.x} ${pinPoint.y})`}>
-            <circle className={styles.pinRing} r={9} />
-            <circle className={styles.pinDot} r={7} />
-          </g>
-        )}
-
-        {targetPoint && (
-          <g transform={`translate(${targetPoint.x} ${targetPoint.y})`}>
-            <circle className={styles.answerDot} r={8} />
-            <text className={styles.answerCheck} y={3.5} textAnchor="middle">
-              ✓
-            </text>
-          </g>
-        )}
+        {pins.map((pin) => {
+          const p = projection.project(pin.center);
+          const isSelected = selectedId === pin.id;
+          const isCorrect = revealed && pin.id === correctId;
+          const isWrongPick = revealed && isSelected && pin.id !== correctId;
+          const groupClass = [
+            styles.pinBtn,
+            disabled || revealed ? styles.pinDisabled : '',
+            isCorrect ? styles.pinCorrect : '',
+            isWrongPick ? styles.pinWrong : '',
+            isSelected && !revealed ? styles.pinSelected : '',
+          ]
+            .filter(Boolean)
+            .join(' ');
+          return (
+            <g
+              key={pin.id}
+              className={groupClass}
+              transform={`translate(${p.x} ${p.y})`}
+              onClick={() => {
+                if (!disabled && !revealed) onSelect(pin.id);
+              }}
+            >
+              <circle className={styles.pinHit} r={18} />
+              <circle className={styles.pinCircle} r={9} />
+              {isCorrect && (
+                <text className={styles.pinMark} y={3.5} textAnchor="middle">
+                  ✓
+                </text>
+              )}
+              {isWrongPick && (
+                <text className={styles.pinMark} y={3.5} textAnchor="middle">
+                  ✕
+                </text>
+              )}
+            </g>
+          );
+        })}
       </svg>
 
-      {targetPoint && targetLabel && (
-        <span
-          className={styles.answerLabel}
-          style={{
-            left: `${(targetPoint.x / projection.width) * 100}%`,
-            top: `${(targetPoint.y / projection.height) * 100}%`,
-          }}
-        >
-          {targetLabel}
-        </span>
-      )}
-
-      <span className={styles.caption}>{mapCaption}</span>
+      {pins.map((pin) => {
+        const p = projection.project(pin.center);
+        const isSelected = selectedId === pin.id;
+        const isCorrect = revealed && pin.id === correctId;
+        const isWrongPick = revealed && isSelected && pin.id !== correctId;
+        const labelClass = [
+          styles.pinLabel,
+          isCorrect ? styles.pinLabelCorrect : '',
+          isWrongPick ? styles.pinLabelWrong : '',
+          isSelected && !isCorrect && !isWrongPick ? styles.pinLabelSelected : '',
+        ]
+          .filter(Boolean)
+          .join(' ');
+        const offsetIndex = labelOffsetIndex.get(pin.id) ?? 0;
+        return (
+          <span
+            key={pin.id}
+            className={labelClass}
+            style={
+              {
+                left: `${(p.x / projection.width) * 100}%`,
+                top: `${(p.y / projection.height) * 100}%`,
+                '--label-dy': `${14 + offsetIndex * 22}px`,
+              } as CSSProperties
+            }
+          >
+            {pin.label}
+          </span>
+        );
+      })}
     </div>
   );
 }

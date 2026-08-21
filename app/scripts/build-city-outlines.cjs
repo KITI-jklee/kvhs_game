@@ -1,11 +1,17 @@
 /**
- * 보훈병원 위치감각게임(FR-G1) 시/군/구 확대 지도용 경계 데이터를 만든다.
+ * "가장 가까운 위탁병원 찾기" 게임의 시/군/구 목록 + 대표 위치점(`_regions.json`)을
+ * 만든다 - 라운드마다 지역을 뽑고, 그 안의 동을 무작위로 골라 원점으로 쓰고
+ * (`LocationGame.tsx`), 오답 후보 병원이 어느 도에 속하는지 판단할 때 쓴다.
  *
- * 배경: 전국 지도 한 장으로는 병원 위치를 정밀하게 찍기 어렵다는 사용자 피드백에
- * 따라, 라운드마다 병원이 속한 시/군/구만 확대해서 보여준다(`LocationGame.tsx` +
- * `lib/cityOutline.ts` + `lib/geo.ts`의 `boundsForRegion`/`createProjection`).
- * 이 스크립트는 그 확대 지도에 쓸 실제 시/군/구 경계선을 만드는 1회성 빌드
- * 도구다 - 앱 런타임에서는 실행되지 않고, `public/data/hospital_locations.json`이
+ * 원래는 시/군/구를 확대해서 보여주는 지도 기능(개별 경계선 파일 + manifest)이
+ * 있었는데, 그 화면이 "시/군 전체를 보여주면 후보가 다 그 안에 들어와 판단
+ * 근거가 없다"는 이유로 도(道) 배경 + 동(洞) 강조 방식으로 바뀌면서
+ * 필요 없어졌다(사용자 확인: "이거 이제 필요없는거야?" - 코드에서 실제로
+ * 참조가 없음을 확인 후 제거) - 그래서 이 스크립트는 이제 `_regions.json`만
+ * 만든다. 시/군/구 경계선 자체(도 배경용)는 `build-province-outlines.cjs`가
+ * 이 스크립트와 같은 municipalities 데이터에서 도 단위로 합쳐 만든다.
+ *
+ * 앱 런타임에서는 실행되지 않고, `public/data/hospital_locations.json`이
  * 바뀌어 새 지역이 추가될 때만 다시 돌리면 된다.
  *
  * 데이터 출처: southkorea/southkorea-maps 저장소의 2018년 시군구
@@ -15,7 +21,7 @@
  * `skorea-municipalities-2018-topo-simple.json`으로 이 폴더에 받아두었다 -
  * 새로 받으려면 위 raw URL을 그대로 다시 받으면 된다.
  *
- * 실행: `node scripts/build-city-outlines.js` (app/ 안에서, topojson-client가
+ * 실행: `node scripts/build-city-outlines.cjs` (app/ 안에서, topojson-client가
  * devDependency로 설치되어 있어야 한다).
  *
  * 데이터셋이 2018년 기준이라 이후 행정구역 개편과는 이름이 다를 수 있어
@@ -108,35 +114,118 @@ function collectRings(features) {
   }
   return rings;
 }
-function bboxOfRings(rings) {
+// (shoelace 공식) 링의 면적 - 어느 링이 "본토"인지 가려낼 때 쓴다.
+function ringArea(ring) {
+  let sum = 0;
+  for (let i = 0; i < ring.length; i++) {
+    const [x1, y1] = ring[i];
+    const [x2, y2] = ring[(i + 1) % ring.length];
+    sum += x1 * y2 - x2 * y1;
+  }
+  return Math.abs(sum) / 2;
+}
+
+/** 여러 링(본토 + 부속 도서) 중 면적이 가장 큰 것 - "위치" 표시용 중심점은
+ * 이 본토 링만 기준으로 잡아야, 제주시(추자도 포함)처럼 멀리 떨어진 작은
+ * 부속 섬이 bbox를 바다 쪽으로 끌고 가 중심점이 엉뚱한 해상에 찍히는 문제가
+ * 생기지 않는다. */
+function mainlandRing(rings) {
+  return rings.reduce((best, ring) => (ringArea(ring) > ringArea(best) ? ring : best), rings[0]);
+}
+
+// 다각형 무게중심(signed area 가중 평균) - bbox 중심보다 실제 육지 위에 있을
+// 확률이 훨씬 높다(오목한 해안선이라도 무게중심은 대체로 뭍 쪽으로 쏠림).
+function ringCentroid(ring) {
+  let a6 = 0, cx = 0, cy = 0;
+  for (let i = 0; i < ring.length; i++) {
+    const [x1, y1] = ring[i];
+    const [x2, y2] = ring[(i + 1) % ring.length];
+    const cross = x1 * y2 - x2 * y1;
+    a6 += cross;
+    cx += (x1 + x2) * cross;
+    cy += (y1 + y2) * cross;
+  }
+  const a = a6 / 2;
+  if (Math.abs(a) < 1e-12) return ring[0];
+  return [cx / (6 * a), cy / (6 * a)];
+}
+
+// ray casting - 점이 링(외곽선) 내부에 있는지. 신안군처럼 극단적으로 잘게
+// 갈라진 다도해 섬은 무게중심조차 뭍 대신 만 안쪽 바다에 찍힐 수 있어서,
+// 이 검사로 걸러내고 링 위의 실제 꼭짓점으로 대체한다(아래 landPointOfRing).
+function pointInRing([px, py], ring) {
+  let inside = false;
+  for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
+    const [xi, yi] = ring[i];
+    const [xj, yj] = ring[j];
+    if (yi === yj) continue;
+    if (py < Math.min(yi, yj) || py >= Math.max(yi, yj)) continue;
+    const xIntersect = xi + ((py - yi) / (yj - yi)) * (xj - xi);
+    if (px < xIntersect) inside = !inside;
+  }
+  return inside;
+}
+
+/** 반드시 그 링(육지) 안에 있는 점 하나 - 무게중심이 만이나 굴곡(사천시의
+ * 사천만처럼 해안선이 심하게 갈라진 경우) 때문에 바다에 찍히면, bbox 안을
+ * 격자로 훑어 실제로 링 "내부"인 점들 중 무게중심에 가장 가까운 점으로
+ * 대체한다. (꼭짓점은 경계선 "위"라 판정이 애매해서 대신 쓰지 않는다 -
+ * 격자점은 확실히 내부인 점만 후보로 삼는다.) 격자를 촘촘히 할수록 정확하지만
+ * 빌드 1회성 스크립트라 정확도를 우선한다. */
+function landPointOfRing(ring) {
+  const centroid = ringCentroid(ring);
+  if (pointInRing(centroid, ring)) return centroid;
+
   let lonMin = Infinity, lonMax = -Infinity, latMin = Infinity, latMax = -Infinity;
-  for (const ring of rings) {
-    for (const [lon, lat] of ring) {
-      if (lon < lonMin) lonMin = lon;
-      if (lon > lonMax) lonMax = lon;
-      if (lat < latMin) latMin = lat;
-      if (lat > latMax) latMax = lat;
+  for (const [lon, lat] of ring) {
+    if (lon < lonMin) lonMin = lon;
+    if (lon > lonMax) lonMax = lon;
+    if (lat < latMin) latMin = lat;
+    if (lat > latMax) latMax = lat;
+  }
+
+  const GRID = 60;
+  let best = null;
+  let bestDist = Infinity;
+  for (let i = 0; i <= GRID; i++) {
+    const lon = lonMin + ((lonMax - lonMin) * i) / GRID;
+    for (let j = 0; j <= GRID; j++) {
+      const lat = latMin + ((latMax - latMin) * j) / GRID;
+      const pt = [lon, lat];
+      if (!pointInRing(pt, ring)) continue;
+      const d = (lon - centroid[0]) ** 2 + (lat - centroid[1]) ** 2;
+      if (d < bestDist) {
+        bestDist = d;
+        best = pt;
+      }
     }
   }
-  return { lonMin, lonMax, latMin, latMax };
+  // 격자에서도 못 찾으면(극단적으로 얇은 지형) 무게중심을 그대로 쓴다 -
+  // 바다에 찍힐 위험은 있지만 못 찾는 경우는 없어야 하며, 값이라도 있어야
+  // 라운드가 아예 깨지지 않는다.
+  return best ?? centroid;
 }
 
 const outDir = path.join(ROOT, 'public/data/city_outlines');
 fs.mkdirSync(outDir, { recursive: true });
-// 파일명은 원문(한글) 그대로 저장한다. percent-encoding한 문자열을 파일명으로
-// 쓰면 디스크상 실제 이름이 "%EC%..." 리터럴이 되어, 브라우저가 URL을 디코드해
-// 찾는 fetch 경로와 어긋나 404 -> SPA fallback(index.html)이 돌아온다.
-const manifest = {};
-let totalBytes = 0;
+
+// ---- 도(道) 단위 4지선다 위치퀴즈용 인덱스 ----
+// 라운드마다 "같은 도 안의 다른 도시들"을 오답 후보로 뽑으려면 시/군/구
+// 230개를 전부 fetch하지 않고도 (1) 어느 도에 어떤 도시들이 있는지,
+// (2) 각 도시의 대략적 위치(중심점)를 알아야 한다.
+const provinces = {};
+const centers = {};
 for (const [addr, features] of resolved) {
   const rings = collectRings(features);
-  const bbox = bboxOfRings(rings);
-  const roundedRings = rings.map((ring) => ring.map(([lon, lat]) => [Math.round(lon * 1e5) / 1e5, Math.round(lat * 1e5) / 1e5]));
-  const payload = JSON.stringify({ bbox, rings: roundedRings });
-  const filename = `${addr}.json`;
-  fs.writeFileSync(path.join(outDir, filename), payload);
-  manifest[addr] = filename;
-  totalBytes += payload.length;
+  const prov = addr.split(' ')[0];
+  (provinces[prov] ??= []).push(addr);
+  // bbox 중심이 아니라, 본토 링(위 mainlandRing) 위의 실제 육지 점(landPointOfRing)을
+  // 쓴다 - bbox 중심은 신안군처럼 잘게 갈라진 다도해에서 만 안쪽 바다에 찍힐 수 있다.
+  const [lng, lat] = landPointOfRing(mainlandRing(rings));
+  centers[addr] = {
+    lat: Math.round(lat * 1e5) / 1e5,
+    lng: Math.round(lng * 1e5) / 1e5,
+  };
 }
-fs.writeFileSync(path.join(outDir, '_manifest.json'), JSON.stringify(manifest));
-console.log(`wrote ${Object.keys(manifest).length} city outline files, ${Math.round(totalBytes / 1024)} KB total -> ${outDir}`);
+fs.writeFileSync(path.join(outDir, '_regions.json'), JSON.stringify({ provinces, centers }));
+console.log(`wrote _regions.json (${Object.keys(provinces).length} provinces, ${Object.keys(centers).length} city centers)`);

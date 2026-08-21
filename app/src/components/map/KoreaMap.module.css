@@ -22,83 +22,104 @@
   inset: 0;
   width: 100%;
   height: 100%;
-  cursor: crosshair;
 }
 
 .landmass {
   fill: var(--color-tint-1);
-  stroke: var(--color-line);
-  stroke-width: 1.5;
-  vector-effect: non-scaling-stroke;
-}
-
-.islet {
-  fill: var(--color-tint-1);
-  stroke: var(--color-line);
-  stroke-width: 1.5;
-  vector-effect: non-scaling-stroke;
-}
-
-.link {
-  stroke: var(--color-ink);
-  stroke-width: 1.5;
-  stroke-dasharray: 4 4;
-  opacity: 0.55;
-  vector-effect: non-scaling-stroke;
-}
-
-.pinDot {
-  fill: var(--color-pin);
-  stroke: #fff;
-  stroke-width: 2.5;
-  vector-effect: non-scaling-stroke;
-}
-
-.pinRing {
-  fill: none;
-  stroke: var(--color-pin);
+  /* 카드 테두리용 --color-line(#e3ede8)은 너무 흐려서 지도 경계선처럼 안 보임
+     (사용자 피드백: "지도안같애") - 실제 행정지도처럼 뚜렷이 보이도록 더
+     진한 색+두께를 쓴다. */
+  stroke: #9fb3ac;
   stroke-width: 2;
   vector-effect: non-scaling-stroke;
-  transform-box: fill-box;
-  transform-origin: center;
-  animation: ping 1.2s ease-out infinite;
 }
 
-.answerDot {
-  fill: var(--color-ink);
-  stroke: #fff;
+/* "보훈 대상자"가 있는 동(읍/면/동) 영역 - 시/군 전체가 아니라 그 동만 옅게
+   강조해서, 후보 병원 중 어디가 가까운지 판단할 근거를 준다(사용자 피드백:
+   시/군 전체를 칠하면 후보가 다 그 안에 들어와서 판단 근거가 없어짐). */
+.highlight {
+  fill: var(--color-accent);
+  fill-opacity: 0.22;
+  stroke: var(--color-accent-strong);
+  stroke-width: 1.5;
+  stroke-opacity: 0.55;
+  vector-effect: non-scaling-stroke;
+  pointer-events: none;
+}
+
+/* ---- 4지선다 후보 핀 ---- */
+.pinBtn {
+  cursor: pointer;
+}
+.pinBtn.pinDisabled {
+  cursor: default;
+}
+
+/* 실제 클릭 판정 영역은 보이는 원보다 훨씬 넓게 - 손가락으로도 정확히 짚기 쉽게. */
+.pinHit {
+  fill: transparent;
+}
+
+.pinCircle {
+  fill: #fff;
+  stroke: var(--color-pin);
   stroke-width: 2.5;
   vector-effect: non-scaling-stroke;
+  transition: fill 0.15s ease, stroke 0.15s ease, r 0.15s ease;
 }
 
-.answerCheck {
+.pinSelected .pinCircle {
+  fill: var(--color-accent);
+  stroke: var(--color-accent-strong);
+}
+
+.pinCorrect .pinCircle {
+  fill: var(--color-accent);
+  stroke: var(--color-accent-strong);
+}
+
+.pinWrong .pinCircle {
+  fill: var(--color-fake);
+  stroke: #a8493c;
+}
+
+.pinMark {
   fill: #fff;
-  font: 600 9px 'Pretendard Variable';
+  font: 700 10px 'Pretendard Variable';
   pointer-events: none;
 }
 
-.answerLabel {
+.pinLabel {
   position: absolute;
-  transform: translate(-50%, 14px);
+  /* --label-dy: 서로 가까운 핀끼리는 겹치지 않게 계단식으로 내려 붙인다
+     (KoreaMap.tsx의 labelOffsetIndex). */
+  transform: translate(-50%, var(--label-dy, 14px));
   white-space: nowrap;
-  font: 600 10px 'Pretendard Variable';
+  font: 600 10.5px 'Pretendard Variable';
+  color: var(--color-ink);
+  background: #fff;
+  border: 1px solid var(--color-line);
+  padding: 3px 8px;
+  border-radius: 999px;
+  pointer-events: none;
+}
+
+.pinLabel.pinLabelSelected {
   color: #fff;
-  background: var(--color-ink);
-  padding: 3px 7px;
-  border-radius: 5px;
-  pointer-events: none;
+  background: var(--color-accent-strong);
+  border-color: transparent;
 }
 
-.caption {
-  position: absolute;
-  left: 50%;
-  bottom: 12px;
-  transform: translateX(-50%);
-  font: 600 9px 'Pretendard Variable';
-  color: var(--color-muted-2);
-  letter-spacing: 0.12em;
-  white-space: nowrap;
-  pointer-events: none;
+.pinLabel.pinLabelCorrect {
+  color: #fff;
+  background: var(--color-accent-strong);
+  border-color: transparent;
+}
+
+.pinLabel.pinLabelWrong {
+  color: #fff;
+  background: var(--color-fake);
+  border-color: transparent;
 }
 
 @media (min-width: 1024px) {

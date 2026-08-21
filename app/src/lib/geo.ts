@@ -1,12 +1,10 @@
 /**
  * Geo helpers for 게임① 보훈병원 위치감각게임.
  *
- * `project`/`unproject` implement the "대한민국 SVG 지도 위 좌표 변환"
- * required by NFR-03 (별도 지도 SDK 없이) - both the hand-drawn coastline in
- * `KoreaMap.tsx` and every pin on it are produced by running real
- * lat/lng through this exact projection, so a click's pixel position can be
- * converted back to lat/lng and scored with real-world haversine distance
- * (FR-G1-03), not a screen-pixel distance.
+ * "시작 지점에서 가장 가까운 위탁병원 찾기" 게임(lib/nearestHospital.ts)을
+ * 위한 것들이다 - `haversineKm`으로 실제 최단거리 병원/오답 후보를 고르고,
+ * `createProjection`/`boundsForBoxes`/`bboxOfPoints`로 시작 지점 + 병원
+ * 후보들이 다 보이는 지도 투영 범위를 만든다.
  */
 
 export interface LatLng {
@@ -19,37 +17,6 @@ export interface Point {
   y: number;
 }
 
-/** Bounding box covering every hospital in hospital_locations.json, plus a small margin. */
-export const KOREA_BOUNDS = {
-  latMin: 32.8,
-  latMax: 38.8,
-  lonMin: 124.3,
-  lonMax: 131.3,
-};
-
-const meanLatRad = (((KOREA_BOUNDS.latMin + KOREA_BOUNDS.latMax) / 2) * Math.PI) / 180;
-const latSpanKm = (KOREA_BOUNDS.latMax - KOREA_BOUNDS.latMin) * 111.32;
-const lonSpanKm = (KOREA_BOUNDS.lonMax - KOREA_BOUNDS.lonMin) * 111.32 * Math.cos(meanLatRad);
-
-/** Map viewBox sized so 1 SVG unit ≈ 1 SVG unit in both axes represents the same real-world km (minimal shape distortion). */
-export const MAP_VIEW_HEIGHT = 520;
-export const MAP_VIEW_WIDTH = Math.round(MAP_VIEW_HEIGHT * (lonSpanKm / latSpanKm));
-
-export function project({ lat, lng }: LatLng): Point {
-  const xFrac = (lng - KOREA_BOUNDS.lonMin) / (KOREA_BOUNDS.lonMax - KOREA_BOUNDS.lonMin);
-  const yFrac = (KOREA_BOUNDS.latMax - lat) / (KOREA_BOUNDS.latMax - KOREA_BOUNDS.latMin);
-  return { x: xFrac * MAP_VIEW_WIDTH, y: yFrac * MAP_VIEW_HEIGHT };
-}
-
-export function unproject({ x, y }: Point): LatLng {
-  const xFrac = x / MAP_VIEW_WIDTH;
-  const yFrac = y / MAP_VIEW_HEIGHT;
-  return {
-    lng: KOREA_BOUNDS.lonMin + xFrac * (KOREA_BOUNDS.lonMax - KOREA_BOUNDS.lonMin),
-    lat: KOREA_BOUNDS.latMax - yFrac * (KOREA_BOUNDS.latMax - KOREA_BOUNDS.latMin),
-  };
-}
-
 export interface Bounds {
   latMin: number;
   latMax: number;
@@ -60,24 +27,28 @@ export interface Bounds {
 export interface Projection {
   width: number;
   height: number;
+  /** 1km가 화면에서 몇 px인지 - 흐릿한 반경 원처럼 실제 km 단위 크기를 그릴 때 쓴다. */
+  pixelsPerKm: number;
   project(p: LatLng): Point;
   unproject(p: Point): LatLng;
 }
 
 /**
- * 시/군 단위 확대 지도(FR-G1-02 개선)를 위한 범용 투영. `project`/`unproject`와
- * 동일한 등장방형 투영을 임의의 `bounds`에 대해 만들어 준다 - 위경도 비율에
- * 맞춰 폭을 계산해 모양이 찌그러지지 않는다.
+ * 임의의 `bounds`에 대한 등장방형 투영을 만든다. 위경도 비율에 맞춰 폭을
+ * 계산해 모양이 찌그러지지 않는다(즉 x/y 스케일이 같아서 `pixelsPerKm`도
+ * 방향에 관계없이 하나의 값으로 쓸 수 있다).
  */
 export function createProjection(bounds: Bounds, viewHeight = 520): Projection {
-  const meanLatRad = ((bounds.latMin + bounds.latMax) / 2) * Math.PI / 180;
+  const meanLatRad = (((bounds.latMin + bounds.latMax) / 2) * Math.PI) / 180;
   const latSpanKm = (bounds.latMax - bounds.latMin) * 111.32;
   const lonSpanKm = (bounds.lonMax - bounds.lonMin) * 111.32 * Math.cos(meanLatRad);
   const width = Math.max(1, Math.round(viewHeight * (lonSpanKm / latSpanKm)));
   const height = viewHeight;
+  const pixelsPerKm = height / latSpanKm;
   return {
     width,
     height,
+    pixelsPerKm,
     project({ lat, lng }) {
       const xFrac = (lng - bounds.lonMin) / (bounds.lonMax - bounds.lonMin);
       const yFrac = (bounds.latMax - lat) / (bounds.latMax - bounds.latMin);
@@ -94,10 +65,6 @@ export function createProjection(bounds: Bounds, viewHeight = 520): Projection {
   };
 }
 
-function clamp(v: number, min: number, max: number): number {
-  return Math.min(max, Math.max(min, v));
-}
-
 export interface RegionBbox {
   lonMin: number;
   lonMax: number;
@@ -105,24 +72,48 @@ export interface RegionBbox {
   latMax: number;
 }
 
+/** 후보 도시 여러 곳의 bbox를 하나로 합쳐, 전부 다 보이는 지도 투영 범위를 만든다. */
+export function boundsForBoxes(boxes: RegionBbox[], paddingRatio = 0.25): Bounds {
+  const lonMin = Math.min(...boxes.map((b) => b.lonMin));
+  const lonMax = Math.max(...boxes.map((b) => b.lonMax));
+  const latMin = Math.min(...boxes.map((b) => b.latMin));
+  const latMax = Math.max(...boxes.map((b) => b.latMax));
+  const lonPad = (lonMax - lonMin) * paddingRatio || 0.05;
+  const latPad = (latMax - latMin) * paddingRatio || 0.05;
+  return {
+    lonMin: lonMin - lonPad,
+    lonMax: lonMax + lonPad,
+    latMin: latMin - latPad,
+    latMax: latMax + latPad,
+  };
+}
+
+/** 점(위경도) 여러 개를 감싸는 bbox - 시작 지점과 병원 후보들이 다 들어가는 범위를 잡을 때 쓴다. */
+export function bboxOfPoints(points: LatLng[]): RegionBbox {
+  return {
+    lonMin: Math.min(...points.map((p) => p.lng)),
+    lonMax: Math.max(...points.map((p) => p.lng)),
+    latMin: Math.min(...points.map((p) => p.lat)),
+    latMax: Math.max(...points.map((p) => p.lat)),
+  };
+}
+
 /**
- * 병원이 속한 시/군의 경계 bbox로부터 확대 지도의 투영 범위를 만든다.
- * 신안군·완도군처럼 섬이 흩어진 광역 군은 bbox가 100km를 넘기도 해서 그대로
- * 쓰면 확대 효과가 없다 - `maxSpanKm`로 잘라 정답 병원 좌표를 중심으로 보여준다.
+ * 점들 주위로 "딱 맞게" 확대한 투영 범위를 만든다 - 배경으로 그리는 도(道)
+ * 전체가 아니라 실제 후보 위치들 기준으로 줌을 잡는다. 병원 후보가 좁은
+ * 지역에 몰려 있을 때도(예: 같은 구 안 여러 병원) 지도가 도 전체 크기로
+ * 벌어져서 핀 라벨이 서로 겹치는 문제를 막는다 - `minSpanKm`로 최소 확대
+ * 범위를 보장해, 점들이 아주 가까워도 라벨 놓을 여유는 남긴다.
  */
-export function boundsForRegion(
-  bbox: RegionBbox,
-  target: LatLng,
-  { maxSpanKm = 55, minSpanKm = 14, paddingRatio = 0.22 } = {},
-): Bounds {
-  const meanLatRad = ((bbox.latMin + bbox.latMax) / 2) * Math.PI / 180;
-  const bboxWKm = (bbox.lonMax - bbox.lonMin) * 111.32 * Math.cos(meanLatRad);
-  const bboxHKm = (bbox.latMax - bbox.latMin) * 111.32;
-  const halfWKm = clamp((bboxWKm * (1 + paddingRatio)) / 2, minSpanKm / 2, maxSpanKm / 2);
-  const halfHKm = clamp((bboxHKm * (1 + paddingRatio)) / 2, minSpanKm / 2, maxSpanKm / 2);
-  const fitsFully = bboxWKm <= maxSpanKm && bboxHKm <= maxSpanKm;
-  const centerLat = fitsFully ? (bbox.latMin + bbox.latMax) / 2 : target.lat;
-  const centerLng = fitsFully ? (bbox.lonMin + bbox.lonMax) / 2 : target.lng;
+export function boundsForPoints(points: LatLng[], { minSpanKm = 8, paddingRatio = 0.35 } = {}): Bounds {
+  const box = bboxOfPoints(points);
+  const meanLatRad = (((box.latMin + box.latMax) / 2) * Math.PI) / 180;
+  const wKm = (box.lonMax - box.lonMin) * 111.32 * Math.cos(meanLatRad);
+  const hKm = (box.latMax - box.latMin) * 111.32;
+  const halfWKm = Math.max(minSpanKm / 2, (wKm * (1 + paddingRatio)) / 2);
+  const halfHKm = Math.max(minSpanKm / 2, (hKm * (1 + paddingRatio)) / 2);
+  const centerLat = (box.latMin + box.latMax) / 2;
+  const centerLng = (box.lonMin + box.lonMax) / 2;
   const dLat = halfHKm / 111.32;
   const dLng = halfWKm / (111.32 * Math.cos(meanLatRad));
   return {
@@ -133,15 +124,34 @@ export function boundsForRegion(
   };
 }
 
-/** `bounds`가 실제로 덮는 폭/높이를 km로 환산해 평균낸 값 - 지도의 "반경"을 구하는 데 쓴다. */
-export function spanKmOfBounds(bounds: Bounds): number {
-  const meanLatRad = ((bounds.latMin + bounds.latMax) / 2) * Math.PI / 180;
+/**
+ * `bounds`를 목표 가로/세로 비율(`aspectRatio` = 폭/높이)에 맞게, 중심은
+ * 그대로 두고 짧은 쪽만 넓혀서 맞춘다. 지도를 실제로 보여주는 컨테이너의
+ * 화면 비율에 맞춰 이걸 먼저 적용해두면, SVG viewBox 비율이 컨테이너 비율과
+ * 정확히 같아져서 letterbox(빈 여백)도, 강제 늘림(원이 타원으로 찌그러짐)도
+ * 둘 다 없이 지도를 꽉 채울 수 있다.
+ */
+export function fitBoundsToAspect(bounds: Bounds, aspectRatio: number): Bounds {
+  if (!Number.isFinite(aspectRatio) || aspectRatio <= 0) return bounds;
+  const meanLatRad = (((bounds.latMin + bounds.latMax) / 2) * Math.PI) / 180;
   const latSpanKm = (bounds.latMax - bounds.latMin) * 111.32;
   const lonSpanKm = (bounds.lonMax - bounds.lonMin) * 111.32 * Math.cos(meanLatRad);
-  return (latSpanKm + lonSpanKm) / 2;
+  const currentRatio = lonSpanKm / latSpanKm;
+  const centerLat = (bounds.latMin + bounds.latMax) / 2;
+  const centerLng = (bounds.lonMin + bounds.lonMax) / 2;
+  if (currentRatio < aspectRatio) {
+    // 가로가 더 넓어져야 한다 - lon 범위를 넓힌다.
+    const targetLonSpanKm = latSpanKm * aspectRatio;
+    const dLng = targetLonSpanKm / 2 / (111.32 * Math.cos(meanLatRad));
+    return { ...bounds, lonMin: centerLng - dLng, lonMax: centerLng + dLng };
+  }
+  // 세로가 더 넓어져야 한다 - lat 범위를 넓힌다.
+  const targetLatSpanKm = lonSpanKm / aspectRatio;
+  const dLat = targetLatSpanKm / 2 / 111.32;
+  return { ...bounds, latMin: centerLat - dLat, latMax: centerLat + dLat };
 }
 
-/** Great-circle distance in km (FR-G1-03) - real위경도 기준, 화면 픽셀 거리 아님. */
+/** Great-circle distance in km - 오답 후보를 실제 거리 기준으로 추릴 때 쓴다. */
 export function haversineKm(a: LatLng, b: LatLng): number {
   const R = 6371;
   const dLat = ((b.lat - a.lat) * Math.PI) / 180;
@@ -150,27 +160,4 @@ export function haversineKm(a: LatLng, b: LatLng): number {
   const lat2 = (b.lat * Math.PI) / 180;
   const h = Math.sin(dLat / 2) ** 2 + Math.cos(lat1) * Math.cos(lat2) * Math.sin(dLng / 2) ** 2;
   return 2 * R * Math.asin(Math.min(1, Math.sqrt(h)));
-}
-
-/**
- * 기능설계서 3-2: 오차 거리 → 라운드 점수.
- * 시/군 단위 확대 지도 도입 이후, 절대 km가 아니라 그 라운드 지도가 실제로
- * 보여주는 반경(`spanKm`의 절반) 대비 비율로 채점한다. 남동구처럼 작은 구는
- * 지도 폭 자체가 14km밖에 안 돼서 "5km 차이"가 화면상으로는 지도 절반 가까이
- * 벗어난 것과 같은데, 절대 km 기준(예: 10km 이하 100점)으로는 그런 큰 화면상
- * 오차도 만점 근처로 나와 체감과 어긋났다. `spanKm`를 넘기지 않으면 예전처럼
- * 전국 지도 스케일(KOREA_BOUNDS)을 기본값으로 써서 동작은 그대로 유지된다.
- */
-export function scoreForDistanceKm(km: number, spanKm: number = spanKmOfBounds(KOREA_BOUNDS)): number {
-  const radiusKm = spanKm / 2;
-  const ratio = radiusKm > 0 ? km / radiusKm : 1;
-  if (ratio <= 0.2) return 100;
-  if (ratio <= 0.45) return 70;
-  if (ratio <= 0.8) return 40;
-  return 10;
-}
-
-/** null은 제한시간 내 확정된 위치가 없음을 의미하며 현행 정책상 0점이다. */
-export function scoreForLocationAttempt(km: number | null, spanKm: number): number {
-  return km === null ? 0 : scoreForDistanceKm(km, spanKm);
 }
