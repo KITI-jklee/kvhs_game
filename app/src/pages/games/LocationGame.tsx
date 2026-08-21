@@ -296,7 +296,7 @@ export function LocationGame() {
       const bestCount = records.filter((r) => r.points === RANK_POINTS[0]).length;
       finishGame({
         gameId: 'location',
-        title: '위치감각게임 완료',
+        title: '가장 가까운 위탁병원 찾기 완료',
         score,
         stats: [
           { icon: '◎', label: '총점', value: `${score} / ${MAX_TOTAL_SCORE}` },
@@ -351,7 +351,7 @@ export function LocationGame() {
       <GameHud
         onPause={handlePause}
         eyebrow={`ROUND ${roundIndex + 1} / ${ROUND_COUNT}`}
-        title="보훈병원 위치감각게임"
+        title="가장 가까운 위탁병원 찾기"
         score={{ label: 'SCORE', value: score }}
       />
       <DesktopContextBar onBack={() => navigate('/')} onPause={handlePause}>
@@ -367,7 +367,7 @@ export function LocationGame() {
 
       {showIntro && (
         <GameIntroOverlay
-          title="보훈병원 위치감각게임"
+          title="가장 가까운 위탁병원 찾기"
           onDone={() => setShowIntro(false)}
           rules={[
             { color: '#2abf9e', text: '보훈 대상자가 있는 지역과 병원 후보 5곳을 보고, 가장 가까운 위탁병원을 골라보세요' },

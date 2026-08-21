@@ -1,5 +1,5 @@
 /**
- * Geo helpers for 게임① 보훈병원 위치감각게임.
+ * Geo helpers for 게임① 가장 가까운 위탁병원 찾기.
  *
  * "시작 지점에서 가장 가까운 위탁병원 찾기" 게임(lib/nearestHospital.ts)을
  * 위한 것들이다 - `haversineKm`으로 실제 최단거리 병원/오답 후보를 고르고,
