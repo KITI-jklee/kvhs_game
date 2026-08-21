@@ -15,8 +15,8 @@
 ------
     python extract_kvhs_data.py
 
-서비스키는 아래 SERVICE_KEY 상수에 이미 인코딩된 형태로 들어있다
-(공공데이터포털에서 발급받은 사용자 본인의 키). 다른 사람과 공유하지 말 것.
+서비스키는 `DATA_GO_KR_SERVICE_KEY` 환경변수로만 전달한다.
+인코딩 키와 디코딩 키 모두 사용할 수 있다.
 
 출력물은 이 스크립트와 같은 폴더의 data/ 하위에 API 별로
   - <name>.json  : 원본 필드를 그대로 유지한 전체 레코드 배열
@@ -38,11 +38,13 @@ import urllib.request
 # 설정
 # ------------------------------------------------------------------
 
-# 공공데이터포털에서 발급받은 서비스키 (URL 인코딩된 상태 그대로 사용)
-SERVICE_KEY = (
-    "B4SlMu%2B8qOFFVWZ0wooFQaO1Vq6IFFu0VHfRLR49y%2F9%2F"
-    "aHyqaof1reJC9uj2RfP9YO4CSyDLUYoxtipFO1IaiQ%3D%3D"
-)
+# 실제 키는 저장소와 소스 코드에 절대 기록하지 않는다.
+SERVICE_KEY = os.environ.get("DATA_GO_KR_SERVICE_KEY", "").strip()
+if not SERVICE_KEY:
+    raise SystemExit(
+        "DATA_GO_KR_SERVICE_KEY 환경변수가 필요합니다. "
+        "실행 쉘에서 값을 설정한 뒤 다시 실행하세요."
+    )
 
 # 추출 대상 API 목록: (내부 식별자, 사람이 읽기 좋은 설명, 엔드포인트 경로)
 APIS = [
@@ -83,8 +85,8 @@ def fetch_page(base_url: str, page: int, per_page: int) -> dict:
     query = urllib.parse.urlencode(
         {"page": page, "perPage": per_page}, safe=""
     )
-    # serviceKey는 이미 인코딩되어 있으므로 그대로 붙인다 (이중 인코딩 방지).
-    url = f"{base_url}?{query}&serviceKey={SERVICE_KEY}"
+    encoded_key = urllib.parse.quote(urllib.parse.unquote(SERVICE_KEY), safe="")
+    url = f"{base_url}?{query}&serviceKey={encoded_key}"
 
     last_error = None
     for attempt in range(1, MAX_RETRIES + 1):

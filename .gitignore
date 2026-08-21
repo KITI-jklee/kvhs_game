@@ -10,6 +10,10 @@ dist-ssr/
 .env.*
 !.env.example
 
+# python
+__pycache__/
+*.pyc
+
 # editor / OS
 .DS_Store
 Thumbs.db
