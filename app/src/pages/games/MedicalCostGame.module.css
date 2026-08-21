@@ -447,6 +447,10 @@
   background: var(--color-accent);
   color: var(--color-dark-1);
 }
+.resultBox.partial .resultBadge {
+  background: rgba(42, 191, 158, 0.25);
+  color: #fff;
+}
 .resultBox.miss .resultBadge {
   background: rgba(217, 112, 95, 0.25);
   color: #fff;
