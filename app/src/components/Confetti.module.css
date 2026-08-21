@@ -1,0 +1,40 @@
+.piece {
+  position: absolute;
+  top: -8%;
+  opacity: 0;
+  animation-name: petalFall;
+  animation-timing-function: ease-in;
+  /* 한 번 떨어지고 끝나는 게 아니라, 화면이 떠 있는 동안 계속 떨어지도록
+     반복한다(사용자 피드백) - 조각마다 딜레이/속도가 달라서 계속 봐도
+     한 무리가 통째로 반복되는 느낌은 안 든다. */
+  animation-iteration-count: infinite;
+}
+
+/* 폭발이 아니라 위에서 나풀나풀 떨어지는 꽃가루/색종이 - 좌우로 살짝
+   흔들리며(중간 지점에서 반대쪽으로 스윙) 떨어진다. */
+@keyframes petalFall {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+    opacity: 0;
+  }
+  8% {
+    opacity: 1;
+  }
+  55% {
+    transform: translate(var(--swayX), var(--swayY)) rotate(var(--rotateMid));
+  }
+  92% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--dx), var(--dy)) rotate(var(--rotate));
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .piece {
+    animation: none;
+    opacity: 0;
+  }
+}
