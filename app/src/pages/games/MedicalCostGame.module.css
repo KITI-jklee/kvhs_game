@@ -1,0 +1,544 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: linear-gradient(165deg, var(--color-dark-1) 0%, var(--color-dark-2) 55%, var(--color-dark-3) 100%);
+}
+
+.topBar {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 14px 20px;
+}
+
+.topBarNavRow {
+  display: grid;
+  grid-template-columns: 44px 1fr 44px;
+  align-items: center;
+  gap: 12px;
+}
+
+.topBarStatsRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2px;
+}
+
+.deskSide {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+}
+.deskSideRight {
+  justify-content: flex-end;
+}
+
+.scoreText,
+.correctText {
+  font: 500 11px 'Pretendard Variable';
+  color: var(--color-accent-pale);
+}
+.scoreText b,
+.correctText b {
+  font: 600 15px 'Pretendard Variable';
+  color: #fff;
+}
+
+.pauseCircle {
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  flex: none;
+  justify-self: end;
+  border-radius: 10px;
+  border: 1px solid rgba(126, 217, 194, 0.55);
+  background: var(--color-accent);
+  color: var(--color-dark-1);
+  font-size: 11px;
+  line-height: 1;
+  letter-spacing: 1px;
+  padding: 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.14);
+}
+
+.qPill {
+  margin: 0 auto;
+  background: var(--color-accent);
+  color: #0b3a31;
+  border-radius: 999px;
+  padding: 7px 14px;
+  font: 600 10.5px 'Pretendard Variable';
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+}
+.qPill span {
+  opacity: 0.6;
+}
+
+.body {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  /* 진행바 바로 아래 문제 카드가 상단에 딱 붙어 보였다(사용자 피드백:
+     "카드 좀 내려줘 너무 위에 붙어있어") - 진행바와 카드(.roundArea) 사이
+     간격만 넉넉히 띄운다. */
+  gap: 26px;
+  padding: 16px 20px 26px;
+}
+
+.progressTrack {
+  flex: none;
+}
+
+/* 진행바 다음 영역(카드+결과) - 진행바는 상단 바 바로 아래에 고정하고,
+   카드만 남는 공간 안에서 세로로 가운데 맞춘다(사용자 피드백: 모바일에서도
+   카드가 화면 가운데 오면 좋겠다). */
+.roundArea {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 14px;
+}
+
+.roundCard {
+  background: linear-gradient(180deg, #ffffff 0%, #f2f9f6 100%);
+  border-radius: 20px;
+  padding: 26px 22px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 12px;
+  box-shadow: var(--shadow-pop);
+  animation: pop 0.25s ease both;
+}
+
+@keyframes pop {
+  from {
+    transform: scale(0.97);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.cardTag {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pill {
+  background: var(--color-tint-1);
+  color: var(--color-accent-strong);
+  border-radius: 999px;
+  padding: 4px 10px;
+  font: 600 10.5px 'Pretendard Variable';
+}
+
+.cardTagText {
+  font: 500 12px 'Pretendard Variable';
+  color: var(--color-muted);
+}
+
+.cardName {
+  font: 600 25px/1.35 'Pretendard Variable';
+  color: var(--color-ink);
+  letter-spacing: -0.03em;
+}
+
+.cardHint {
+  font: 500 12px 'Pretendard Variable';
+  color: var(--color-muted);
+  margin-top: -4px;
+}
+
+.cardFootnote {
+  font: 400 11px 'Pretendard Variable';
+  color: var(--color-muted-2);
+}
+
+/* ---- 라운드① 슬라이더 ---- */
+.sliderValue {
+  font: 700 32px 'Pretendard Variable';
+  color: var(--color-accent-strong);
+  letter-spacing: -0.02em;
+}
+
+.slider {
+  width: 100%;
+  accent-color: var(--color-accent-strong);
+  height: 6px;
+}
+
+.sliderTicks {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  font: 500 10.5px 'Pretendard Variable';
+  color: var(--color-muted-2);
+  margin-top: -8px;
+}
+
+/* ---- 라운드② 4지선다 / 공통 카드 그리드 ---- */
+.bandGrid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.bandCard {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid var(--color-line);
+  border-radius: 12px;
+  padding: 14px;
+  background: #fff;
+  font: 600 13px 'Pretendard Variable';
+  color: var(--color-ink);
+  text-align: left;
+}
+.bandCard:disabled {
+  cursor: default;
+  opacity: 0.6;
+}
+
+.bandNum {
+  color: var(--color-accent-strong);
+  font-weight: 700;
+}
+
+.bandResultRow {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid transparent;
+  font: 500 12.5px 'Pretendard Variable';
+  /* 이 카드는 어두운 배경이라 기본 잉크색(어두운 색)을 그대로 물려받으면
+     글자가 안 보인다(사용자 피드백: "글자가 꺼매가지고 안보인다") -
+     .detailRow와 똑같이 밝은 색을 명시한다. */
+  color: var(--color-accent-pale);
+}
+.bandResultRow + .bandResultRow {
+  margin-top: 8px;
+}
+/* 정답 행은 선택 전 카드(.bandCard)처럼 테두리로 강조한다. */
+.bandResultCorrect {
+  background: rgba(42, 191, 158, 0.14);
+  border-color: var(--color-accent);
+}
+/* 순서 맞추기/예산 라운드 결과의 가격 표시용 - .tagOk/.tagMiss와 클래스를
+   나눠서, 명시도(specificity) 충돌로 정답/오답 색이 덮어써지지 않게 한다. */
+.priceStrong {
+  color: #fff;
+  font-weight: 700;
+}
+.bandResultRow b {
+  font-weight: 700;
+}
+
+.tagOk {
+  color: var(--color-accent-soft);
+}
+.tagMiss {
+  color: var(--color-fake);
+}
+
+/* ---- 라운드③ 순서 맞추기 ---- */
+.reorderList {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.reorderRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid var(--color-line);
+  border-radius: 12px;
+  padding: 10px 12px;
+  background: #fff;
+  /* 마우스/터치로 직접 끌어서 옮긴다 - touch-action:none이 없으면 모바일에서
+     드래그 제스처가 페이지 스크롤로 먹힌다. */
+  touch-action: none;
+  cursor: grab;
+  user-select: none;
+  transition: transform 0.15s ease;
+}
+
+.reorderRowDragging {
+  cursor: grabbing;
+  position: relative;
+  z-index: 5;
+  border-color: var(--color-accent);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.16);
+  transition: none;
+}
+
+.reorderName {
+  flex: 1;
+  text-align: left;
+  font: 600 13.5px 'Pretendard Variable';
+  color: var(--color-ink);
+}
+
+.reorderGrip {
+  color: var(--color-muted-2);
+  font-size: 15px;
+  letter-spacing: -1px;
+}
+
+/* ---- 라운드④ 예산 챌린지 ---- */
+.budgetPill {
+  background: var(--color-dark-1);
+  color: #fff;
+  border-radius: 999px;
+  padding: 8px 18px;
+  font: 700 14px 'Pretendard Variable';
+}
+
+.budgetList {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.budgetCard {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid var(--color-line);
+  border-radius: 12px;
+  padding: 14px;
+  background: #fff;
+  font: 600 13.5px 'Pretendard Variable';
+  color: var(--color-ink);
+  text-align: left;
+}
+.budgetCard:disabled {
+  cursor: default;
+  opacity: 0.6;
+}
+/* 멀티 선택 토글 상태 - .bandResultCorrect와 같은 민트 강조를 써서
+   "선택됨"이라는 시각 언어를 결과 카드와 통일한다. */
+.budgetCardPicked {
+  background: rgba(42, 191, 158, 0.14);
+  border-color: var(--color-accent);
+  color: var(--color-accent-strong);
+}
+
+/* ---- 라운드⑤ 더 비싼 것 고르기 ---- */
+/* 기준 가격을 미리 보여주지 않고 두 항목을 대등하게 비교하게 하므로, 예전
+   HIGHER(강조)/LOWER(기본) 버튼처럼 한쪽을 시각적으로 우대하지 않고 두
+   버튼을 완전히 동일한 스타일로 둔다. */
+.hlButtons {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.hlPickCard {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  border-radius: 16px;
+  padding: 22px 14px;
+  background: #fff;
+  border: 1px solid var(--color-line);
+  text-align: center;
+}
+.hlPickCard:disabled {
+  cursor: default;
+  opacity: 0.6;
+}
+.hlBadge {
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--color-tint-1);
+  color: var(--color-accent-strong);
+  font: 700 13px 'Pretendard Variable';
+}
+.hlPickName {
+  font: 700 16px/1.3 'Pretendard Variable';
+  color: var(--color-ink);
+}
+.hlPickDesc {
+  font: 500 11.5px 'Pretendard Variable';
+  color: var(--color-muted);
+}
+/* 실제 값을 나타내진 않는 순수 장식용 바 - "가격은 가려져 있다"는
+   느낌만 준다. */
+.hlBars {
+  display: flex;
+  gap: 4px;
+  margin-top: 4px;
+}
+.hlBars span {
+  width: 14px;
+  height: 5px;
+  border-radius: 3px;
+  background: var(--color-accent-pale);
+  opacity: 0.5;
+}
+.hlVsBadge {
+  background: var(--color-dark-1);
+  color: #fff;
+  border-radius: 999px;
+  padding: 6px 16px;
+  font: 700 12px 'Pretendard Variable';
+  letter-spacing: 0.04em;
+}
+
+/* ---- 결과 카드(공통) ---- */
+.resultBox {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 16px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  animation: pop 0.2s ease both;
+}
+
+.resultHead {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.resultBadge {
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  border-radius: 999px;
+  padding: 6px 14px;
+  font: 700 13px 'Pretendard Variable';
+}
+.resultBox.ok .resultBadge {
+  background: var(--color-accent);
+  color: var(--color-dark-1);
+}
+.resultBox.miss .resultBadge {
+  background: rgba(217, 112, 95, 0.25);
+  color: #fff;
+}
+
+.resultPoints {
+  font: 700 22px 'Pretendard Variable';
+  color: var(--color-accent-soft);
+}
+
+.resultDetail {
+  display: flex;
+  flex-direction: column;
+}
+
+/* 라운드① 슬라이더 결과 - 예전엔 "내 예상 / 300,000원"을 한 줄에 좌우로
+   늘어놓기만 했는데, 글자 크기가 작고 값도 라벨과 비슷한 무게로 보여서
+   잘 안 읽혔다(사용자 피드백: "지금은 잘 안보여"). 세 값을 각각 박스로
+   나누고 값을 라벨보다 훨씬 크고 밝게 키워서 한눈에 비교되게 한다. */
+.statGrid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+.statCard {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 12px 10px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+.statLabel {
+  font: 500 11px 'Pretendard Variable';
+  color: var(--color-accent-pale);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.statValue {
+  font: 700 15px 'Pretendard Variable';
+  color: #fff;
+}
+
+.resultSource {
+  font: 400 10.5px/1.5 'Pretendard Variable';
+  color: rgba(255, 255, 255, 0.45);
+  text-align: center;
+}
+
+.nextBtn {
+  width: 100%;
+}
+
+@media (min-width: 1024px) {
+  .topBar {
+    display: none;
+  }
+  .body {
+    /* 진행바가 위쪽 바(DesktopContextBar)와 같은 폭·같은 좌우 경계를
+       쓰도록, .body 자체를 그 바와 똑같은 max-width 공식으로 맞춘다
+       (사용자 피드백: "위에 바랑 길이 똑같이"). 좌우 패딩은 안 주고
+       max-width로만 폭을 제한해야 두 요소의 너비가 정확히 일치한다. */
+    padding: 10px 0 48px;
+    gap: 18px;
+    max-width: calc(var(--content-max) - 88px);
+    margin: 0 auto;
+    width: 100%;
+  }
+  .roundArea {
+    /* 카드(+결과)는 기존처럼 좁게 유지하고, 그 안에서 가운데로 옮긴다
+       (가운데 정렬 자체는 기본 규칙에 이미 있음). */
+    max-width: 640px;
+    margin: 0 auto;
+    width: 100%;
+    gap: 18px;
+  }
+  .roundCard {
+    padding: 40px;
+  }
+  .cardName {
+    font-size: 30px;
+  }
+  .statCard {
+    padding: 16px 14px;
+  }
+  .statLabel {
+    font-size: 12px;
+  }
+  .statValue {
+    font-size: 20px;
+  }
+}

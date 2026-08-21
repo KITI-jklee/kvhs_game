@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 import type { ReactNode } from 'react';
-import type { HospitalLocation, HospitalName, MedicalTermPair } from './types';
+import type { HospitalLocation, MedicalCostItem, MedicalTermPair } from './types';
 import { GameDataContext, type GameData, type LoadStatus } from './gameDataContext';
 
 async function fetchJson(url: string): Promise<unknown> {
@@ -47,20 +47,20 @@ function validateLocations(value: unknown): HospitalLocation[] {
   return rows;
 }
 
-function validateNames(value: unknown): HospitalName[] {
-  if (!Array.isArray(value)) throw new Error('hospital_names must be an array');
-  const rows = value.filter((row): row is HospitalName => {
+function validateMedicalCosts(value: unknown): MedicalCostItem[] {
+  if (!Array.isArray(value)) throw new Error('medical_costs must be an array');
+  const rows = value.filter((row): row is MedicalCostItem => {
     if (!isRecord(row)) return false;
     return isNonEmptyString(row.id)
       && isNonEmptyString(row.name)
-      && typeof row.is_real === 'boolean'
-      && typeof row.reviewed === 'boolean'
-      && (row.is_real || row.reviewed);
+      && isNonEmptyString(row.category)
+      && isFiniteNumber(row.cost)
+      && row.cost > 0;
   });
-  if (rows.length !== value.length) throw new Error('hospital_names contains an invalid record');
-  if (rows.filter((row) => row.is_real).length < 14) throw new Error('hospital_names requires at least 14 real records');
-  if (rows.filter((row) => !row.is_real).length < 6) throw new Error('hospital_names requires at least 6 reviewed fake records');
-  if (!hasUniqueIds(rows)) throw new Error('hospital_names contains duplicate ids');
+  if (rows.length !== value.length) throw new Error('medical_costs contains an invalid record');
+  // 라운드①(3개), ②(3개)에서 서로 겹치지 않는 항목을 뽑으려면 최소한 이 정도는 있어야 한다.
+  if (rows.length < 12) throw new Error('medical_costs requires at least 12 records');
+  if (!hasUniqueIds(rows)) throw new Error('medical_costs contains duplicate ids');
   return rows;
 }
 
@@ -87,15 +87,15 @@ function validateTermPairs(value: unknown): MedicalTermPair[] {
 }
 
 async function loadAll(): Promise<GameData> {
-  const [rawLocations, rawNames, rawTermPairs] = await Promise.all([
+  const [rawLocations, rawMedicalCosts, rawTermPairs] = await Promise.all([
     fetchJson('/data/hospital_locations.json'),
-    fetchJson('/data/hospital_names.json'),
+    fetchJson('/data/medical_costs.json'),
     fetchJson('/data/medical_term_pairs.json'),
   ]);
   const locations = validateLocations(rawLocations);
-  const names = validateNames(rawNames);
+  const medicalCosts = validateMedicalCosts(rawMedicalCosts);
   const termPairs = validateTermPairs(rawTermPairs);
-  return { locations, names, termPairs };
+  return { locations, medicalCosts, termPairs };
 }
 
 /**

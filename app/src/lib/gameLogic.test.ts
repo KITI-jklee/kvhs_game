@@ -1,10 +1,20 @@
 import { describe, expect, it } from 'vitest';
-import type { Grade, HospitalName } from '../data/types';
+import type { Grade, MedicalCostItem } from '../data/types';
 import { gradeForScore } from '../data/provider';
 import { getGradeProgress } from './grade';
 import { haversineKm } from './geo';
 import { RANK_POINTS, pointsForPick, selectNearestChoices, type HospitalPoint } from './nearestHospital';
-import { judgeScore, pickJudgeQuestions, timeForIndex } from './judge';
+import {
+  BUDGET_ITEM_COUNT,
+  pickBandChoices,
+  pickBudgetRound,
+  pickHigherLowerRound,
+  pickReorderItems,
+  scoreBudgetPicks,
+  scoreReorder,
+  scoreSlider,
+  sliderPositionToPrice,
+} from './medicalCost';
 import { computeMatchScore } from './matchScore';
 
 const grades: Grade[] = [
@@ -73,27 +83,124 @@ describe('게임① 가장 가까운 위탁병원 찾기 로직', () => {
   });
 });
 
-describe('게임② 판별 로직', () => {
-  const pool: HospitalName[] = [
-    ...Array.from({ length: 20 }, (_, i) => ({ id: `r${i}`, name: `실제${i}`, is_real: true, reviewed: true })),
-    ...Array.from({ length: 10 }, (_, i) => ({ id: `f${i}`, name: `가짜${i}`, is_real: false, reviewed: true })),
-    { id: 'unreviewed', name: '미검수', is_real: false, reviewed: false },
+describe('게임② 의료비 감각 테스트 로직', () => {
+  const pool: MedicalCostItem[] = [
+    { id: 'a', name: '항목A', cost: 15_000, category: 'X' },
+    { id: 'b', name: '항목B', cost: 80_000, category: 'X' },
+    { id: 'c', name: '항목C', cost: 130_000, category: 'X' },
+    { id: 'd', name: '항목D', cost: 550_000, category: 'X' },
+    { id: 'e', name: '항목E', cost: 1_000_000, category: 'X' },
+    { id: 'f', name: '항목F', cost: 130_000, category: 'X' }, // c와 동가 - HIGHER/LOWER 동가 제외 검증용
   ];
 
-  it('20문항을 실제 14, 검수 가짜 6으로 구성한다', () => {
-    const questions = pickJudgeQuestions(pool);
-    expect(questions).toHaveLength(20);
-    expect(questions.filter((q) => q.is_real)).toHaveLength(14);
-    expect(questions.filter((q) => !q.is_real)).toHaveLength(6);
-    expect(questions.some((q) => q.id === 'unreviewed')).toBe(false);
+  it('라운드① 슬라이더: 로그 스케일 위치 0/1이 최소/최대 가격에 대응하고, 오차율로 채점한다', () => {
+    expect(sliderPositionToPrice(0)).toBe(10_000);
+    expect(sliderPositionToPrice(1)).toBe(5_000_000);
+    expect(scoreSlider(430_000, 430_000).points).toBe(100); // 오차 0%
+    expect(scoreSlider(300_000, 430_000)).toEqual({ points: 40, label: 'CLOSE', errorPercent: 30 }); // 오차 30%
+    expect(scoreSlider(10_000, 1_000_000).points).toBe(0); // 오차 99%
   });
 
-  it('뒤 문항일수록 제한시간이 줄고 20정답은 500점이다', () => {
-    expect(timeForIndex(0)).toBe(4500);
-    expect(timeForIndex(19)).toBe(1500);
-    expect(timeForIndex(10)).toBeLessThan(timeForIndex(9));
-    expect(judgeScore(19)).toBe(475);
-    expect(judgeScore(20)).toBe(500);
+  it('라운드② 4지선다: 정답 밴드가 로그상 가장 가까운 사다리값이고, 오답은 그다음으로 가까운 것부터 채운다', () => {
+    const { bands, correctIndex } = pickBandChoices(127_780); // "뇌혈류 초음파" 실제 가격
+    expect(bands).toHaveLength(4);
+    expect(bands[correctIndex].value).toBe(100_000);
+    const decoyValues = bands.filter((_, i) => i !== correctIndex).map((b) => b.value);
+    expect(decoyValues.sort((a, b) => a - b)).toEqual([50_000, 70_000, 200_000]);
+  });
+
+  it('라운드② 4지선다: 실제 가격이 사다리 위에 딱 맞아떨어지면(예: 7만원) 그 값 자체가 정답 보기로 나온다', () => {
+    // "7만원"처럼 딱 떨어지는 가격이 예전 사다리(1-3-5)엔 없어서 5만/10만
+    // 중 하나로 억지 근사되던 문제(사용자 피드백)를 검증한다.
+    const { bands, correctIndex } = pickBandChoices(70_000);
+    expect(bands[correctIndex]).toEqual({ value: 70_000, label: '약 7만원' });
+  });
+
+  it('라운드③ 순서 맞추기: 4개 모두 서로 1.15배 이상 차이 나는 항목을 뽑고, 고정점 0/1/2/4개로 채점한다', () => {
+    // 'f'는 'c'와 가격이 같아 1.15배 조건을 못 지키니 이 테스트에서는 뺀다.
+    const spreadPool = pool.filter((i) => i.id !== 'f');
+    const items = pickReorderItems(spreadPool);
+    expect(items).toHaveLength(4);
+    const sorted = [...items].sort((a, b) => a.cost - b.cost);
+    for (let i = 1; i < sorted.length; i++) {
+      expect(sorted[i].cost / sorted[i - 1].cost).toBeGreaterThanOrEqual(1.15);
+    }
+
+    const [id0, id1, id2, id3] = sorted.map((i) => i.id);
+    expect(scoreReorder(items, [id0, id1, id2, id3])).toEqual({ points: 100, fixedCount: 4 });
+    // 4개짜리 순열에서 "정확히 3개만 맞음"은 나올 수 없다(마지막 하나는 갈 자리가 그 자리뿐).
+    expect(scoreReorder(items, [id0, id1, id3, id2])).toEqual({ points: 50, fixedCount: 2 });
+    expect(scoreReorder(items, [id0, id2, id3, id1])).toEqual({ points: 20, fixedCount: 1 });
+    expect(scoreReorder(items, [id3, id2, id1, id0])).toEqual({ points: 0, fixedCount: 0 });
+  });
+
+  it('라운드④ 예산 챌린지: 후보 5개 중 예산 안에 드는 항목(1개 또는 2개)이 fitIds에 정확히 담긴다', () => {
+    // 'f'는 'c'와 가격이 같아 예산 경계가 애매해지니 이 테스트에서는 뺀다.
+    const spreadPool = pool.filter((i) => i.id !== 'f');
+    for (let i = 0; i < 30; i++) {
+      const round = pickBudgetRound(spreadPool);
+      expect(round).not.toBeNull();
+      if (!round) continue;
+      expect(round.items).toHaveLength(BUDGET_ITEM_COUNT);
+      expect([1, 2]).toContain(round.fitIds.length);
+      const actualFitIds = round.items.filter((i) => i.cost <= round.budget).map((i) => i.id);
+      expect(actualFitIds.sort()).toEqual([...round.fitIds].sort());
+    }
+  });
+
+  it('예산 채점: 정확히 다 맞으면 100점, 잘못 고른 것 없이 일부만 맞으면 50점, 잘못 고른 게 섞이면 20점, 하나도 못 맞히면 0점', () => {
+    expect(scoreBudgetPicks(['a', 'b'], ['a', 'b'])).toEqual({
+      points: 100,
+      correctPickCount: 2,
+      wrongPickCount: 0,
+      missedCount: 0,
+    });
+    expect(scoreBudgetPicks(['a', 'b'], ['a'])).toEqual({
+      points: 50,
+      correctPickCount: 1,
+      wrongPickCount: 0,
+      missedCount: 1,
+    });
+    expect(scoreBudgetPicks(['a', 'b'], ['a', 'c'])).toEqual({
+      points: 20,
+      correctPickCount: 1,
+      wrongPickCount: 1,
+      missedCount: 1,
+    });
+    expect(scoreBudgetPicks(['a'], ['c'])).toEqual({
+      points: 0,
+      correctPickCount: 0,
+      wrongPickCount: 1,
+      missedCount: 1,
+    });
+    expect(scoreBudgetPicks(['a'], [])).toEqual({
+      points: 0,
+      correctPickCount: 0,
+      wrongPickCount: 0,
+      missedCount: 1,
+    });
+  });
+
+  it('라운드⑤ 더 비싼 것 고르기: 두 항목 가격이 같은 조합은 절대 뽑지 않는다', () => {
+    for (let i = 0; i < 20; i++) {
+      const round = pickHigherLowerRound(pool);
+      expect(round).not.toBeNull();
+      if (!round) continue;
+      expect(round.refItem.cost).not.toBe(round.nextItem.cost);
+      expect(round.isHigher).toBe(round.nextItem.cost > round.refItem.cost);
+    }
+  });
+
+  it('라운드⑤ 더 비싼 것 고르기: "차이가 크지 않다"는 안내문에 맞게, 값이 3배 넘게 차이나는 조합은 최대한 피한다', () => {
+    // pool 안에는 3배 이내로 가까운 조합(b·c, b·f, d·e)이 존재하니, 40회
+    // 시도 안에서 거의 항상 그중 하나를 찾아야 한다.
+    for (let i = 0; i < 20; i++) {
+      const round = pickHigherLowerRound(pool);
+      expect(round).not.toBeNull();
+      if (!round) continue;
+      const ratio = Math.max(round.refItem.cost, round.nextItem.cost) / Math.min(round.refItem.cost, round.nextItem.cost);
+      expect(ratio).toBeLessThanOrEqual(3);
+    }
   });
 });
 

@@ -3,7 +3,7 @@
  * 서버가 없으므로 개인 최고기록·등급 계산은 전부 여기서 처리한다.
  *
  * 키:
- *   bohun_arcade.best_scores = { location, fake_hospital, term_match }  (각 0~500)
+ *   bohun_arcade.best_scores = { location, medical_cost, term_match }  (각 0~500)
  *   bohun_arcade.last_result = { game, score, grade, played_at }
  *
  * 예외 처리 원칙(기능설계서 8장): localStorage 접근 불가(프라이버시 모드 등)
@@ -25,7 +25,7 @@ export interface LastResult {
   played_at: string;
 }
 
-const EMPTY_BEST: BestScores = { location: 0, fake_hospital: 0, term_match: 0 };
+const EMPTY_BEST: BestScores = { location: 0, medical_cost: 0, term_match: 0 };
 
 function isValidScore(v: unknown): v is number {
   return typeof v === 'number' && Number.isFinite(v) && v >= 0 && v <= 500;
@@ -38,7 +38,7 @@ export function readBestScores(): BestScores {
     const parsed = JSON.parse(raw) as Partial<BestScores>;
     return {
       location: isValidScore(parsed.location) ? parsed.location : 0,
-      fake_hospital: isValidScore(parsed.fake_hospital) ? parsed.fake_hospital : 0,
+      medical_cost: isValidScore(parsed.medical_cost) ? parsed.medical_cost : 0,
       term_match: isValidScore(parsed.term_match) ? parsed.term_match : 0,
     };
   } catch {

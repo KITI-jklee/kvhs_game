@@ -62,7 +62,7 @@ export function LocationGlyph({ accent }: { accent: string }) {
   );
 }
 
-/** Hospital building + cross glyph - used for 찐병원 가짜병원 and question cards. */
+/** Hospital building + cross glyph - used on the 위치감각게임 question card. */
 export function HospitalGlyph({ accent, size = 20 }: { accent: string; size?: number }) {
   return (
     <>
@@ -111,6 +111,38 @@ export function HospitalGlyph({ accent, size = 20 }: { accent: string; size?: nu
           opacity: 0.4,
         })}
       />
+    </>
+  );
+}
+
+/** 동전(₩) glyph - used for 의료비 감각 테스트. */
+export function CoinGlyph({ accent, size = 20 }: { accent: string; size?: number }) {
+  return (
+    <>
+      <div
+        style={abs({
+          left: '50%',
+          top: '50%',
+          transform: 'translate(-50%,-50%)',
+          width: size,
+          height: size,
+          border: `2px solid ${accent}`,
+          borderRadius: '50%',
+        })}
+      />
+      <div
+        style={abs({
+          left: '50%',
+          top: '50%',
+          transform: 'translate(-50%,-50%)',
+          fontSize: size * 0.5,
+          fontWeight: 700,
+          lineHeight: 1,
+          color: accent,
+        })}
+      >
+        ₩
+      </div>
     </>
   );
 }

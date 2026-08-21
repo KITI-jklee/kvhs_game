@@ -19,14 +19,14 @@ describe('localStorage 최고기록', () => {
 
   it('손상된 JSON은 초기 점수로 복구한다', () => {
     localStorage.setItem('bohun_arcade.best_scores', '{broken');
-    expect(readBestScores()).toEqual({ location: 0, fake_hospital: 0, term_match: 0 });
+    expect(readBestScores()).toEqual({ location: 0, medical_cost: 0, term_match: 0 });
   });
 
   it('게임별 기록을 분리하고 더 높은 점수만 갱신한다', () => {
     recordResult('location', 300, getGrades());
-    recordResult('fake_hospital', 250, getGrades());
+    recordResult('medical_cost', 250, getGrades());
     recordResult('location', 200, getGrades());
-    expect(readBestScores()).toEqual({ location: 300, fake_hospital: 250, term_match: 0 });
+    expect(readBestScores()).toEqual({ location: 300, medical_cost: 250, term_match: 0 });
   });
 
   it('최근 결과를 점수 범위와 등급으로 저장한다', () => {

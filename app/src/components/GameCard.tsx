@@ -1,7 +1,7 @@
 import type { CSSProperties } from 'react';
 import type { GameSummary } from '../data/types';
 import { IconTile } from './icons/IconTile';
-import { HospitalGlyph, LocationGlyph, MatchGlyph } from './icons/Glyphs';
+import { CoinGlyph, LocationGlyph, MatchGlyph } from './icons/Glyphs';
 import styles from './GameCard.module.css';
 
 const ACCENTS = ['#0e7d66', '#2abf9e', '#7ed9c2'];
@@ -10,7 +10,7 @@ const TINTS = ['#e4f4ef', '#e9f8f3', '#effbf6'];
 
 function Glyph({ index, accent }: { index: number; accent: string }) {
   if (index === 0) return <LocationGlyph accent={accent} />;
-  if (index === 1) return <HospitalGlyph accent={accent} size={20} />;
+  if (index === 1) return <CoinGlyph accent={accent} size={20} />;
   return <MatchGlyph accent={accent} />;
 }
 

@@ -7,7 +7,7 @@ import { useGameData } from './data/gameDataContext';
 import { FullScreenNotice } from './components/FullScreenNotice';
 import { Home } from './pages/Home';
 import { LocationGame } from './pages/games/LocationGame';
-import { JudgeGame } from './pages/games/JudgeGame';
+import { MedicalCostGame } from './pages/games/MedicalCostGame';
 import { MatchGame } from './pages/games/MatchGame';
 import { Result } from './pages/Result';
 import { Grade } from './pages/Grade';
@@ -20,15 +20,27 @@ function ScrollToTop() {
   return null;
 }
 
+// StrictMode(main.tsx)는 개발 모드에서 마운트 시 effect를 일부러 두 번
+// 불러 버그를 드러낸다. 아래 effect는 sessionStorage 플래그를 "읽고 지우는"
+// 부수효과가 있어서 두 번 불리면 결과가 달라진다 - 1번째 호출: 플래그를
+// 보고 지우고 return(정상). 2번째 호출: 플래그가 이미 없으니 그대로
+// "새로고침으로 열렸다" 분기로 빠져서 홈으로 튕겨버린다(사용자 피드백:
+// "다시하기 누르면 메인페이지로 넘어가는 오류"). 컴포넌트가 이 세션에서
+// 다시 마운트될 일이 없으므로, 모듈 스코프 변수로 "이미 판정했음"을
+// 기억해 두 번째 호출을 완전히 무시한다.
+let refreshCheckDone = false;
+
 /**
  * 게임/결과 화면에서 브라우저를 새로고침하면 이전 진행 상태를
  * 복원하지 않고 메인에서 다시 시작한다. 앱 내부 라우팅에는 영향을 주지 않는다.
  */
 function RefreshToHome() {
-  const { pathname } = useLocation();
+  const location = useLocation();
   const navigate = useNavigate();
 
   useEffect(() => {
+    if (refreshCheckDone) return;
+    refreshCheckDone = true;
     try {
       if (sessionStorage.getItem('bohun_arcade.intentional_restart') === '1') {
         sessionStorage.removeItem('bohun_arcade.intentional_restart');
@@ -38,10 +50,11 @@ function RefreshToHome() {
       // sessionStorage가 막힌 환경에서도 일반 새로고침 처리는 계속한다.
     }
     const navigation = performance.getEntriesByType('navigation')[0] as PerformanceNavigationTiming | undefined;
-    if (navigation?.type === 'reload' && pathname !== '/') {
+    if (navigation?.type === 'reload' && location.pathname !== '/') {
       navigate('/', { replace: true });
     }
-  }, [navigate, pathname]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []); // 문서가 처음 로드될 때 1회만 - pathname을 deps에 넣으면 안 됨(위 설명 참고)
 
   return null;
 }
@@ -91,10 +104,10 @@ function App() {
               }
             />
             <Route
-              path="/games/judge"
+              path="/games/medical-cost"
               element={
                 <GameDataGate>
-                  <JudgeGame />
+                  <MedicalCostGame />
                 </GameDataGate>
               }
             />

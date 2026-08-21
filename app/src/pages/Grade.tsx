@@ -14,7 +14,7 @@ export function Grade() {
   const navigate = useNavigate();
   const { grades, bestScores, overallProgress } = useGame();
   const games = getGames();
-  const overallScore = Math.max(bestScores.location, bestScores.fake_hospital, bestScores.term_match);
+  const overallScore = Math.max(bestScores.location, bestScores.medical_cost, bestScores.term_match);
 
   return (
     <div className={styles.page}>

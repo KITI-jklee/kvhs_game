@@ -10,7 +10,7 @@ const NAV_LINKS = [
 interface BrandBarProps {
   /** "home" stays visible at every width; "game" only appears on desktop, leaving mobile/tablet gameplay uncluttered. */
   variant?: 'home' | 'game';
-  /** "dark" is used on the 찐병원 가짜병원 screen, which keeps its deep-mint background behind the bar. */
+  /** "dark" is used on the 의료비 감각 테스트 screen, which keeps its deep-mint background behind the bar. */
   tone?: 'light' | 'dark';
 }
 

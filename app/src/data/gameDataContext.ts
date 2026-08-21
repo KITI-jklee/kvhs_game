@@ -1,9 +1,9 @@
 import { createContext, useContext } from 'react';
-import type { HospitalLocation, HospitalName, MedicalTermPair } from './types';
+import type { HospitalLocation, MedicalCostItem, MedicalTermPair } from './types';
 
 export interface GameData {
   locations: HospitalLocation[];
-  names: HospitalName[];
+  medicalCosts: MedicalCostItem[];
   termPairs: MedicalTermPair[];
 }
 

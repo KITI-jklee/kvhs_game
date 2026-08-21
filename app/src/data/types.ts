@@ -1,13 +1,14 @@
 /**
  * Shared data shapes for the arcade.
  *
- * `HospitalLocation` / `HospitalName` / `MedicalTermPair` mirror the static
- * JSON contract in the API 명세서 (B장) and DB 설계서 (05_정적JSON_명세) byte
- * for byte - field names must stay in sync with `build_game_data.py`'s output
- * and with `public/data/*.json`.
+ * `HospitalLocation` / `MedicalTermPair` mirror the static JSON contract in
+ * the API 명세서 (B장) and DB 설계서 (05_정적JSON_명세) byte for byte - field
+ * names must stay in sync with `build_game_data.py`'s output and with
+ * `public/data/*.json`. `MedicalCostItem`은 별도로 `scripts/build-medical-costs.cjs`가
+ * 만든다(원본 명세서 이후 추가된 게임②).
  */
 
-export type GameId = 'location' | 'fake_hospital' | 'term_match';
+export type GameId = 'location' | 'medical_cost' | 'term_match';
 
 export interface GameSummary {
   id: GameId;
@@ -39,13 +40,15 @@ export interface HospitalLocation {
   region_note?: string;
 }
 
-/** 게임② 콘텐츠 - API 명세서 B-2 */
-export interface HospitalName {
+/** 게임② 콘텐츠(의료비 감각 테스트) - `scripts/build-medical-costs.cjs`가
+ * 실제 비급여 수가 공개 데이터(`suga_보훈병원_비급여수가정보.json`)에서
+ * 큐레이션해서 만든다. */
+export interface MedicalCostItem {
   id: string;
   name: string;
-  is_real: boolean;
-  /** is_real=false인 레코드는 반드시 true (원본 공단 병원명과의 자동 중복 대조 통과). */
-  reviewed: boolean;
+  /** 실제 공개 비급여 수가(원). */
+  cost: number;
+  category: string;
 }
 
 /** 게임③ 콘텐츠 - API 명세서 B-3 */
