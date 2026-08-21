@@ -23,7 +23,7 @@ export function Home() {
         <span className={styles.eyebrow}>✦ 내 보훈 지식은 몇 등급일까?</span>
         <div className={styles.titleGroup}>
           <span className={styles.title}>알고 나면 더 유용한,</span>
-          <span className={styles.titleOutline}>보훈 지식 게임!</span>
+          <span className={styles.titleOutline}>보훈 지식 퀴즈!</span>
         </div>
         <p className={styles.desc}>
           미니 게임 풀면서 보훈 지식도 쑥쑥!!
