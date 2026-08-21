@@ -54,7 +54,7 @@ export function Home() {
         {/* 데스크톱: 등급 칩 나열형 배너 */}
         <div className={[styles.gradeBand, 'hide-until-desktop'].join(' ')}>
           <div className={styles.gradeBandHead}>
-            <span className={styles.sectionEyebrow}>YOUR VETERANS GRADE</span>
+            <span className={styles.sectionEyebrow}>YOUR ARCADE GRADE</span>
             <span className={styles.gradeBandTitle}>점수를 모아 나만의 보훈 등급을 확인하세요</span>
           </div>
           <div className={styles.gradeBandChips}>
