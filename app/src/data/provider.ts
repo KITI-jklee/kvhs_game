@@ -17,7 +17,7 @@ const GAMES: GameSummary[] = [
     id: 'location',
     no: '01',
     title: '가장 가까운 위탁병원 찾기',
-    desc: '보훈 대상자와 가장 가까운 위탁병원을 5초 안에 찾아보세요!',
+    desc: '보훈 대상자와 가장 가까운 위탁병원을 찾아보세요!',
     tag: 'MAP',
     kicker: 'QUIZ',
     path: '/games/location',
