@@ -16,9 +16,14 @@
 }
 
 .item.current {
-  border-color: var(--color-grade-border);
-  background: #f2f9f6;
+  /* 페이지 배경이 거의 흰색에 가까워지면서(--color-bg) 기존 옅은 배경
+     (#f2f9f6)만으로는 "현재 등급"이 잘 안 티가 났다(사용자 피드백) - 배경을
+     더 진한 파스텔 민트로, 테두리도 브랜드 민트색으로 또렷하게 바꾸고
+     은은한 그림자를 더해 눈에 띄게 한다. */
+  border: 1.5px solid var(--color-accent);
+  background: #d9f2e7;
   color: var(--color-grade-ink);
+  box-shadow: 0 2px 10px rgba(15, 156, 128, 0.16);
 }
 
 .item.locked {
