@@ -52,15 +52,19 @@ export function Home() {
 
       <section className={styles.gradeBandPad}>
         {/* 데스크톱: 등급 칩 나열형 배너 */}
-        <div className={[styles.gradeBand, 'hide-until-desktop'].join(' ')}>
+        <button
+          type="button"
+          className={[styles.gradeBand, 'hide-until-desktop'].join(' ')}
+          onClick={() => navigate('/grade')}
+        >
           <div className={styles.gradeBandHead}>
             <span className={styles.sectionEyebrow}>YOUR ARCADE GRADE</span>
             <span className={styles.gradeBandTitle}>점수를 모아 나만의 보훈 등급을 확인하세요</span>
           </div>
           <div className={styles.gradeBandChips}>
-            <GradeChipRow grades={grades} currentGrade={overallProgress.grade} onSelect={() => navigate('/grade')} />
+            <GradeChipRow grades={grades} currentGrade={overallProgress.grade} />
           </div>
-        </div>
+        </button>
 
         {/* 모바일·태블릿: 한 줄 요약 카드 */}
         <button

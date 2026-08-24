@@ -123,6 +123,9 @@
 }
 
 .gradeBand {
+  width: 100%;
+  cursor: pointer;
+  border: none;
   background: #fff;
   border-radius: var(--radius-lg);
   padding: 20px;
@@ -130,6 +133,7 @@
   flex-direction: column;
   gap: 14px;
   box-shadow: var(--shadow-card);
+  text-align: left;
 }
 
 .gradeBandHead {

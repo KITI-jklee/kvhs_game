@@ -4,22 +4,29 @@ import styles from './GradeChipRow.module.css';
 interface GradeChipRowProps {
   grades: Grade[];
   currentGrade: Grade;
-  onSelect: () => void;
+  onSelect?: () => void;
 }
 
 export function GradeChipRow({ grades, currentGrade, onSelect }: GradeChipRowProps) {
   return (
     <div className={styles.row}>
       {grades.map((g) => (
-        <button
-          key={g.name}
-          type="button"
-          onClick={onSelect}
-          className={[styles.chip, g.name === currentGrade.name ? styles.current : ''].join(' ')}
-        >
-          <span className={styles.chipIcon}>{g.icon}</span>
-          {g.name}
-        </button>
+        onSelect ? (
+          <button
+            key={g.name}
+            type="button"
+            onClick={onSelect}
+            className={[styles.chip, g.name === currentGrade.name ? styles.current : ''].join(' ')}
+          >
+            <span className={styles.chipIcon}>{g.icon}</span>
+            {g.name}
+          </button>
+        ) : (
+          <span key={g.name} className={[styles.chip, g.name === currentGrade.name ? styles.current : ''].join(' ')}>
+            <span className={styles.chipIcon}>{g.icon}</span>
+            {g.name}
+          </span>
+        )
       ))}
     </div>
   );
