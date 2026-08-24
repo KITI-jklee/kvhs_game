@@ -25,7 +25,7 @@ import { shuffle } from '../../lib/array';
 import styles from './MedicalCostGame.module.css';
 
 const SLIDER_STEPS = 1000;
-const SLIDER_TICKS = [10_000, 100_000, 500_000, 1_000_000, 5_000_000];
+const SLIDER_TICKS = [10_000, 50_000, 200_000, 500_000, 1_200_000];
 
 function formatWon(n: number): string {
   return `${Math.round(n).toLocaleString('ko-KR')}원`;

@@ -18,7 +18,10 @@ export const MAX_TOTAL_SCORE = 500;
 // 스케일로 잡는다 - 선형이면 저가 항목은 슬라이더 왼쪽 끝에 다 뭉쳐서
 // 정밀하게 못 고른다.
 export const SLIDER_MIN = 10_000;
-export const SLIDER_MAX = 5_000_000;
+// 실제 데이터의 최고가(120만원)에 정확히 맞춘다(사용자 피드백) - 예전엔
+// 500만원까지 잡혀 있어서, 로그 스케일 특성상 슬라이더 오른쪽 23% 구간은
+// 어떤 라운드에서도 정답이 될 일이 없는 죽은 구간이었다.
+export const SLIDER_MAX = 1_200_000;
 
 /** 슬라이더 위치(0~1) -> 실제 가격(원, 1천원 단위로 보기 좋게 반올림). */
 export function sliderPositionToPrice(t: number): number {
