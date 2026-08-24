@@ -16,8 +16,8 @@ const GAMES: GameSummary[] = [
   {
     id: 'location',
     no: '01',
-    title: '가장 가까운 위탁병원 찾기',
-    desc: '보훈 대상자와 가장 가까운 위탁병원을 찾아보세요!',
+    title: '어디가 제일 가까울까?',
+    desc: '가장 가까운 위탁병원을 찾아보세요.',
     tag: 'MAP',
     kicker: 'QUIZ',
     path: '/games/location',
@@ -25,8 +25,8 @@ const GAMES: GameSummary[] = [
   {
     id: 'medical_cost',
     no: '02',
-    title: '의료비 감각 테스트',
-    desc: '비급여 진료비, 얼마나 나올지 감이 오시나요?',
+    title: '얼마나 나올까?',
+    desc: '비급여 비용, 얼마나 알고 있나요?',
     tag: 'PRICE SENSE',
     kicker: 'GUESS',
     path: '/games/medical-cost',
@@ -34,8 +34,8 @@ const GAMES: GameSummary[] = [
   {
     id: 'term_match',
     no: '03',
-    title: '보훈의료 용어 짝맞추기',
-    desc: '헷갈리는 의료 용어의 짝을 찾아 제한시간 내 연결하세요!',
+    title: '딱 맞는 짝을 찾아라!',
+    desc: '진료 항목과 알맞은 짝을 찾아보세요.',
     tag: 'MEMORY',
     kicker: 'MATCH',
     path: '/games/match',
