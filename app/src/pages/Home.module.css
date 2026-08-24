@@ -134,6 +134,17 @@
   gap: 14px;
   box-shadow: var(--shadow-card);
   text-align: left;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+/* 게임 카드와 같은 hover 리프트 - 이 배너도 카드처럼 생겼으니 마우스를
+   올렸을 때 같은 방식으로 반응해야 자연스럽다(사용자 피드백). */
+@media (hover: hover) {
+  .gradeBand:hover,
+  .gradeCompact:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(18, 58, 49, 0.11);
+  }
 }
 
 .gradeBandHead {
@@ -162,6 +173,7 @@
   padding: 14px 16px;
   text-align: left;
   box-shadow: var(--shadow-card);
+  transition: transform 180ms ease, box-shadow 180ms ease;
 }
 
 .gradeCompactIcon {
