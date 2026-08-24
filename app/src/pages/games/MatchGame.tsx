@@ -22,6 +22,9 @@ const ROUND_SIZES = [6, 8, 10];
 const MATCH_HOLD_MS = 520;
 const MISMATCH_HOLD_MS = 820;
 const FINISH_DELAY_MS = 1100;
+/** 라운드 시작마다 카드를 전부 잠깐 보여주고 외울 시간을 준 뒤 뒤집는다
+ * (사용자 요청). */
+const PREVIEW_MS = 3000;
 
 // 5-3: 완료 시간·오답 횟수 기준 0~500점(최저 100점) 환산. 기준값은
 // 3라운드 목표 완료시간(20+30+40초)과 오답당 감점을 임시 설정한 것으로,
@@ -86,6 +89,7 @@ export function MatchGame() {
   const [elapsedSec, setElapsedSec] = useState(0);
   const [paused, setPaused] = useState(false);
   const [showIntro, setShowIntro] = useState(true);
+  const [previewing, setPreviewing] = useState(true);
 
   const doneRef = useRef(false);
   const pausedRef = useRef(false);
@@ -122,14 +126,28 @@ export function MatchGame() {
   useEffect(() => {
     showIntroRef.current = showIntro;
   }, [showIntro]);
+  const previewingRef = useRef(true);
+  useEffect(() => {
+    previewingRef.current = previewing;
+  }, [previewing]);
 
   useEffect(() => {
     const timer = setInterval(() => {
-      if (doneRef.current || pausedRef.current || showIntroRef.current) return;
+      if (doneRef.current || pausedRef.current || showIntroRef.current || previewingRef.current) return;
       setElapsedSec((s) => s + 1);
     }, 1000);
     return () => clearInterval(timer);
   }, []);
+
+  // 라운드가 시작될 때마다(첫 라운드는 인트로를 닫은 직후) 카드를 전부
+  // 3초간 앞면으로 보여준 뒤 다시 뒤집는다 - 일시정지 중이면 재개될 때까지
+  // 미뤄지도록 다른 전환들과 같은 scheduleTransition을 쓴다.
+  useEffect(() => {
+    if (showIntro) return;
+    setPreviewing(true);
+    scheduleTransition(() => setPreviewing(false), PREVIEW_MS);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [roundIndex, showIntro]);
 
   const pairs = roundsPairs[roundIndex] ?? [];
   const isSelected = (card: DeckCard) => selected.some((c) => c.key === card.key);
@@ -160,7 +178,8 @@ export function MatchGame() {
   };
 
   const handleTap = (card: DeckCard) => {
-    if (doneRef.current || paused || showIntro || isMatched(card) || isSelected(card) || selected.length >= 2) return;
+    if (doneRef.current || paused || showIntro || previewing || isMatched(card) || isSelected(card) || selected.length >= 2)
+      return;
     const next = [...selected, card];
     if (next.length < 2) {
       setSelected(next);
@@ -193,6 +212,12 @@ export function MatchGame() {
 
   const donePairs = matchedCardKeys.length / 2;
   const pairsPercent = (donePairs / Math.max(pairs.length, 1)) * 100;
+  const roundStatusLabel = previewing
+    ? '카드를 기억하세요!'
+    : `ROUND ${roundIndex + 1}/${ROUND_SIZES.length} · MATCHED ${donePairs}/${pairs.length}`;
+  const pairsCountLabel = previewing
+    ? '카드를 기억하세요!'
+    : `ROUND ${roundIndex + 1}/${ROUND_SIZES.length} · ${donePairs}/${pairs.length} PAIRS`;
   const onBack = () => navigate('/');
   const handlePause = () => {
     pausedRef.current = true;
@@ -219,7 +244,7 @@ export function MatchGame() {
       <BrandBar variant="game" />
       <GameHud
         onPause={handlePause}
-        eyebrow={`ROUND ${roundIndex + 1}/${ROUND_SIZES.length} · MATCHED ${donePairs}/${pairs.length}`}
+        eyebrow={roundStatusLabel}
         title="보훈의료 용어 짝맞추기"
         score={{ label: 'SCORE', value: score || '-' }}
       />
@@ -231,9 +256,7 @@ export function MatchGame() {
           <div className={styles.deskBarMiddleTrack}>
             <ProgressBar percent={pairsPercent} fill="bright" height={5} />
           </div>
-          <span className={styles.pairsLabel}>
-            ROUND {roundIndex + 1}/{ROUND_SIZES.length} · {donePairs}/{pairs.length} PAIRS
-          </span>
+          <span className={styles.pairsLabel}>{pairsCountLabel}</span>
         </div>
         <span className={styles.deskBarRound}>
           오답 <b>{missCount}회</b>
@@ -247,9 +270,10 @@ export function MatchGame() {
           title="보훈의료 용어 짝맞추기"
           onDone={() => setShowIntro(false)}
           rules={[
-            { color: '#2abf9e', text: '카드 두 장을 뒤집어 항목명과 분류의 짝을 맞추세요' },
-            { color: '#f0b429', text: <>라운드가 오를수록 카드 수가 늘어나요 (<b>12→16→20장</b>)</> },
-            { color: '#d0705f', text: '완료 시간과 오답 횟수로 점수가 매겨져요' },
+            { color: '#2abf9e', text: <>라운드 시작 시 카드를 <b>3초간</b> 보여준 뒤 뒤집혀요</> },
+            { color: '#f0b429', text: '카드 두 장을 뒤집어 항목명과 분류의 짝을 맞추세요' },
+            { color: '#d0705f', text: <>라운드가 오를수록 카드 수가 늘어나요 (<b>12→16→20장</b>)</> },
+            { color: '#7c9cff', text: '완료 시간과 오답 횟수로 점수가 매겨져요' },
           ]}
         />
       )}
@@ -270,7 +294,9 @@ export function MatchGame() {
         <div className={styles.heading}>
           <div>
             <span className={styles.eyebrow}>MEMORY MATCH · ROUND {roundIndex + 1}</span>
-            <div className={styles.title}>진료 항목과 분류를 짝지어 주세요</div>
+            <div className={styles.title}>
+              {previewing ? '카드 내용을 잘 기억해두세요' : '진료 항목과 분류를 짝지어 주세요'}
+            </div>
           </div>
         </div>
 
@@ -279,7 +305,7 @@ export function MatchGame() {
             <MatchCard
               key={card.key}
               card={card}
-              faceUp={isSelected(card) || isMatched(card)}
+              faceUp={previewing || isSelected(card) || isMatched(card)}
               matched={isMatched(card)}
               onTap={() => handleTap(card)}
             />

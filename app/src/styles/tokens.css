@@ -6,7 +6,7 @@
  */
 :root {
   /* ---- Palette: mint / deep-green ("veterans arcade" tone) ---- */
-  --color-bg: #f2f8f5; /* page background */
+  --color-bg: #fbfdfc; /* page background - 흰색과 #f6faf8의 중간 채도(사용자 요청) */
   --color-surface: #ffffff; /* cards */
   --color-line: #e3ede8; /* hairline borders */
 

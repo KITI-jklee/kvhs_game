@@ -140,13 +140,17 @@
     grid-template-columns: repeat(4, 1fr);
     gap: 18px;
   }
+  /* 데스크톱에서는 카드 수가 늘어나도(12/16/20) 세로로는 항상 4장씩만
+     쌓이게 하고, 그만큼 늘어난 카드는 가로 열을 늘려서 받는다(사용자
+     피드백: "세로로 봤을 때 카드가 4장씩 있어야 한다"). 12/16/20장 모두
+     4로 나누어떨어지니 열 수 = 카드 수/4. */
   .grid[data-card-count='12'] {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
   .grid[data-card-count='16'] {
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(4, 1fr);
   }
   .grid[data-card-count='20'] {
-    grid-template-columns: repeat(7, 1fr);
+    grid-template-columns: repeat(5, 1fr);
   }
 }
