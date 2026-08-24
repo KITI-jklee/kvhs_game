@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { BrandBar } from '../../components/layout/BrandBar';
+import { FullScreenNotice } from '../../components/FullScreenNotice';
 import { GameHud } from '../../components/layout/GameHud';
 import { DesktopContextBar } from '../../components/layout/DesktopContextBar';
 import { KoreaMap, type MapPin, type MapRegion } from '../../components/map/KoreaMap';
@@ -322,14 +323,7 @@ export function LocationGame() {
   };
 
   if (!setup || !pool.length) {
-    return (
-      <div className={styles.page}>
-        <BrandBar variant="game" />
-        <div className={styles.body}>
-          <span>게임 데이터를 불러오는 중입니다...</span>
-        </div>
-      </div>
-    );
+    return <FullScreenNotice variant="modal" icon="⏳" title="게임 데이터를 불러오는 중입니다..." />;
   }
 
   const secondsLeft = Math.ceil(remainingMs / 1000);

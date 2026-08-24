@@ -138,7 +138,7 @@ export function Result() {
           <span className={styles.infoIcon}>i</span>
           <div className={styles.infoText}>
             <span className={styles.infoTitle}>
-              한국보훈복지의료공단 공공데이터 활용 안낸
+              한국보훈복지의료공단 공공데이터 활용 안내
             </span>
             <span className={styles.infoSub}>본 게임의 점수와 등급은 재미를 위한 요소이며, 진료 정보는 해당 병원 및 공단에 문의해주세요.</span>
           </div>

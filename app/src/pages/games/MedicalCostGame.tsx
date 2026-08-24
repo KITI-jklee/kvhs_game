@@ -2,6 +2,7 @@ import { useMemo, useRef, useState } from 'react';
 import type { PointerEvent as ReactPointerEvent, ReactNode } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { BrandBar } from '../../components/layout/BrandBar';
+import { FullScreenNotice } from '../../components/FullScreenNotice';
 import { DesktopContextBar } from '../../components/layout/DesktopContextBar';
 import { ProgressBar } from '../../components/ProgressBar';
 import { PauseOverlay } from '../../components/PauseOverlay';
@@ -342,14 +343,7 @@ export function MedicalCostGame() {
   };
 
   if (!round) {
-    return (
-      <div className={styles.page}>
-        <BrandBar variant="game" tone="dark" />
-        <div className={styles.body}>
-          <span style={{ color: '#fff' }}>게임 데이터를 불러오는 중입니다...</span>
-        </div>
-      </div>
-    );
+    return <FullScreenNotice variant="modal" icon="⏳" title="게임 데이터를 불러오는 중입니다..." />;
   }
 
   const disabled = paused || showIntro || revealed;
