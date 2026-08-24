@@ -35,7 +35,11 @@ export function Result() {
             아직 플레이한 게임이 없어요
           </span>
           <p className={styles.subtitle}>게임을 먼저 플레이하면 결과가 여기에 표시됩니다.</p>
-          <Button variant="accent" style={{ width: 'auto', padding: '13px 26px' }} onClick={() => navigate('/')}>
+          <Button
+            variant="accent"
+            style={{ width: 'auto', padding: '13px 26px' }}
+            onClick={() => navigate('/')}
+          >
             게임 하러 가기
           </Button>
         </div>

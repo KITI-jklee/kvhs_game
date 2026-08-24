@@ -242,6 +242,7 @@ export function KoreaMap({ region, highlight, pins, selectedId, correctId, revea
           );
         })}
       </svg>
+
     </div>
   );
 }

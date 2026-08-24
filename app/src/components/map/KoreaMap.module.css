@@ -97,29 +97,28 @@
   white-space: nowrap;
   font: 600 10.5px 'Pretendard Variable';
   color: var(--color-ink);
-  background: #fff;
-  border: 1px solid var(--color-line);
-  padding: 3px 8px;
-  border-radius: 999px;
+  background: transparent;
+  border: none;
+  padding: 2px 3px;
+  text-shadow:
+    -1px -1px 0 #fff,
+    1px -1px 0 #fff,
+    -1px 1px 0 #fff,
+    1px 1px 0 #fff,
+    0 2px 4px rgba(8, 45, 37, 0.16);
   pointer-events: none;
 }
 
 .pinLabel.pinLabelSelected {
-  color: #fff;
-  background: var(--color-accent-strong);
-  border-color: transparent;
+  color: var(--color-accent-strong);
 }
 
 .pinLabel.pinLabelCorrect {
-  color: #fff;
-  background: var(--color-accent-strong);
-  border-color: transparent;
+  color: var(--color-accent-strong);
 }
 
 .pinLabel.pinLabelWrong {
-  color: #fff;
-  background: var(--color-fake);
-  border-color: transparent;
+  color: var(--color-fake);
 }
 
 @media (min-width: 1024px) {

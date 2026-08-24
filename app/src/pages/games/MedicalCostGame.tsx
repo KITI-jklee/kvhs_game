@@ -239,7 +239,7 @@ export function MedicalCostGame() {
   const handleBudgetConfirm = () => {
     if (!round || round.kind !== 'budget') return;
     const pickedIds = [...budgetPicks];
-    const { points, correctPickCount, wrongPickCount, missedCount } = scoreBudgetPicks(round.fitIds, pickedIds);
+    const { points, correctPickCount } = scoreBudgetPicks(round.fitIds, pickedIds);
     const fitSet = new Set(round.fitIds);
     const verdictLabel = points === 100 ? '예산 성공!' : points > 0 ? '아쉽네요' : '많이 빗나갔어요';
     finishRound(
@@ -266,7 +266,7 @@ export function MedicalCostGame() {
           );
         })}
       </>,
-      `예산 챌린지 · 적중 ${correctPickCount} 오답 ${wrongPickCount} 놓침 ${missedCount}`,
+      `예산 챌린지 · 적중 ${correctPickCount}/${round.fitIds.length}`,
     );
   };
 
