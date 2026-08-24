@@ -94,3 +94,10 @@
   flex: 1;
   min-width: 100px;
 }
+
+.iosNote {
+  margin-top: 8px;
+  font: 500 11px/1.5 'Pretendard Variable';
+  color: var(--color-muted);
+  text-align: center;
+}

@@ -83,11 +83,26 @@ function drawCard(canvas: HTMLCanvasElement, result: FinishedResult, grade: Grad
   ctx.fillText(new Date().toLocaleDateString('ko-KR'), 46, H - 40);
 }
 
+/** iOS Safari는 `<a download>`를 지원하지 않는다 - 클릭해도 그냥 이미지가
+ * 새 창에서 열리거나 아무 반응이 없다(사용자 피드백: "아이폰에서 다운로드가
+ * 안돼요"). 표준적인 우회법은 새 탭에 이미지를 직접 열어 "길게 눌러 저장"을
+ * 안내하는 것뿐이라, iOS에서는 다운로드 시도 자체를 그 방식으로 바꾼다. */
+function isIOS(): boolean {
+  if (typeof navigator === 'undefined') return false;
+  const ua = navigator.userAgent;
+  // iPadOS 13+는 데스크톱 UA를 흉내 내므로 UA만으로는 못 잡는다 - 터치
+  // 지원 여부까지 같이 확인해서 "Mac인데 터치스크린이 있음" = iPad로 판별한다.
+  const isAppleTouch = /iPad|iPhone|iPod/.test(ua);
+  const isIPadOS13Plus = ua.includes('Macintosh') && navigator.maxTouchPoints > 1;
+  return isAppleTouch || isIPadOS13Plus;
+}
+
 export function ShareOverlay({ result, grade, onClose }: ShareOverlayProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [ready, setReady] = useState(false);
   const [failed, setFailed] = useState(false);
   const canShare = typeof navigator !== 'undefined' && typeof navigator.share === 'function';
+  const iosFallback = isIOS();
 
   useLockBodyScroll();
 
@@ -114,6 +129,24 @@ export function ShareOverlay({ result, grade, onClose }: ShareOverlayProps) {
   const handleDownload = () => {
     const canvas = canvasRef.current;
     if (!canvas) return;
+    if (iosFallback) {
+      // `<a download>`가 무시되니, 이미지를 새 탭에 그대로 열어 길게 눌러
+      // "사진에 저장"하도록 안내한다(아래 iosNote 문구와 짝을 이룸). data:
+      // URL은 최근 브라우저에서 최상위 프레임 이동 자체가 막혀 있어서
+      // (사용자 피드백으로 실측: "Not allowed to navigate top frame to data
+      // URL"), 반드시 blob URL을 써야 팝업이 막혔을 때의 대체 경로도 연다.
+      canvas.toBlob((blob) => {
+        if (!blob) {
+          setFailed(true);
+          return;
+        }
+        const blobUrl = URL.createObjectURL(blob);
+        const win = window.open(blobUrl, '_blank');
+        if (!win) window.location.href = blobUrl;
+        window.setTimeout(() => URL.revokeObjectURL(blobUrl), 60_000);
+      }, 'image/png');
+      return;
+    }
     try {
       const url = canvas.toDataURL('image/png');
       const link = document.createElement('a');
@@ -172,9 +205,14 @@ export function ShareOverlay({ result, grade, onClose }: ShareOverlayProps) {
             </Button>
           )}
           <Button variant="accent" onClick={handleDownload} disabled={!ready || failed}>
-            이미지 다운로드
+            {iosFallback ? '이미지 새 탭에서 열기' : '이미지 다운로드'}
           </Button>
         </div>
+        {iosFallback && (
+          <span className={styles.iosNote}>
+            아이폰 사파리는 바로 저장이 안 돼요 - 새 탭에서 열리면 이미지를 길게 눌러 &quot;사진에 저장&quot;을 눌러주세요.
+          </span>
+        )}
       </div>
     </div>
   );
