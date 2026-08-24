@@ -76,7 +76,7 @@ function drawCard(canvas: HTMLCanvasElement, result: FinishedResult, grade: Grad
 
   ctx.fillStyle = 'rgba(255,255,255,0.75)';
   ctx.font = '500 18px "Pretendard Variable", sans-serif';
-  wrapText(ctx, '한국보훈복지의료공단 공공데이터를 활용한 서비스 콘셉트입니다.', 46, 545, W - 92, 26);
+  wrapText(ctx, '본 콘텐츠는 한국보훈복지의료공단 공공데이터를 활용하여 제작되었습니다.', 46, 545, W - 92, 26);
 
   ctx.fillStyle = 'rgba(255,255,255,0.5)';
   ctx.font = '500 15px "Pretendard Variable", sans-serif';
