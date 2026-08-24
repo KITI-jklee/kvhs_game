@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState, type CSSProperties } from 'react';
+import { Fragment, useEffect, useMemo, useRef, useState, type CSSProperties } from 'react';
 import type { Bounds, LatLng, Point } from '../../lib/geo';
 import { createProjection, fitBoundsToAspect } from '../../lib/geo';
 import styles from './KoreaMap.module.css';
@@ -34,6 +34,40 @@ export interface MapHighlight {
  * 안뜨는데?"). 강조 영역의 화면상 크기가 이 값보다 작으면 중심을 기준으로
  * 확대해서 최소한 이 정도는 보이게 한다. */
 const MIN_HIGHLIGHT_SIZE_PX = 32;
+
+/** 컨테이너 비율(가로/세로)을 그대로 fitBoundsToAspect에 넘기면, 후보들이
+ * 남북으로 길게 퍼진 라운드(예: 해안선을 따라 늘어선 병원들)에서 컨테이너가
+ * 세로로 좁고 길수록 지리적 범위(latSpan)까지 그만큼 늘어나 핀 간격이
+ * 오히려 더 촘촘해진다(사용자 피드백: "위아래로 길거나 범위가 넓어서 잘
+ * 안 보인다"). 컨테이너 비율에 이 값 이상의 하한을 둬서 latSpan이 필요
+ * 이상으로 늘어나지 않게 하고, 남는 세로 공간은 위아래 여백(grid 배경)으로
+ * 흡수한다 - letterbox가 조금 생기더라도 핀 사이 실제 간격을 지키는 쪽이
+ * 낫다. */
+const MIN_CONTAINER_ASPECT = 0.62;
+
+/** 핀 원(반지름 9 + 테두리)이 실제로 차지하는 화면상 크기 - 라벨-핀 연결선을
+ * 핀 중심이 아니라 원 바깥 가장자리부터 시작하게 해서 선이 원을 뚫고
+ * 나오지 않게 한다. */
+const PIN_LABEL_GAP = 11;
+
+/** 핀 2개 이상이 겹칠 때 라벨을 전부 아래로만 계단식으로 쌓으면, 핀에서
+ * 먼 라벨일수록 "이게 저 핀 이름이 맞나?" 헷갈려 보인다(사용자 피드백:
+ * "붙어있을 땐 하나는 위에 적히고 하나는 아래에 적히고 그럼 되지 않나?").
+ * 그래서 위/아래를 번갈아 배치한다 - 클러스터 안에서 몇 번째로 겹치는지에
+ * 따라 짝수 번째는 아래, 홀수 번째는 위로 보내고, 같은 방향 안에서만 더
+ * 멀리 밀어낸다(레벨). 위쪽은 라벨 한 줄 높이만큼 더 확보해야 핀 원 위로
+ * 글자가 안 걸친다. */
+const LABEL_BELOW_BASE = 14;
+const LABEL_ABOVE_BASE = 26;
+const LABEL_STEP = 22;
+
+/** offsetIndex(클러스터 내 순번)를 라벨의 수직 오프셋(px, 부호로 위/아래
+ * 구분)으로 바꾼다. */
+function labelDy(offsetIndex: number): number {
+  const level = Math.floor(offsetIndex / 2);
+  const isAbove = offsetIndex % 2 === 1;
+  return isAbove ? -(LABEL_ABOVE_BASE + level * LABEL_STEP) : LABEL_BELOW_BASE + level * LABEL_STEP;
+}
 
 interface KoreaMapProps {
   /** 아직 로딩 중이면 null - 로딩 스켈레톤을 보여준다. */
@@ -77,9 +111,10 @@ export function KoreaMap({ region, highlight, pins, selectedId, correctId, revea
     return () => observer.disconnect();
   }, []);
 
+  const clampedAspect = Math.max(aspect, MIN_CONTAINER_ASPECT);
   const projection = useMemo(
-    () => (region ? createProjection(fitBoundsToAspect(region.bounds, aspect)) : null),
-    [region, aspect],
+    () => (region ? createProjection(fitBoundsToAspect(region.bounds, clampedAspect)) : null),
+    [region, clampedAspect],
   );
 
   const landPaths = useMemo(() => {
@@ -154,7 +189,12 @@ export function KoreaMap({ region, highlight, pins, selectedId, correctId, revea
 
       {/* 땅/강조 영역은 그대로 라벨보다 아래에 둔다(불투명 색이라 라벨보다
          위로 가면 라벨이 통째로 안 보임). */}
-      <svg className={styles.svg} viewBox={`0 0 ${projection.width} ${projection.height}`} role="presentation">
+      <svg
+        className={styles.svg}
+        viewBox={`0 0 ${projection.width} ${projection.height}`}
+        preserveAspectRatio="none"
+        role="presentation"
+      >
         {landPaths.map((d, i) => (
           <path key={i} className={styles.landmass} d={d} />
         ))}
@@ -185,24 +225,58 @@ export function KoreaMap({ region, highlight, pins, selectedId, correctId, revea
           .filter(Boolean)
           .join(' ');
         const offsetIndex = labelOffsetIndex.get(pin.id) ?? 0;
+        const dyPx = labelDy(offsetIndex);
+        const leftPct = `${(p.x / projection.width) * 100}%`;
+        const topPct = `${(p.y / projection.height) * 100}%`;
+        // 연결선은 "핀 원 가장자리"부터 "라벨 시작 지점"까지만 그린다 - 아래로
+        // 밀린 라벨(dy > 0)이면 +GAP에서 dy까지, 위로 밀린 라벨(dy < 0)이면
+        // dy에서 -GAP까지. 두 경우 다 선의 위쪽 끝(lineTop)에서 길이(length)만큼
+        // 아래로 그으면 되도록 부호를 맞춰 정리한 값이다.
+        const lineTop = dyPx > 0 ? PIN_LABEL_GAP : dyPx;
+        const lineLength = Math.abs(dyPx) - PIN_LABEL_GAP;
         return (
-          <span
-            key={pin.id}
-            className={labelClass}
-            style={
-              {
-                left: `${(p.x / projection.width) * 100}%`,
-                top: `${(p.y / projection.height) * 100}%`,
-                '--label-dy': `${14 + offsetIndex * 22}px`,
-              } as CSSProperties
-            }
-          >
-            {pin.label}
-          </span>
+          <Fragment key={pin.id}>
+            {/* 핀 후보 3곳 이상이 실제로 서로 아주 가까울 때는 계단식으로
+               내려간 라벨이 자기 핀에서 멀어 보여 "핀이랑 이름이 떨어져
+               있다"는 오해를 산다(사용자 피드백) - 라벨이 원래 자리(dy=0)에서
+               한 칸이라도 밀려났으면, 핀에서 라벨까지 얇은 선으로 이어서
+               어느 라벨이 어느 핀 것인지 명확히 보여준다. */}
+            {offsetIndex > 0 && (
+              <span
+                className={[styles.pinLeader, labelClass].join(' ')}
+                style={
+                  {
+                    left: leftPct,
+                    top: topPct,
+                    transform: `translate(-50%, ${lineTop}px)`,
+                    height: `${lineLength}px`,
+                  } as CSSProperties
+                }
+                aria-hidden
+              />
+            )}
+            <span
+              className={labelClass}
+              style={
+                {
+                  left: leftPct,
+                  top: topPct,
+                  '--label-dy': `${dyPx}px`,
+                } as CSSProperties
+              }
+            >
+              {pin.label}
+            </span>
+          </Fragment>
         );
       })}
 
-      <svg className={styles.svg} viewBox={`0 0 ${projection.width} ${projection.height}`} role="presentation">
+      <svg
+        className={styles.svg}
+        viewBox={`0 0 ${projection.width} ${projection.height}`}
+        preserveAspectRatio="none"
+        role="presentation"
+      >
         {pins.map((pin) => {
           const p = projection.project(pin.center);
           const isSelected = selectedId === pin.id;

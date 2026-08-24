@@ -138,9 +138,9 @@ export function Result() {
           <span className={styles.infoIcon}>i</span>
           <div className={styles.infoText}>
             <span className={styles.infoTitle}>
-              이 게임은 한국보훈복지의료공단 공개 데이터를 재구성한 콘셉트 경험입니다.
+              한국보훈복지의료공단 공공데이터 활용 안낸
             </span>
-            <span className={styles.infoSub}>실제 진료 정보와 다를 수 있으며, 점수·등급은 재미를 위한 요소입니다.</span>
+            <span className={styles.infoSub}>본 게임의 점수와 등급은 재미를 위한 요소이며, 진료 정보는 해당 병원 및 공단에 문의해주세요.</span>
           </div>
         </div>
       </section>
