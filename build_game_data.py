@@ -205,68 +205,115 @@ def build_names():
 # ---------------------------------------------------------------------------
 # 게임③ : medical_term_pairs.json  (원본: suga, 비급여 수가정보)
 # ---------------------------------------------------------------------------
-# item_name(카드 앞면)과 kind_mid(카드 뒷면 분류)가 1:1로 대응하도록 이름
-# 기준 중복을 제거하고, 지나치게 전문적인 항목(영문 병기·과도하게 긴 이름)은
-# 카드 풀에서 제외한다.
-
-TOO_TECHNICAL_RE = re.compile(r"[.\[\]/,_-]|[A-Za-z]{4,}")
+# 원본의 행정적인 kind_mid 문구는 게임에서 이해하기 쉬운 분류명으로 바꾸고,
+# item_name은 괄호·수가 산정 문구를 걷어 낸 짧은 표시명으로 사용한다.
 HANGUL_RE = re.compile(r"[가-힣]")
 
-# 표기가 갈라져 있는 회계상 분류를 하나의 카드 뒷면 문구로 통일
-KIND_MID_NORMALIZE = {
-    "치과 처치·수술료": "치과 처치·수술료",
-    "치과 처치ㆍ수술료": "치과 처치·수술료",
-    "치과 처치 및 수술료": "치과 처치·수술료",
-    "치과처치 및 수술료": "치과 처치·수술료",
-    "처치 및 수술료": "처치 및 수술료",
-    "처치 및 수술료 등": "처치 및 수술료",
-    "처치·수술료": "처치 및 수술료",
-    "영상진단 및 방사선 치료료": "영상진단·방사선료",
-    "영상진단 및 방사선치료료": "영상진단·방사선료",
-    "자기공명영상 진단료(MRI)": "자기공명영상진단료(MRI)",
-    "자기공명영상진단료(MRI)": "자기공명영상진단료(MRI)",
-    "이학요법료(물리치료료)": "이학요법료(물리치료료)",
-    "이학요법료": "이학요법료(물리치료료)",
+# 원본 분류명 -> 카드에 표시할 쉬운 분류명
+KIND_MID_FRIENDLY = {
+    "검사료": "검사",
+    "치과의 보철료": "치과 보철",
+    "영상진단 및 방사선 치료료": "영상·방사선",
+    "영상진단 및 방사선치료료": "영상·방사선",
+    "처치 및 수술료 등": "처치·수술",
+    "처치 및 수술료": "처치·수술",
+    "처치·수술료": "처치·수술",
+    "치과 처치·수술료": "치과 치료",
+    "치과 처치ㆍ수술료": "치과 치료",
+    "치과 처치 및 수술료": "치과 치료",
+    "치과처치 및 수술료": "치과 치료",
+    "자기공명영상 진단료(MRI)": "MRI 검사",
+    "자기공명영상진단료(MRI)": "MRI 검사",
+    "약제": "의약품",
+    "초음파 검사료": "초음파 검사",
+    "기본진료료": "입원·상담",
+    "이학요법료(물리치료료)": "물리·재활치료",
+    "이학요법료": "물리·재활치료",
+    "정신요법료": "정신건강 치료",
+    "한방 시술 및 처치료": "한방 치료",
+    "주사료": "주사 치료",
 }
 # 카드 짝맞추기 분류로 쓰기에 지나치게 포괄적/행정적인 값은 제외
 KIND_MID_EXCLUDE = {"", "기타", "제증명수수료"}
 
 
 def clean_item_name(raw_name: str) -> str:
-    name = raw_name.split(" / ")[0].split("/")[0].strip()
-    name = re.sub(r"\([^)]*\)", "", name).strip()
+    name = raw_name.strip()
+    # 카드 학습에 불필요한 규격·횟수·영문 병기부터 제거한다.
+    name = re.sub(r"\[[^]]*\]", "", name)
+    name = re.sub(r"\([^)]*\)", "", name)
+    name = re.split(r"\s+/\s+", name, maxsplit=1)[0]
+    name = name.replace("전/후", "전후").replace("/", " ").replace("?", "")
+    name = re.sub(r"\s*[-–]\s*(?:일반|기본|단순)$", "", name)
+    name = re.sub(r"\s+", " ", name).strip(" ,·/._-")
     return name
+
+
+def make_display_name(raw_name: str, category: str) -> str:
+    name = clean_item_name(raw_name)
+    # MRI 원본은 '견관절-일반'처럼 검사 종류가 이름에 생략되어 있어 보완한다.
+    if category == "MRI 검사" and "MRI" not in name.upper():
+        name = f"{name} MRI"
+    if category == "영상·방사선" and not re.search(r"영상|촬영|방사선|치료계획", name):
+        name = f"{name} 영상"
+    return name
+
+
+def infer_friendly_category(raw_name: str, kind_mid_raw: str) -> str:
+    """원본 분류보다 항목명에 검사 종류가 명백할 때만 직관적인 분류를 우선한다."""
+    upper_name = raw_name.upper()
+    if "MRI" in upper_name or "자기공명" in raw_name:
+        return "MRI 검사"
+    if "초음파" in raw_name:
+        return "초음파 검사"
+    return KIND_MID_FRIENDLY.get(kind_mid_raw, kind_mid_raw)
+
+
+def card_name_quality(item):
+    """같은 분류 안에서는 짧고 한글 중심인 항목을 카드 후보로 먼저 고른다."""
+    name = item["item_name"]
+    latin = len(re.findall(r"[A-Za-z]", name))
+    digits = len(re.findall(r"\d", name))
+    punctuation = len(re.findall(r"[,.:;&+]", name))
+    return (latin * 3 + digits * 2 + punctuation * 2, len(name), name)
 
 
 def build_term_pairs():
     raw = load("suga_보훈병원_비급여수가정보.json")
-    by_name = {}
+    candidates = {}
     for rec in raw:
-        name = clean_item_name(rec.get("name") or "")
         kind_mid_raw = (rec.get("kind_mid") or "").strip()
-        kind_mid = KIND_MID_NORMALIZE.get(kind_mid_raw, kind_mid_raw)
+        kind_mid = infer_friendly_category(rec.get("name") or "", kind_mid_raw)
+        name = make_display_name(rec.get("name") or "", kind_mid)
         cost = rec.get("cost")
         if not name or kind_mid in KIND_MID_EXCLUDE or not isinstance(cost, (int, float)):
             continue
-        if not (3 <= len(name) <= 16):
+        if not (3 <= len(name) <= 24):
             continue
         if not HANGUL_RE.search(name):
             continue
-        if TOO_TECHNICAL_RE.search(name):
-            continue
-        if name in by_name:
-            continue  # item_name ↔ kind_mid 1:1 대응을 위해 최초 등장만 채택
-        by_name[name] = {"item_name": name, "kind_mid": kind_mid, "cost": int(cost)}
+        # 띄어쓰기·문장부호만 다른 사실상 같은 이름도 하나로 묶는다.
+        name_key = re.sub(r"[\s.,·_/-]", "", name)
+        candidates.setdefault(name_key, []).append({
+            "item_name": name, "kind_mid": kind_mid, "cost": int(cost)
+        })
+
+    # 같은 표시명이 여러 분류에 걸치면 어느 쪽이 정답인지 애매하므로 제외한다.
+    by_name = {}
+    for name_key, rows in candidates.items():
+        kinds = {row["kind_mid"] for row in rows}
+        if len(kinds) == 1:
+            by_name[name_key] = min(rows, key=card_name_quality)
 
     # 특정 분류에 카드가 몰리지 않도록 kind_mid별로 고르게 표본 추출
     by_kind = {}
     for item in by_name.values():
         by_kind.setdefault(item["kind_mid"], []).append(item)
     for bucket in by_kind.values():
-        random.shuffle(bucket)
+        bucket.sort(key=card_name_quality, reverse=True)
 
-    PER_KIND_CAP = 6
-    TOTAL_TARGET = 80
+    PER_KIND_CAP = 15
+    TOTAL_TARGET = 160
     pool = []
     idx = 0
     kinds = list(by_kind.keys())

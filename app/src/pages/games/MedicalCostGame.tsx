@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useMemo, useRef, useState } from 'react';
 import type { PointerEvent as ReactPointerEvent, ReactNode } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { BrandBar } from '../../components/layout/BrandBar';
@@ -82,22 +82,15 @@ export function MedicalCostGame() {
   // 하이로우는 고르는 즉시 바로 채점(finishRound)하며, 그때 넘긴 index/id가
   // 결과 카드 안에 그대로 클로저로 남으니 별도 "선택값" 상태는 필요 없다.
   const [sliderPos, setSliderPos] = useState(SLIDER_STEPS / 2);
-  const [reorderOrder, setReorderOrder] = useState<MedicalCostItem[]>([]);
+  const [reorderOrder, setReorderOrder] = useState<MedicalCostItem[]>(() => {
+    const firstRound = rounds?.[0];
+    return firstRound?.kind === 'reorder' ? shuffledDisplayOrder(firstRound.items) : [];
+  });
   // 예산 라운드는 "고르는 즉시 채점"이 아니라 토글로 여러 개 골라뒀다가
   // 확인 버튼을 눌러야 채점된다(멀티 선택) - 그래서 선택 상태를 따로 둔다.
   const [budgetPicks, setBudgetPicks] = useState<Set<string>>(new Set());
 
   const round = rounds?.[roundIndex] ?? null;
-
-  // 라운드가 바뀔 때 슬라이더/순서 상태를 리셋한다 - 둘 다 사용자가 직접
-  // 조작해야 하는 값이라 렌더링 중에는 계산해 낼 수 없다("prop이 바뀌면
-  // state를 리셋"하는 표준적인 경우라 effect를 쓴다).
-  useEffect(() => {
-    if (!round) return;
-    setSliderPos(SLIDER_STEPS / 2);
-    if (round.kind === 'reorder') setReorderOrder(shuffledDisplayOrder(round.items));
-    if (round.kind === 'budget') setBudgetPicks(new Set());
-  }, [round]);
 
   const isLastRound = roundIndex >= ROUND_COUNT - 1;
 
@@ -325,7 +318,12 @@ export function MedicalCostGame() {
       navigate('/result');
       return;
     }
-    setRoundIndex((i) => i + 1);
+    const nextIndex = roundIndex + 1;
+    const nextRound = rounds?.[nextIndex];
+    setSliderPos(SLIDER_STEPS / 2);
+    setReorderOrder(nextRound?.kind === 'reorder' ? shuffledDisplayOrder(nextRound.items) : []);
+    setBudgetPicks(new Set());
+    setRoundIndex(nextIndex);
     setRevealed(false);
     setReveal(null);
   };

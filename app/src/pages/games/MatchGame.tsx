@@ -77,7 +77,9 @@ export function MatchGame() {
   const deck = useMemo(() => buildMatchDeck(roundsPairs[roundIndex] ?? []), [roundsPairs, roundIndex]);
 
   const [selected, setSelected] = useState<DeckCard[]>([]);
-  const [matchedPairs, setMatchedPairs] = useState<number[]>([]);
+  // 정답 표시는 pairIndex가 아니라 실제로 함께 뒤집어 확인한 두 카드의 key에
+  // 두 카드에만 부여한다. 마지막 한 쌍에서 첫 카드만 열었는데 체크가 보이는 일을 막는다.
+  const [matchedCardKeys, setMatchedCardKeys] = useState<string[]>([]);
   const [score, setScore] = useState(0);
   const [missCount, setMissCount] = useState(0);
   const [elapsedSec, setElapsedSec] = useState(0);
@@ -130,7 +132,7 @@ export function MatchGame() {
 
   const pairs = roundsPairs[roundIndex] ?? [];
   const isSelected = (card: DeckCard) => selected.some((c) => c.key === card.key);
-  const isMatched = (card: DeckCard) => matchedPairs.includes(card.pairIndex);
+  const isMatched = (card: DeckCard) => matchedCardKeys.includes(card.key);
 
   const finalize = (finalMissCount: number) => {
     doneRef.current = true;
@@ -166,16 +168,16 @@ export function MatchGame() {
     const [a, b] = next;
     setSelected(next);
     if (a.pairIndex === b.pairIndex) {
-      const nextMatched = [...matchedPairs, a.pairIndex];
+      const nextMatchedCardKeys = [...matchedCardKeys, a.key, b.key];
       scheduleTransition(() => {
-        setMatchedPairs(nextMatched);
+        setMatchedCardKeys(nextMatchedCardKeys);
         setSelected([]);
-        if (nextMatched.length !== pairs.length) return;
+        if (nextMatchedCardKeys.length !== pairs.length * 2) return;
 
         if (roundIndex < ROUND_SIZES.length - 1) {
           scheduleTransition(() => {
             setRoundIndex((r) => r + 1);
-            setMatchedPairs([]);
+            setMatchedCardKeys([]);
             setSelected([]);
           }, 250);
         } else {
@@ -188,7 +190,7 @@ export function MatchGame() {
     }
   };
 
-  const donePairs = matchedPairs.length;
+  const donePairs = matchedCardKeys.length / 2;
   const pairsPercent = (donePairs / Math.max(pairs.length, 1)) * 100;
   const onBack = () => navigate('/');
   const handlePause = () => {
