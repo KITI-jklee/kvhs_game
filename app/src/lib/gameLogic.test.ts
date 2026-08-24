@@ -217,8 +217,9 @@ describe('공통 점수와 등급', () => {
 
   it('게임③ 점수는 시간과 오매칭이 늘면 낮아지고 100~500을 유지한다', () => {
     expect(computeMatchScore(60, 0)).toBe(500);
-    expect(computeMatchScore(120, 0)).toBeLessThan(500);
-    expect(computeMatchScore(120, 2)).toBeLessThan(computeMatchScore(120, 1));
+    expect(computeMatchScore(180, 0)).toBeLessThan(500);
+    expect(computeMatchScore(180, 2)).toBeLessThan(computeMatchScore(180, 1));
+    expect(computeMatchScore(169, 70)).toBe(271);
     expect(computeMatchScore(9999, 999)).toBe(100);
   });
 });
