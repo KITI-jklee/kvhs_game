@@ -68,7 +68,7 @@ function GameDataGate({ children }: { children: ReactNode }) {
   const navigate = useNavigate();
 
   if (status === 'loading') {
-    return <FullScreenNotice icon="⏳" title="게임 데이터를 불러오는 중입니다..." />;
+    return <FullScreenNotice variant="modal" icon="⏳" title="게임 데이터를 불러오는 중입니다..." />;
   }
   if (status === 'error') {
     return (
