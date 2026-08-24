@@ -395,8 +395,8 @@ export function MedicalCostGame() {
           title="의료비 감각 테스트"
           onDone={() => setShowIntro(false)}
           rules={[
-            { color: '#2abf9e', text: '실제 공개 비급여 진료비가 얼마인지 감으로 맞혀보세요' },
-            { color: '#f0b429', text: <>라운드마다 조작 방식이 달라요 - 슬라이더 · 4지선다 · 순서 맞추기 · 예산 · 하이로우</> },
+            { color: '#2abf9e', text: '공개된 비급여 가격을 감으로 맞혀보세요' },
+            { color: '#f0b429', text: <>라운드마다 다른 방식으로 진행돼요</> },
             { color: '#d0705f', text: <>총 <b>5라운드</b>, 라운드당 최대 <b>100점</b>이에요</> },
           ]}
         />

@@ -270,10 +270,10 @@ export function MatchGame() {
           title="보훈의료 용어 짝맞추기"
           onDone={() => setShowIntro(false)}
           rules={[
-            { color: '#2abf9e', text: <>라운드 시작 시 카드를 <b>3초간</b> 보여준 뒤 뒤집혀요</> },
-            { color: '#f0b429', text: '카드 두 장을 뒤집어 항목명과 분류의 짝을 맞추세요' },
-            { color: '#d0705f', text: <>라운드가 오를수록 카드 수가 늘어나요 (<b>12→16→20장</b>)</> },
-            { color: '#7c9cff', text: '완료 시간과 오답 횟수로 점수가 매겨져요' },
+            { color: '#2abf9e', text: <>시작 전 카드를 3초간 확인해보세요</> },
+            { color: '#f0b429', text: '카드를 뒤집어 항목과 알맞은 짝을 찾아보세요' },
+            { color: '#d0705f', text: <>라운드마다 카드가 <b>12→16→20장</b>으로 늘어나요</> },
+            { color: '#7c9cff', text: '빠르고 정확할수록 높은 점수를 받아요' },
           ]}
         />
       )}

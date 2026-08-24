@@ -364,9 +364,9 @@ export function LocationGame() {
           title="가장 가까운 위탁병원 찾기"
           onDone={() => setShowIntro(false)}
           rules={[
-            { color: '#2abf9e', text: '보훈 대상자가 있는 지역과 병원 후보 5곳을 보고, 가장 가까운 위탁병원을 골라보세요' },
+            { color: '#2abf9e', text: '주어진 위치에서 가장 가까운 위탁병원을 골라보세요' },
             { color: '#f0b429', text: <>라운드당 제한시간 <b>5초</b>, 총 <b>5라운드</b>예요</> },
-            { color: '#d0705f', text: <>가까운 순서에 따라 최대 <b>100점</b>까지 차등 채점돼요</> },
+            { color: '#d0705f', text: <>가까운 병원을 고를수록 더 높은 점수를 받아요</> },
           ]}
         />
       )}
