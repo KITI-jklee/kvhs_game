@@ -30,6 +30,14 @@ export function sliderPositionToPrice(t: number): number {
   return Math.round(value / 1000) * 1000;
 }
 
+/** sliderPositionToPrice의 역함수 - 가격 -> 슬라이더 위치(0~1, %로 쓰려면 *100).
+ * 로그 스케일 눈금 라벨을 실제 위치에 정확히 찍기 위해 쓴다(사용자 피드백:
+ * 눈금이 화면에 균등 간격으로만 찍혀 있어 실제 값 위치와 어긋나 있었다). */
+export function pricePositionRatio(price: number): number {
+  const clamped = Math.min(SLIDER_MAX, Math.max(SLIDER_MIN, price));
+  return Math.log(clamped / SLIDER_MIN) / Math.log(SLIDER_MAX / SLIDER_MIN);
+}
+
 export interface SliderVerdict {
   points: number;
   label: string;

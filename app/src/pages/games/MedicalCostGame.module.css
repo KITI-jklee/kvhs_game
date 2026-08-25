@@ -182,13 +182,23 @@
   height: 6px;
 }
 
+/* 슬라이더가 로그 스케일이라 눈금도 균등 간격이 아니라 실제 로그 위치에
+   맞춰 찍어야 한다(사용자 피드백: 라벨 위치와 실제 값 위치가 어긋나 있었음)
+   - flex space-between 대신 각 눈금을 pricePositionRatio로 계산한 left%에
+   절대 위치시킨다. */
 .sliderTicks {
+  position: relative;
   width: 100%;
-  display: flex;
-  justify-content: space-between;
+  height: 14px;
   font: 500 10.5px 'Pretendard Variable';
   color: var(--color-muted-2);
   margin-top: -8px;
+}
+
+.sliderTick {
+  position: absolute;
+  top: 0;
+  white-space: nowrap;
 }
 
 /* ---- 라운드② 4지선다 / 공통 카드 그리드 ---- */

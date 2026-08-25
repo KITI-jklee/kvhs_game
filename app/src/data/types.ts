@@ -49,6 +49,11 @@ export interface MedicalCostItem {
   /** 실제 공개 비급여 수가(원). */
   cost: number;
   category: string;
+  /** 같은 항목으로 통합된 공개 가격의 범위와 표본 수. */
+  minCost?: number;
+  maxCost?: number;
+  sampleCount?: number;
+  code?: string;
 }
 
 /** 게임③ 콘텐츠 - API 명세서 B-3 */

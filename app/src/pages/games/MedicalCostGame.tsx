@@ -15,6 +15,7 @@ import {
   MAX_TOTAL_SCORE,
   ROUND_COUNT,
   buildRounds,
+  pricePositionRatio,
   scoreBudgetPicks,
   scoreReorder,
   scoreSlider,
@@ -430,9 +431,25 @@ export function MedicalCostGame() {
                     onChange={(e) => setSliderPos(Number(e.target.value))}
                   />
                   <div className={styles.sliderTicks}>
-                    {SLIDER_TICKS.map((t) => (
-                      <span key={t}>{t >= 10000 ? `${t / 10000}만` : `${t}`}</span>
-                    ))}
+                    {SLIDER_TICKS.map((t, i) => {
+                      const percent = pricePositionRatio(t) * 100;
+                      // 양 끝 눈금은 라벨을 중앙 정렬하면 트랙 밖으로 삐져나가므로
+                      // 각각 왼쪽/오른쪽 끝에 붙이고, 중간 눈금만 실제 로그 위치에
+                      // 맞춰 중앙 정렬한다.
+                      const align = i === 0 ? 'left' : i === SLIDER_TICKS.length - 1 ? 'right' : 'center';
+                      return (
+                        <span
+                          key={t}
+                          className={styles.sliderTick}
+                          style={{
+                            left: `${percent}%`,
+                            transform: align === 'left' ? 'none' : align === 'right' ? 'translateX(-100%)' : 'translateX(-50%)',
+                          }}
+                        >
+                          {t >= 10000 ? `${t / 10000}만` : `${t}`}
+                        </span>
+                      );
+                    })}
                   </div>
                   <Button variant="accent" disabled={disabled} onClick={handleSliderConfirm}>
                     이 금액으로 선택

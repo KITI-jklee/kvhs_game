@@ -1,1 +1,5265 @@
-[{"id":"mc_001","name":"복부 MRI","cost":410620,"category":"영상진단"},{"id":"mc_002","name":"뇌 MRI","cost":222570,"category":"영상진단"},{"id":"mc_003","name":"종합검진 PET-CT","cost":906000,"category":"영상진단"},{"id":"mc_004","name":"뇌혈류 초음파","cost":127780,"category":"초음파"},{"id":"mc_005","name":"연부조직 초음파(정밀)","cost":82660,"category":"초음파"},{"id":"mc_006","name":"연부조직 초음파(일반)","cost":64350,"category":"초음파"},{"id":"mc_007","name":"하지혈관 초음파","cost":156290,"category":"초음파"},{"id":"mc_008","name":"기본 초음파(단순)","cost":15360,"category":"초음파"},{"id":"mc_009","name":"수면다원검사","cost":671400,"category":"검사"},{"id":"mc_010","name":"간이 수면검사(코골이)","cost":100000,"category":"검사"},{"id":"mc_011","name":"간섬유화검사","cost":90000,"category":"검사"},{"id":"mc_012","name":"안구광학단층촬영","cost":50000,"category":"검사"},{"id":"mc_013","name":"자궁경부암 예방접종","cost":180000,"category":"예방접종"},{"id":"mc_014","name":"대상포진 예방접종","cost":190000,"category":"예방접종"},{"id":"mc_015","name":"폐렴구균 예방접종","cost":100000,"category":"예방접종"},{"id":"mc_016","name":"인플루엔자 예방접종","cost":30000,"category":"예방접종"},{"id":"mc_017","name":"완전틀니(레진)","cost":1200000,"category":"치과"},{"id":"mc_018","name":"세라믹 크라운","cost":550000,"category":"치과"},{"id":"mc_019","name":"기성 금관","cost":60000,"category":"치과"},{"id":"mc_020","name":"광중합 레진 충전","cost":80000,"category":"치과"},{"id":"mc_021","name":"임플란트 상악동거상술","cost":300000,"category":"치과"},{"id":"mc_022","name":"도수치료(1일)","cost":60000,"category":"처치"},{"id":"mc_023","name":"체외충격파치료","cost":70000,"category":"처치"},{"id":"mc_024","name":"코골이수술(고주파)","cost":100000,"category":"처치"},{"id":"mc_025","name":"하지정맥류 레이저폐쇄술","cost":1000000,"category":"처치"},{"id":"mc_026","name":"전산화 인지재활치료","cost":35000,"category":"처치"},{"id":"mc_027","name":"1인실 입원료(1일)","cost":150360,"category":"입원"},{"id":"mc_028","name":"약침술","cost":15000,"category":"한방"}]
+[
+  {
+    "id": "mc_0001",
+    "name": "체성분 분석검사",
+    "cost": 15000,
+    "category": "검사",
+    "minCost": 15000,
+    "maxCost": 15000,
+    "sampleCount": 1,
+    "code": "SZ05300"
+  },
+  {
+    "id": "mc_0002",
+    "name": "관절계를 이용한 무릎관절인대검사",
+    "cost": 50000,
+    "category": "검사",
+    "minCost": 50000,
+    "maxCost": 50000,
+    "sampleCount": 1,
+    "code": "EZ775"
+  },
+  {
+    "id": "mc_0003",
+    "name": "광범위 선천성대사이상검사-Y",
+    "cost": 24000,
+    "category": "검사",
+    "minCost": 23950,
+    "maxCost": 23950,
+    "sampleCount": 1,
+    "code": "LWCZ338"
+  },
+  {
+    "id": "mc_0004",
+    "name": "내시경적 경막외강 신경근성형술",
+    "cost": 500000,
+    "category": "검사",
+    "minCost": 500000,
+    "maxCost": 500000,
+    "sampleCount": 2,
+    "code": "SZ631"
+  },
+  {
+    "id": "mc_0005",
+    "name": "눈의 계측검사(레이저 간섭계·편측)",
+    "cost": 50000,
+    "category": "검사",
+    "minCost": 50000,
+    "maxCost": 50000,
+    "sampleCount": 1,
+    "code": "E7801"
+  },
+  {
+    "id": "mc_0006",
+    "name": "눈의계측검사(레이저간섭계이용)",
+    "cost": 50000,
+    "category": "검사",
+    "minCost": 50000,
+    "maxCost": 50000,
+    "sampleCount": 3
+  },
+  {
+    "id": "mc_0007",
+    "name": "체수분 상태 측정(다주파수 바이오임피던스 분석)",
+    "cost": 15000,
+    "category": "검사",
+    "minCost": 15000,
+    "maxCost": 15000,
+    "sampleCount": 1,
+    "code": "SZ05310"
+  },
+  {
+    "id": "mc_0008",
+    "name": "다중수면잠복기검사",
+    "cost": 523700,
+    "category": "검사",
+    "minCost": 523660,
+    "maxCost": 523660,
+    "sampleCount": 1,
+    "code": "FZ702"
+  },
+  {
+    "id": "mc_0009",
+    "name": "단기기억력검사(시각)",
+    "cost": 30000,
+    "category": "검사",
+    "minCost": 30000,
+    "maxCost": 30000,
+    "sampleCount": 1,
+    "code": "FZ413"
+  },
+  {
+    "id": "mc_0010",
+    "name": "단기기억력검사(청각)",
+    "cost": 30000,
+    "category": "검사",
+    "minCost": 30000,
+    "maxCost": 30000,
+    "sampleCount": 1,
+    "code": "FZ413"
+  },
+  {
+    "id": "mc_0011",
+    "name": "당알부민",
+    "cost": 12000,
+    "category": "검사",
+    "minCost": 12000,
+    "maxCost": 23240,
+    "sampleCount": 4
+  },
+  {
+    "id": "mc_0012",
+    "name": "동적체평형검사",
+    "cost": 40000,
+    "category": "검사",
+    "minCost": 30000,
+    "maxCost": 50000,
+    "sampleCount": 2,
+    "code": "FZ731"
+  },
+  {
+    "id": "mc_0013",
+    "name": "발음 및 발성검사",
+    "cost": 50000,
+    "category": "검사",
+    "minCost": 50000,
+    "maxCost": 50000,
+    "sampleCount": 2
+  },
+  {
+    "id": "mc_0014",
+    "name": "비디오전기안진검사",
+    "cost": 50000,
+    "category": "검사",
+    "minCost": 31010,
+    "maxCost": 103500,
+    "sampleCount": 39,
+    "code": "FZ733"
+  },
+  {
+    "id": "mc_0015",
+    "name": "비디오전기안진검사(정밀 안구운동검사)",
+    "cost": 100000,
+    "category": "검사",
+    "minCost": 100000,
+    "maxCost": 100000,
+    "sampleCount": 1,
+    "code": "FZ733"
+  },
+  {
+    "id": "mc_0017",
+    "name": "성인 진단적 언어능력 검사",
+    "cost": 20000,
+    "category": "검사",
+    "minCost": 20000,
+    "maxCost": 20000,
+    "sampleCount": 1,
+    "code": "FZ421"
+  },
+  {
+    "id": "mc_0018",
+    "name": "성인 진단적 이해력 검사",
+    "cost": 20000,
+    "category": "검사",
+    "minCost": 20000,
+    "maxCost": 20000,
+    "sampleCount": 1,
+    "code": "FZ421"
+  },
+  {
+    "id": "mc_0019",
+    "name": "성호르몬결합글로불린",
+    "cost": 17300,
+    "category": "검사",
+    "minCost": 17274,
+    "maxCost": 17274,
+    "sampleCount": 1,
+    "code": "CZ202"
+  },
+  {
+    "id": "mc_0020",
+    "name": "손가락 두드리기 검사",
+    "cost": 15000,
+    "category": "검사",
+    "minCost": 15000,
+    "maxCost": 15000,
+    "sampleCount": 1,
+    "code": "FZ441"
+  },
+  {
+    "id": "mc_0021",
+    "name": "시청각자극발기측정",
+    "cost": 100000,
+    "category": "검사",
+    "minCost": 100000,
+    "maxCost": 100000,
+    "sampleCount": 1,
+    "code": "SZ02500"
+  },
+  {
+    "id": "mc_0023",
+    "name": "신경인지기능검사(개별검사 유형 1·3~5개 검사)",
+    "cost": 29100,
+    "category": "검사",
+    "minCost": 29090,
+    "maxCost": 29090,
+    "sampleCount": 3
+  },
+  {
+    "id": "mc_0024",
+    "name": "신경인지기능검사(개별검사 유형 1·6~8개 검사)",
+    "cost": 49700,
+    "category": "검사",
+    "minCost": 49680,
+    "maxCost": 49680,
+    "sampleCount": 3
+  },
+  {
+    "id": "mc_0025",
+    "name": "신경인지기능검사(개별검사 유형 1·9개 이상 검사)",
+    "cost": 87400,
+    "category": "검사",
+    "minCost": 87420,
+    "maxCost": 87430,
+    "sampleCount": 3
+  },
+  {
+    "id": "mc_0026",
+    "name": "신경인지기능검사(개별검사 유형 2·1~3개 검사)",
+    "cost": 29100,
+    "category": "검사",
+    "minCost": 29100,
+    "maxCost": 29110,
+    "sampleCount": 3
+  },
+  {
+    "id": "mc_0027",
+    "name": "신경인지기능검사(개별검사 유형 2·4개 이상)",
+    "cost": 70300,
+    "category": "검사",
+    "minCost": 70290,
+    "maxCost": 70290,
+    "sampleCount": 1,
+    "code": "FB022"
+  },
+  {
+    "id": "mc_0028",
+    "name": "신경인지기능검사(개별검사 유형 3·보스톤사물이름대기검사-60문항)",
+    "cost": 29900,
+    "category": "검사",
+    "minCost": 29940,
+    "maxCost": 29940,
+    "sampleCount": 1,
+    "code": "FB030020"
+  },
+  {
+    "id": "mc_0031",
+    "name": "신경인지기능검사(각성도 및 주의력 검사·선로잇기검사)",
+    "cost": 20000,
+    "category": "검사",
+    "minCost": 20000,
+    "maxCost": 20000,
+    "sampleCount": 1,
+    "code": "SZ10109"
+  },
+  {
+    "id": "mc_0032",
+    "name": "신경인지기능검사(각성도 및 주의력검사·경계력검사·시각)",
+    "cost": 25000,
+    "category": "검사",
+    "minCost": 25000,
+    "maxCost": 25000,
+    "sampleCount": 1,
+    "code": "FZ021"
+  },
+  {
+    "id": "mc_0033",
+    "name": "신경인지기능검사(각성도 및 주의력검사·경계력검사·청각)",
+    "cost": 25000,
+    "category": "검사",
+    "minCost": 25000,
+    "maxCost": 25000,
+    "sampleCount": 1,
+    "code": "FZ022"
+  },
+  {
+    "id": "mc_0034",
+    "name": "신경인지기능검사(각성도 및 주의력검사·기호잇기검사)",
+    "cost": 15000,
+    "category": "검사",
+    "minCost": 15000,
+    "maxCost": 15000,
+    "sampleCount": 1,
+    "code": "FZ024"
+  },
+  {
+    "id": "mc_0035",
+    "name": "신경인지기능검사(각성도 및 주의력검사·무시증후군검사)",
+    "cost": 25000,
+    "category": "검사",
+    "minCost": 25000,
+    "maxCost": 25000,
+    "sampleCount": 1,
+    "code": "FZ023"
+  },
+  {
+    "id": "mc_0036",
+    "name": "신경인지기능검사(각성도 및 주의력검사·숫자·기호바꾸기검사)",
+    "cost": 15000,
+    "category": "검사",
+    "minCost": 15000,
+    "maxCost": 15000,
+    "sampleCount": 1,
+    "code": "FZ025"
+  },
+  {
+    "id": "mc_0037",
+    "name": "신경인지기능검사(각성도 및 주의력검사·연속수행력검사·시각)",
+    "cost": 30000,
+    "category": "검사",
+    "minCost": 30000,
+    "maxCost": 30000,
+    "sampleCount": 1,
+    "code": "FZ011"
+  },
+  {
+    "id": "mc_0038",
+    "name": "신경인지기능검사(각성도 및 주의력검사·연속수행력검사·청각)",
+    "cost": 30000,
+    "category": "검사",
+    "minCost": 30000,
+    "maxCost": 30000,
+    "sampleCount": 1,
+    "code": "FZ012"
+  },
+  {
+    "id": "mc_0040",
+    "name": "신경인지기능검사(감각운동협응검사·손잡이검사)",
+    "cost": 13000,
+    "category": "검사",
+    "minCost": 13000,
+    "maxCost": 13000,
+    "sampleCount": 1,
+    "code": "FZ055"
+  },
+  {
+    "id": "mc_0041",
+    "name": "신경인지기능검사(개별검사·유형III·레이복합도형검사)",
+    "cost": 29900,
+    "category": "검사",
+    "minCost": 29940,
+    "maxCost": 29940,
+    "sampleCount": 3
+  },
+  {
+    "id": "mc_0042",
+    "name": "신경인지기능검사(개별검사·유형III·위스콘신카드분류검사)",
+    "cost": 29900,
+    "category": "검사",
+    "minCost": 29940,
+    "maxCost": 29940,
+    "sampleCount": 3
+  },
+  {
+    "id": "mc_0043",
+    "name": "신경인지기능검사(개별검사·유형III·표정인식력(재인)검사)",
+    "cost": 29900,
+    "category": "검사",
+    "minCost": 29940,
+    "maxCost": 29940,
+    "sampleCount": 3
+  },
+  {
+    "id": "mc_0044",
+    "name": "신경인지기능검사(개별검사·유형IV·벤톤 신경심리검사)",
+    "cost": 51300,
+    "category": "검사",
+    "minCost": 51330,
+    "maxCost": 51330,
+    "sampleCount": 3
+  },
+  {
+    "id": "mc_0045",
+    "name": "신경인지기능검사(개별검사·유형IV·서울언어학습검사)",
+    "cost": 51300,
+    "category": "검사",
+    "minCost": 51330,
+    "maxCost": 51330,
+    "sampleCount": 3
+  },
+  {
+    "id": "mc_0046",
+    "name": "신경인지기능검사(개별검사·유형VI·웨스턴 실어증 검사)",
+    "cost": 83800,
+    "category": "검사",
+    "minCost": 83820,
+    "maxCost": 83830,
+    "sampleCount": 3
+  },
+  {
+    "id": "mc_0047",
+    "name": "신경인지기능검사(경계력검사·시각)",
+    "cost": 30000,
+    "category": "검사",
+    "minCost": 30000,
+    "maxCost": 30000,
+    "sampleCount": 1,
+    "code": "FZ401"
+  },
+  {
+    "id": "mc_0048",
+    "name": "신경인지기능검사(구성능력검사)",
+    "cost": 20000,
+    "category": "검사",
+    "minCost": 20000,
+    "maxCost": 20000,
+    "sampleCount": 1,
+    "code": "FZ432"
+  },
+  {
+    "id": "mc_0049",
+    "name": "신경인지기능검사(기억력 검사·캘리포니아언어학습검사)",
+    "cost": 25000,
+    "category": "검사",
+    "minCost": 25000,
+    "maxCost": 30000,
+    "sampleCount": 5
+  },
+  {
+    "id": "mc_0050",
+    "name": "신경인지기능검사(기억력검사·단기기억력검사·시각)",
+    "cost": 25000,
+    "category": "검사",
+    "minCost": 25000,
+    "maxCost": 25000,
+    "sampleCount": 1,
+    "code": "FZ031"
+  },
+  {
+    "id": "mc_0051",
+    "name": "신경인지기능검사(기억력검사·단기기억력검사·청각)",
+    "cost": 25000,
+    "category": "검사",
+    "minCost": 25000,
+    "maxCost": 25000,
+    "sampleCount": 4,
+    "code": "FZ032"
+  },
+  {
+    "id": "mc_0052",
+    "name": "신경인지기능검사(기억력검사·웩슬러 기억 평정척도)",
+    "cost": 45400,
+    "category": "검사",
+    "minCost": 45363,
+    "maxCost": 45363,
+    "sampleCount": 1,
+    "code": "FZ037"
+  },
+  {
+    "id": "mc_0054",
+    "name": "신경인지기능검사(기억력검사·홉킨스 언어학습검사)",
+    "cost": 35000,
+    "category": "검사",
+    "minCost": 35000,
+    "maxCost": 35000,
+    "sampleCount": 1,
+    "code": "FZ034"
+  },
+  {
+    "id": "mc_0057",
+    "name": "신경인지기능검사(단어색채검사)",
+    "cost": 20000,
+    "category": "검사",
+    "minCost": 20000,
+    "maxCost": 20000,
+    "sampleCount": 1,
+    "code": "FZ452"
+  },
+  {
+    "id": "mc_0058",
+    "name": "신경인지기능검사(선로잇기검사)",
+    "cost": 20000,
+    "category": "검사",
+    "minCost": 20000,
+    "maxCost": 20000,
+    "sampleCount": 1,
+    "code": "FZ452"
+  },
+  {
+    "id": "mc_0061",
+    "name": "신경인지기능검사(시각 학습 검사)",
+    "cost": 30000,
+    "category": "검사",
+    "minCost": 30000,
+    "maxCost": 30000,
+    "sampleCount": 1,
+    "code": "FZ413"
+  },
+  {
+    "id": "mc_0062",
+    "name": "신경인지기능검사(어휘력검사)",
+    "cost": 15000,
+    "category": "검사",
+    "minCost": 15000,
+    "maxCost": 15000,
+    "sampleCount": 1,
+    "code": "FZ424"
+  },
+  {
+    "id": "mc_0063",
+    "name": "신경인지기능검사(언어능력검사·단어 유창성검사)",
+    "cost": 15000,
+    "category": "검사",
+    "minCost": 15000,
+    "maxCost": 15000,
+    "sampleCount": 1,
+    "code": "FZ040"
+  },
+  {
+    "id": "mc_0064",
+    "name": "신경인지기능검사(언어능력검사·보스톤 사물이름대기검사)",
+    "cost": 30000,
+    "category": "검사",
+    "minCost": 30000,
+    "maxCost": 30000,
+    "sampleCount": 1,
+    "code": "FZ041"
+  },
+  {
+    "id": "mc_0066",
+    "name": "신경인지기능검사(언어능력검사·어휘력검사)",
+    "cost": 15000,
+    "category": "검사",
+    "minCost": 15000,
+    "maxCost": 15000,
+    "sampleCount": 1,
+    "code": "SZ10303"
+  },
+  {
+    "id": "mc_0067",
+    "name": "신경인지기능검사(연속수행력검사·시각)",
+    "cost": 30000,
+    "category": "검사",
+    "minCost": 30000,
+    "maxCost": 30000,
+    "sampleCount": 1,
+    "code": "FZ402"
+  },
+  {
+    "id": "mc_0068",
+    "name": "신경인지기능검사(연속수행력검사·청각)",
+    "cost": 30000,
+    "category": "검사",
+    "minCost": 30000,
+    "maxCost": 30000,
+    "sampleCount": 1,
+    "code": "FZ402"
+  },
+  {
+    "id": "mc_0070",
+    "name": "신경인지기능검사(전두엽 및 고위인지기능검사·논리적 사고력검사)",
+    "cost": 25000,
+    "category": "검사",
+    "minCost": 25000,
+    "maxCost": 25000,
+    "sampleCount": 1,
+    "code": "FZ056"
+  },
+  {
+    "id": "mc_0071",
+    "name": "신경인지기능검사(전두엽 및 고위인지기능검사·단어색채검사)",
+    "cost": 20000,
+    "category": "검사",
+    "minCost": 20000,
+    "maxCost": 20000,
+    "sampleCount": 1,
+    "code": "SZ10607"
+  },
+  {
+    "id": "mc_0072",
+    "name": "신경인지기능검사(전두엽 및 고위인지기능검사·보속성검사)",
+    "cost": 18000,
+    "category": "검사",
+    "minCost": 18000,
+    "maxCost": 18000,
+    "sampleCount": 1,
+    "code": "FZ063"
+  },
+  {
+    "id": "mc_0073",
+    "name": "신경인지기능검사(전두엽 및 고위인지기능검사·스트룹검사)",
+    "cost": 20000,
+    "category": "검사",
+    "minCost": 20000,
+    "maxCost": 20000,
+    "sampleCount": 1,
+    "code": "FZ060"
+  },
+  {
+    "id": "mc_0074",
+    "name": "신경인지기능검사(전두엽 및 고위인지기능검사·실행증검사)",
+    "cost": 18000,
+    "category": "검사",
+    "minCost": 18000,
+    "maxCost": 18000,
+    "sampleCount": 1,
+    "code": "FZ064"
+  },
+  {
+    "id": "mc_0075",
+    "name": "신경인지기능검사(전두엽 및 고위인지기능검사·카테고리검사)",
+    "cost": 22700,
+    "category": "검사",
+    "minCost": 22675,
+    "maxCost": 22675,
+    "sampleCount": 1,
+    "code": "FZ057"
+  },
+  {
+    "id": "mc_0076",
+    "name": "신경인지기능검사(종합검사·서울신경심리검사)",
+    "cost": 315400,
+    "category": "검사",
+    "minCost": 315380,
+    "maxCost": 315380,
+    "sampleCount": 2
+  },
+  {
+    "id": "mc_0077",
+    "name": "신경인지기능검사(종합검사·한국판 CERAD 평가집)",
+    "cost": 138100,
+    "category": "검사",
+    "minCost": 138080,
+    "maxCost": 138080,
+    "sampleCount": 2
+  },
+  {
+    "id": "mc_0078",
+    "name": "신경인지기능검사(지각 및 시공간능력검사·구성능력검사)",
+    "cost": 20000,
+    "category": "검사",
+    "minCost": 20000,
+    "maxCost": 20000,
+    "sampleCount": 3
+  },
+  {
+    "id": "mc_0079",
+    "name": "신경인지기능검사(지각 및 시공간능력검사·레이 복합도형검사)",
+    "cost": 30000,
+    "category": "검사",
+    "minCost": 30000,
+    "maxCost": 30000,
+    "sampleCount": 1,
+    "code": "FZ044"
+  },
+  {
+    "id": "mc_0080",
+    "name": "신경인지기능검사(지각 및 시공간능력검사·인식력검사·시각)",
+    "cost": 22800,
+    "category": "검사",
+    "minCost": 22750,
+    "maxCost": 22750,
+    "sampleCount": 1,
+    "code": "FZ051"
+  },
+  {
+    "id": "mc_0081",
+    "name": "신경인지기능검사(지각 및 시공간능력검사·좌-우 구분검사)",
+    "cost": 20000,
+    "category": "검사",
+    "minCost": 20000,
+    "maxCost": 20000,
+    "sampleCount": 2,
+    "code": "FZ045"
+  },
+  {
+    "id": "mc_0082",
+    "name": "신경인지기능검사(카드분류검사)",
+    "cost": 20000,
+    "category": "검사",
+    "minCost": 20000,
+    "maxCost": 20000,
+    "sampleCount": 1,
+    "code": "FZ453"
+  },
+  {
+    "id": "mc_0084",
+    "name": "신경인지기능검사(페그보드검사)",
+    "cost": 15000,
+    "category": "검사",
+    "minCost": 15000,
+    "maxCost": 15000,
+    "sampleCount": 1,
+    "code": "FZ441"
+  },
+  {
+    "id": "mc_0085",
+    "name": "신경인지기능검사(홉킨스 언어학습검사)",
+    "cost": 35000,
+    "category": "검사",
+    "minCost": 35000,
+    "maxCost": 35000,
+    "sampleCount": 2,
+    "code": "FZ414"
+  },
+  {
+    "id": "mc_0088",
+    "name": "야간음경발기력측정",
+    "cost": 100000,
+    "category": "검사",
+    "minCost": 100000,
+    "maxCost": 100000,
+    "sampleCount": 1,
+    "code": "SZ02900"
+  },
+  {
+    "id": "mc_0089",
+    "name": "언어능력평가(시간초과비용)",
+    "cost": 10000,
+    "category": "검사",
+    "minCost": 10000,
+    "maxCost": 10000,
+    "sampleCount": 1,
+    "code": "FZ421"
+  },
+  {
+    "id": "mc_0090",
+    "name": "언어능력평가(기본 30분)",
+    "cost": 20000,
+    "category": "검사",
+    "minCost": 20000,
+    "maxCost": 20000,
+    "sampleCount": 1,
+    "code": "FZ421"
+  },
+  {
+    "id": "mc_0093",
+    "name": "언어전반진단검사",
+    "cost": 25000,
+    "category": "검사",
+    "minCost": 25000,
+    "maxCost": 45000,
+    "sampleCount": 3
+  },
+  {
+    "id": "mc_0095",
+    "name": "인플루엔자 A·B 바이러스항원검사(현장검사)",
+    "cost": 25000,
+    "category": "검사",
+    "minCost": 25000,
+    "maxCost": 25000,
+    "sampleCount": 6
+  },
+  {
+    "id": "mc_0097",
+    "name": "입체적 유방절제생검술",
+    "cost": 1000000,
+    "category": "검사",
+    "minCost": 1000000,
+    "maxCost": 1000000,
+    "sampleCount": 1,
+    "code": "CZ977"
+  },
+  {
+    "id": "mc_0098",
+    "name": "자궁암 조기검진(질세포진검사)",
+    "cost": 10000,
+    "category": "검사",
+    "minCost": 10000,
+    "maxCost": 10000,
+    "sampleCount": 1,
+    "code": "SZ04800"
+  },
+  {
+    "id": "mc_0099",
+    "name": "자서전적 기억평가면접",
+    "cost": 30000,
+    "category": "검사",
+    "minCost": 30000,
+    "maxCost": 30000,
+    "sampleCount": 1,
+    "code": "FZ413"
+  },
+  {
+    "id": "mc_0100",
+    "name": "자율신경계이상검사(발살바법)",
+    "cost": 30000,
+    "category": "검사",
+    "minCost": 30000,
+    "maxCost": 30000,
+    "sampleCount": 1,
+    "code": "SZ11201"
+  },
+  {
+    "id": "mc_0101",
+    "name": "자율신경계이상검사(심박변이도검사)",
+    "cost": 30000,
+    "category": "검사",
+    "minCost": 30000,
+    "maxCost": 30000,
+    "sampleCount": 2,
+    "code": "SZ11200"
+  },
+  {
+    "id": "mc_0102",
+    "name": "장기복무 제대군인 건강검진(10년 이상)",
+    "cost": 27800,
+    "category": "검사",
+    "minCost": 27830,
+    "maxCost": 27830,
+    "sampleCount": 1,
+    "code": "AW402100"
+  },
+  {
+    "id": "mc_0103",
+    "name": "적외선 체열진단(경추·상지)",
+    "cost": 50000,
+    "category": "검사",
+    "minCost": 50000,
+    "maxCost": 50000,
+    "sampleCount": 3,
+    "code": "EZ776"
+  },
+  {
+    "id": "mc_0104",
+    "name": "적외선 체열진단(기타)",
+    "cost": 50000,
+    "category": "검사",
+    "minCost": 50000,
+    "maxCost": 50000,
+    "sampleCount": 2,
+    "code": "EZ776"
+  },
+  {
+    "id": "mc_0105",
+    "name": "적외선 체열진단(두부·부비동)",
+    "cost": 50000,
+    "category": "검사",
+    "minCost": 50000,
+    "maxCost": 50000,
+    "sampleCount": 2,
+    "code": "EZ776"
+  },
+  {
+    "id": "mc_0106",
+    "name": "적외선 체열진단(복부)",
+    "cost": 50000,
+    "category": "검사",
+    "minCost": 50000,
+    "maxCost": 50000,
+    "sampleCount": 1,
+    "code": "EZ776"
+  },
+  {
+    "id": "mc_0107",
+    "name": "적외선 체열진단(비뇨기과·생식기)",
+    "cost": 50000,
+    "category": "검사",
+    "minCost": 50000,
+    "maxCost": 50000,
+    "sampleCount": 1,
+    "code": "EZ776"
+  },
+  {
+    "id": "mc_0108",
+    "name": "적외선 체열진단(악관절)",
+    "cost": 50000,
+    "category": "검사",
+    "minCost": 50000,
+    "maxCost": 50000,
+    "sampleCount": 1,
+    "code": "EZ776"
+  },
+  {
+    "id": "mc_0109",
+    "name": "적외선 체열진단(요천추·하지)",
+    "cost": 50000,
+    "category": "검사",
+    "minCost": 50000,
+    "maxCost": 50000,
+    "sampleCount": 2,
+    "code": "EZ776"
+  },
+  {
+    "id": "mc_0110",
+    "name": "적외선 체열진단(유방)",
+    "cost": 50000,
+    "category": "검사",
+    "minCost": 50000,
+    "maxCost": 50000,
+    "sampleCount": 1,
+    "code": "EZ776"
+  },
+  {
+    "id": "mc_0111",
+    "name": "적외선 체열진단(전신)",
+    "cost": 100000,
+    "category": "검사",
+    "minCost": 100000,
+    "maxCost": 100000,
+    "sampleCount": 2,
+    "code": "EZ776"
+  },
+  {
+    "id": "mc_0112",
+    "name": "적외선 체열진단(흉추)",
+    "cost": 50000,
+    "category": "검사",
+    "minCost": 50000,
+    "maxCost": 50000,
+    "sampleCount": 2,
+    "code": "EZ776"
+  },
+  {
+    "id": "mc_0113",
+    "name": "적외선 체열진단(족부)",
+    "cost": 50000,
+    "category": "검사",
+    "minCost": 50000,
+    "maxCost": 50000,
+    "sampleCount": 1,
+    "code": "EZ776"
+  },
+  {
+    "id": "mc_0114",
+    "name": "전신 종합검진",
+    "cost": 865000,
+    "category": "검사",
+    "minCost": 784000,
+    "maxCost": 946000,
+    "sampleCount": 2
+  },
+  {
+    "id": "mc_0116",
+    "name": "정량적 발한 축삭 반사검사",
+    "cost": 100000,
+    "category": "검사",
+    "minCost": 100000,
+    "maxCost": 100000,
+    "sampleCount": 1,
+    "code": "SZ11202"
+  },
+  {
+    "id": "mc_0117",
+    "name": "정량적감각기능검사",
+    "cost": 30000,
+    "category": "검사",
+    "minCost": 30000,
+    "maxCost": 30000,
+    "sampleCount": 1,
+    "code": "FY883"
+  },
+  {
+    "id": "mc_0119",
+    "name": "종합검진(고급형)",
+    "cost": 209800,
+    "category": "검사",
+    "minCost": 209790,
+    "maxCost": 209790,
+    "sampleCount": 1,
+    "code": "AW901809"
+  },
+  {
+    "id": "mc_0122",
+    "name": "종합검진(남자·위장조영포함)",
+    "cost": 200000,
+    "category": "검사",
+    "minCost": 200000,
+    "maxCost": 200000,
+    "sampleCount": 1,
+    "code": "AQH502"
+  },
+  {
+    "id": "mc_0123",
+    "name": "종합검진(수면내시경)",
+    "cost": 325300,
+    "category": "검사",
+    "minCost": 325340,
+    "maxCost": 325340,
+    "sampleCount": 1,
+    "code": "AW901801GA"
+  },
+  {
+    "id": "mc_0124",
+    "name": "종합검진(남자·위투시)",
+    "cost": 250000,
+    "category": "검사",
+    "minCost": 250000,
+    "maxCost": 250000,
+    "sampleCount": 1,
+    "code": "AW901801G"
+  },
+  {
+    "id": "mc_0129",
+    "name": "종합검진(여자·위장조영포함)",
+    "cost": 240000,
+    "category": "검사",
+    "minCost": 240000,
+    "maxCost": 240000,
+    "sampleCount": 1,
+    "code": "AQH501"
+  },
+  {
+    "id": "mc_0131",
+    "name": "종합검진(여자·위투시)",
+    "cost": 270000,
+    "category": "검사",
+    "minCost": 270000,
+    "maxCost": 270000,
+    "sampleCount": 1,
+    "code": "AW901805G"
+  },
+  {
+    "id": "mc_0136",
+    "name": "종합검진(20종)",
+    "cost": 114000,
+    "category": "검사",
+    "minCost": 114000,
+    "maxCost": 114000,
+    "sampleCount": 2
+  },
+  {
+    "id": "mc_0137",
+    "name": "종합검진(24종)",
+    "cost": 163000,
+    "category": "검사",
+    "minCost": 163000,
+    "maxCost": 163000,
+    "sampleCount": 2
+  },
+  {
+    "id": "mc_0138",
+    "name": "종합검진(28종)",
+    "cost": 199000,
+    "category": "검사",
+    "minCost": 199000,
+    "maxCost": 199000,
+    "sampleCount": 2
+  },
+  {
+    "id": "mc_0139",
+    "name": "증상·행동 평가척도(기타·이화방어기제 검사)",
+    "cost": 20000,
+    "category": "검사",
+    "minCost": 20000,
+    "maxCost": 20000,
+    "sampleCount": 1,
+    "code": "SZ11304"
+  },
+  {
+    "id": "mc_0141",
+    "name": "증상·행동 평가척도(불안척도·신경증불안평가)",
+    "cost": 35000,
+    "category": "검사",
+    "minCost": 35000,
+    "maxCost": 35000,
+    "sampleCount": 1,
+    "code": "FY705"
+  },
+  {
+    "id": "mc_0142",
+    "name": "증상·행동 평가척도(우울척도·신경증우울평가)",
+    "cost": 35000,
+    "category": "검사",
+    "minCost": 35000,
+    "maxCost": 35000,
+    "sampleCount": 1,
+    "code": "FY713"
+  },
+  {
+    "id": "mc_0143",
+    "name": "진정내시경 환자관리료 I",
+    "cost": 53800,
+    "category": "검사",
+    "minCost": 53790,
+    "maxCost": 58340,
+    "sampleCount": 4
+  },
+  {
+    "id": "mc_0144",
+    "name": "진정내시경 환자관리료 II",
+    "cost": 78100,
+    "category": "검사",
+    "minCost": 78050,
+    "maxCost": 84660,
+    "sampleCount": 4
+  },
+  {
+    "id": "mc_0145",
+    "name": "진정내시경 환자관리료 III",
+    "cost": 119600,
+    "category": "검사",
+    "minCost": 119620,
+    "maxCost": 129750,
+    "sampleCount": 4
+  },
+  {
+    "id": "mc_0146",
+    "name": "진정내시경 환자관리료 IV",
+    "cost": 165400,
+    "category": "검사",
+    "minCost": 165440,
+    "maxCost": 179440,
+    "sampleCount": 4
+  },
+  {
+    "id": "mc_0147",
+    "name": "진정내시경 관리료 I",
+    "cost": 52700,
+    "category": "검사",
+    "minCost": 51640,
+    "maxCost": 53790,
+    "sampleCount": 2
+  },
+  {
+    "id": "mc_0148",
+    "name": "진정내시경 관리료 II",
+    "cost": 76500,
+    "category": "검사",
+    "minCost": 74930,
+    "maxCost": 78050,
+    "sampleCount": 2
+  },
+  {
+    "id": "mc_0149",
+    "name": "진정내시경 관리료 IV",
+    "cost": 162100,
+    "category": "검사",
+    "minCost": 158820,
+    "maxCost": 165440,
+    "sampleCount": 2
+  },
+  {
+    "id": "mc_0153",
+    "name": "캘리포니아 언어학습검사",
+    "cost": 30000,
+    "category": "검사",
+    "minCost": 30000,
+    "maxCost": 30000,
+    "sampleCount": 1,
+    "code": "FZ414"
+  },
+  {
+    "id": "mc_0154",
+    "name": "코골이검사(간이수면다원검사)",
+    "cost": 100000,
+    "category": "검사",
+    "minCost": 100000,
+    "maxCost": 100000,
+    "sampleCount": 1,
+    "code": "SF6290A"
+  },
+  {
+    "id": "mc_0155",
+    "name": "타액검사(분비율·점조도·pH·완충기능검사)",
+    "cost": 10000,
+    "category": "검사",
+    "minCost": 10000,
+    "maxCost": 10000,
+    "sampleCount": 1,
+    "code": "EZ919"
+  },
+  {
+    "id": "mc_0156",
+    "name": "한국판 성격평가척도",
+    "cost": 30000,
+    "category": "검사",
+    "minCost": 30000,
+    "maxCost": 30000,
+    "sampleCount": 1,
+    "code": "FY7390000"
+  },
+  {
+    "id": "mc_0157",
+    "name": "항뮬러관호르몬(불임·폐경)",
+    "cost": 22300,
+    "category": "검사",
+    "minCost": 22266,
+    "maxCost": 28831,
+    "sampleCount": 3
+  },
+  {
+    "id": "mc_0158",
+    "name": "항뮬러관호르몬(정밀면역검사)",
+    "cost": 56400,
+    "category": "검사",
+    "minCost": 56430,
+    "maxCost": 56430,
+    "sampleCount": 1,
+    "code": "56430"
+  },
+  {
+    "id": "mc_0159",
+    "name": "후각기능(인지·역치)검사",
+    "cost": 20000,
+    "category": "검사",
+    "minCost": 20000,
+    "maxCost": 20000,
+    "sampleCount": 1,
+    "code": "SZ09700"
+  },
+  {
+    "id": "mc_0160",
+    "name": "후각기능검사(인지·역치)",
+    "cost": 20000,
+    "category": "검사",
+    "minCost": 20000,
+    "maxCost": 20000,
+    "sampleCount": 1,
+    "code": "FZ671"
+  },
+  {
+    "id": "mc_0161",
+    "name": "도수치료",
+    "cost": 40000,
+    "category": "물리·재활치료",
+    "minCost": 20000,
+    "maxCost": 40000,
+    "sampleCount": 2
+  },
+  {
+    "id": "mc_0163",
+    "name": "동작분석(생역학검사)",
+    "cost": 80000,
+    "category": "물리·재활치료",
+    "minCost": 80000,
+    "maxCost": 80000,
+    "sampleCount": 1,
+    "code": "EZ774"
+  },
+  {
+    "id": "mc_0164",
+    "name": "보툴리눔 독소 주사요법",
+    "cost": 150000,
+    "category": "물리·재활치료",
+    "minCost": 150000,
+    "maxCost": 150000,
+    "sampleCount": 1,
+    "code": "FZ02300"
+  },
+  {
+    "id": "mc_0165",
+    "name": "비침습적 무통증 신호요법",
+    "cost": 100000,
+    "category": "물리·재활치료",
+    "minCost": 100000,
+    "maxCost": 100000,
+    "sampleCount": 2,
+    "code": "MZ012"
+  },
+  {
+    "id": "mc_0166",
+    "name": "신장분사치료(1일당)",
+    "cost": 18000,
+    "category": "물리·재활치료",
+    "minCost": 18000,
+    "maxCost": 18000,
+    "sampleCount": 2,
+    "code": "MZ007"
+  },
+  {
+    "id": "mc_0167",
+    "name": "언어장애 치료(인지장애동반)",
+    "cost": 10000,
+    "category": "물리·재활치료",
+    "minCost": 10000,
+    "maxCost": 10000,
+    "sampleCount": 1,
+    "code": "MZ006"
+  },
+  {
+    "id": "mc_0169",
+    "name": "언어장애 치료(기본 30분)",
+    "cost": 30000,
+    "category": "물리·재활치료",
+    "minCost": 25000,
+    "maxCost": 35000,
+    "sampleCount": 2
+  },
+  {
+    "id": "mc_0170",
+    "name": "언어장애 치료(시간초과비용)",
+    "cost": 10000,
+    "category": "물리·재활치료",
+    "minCost": 10000,
+    "maxCost": 10000,
+    "sampleCount": 1,
+    "code": "MZ006"
+  },
+  {
+    "id": "mc_0171",
+    "name": "연하재활 기능적 전기자극 치료",
+    "cost": 50000,
+    "category": "물리·재활치료",
+    "minCost": 50000,
+    "maxCost": 50000,
+    "sampleCount": 1,
+    "code": "MZ008"
+  },
+  {
+    "id": "mc_0172",
+    "name": "이명 재훈련 치료",
+    "cost": 50000,
+    "category": "물리·재활치료",
+    "minCost": 50000,
+    "maxCost": 50000,
+    "sampleCount": 1,
+    "code": "MZ004"
+  },
+  {
+    "id": "mc_0173",
+    "name": "전산화 인지재활치료",
+    "cost": 35000,
+    "category": "물리·재활치료",
+    "minCost": 35000,
+    "maxCost": 35000,
+    "sampleCount": 2
+  },
+  {
+    "id": "mc_0176",
+    "name": "증식 치료(사지관절부위)",
+    "cost": 20000,
+    "category": "물리·재활치료",
+    "minCost": 20000,
+    "maxCost": 50000,
+    "sampleCount": 4
+  },
+  {
+    "id": "mc_0177",
+    "name": "증식 치료(척추부위)",
+    "cost": 30000,
+    "category": "물리·재활치료",
+    "minCost": 30000,
+    "maxCost": 50000,
+    "sampleCount": 4
+  },
+  {
+    "id": "mc_0178",
+    "name": "체외골반 자기장 치료(발기능·사정력 강화·전립선동통)",
+    "cost": 30000,
+    "category": "물리·재활치료",
+    "minCost": 30000,
+    "maxCost": 30000,
+    "sampleCount": 1,
+    "code": "HZURO1601"
+  },
+  {
+    "id": "mc_0179",
+    "name": "체외골반 자기장 치료(배뇨통·골반통증)",
+    "cost": 20000,
+    "category": "물리·재활치료",
+    "minCost": 20000,
+    "maxCost": 20000,
+    "sampleCount": 1,
+    "code": "HZUR01602"
+  },
+  {
+    "id": "mc_0180",
+    "name": "체외골반 자기장 치료(요실금·1일당)",
+    "cost": 30000,
+    "category": "물리·재활치료",
+    "minCost": 30000,
+    "maxCost": 30000,
+    "sampleCount": 1,
+    "code": "HZUR01603"
+  },
+  {
+    "id": "mc_0181",
+    "name": "체외충격파 치료",
+    "cost": 50000,
+    "category": "물리·재활치료",
+    "minCost": 50000,
+    "maxCost": 50000,
+    "sampleCount": 1,
+    "code": "HZRM00200"
+  },
+  {
+    "id": "mc_0183",
+    "name": "기본 체외조사(2.5~5.0Gy 미만·1회당)",
+    "cost": 76800,
+    "category": "영상진단",
+    "minCost": 76824,
+    "maxCost": 76824,
+    "sampleCount": 1,
+    "code": "HD453"
+  },
+  {
+    "id": "mc_0184",
+    "name": "기본 체외조사(2.5Gy 미만·1회당)",
+    "cost": 59100,
+    "category": "영상진단",
+    "minCost": 59092,
+    "maxCost": 59092,
+    "sampleCount": 1,
+    "code": "HD451"
+  },
+  {
+    "id": "mc_0185",
+    "name": "기본 체외조사(5.0Gy 이상·1회당)",
+    "cost": 94500,
+    "category": "영상진단",
+    "minCost": 94545,
+    "maxCost": 94545,
+    "sampleCount": 1,
+    "code": "HD454"
+  },
+  {
+    "id": "mc_0186",
+    "name": "기본 체외조사 치료계획(최초)",
+    "cost": 41200,
+    "category": "영상진단",
+    "minCost": 41239,
+    "maxCost": 41239,
+    "sampleCount": 1,
+    "code": "HD101"
+  },
+  {
+    "id": "mc_0187",
+    "name": "기본 체외조사 치료계획(반복 시)",
+    "cost": 25000,
+    "category": "영상진단",
+    "minCost": 24992,
+    "maxCost": 24992,
+    "sampleCount": 1,
+    "code": "HD102"
+  },
+  {
+    "id": "mc_0188",
+    "name": "무표식 실시간 표면유도기법(방사선치료)",
+    "cost": 50000,
+    "category": "영상진단",
+    "minCost": 50000,
+    "maxCost": 50000,
+    "sampleCount": 1
+  },
+  {
+    "id": "mc_0189",
+    "name": "무표식 실시간 표면유도기법(방사선 치료계획)",
+    "cost": 200000,
+    "category": "영상진단",
+    "minCost": 200000,
+    "maxCost": 200000,
+    "sampleCount": 1
+  },
+  {
+    "id": "mc_0190",
+    "name": "안구 광학단층촬영",
+    "cost": 50000,
+    "category": "영상진단",
+    "minCost": 50000,
+    "maxCost": 100000,
+    "sampleCount": 5
+  },
+  {
+    "id": "mc_0193",
+    "name": "자궁경부 확대촬영검사",
+    "cost": 25000,
+    "category": "영상진단",
+    "minCost": 25000,
+    "maxCost": 25000,
+    "sampleCount": 2,
+    "code": "EZ886"
+  },
+  {
+    "id": "mc_0194",
+    "name": "전산화 단층촬영 방사선치료계획(최초)",
+    "cost": 125000,
+    "category": "영상진단",
+    "minCost": 124971,
+    "maxCost": 124971,
+    "sampleCount": 1,
+    "code": "HD103"
+  },
+  {
+    "id": "mc_0195",
+    "name": "전산화 단층촬영 방사선치료계획(반복 시)",
+    "cost": 75000,
+    "category": "영상진단",
+    "minCost": 74987,
+    "maxCost": 74987,
+    "sampleCount": 1,
+    "code": "HD104"
+  },
+  {
+    "id": "mc_0196",
+    "name": "토르소·뇌 PET-CT(종합검진용)",
+    "cost": 906000,
+    "category": "영상진단",
+    "minCost": 906000,
+    "maxCost": 906000,
+    "sampleCount": 1,
+    "code": "RPHZ336C"
+  },
+  {
+    "id": "mc_0198",
+    "name": "프리베나13 폐렴구균 예방접종(성인)",
+    "cost": 100000,
+    "category": "예방접종·주사",
+    "minCost": 100000,
+    "maxCost": 100000,
+    "sampleCount": 1,
+    "code": "MPVENAR-A"
+  },
+  {
+    "id": "mc_0201",
+    "name": "4가 인플루엔자(독감)백신(소아)",
+    "cost": 40000,
+    "category": "예방접종·주사",
+    "minCost": 40000,
+    "maxCost": 40000,
+    "sampleCount": 1,
+    "code": "MFLU4"
+  },
+  {
+    "id": "mc_0203",
+    "name": "가다실9 프리필드시린지(인유두종바이러스 9가 백신)",
+    "cost": 200000,
+    "category": "예방접종·주사",
+    "minCost": 200000,
+    "maxCost": 200000,
+    "sampleCount": 1,
+    "code": "655501930"
+  },
+  {
+    "id": "mc_0204",
+    "name": "가다실 자궁경부암 예방접종",
+    "cost": 170000,
+    "category": "예방접종·주사",
+    "minCost": 170000,
+    "maxCost": 170000,
+    "sampleCount": 1,
+    "code": "655500020"
+  },
+  {
+    "id": "mc_0206",
+    "name": "BCG(결핵예방) 접종",
+    "cost": 60000,
+    "category": "예방접종·주사",
+    "minCost": 60000,
+    "maxCost": 60000,
+    "sampleCount": 1,
+    "code": "686500010"
+  },
+  {
+    "id": "mc_0209",
+    "name": "뇌수막염 백신(뉴힙주·LG생명과학)",
+    "cost": 30000,
+    "category": "예방접종·주사",
+    "minCost": 30000,
+    "maxCost": 30000,
+    "sampleCount": 1,
+    "code": "668901890"
+  },
+  {
+    "id": "mc_0211",
+    "name": "디프테리아·파상풍 백신",
+    "cost": 30000,
+    "category": "예방접종·주사",
+    "minCost": 30000,
+    "maxCost": 30000,
+    "sampleCount": 1,
+    "code": "MTD"
+  },
+  {
+    "id": "mc_0212",
+    "name": "로타릭스 예방접종(글락소스미스클라인)",
+    "cost": 130000,
+    "category": "예방접종·주사",
+    "minCost": 130000,
+    "maxCost": 130000,
+    "sampleCount": 1,
+    "code": "650001810"
+  },
+  {
+    "id": "mc_0213",
+    "name": "로타텍액(한국MSD) 예방접종",
+    "cost": 100000,
+    "category": "예방접종·주사",
+    "minCost": 100000,
+    "maxCost": 100000,
+    "sampleCount": 1,
+    "code": "655500030"
+  },
+  {
+    "id": "mc_0215",
+    "name": "멘비오 수막구균 예방접종",
+    "cost": 150000,
+    "category": "예방접종·주사",
+    "minCost": 150000,
+    "maxCost": 150000,
+    "sampleCount": 1,
+    "code": "650003080"
+  },
+  {
+    "id": "mc_0217",
+    "name": "바리엘 수두 예방접종",
+    "cost": 30000,
+    "category": "예방접종·주사",
+    "minCost": 30000,
+    "maxCost": 30000,
+    "sampleCount": 1,
+    "code": "650400010"
+  },
+  {
+    "id": "mc_0221",
+    "name": "백시플루 4가 인플루엔자 예방접종(성인)",
+    "cost": 30000,
+    "category": "예방접종·주사",
+    "minCost": 30000,
+    "maxCost": 30000,
+    "sampleCount": 1,
+    "code": "642507441"
+  },
+  {
+    "id": "mc_0222",
+    "name": "보령 디티에이피 백신주 예방접종",
+    "cost": 26200,
+    "category": "예방접종·주사",
+    "minCost": 26240,
+    "maxCost": 26240,
+    "sampleCount": 1,
+    "code": "670500610"
+  },
+  {
+    "id": "mc_0227",
+    "name": "신종인플루엔자 접종(백신비 제외)",
+    "cost": 15000,
+    "category": "예방접종·주사",
+    "minCost": 15000,
+    "maxCost": 15000,
+    "sampleCount": 1,
+    "code": "MSIVM"
+  },
+  {
+    "id": "mc_0229",
+    "name": "씨디제박스 일본뇌염 예방접종",
+    "cost": 35000,
+    "category": "예방접종·주사",
+    "minCost": 35000,
+    "maxCost": 35000,
+    "sampleCount": 1,
+    "code": "666700010"
+  },
+  {
+    "id": "mc_0232",
+    "name": "에스케이티디 백신 예방접종(파상풍·디프테리아)",
+    "cost": 30000,
+    "category": "예방접종·주사",
+    "minCost": 30000,
+    "maxCost": 30000,
+    "sampleCount": 1
+  },
+  {
+    "id": "mc_0235",
+    "name": "MMR(홍역·볼거리·풍진) 예방접종",
+    "cost": 26000,
+    "category": "예방접종·주사",
+    "minCost": 26000,
+    "maxCost": 26000,
+    "sampleCount": 1,
+    "code": "655500270"
+  },
+  {
+    "id": "mc_0236",
+    "name": "유히브주",
+    "cost": 41000,
+    "category": "예방접종·주사",
+    "minCost": 41000,
+    "maxCost": 41000,
+    "sampleCount": 1,
+    "code": "668901890"
+  },
+  {
+    "id": "mc_0238",
+    "name": "보령 일본뇌염 백신(베로세포 유래)",
+    "cost": 30300,
+    "category": "예방접종·주사",
+    "minCost": 30250,
+    "maxCost": 30250,
+    "sampleCount": 1,
+    "code": "MJBEC04"
+  },
+  {
+    "id": "mc_0239",
+    "name": "일본뇌염 예방접종(사백신)",
+    "cost": 20000,
+    "category": "예방접종·주사",
+    "minCost": 20000,
+    "maxCost": 20000,
+    "sampleCount": 1,
+    "code": "643603520"
+  },
+  {
+    "id": "mc_0242",
+    "name": "조스타박스 대상포진 예방접종",
+    "cost": 190000,
+    "category": "예방접종·주사",
+    "minCost": 190000,
+    "maxCost": 190000,
+    "sampleCount": 1,
+    "code": "655500900"
+  },
+  {
+    "id": "mc_0243",
+    "name": "지시플루 프리필드실린지 예방접종(3가)",
+    "cost": 25000,
+    "category": "예방접종·주사",
+    "minCost": 25000,
+    "maxCost": 25000,
+    "sampleCount": 1,
+    "code": "643603630"
+  },
+  {
+    "id": "mc_0244",
+    "name": "소아마비(폴리오) 예방접종",
+    "cost": 25000,
+    "category": "예방접종·주사",
+    "minCost": 25000,
+    "maxCost": 25000,
+    "sampleCount": 1,
+    "code": "647400280"
+  },
+  {
+    "id": "mc_0245",
+    "name": "테트락심 백신(디프테리아·파상풍·백일해·소아마비)",
+    "cost": 47000,
+    "category": "예방접종·주사",
+    "minCost": 47000,
+    "maxCost": 47000,
+    "sampleCount": 1,
+    "code": "MTETRA"
+  },
+  {
+    "id": "mc_0246",
+    "name": "펜탁심주",
+    "cost": 68600,
+    "category": "예방접종·주사",
+    "minCost": 68590,
+    "maxCost": 68590,
+    "sampleCount": 1,
+    "code": "665900210"
+  },
+  {
+    "id": "mc_0247",
+    "name": "폐렴구균 예방접종(뉴모-23·제일제당)",
+    "cost": 40000,
+    "category": "예방접종·주사",
+    "minCost": 40000,
+    "maxCost": 40000,
+    "sampleCount": 1,
+    "code": "665900010"
+  },
+  {
+    "id": "mc_0252",
+    "name": "프로디악스-23 폐렴구균 예방접종",
+    "cost": 40000,
+    "category": "예방접종·주사",
+    "minCost": 40000,
+    "maxCost": 40000,
+    "sampleCount": 1
+  },
+  {
+    "id": "mc_0253",
+    "name": "프리베나13 폐렴구균 예방접종(소아)",
+    "cost": 150000,
+    "category": "예방접종·주사",
+    "minCost": 150000,
+    "maxCost": 150000,
+    "sampleCount": 1,
+    "code": "MPVENAR13"
+  },
+  {
+    "id": "mc_0255",
+    "name": "플루미스트 인트라나잘 스프레이(독감 예방)",
+    "cost": 35000,
+    "category": "예방접종·주사",
+    "minCost": 35000,
+    "maxCost": 35000,
+    "sampleCount": 1,
+    "code": "643603700"
+  },
+  {
+    "id": "mc_0258",
+    "name": "헤파빅주 200단위/mL 예방접종(근주용)",
+    "cost": 32300,
+    "category": "예방접종·주사",
+    "minCost": 32291,
+    "maxCost": 32291,
+    "sampleCount": 1,
+    "code": "643601900"
+  },
+  {
+    "id": "mc_0260",
+    "name": "인판릭스(디프테리아·파상풍·백일해) 예방접종",
+    "cost": 32000,
+    "category": "예방접종·주사",
+    "minCost": 32000,
+    "maxCost": 32000,
+    "sampleCount": 1,
+    "code": "650002730"
+  },
+  {
+    "id": "mc_0261",
+    "name": "1인실 추가요금(일반 진료과)",
+    "cost": 150400,
+    "category": "입원",
+    "minCost": 150360,
+    "maxCost": 150360,
+    "sampleCount": 1,
+    "code": "A2Z0010201"
+  },
+  {
+    "id": "mc_0262",
+    "name": "1인실 추가요금(간호·간병 / 내과·소아과·정신과)",
+    "cost": 219900,
+    "category": "입원",
+    "minCost": 219910,
+    "maxCost": 219910,
+    "sampleCount": 1,
+    "code": "A2Z0010205"
+  },
+  {
+    "id": "mc_0263",
+    "name": "1인실 추가요금(간호·간병 / 일반과)",
+    "cost": 207200,
+    "category": "입원",
+    "minCost": 207230,
+    "maxCost": 207230,
+    "sampleCount": 1,
+    "code": "A2Z0010203"
+  },
+  {
+    "id": "mc_0267",
+    "name": "1인실 추가요금(외박 관리)",
+    "cost": 86600,
+    "category": "입원",
+    "minCost": 86630,
+    "maxCost": 86630,
+    "sampleCount": 1,
+    "code": "A2Z0010207"
+  },
+  {
+    "id": "mc_0268",
+    "name": "1인실 추가요금(기본)",
+    "cost": 70000,
+    "category": "입원",
+    "minCost": 70000,
+    "maxCost": 70000,
+    "sampleCount": 1,
+    "code": "A2Z00102"
+  },
+  {
+    "id": "mc_0269",
+    "name": "1인실 추가요금(내과·소아과·정신과)",
+    "cost": 150400,
+    "category": "입원",
+    "minCost": 150360,
+    "maxCost": 150360,
+    "sampleCount": 1,
+    "code": "A2Z00201,A2Z0010202"
+  },
+  {
+    "id": "mc_0271",
+    "name": "특별병실 입원료",
+    "cost": 295800,
+    "category": "입원",
+    "minCost": 295810,
+    "maxCost": 295810,
+    "sampleCount": 1
+  },
+  {
+    "id": "mc_0272",
+    "name": "경두개 자기자극술(반복적)",
+    "cost": 60000,
+    "category": "처치·수술",
+    "minCost": 60000,
+    "maxCost": 60000,
+    "sampleCount": 1,
+    "code": "QZ962"
+  },
+  {
+    "id": "mc_0273",
+    "name": "경피적 경막외강 신경성형술",
+    "cost": 500000,
+    "category": "처치·수술",
+    "minCost": 500000,
+    "maxCost": 700000,
+    "sampleCount": 5
+  },
+  {
+    "id": "mc_0274",
+    "name": "경피적 풍선확장 경막외강 신경성형",
+    "cost": 500000,
+    "category": "처치·수술",
+    "minCost": 300000,
+    "maxCost": 700000,
+    "sampleCount": 2,
+    "code": "SZ641"
+  },
+  {
+    "id": "mc_0276",
+    "name": "광치료",
+    "cost": 15000,
+    "category": "처치·수술",
+    "minCost": 15000,
+    "maxCost": 15000,
+    "sampleCount": 1,
+    "code": "NZ001"
+  },
+  {
+    "id": "mc_0277",
+    "name": "기미·주근깨·점 제거술(대)",
+    "cost": 30000,
+    "category": "처치·수술",
+    "minCost": 30000,
+    "maxCost": 30000,
+    "sampleCount": 1,
+    "code": "HZDE00101"
+  },
+  {
+    "id": "mc_0278",
+    "name": "기미·주근깨·점 제거술(소)",
+    "cost": 10000,
+    "category": "처치·수술",
+    "minCost": 10000,
+    "maxCost": 10000,
+    "sampleCount": 1,
+    "code": "HZDE00103"
+  },
+  {
+    "id": "mc_0279",
+    "name": "기미·주근깨·점 제거술(중)",
+    "cost": 20000,
+    "category": "처치·수술",
+    "minCost": 20000,
+    "maxCost": 20000,
+    "sampleCount": 1,
+    "code": "HZDE00102"
+  },
+  {
+    "id": "mc_0280",
+    "name": "기타 보형물 제거술(대)",
+    "cost": 500000,
+    "category": "처치·수술",
+    "minCost": 500000,
+    "maxCost": 500000,
+    "sampleCount": 1,
+    "code": "HZPS00701"
+  },
+  {
+    "id": "mc_0281",
+    "name": "기타 보형물 제거술(소1)",
+    "cost": 200000,
+    "category": "처치·수술",
+    "minCost": 200000,
+    "maxCost": 200000,
+    "sampleCount": 1,
+    "code": "HZPS00703"
+  },
+  {
+    "id": "mc_0282",
+    "name": "기타 보형물 제거술(중)",
+    "cost": 300000,
+    "category": "처치·수술",
+    "minCost": 300000,
+    "maxCost": 300000,
+    "sampleCount": 1,
+    "code": "HZPS00702"
+  },
+  {
+    "id": "mc_0283",
+    "name": "난관 결찰술(양측)",
+    "cost": 300000,
+    "category": "처치·수술",
+    "minCost": 300000,
+    "maxCost": 300000,
+    "sampleCount": 2,
+    "code": "HZOG00100"
+  },
+  {
+    "id": "mc_0285",
+    "name": "메조테라피(비만)",
+    "cost": 14000,
+    "category": "처치·수술",
+    "minCost": 14000,
+    "maxCost": 14000,
+    "sampleCount": 1,
+    "code": "HZFM00100"
+  },
+  {
+    "id": "mc_0286",
+    "name": "메조테라피",
+    "cost": 17000,
+    "category": "처치·수술",
+    "minCost": 14000,
+    "maxCost": 20000,
+    "sampleCount": 2,
+    "code": "HZFM00100"
+  },
+  {
+    "id": "mc_0287",
+    "name": "모발 이식술(소)",
+    "cost": 300000,
+    "category": "처치·수술",
+    "minCost": 300000,
+    "maxCost": 300000,
+    "sampleCount": 1,
+    "code": "HZPS02103"
+  },
+  {
+    "id": "mc_0288",
+    "name": "미레나삽입술",
+    "cost": 90000,
+    "category": "처치·수술",
+    "minCost": 90000,
+    "maxCost": 90000,
+    "sampleCount": 1
+  },
+  {
+    "id": "mc_0289",
+    "name": "박피술(화학·대)",
+    "cost": 100000,
+    "category": "처치·수술",
+    "minCost": 100000,
+    "maxCost": 100000,
+    "sampleCount": 3,
+    "code": "HZDE01901"
+  },
+  {
+    "id": "mc_0290",
+    "name": "박피술(화학·소)",
+    "cost": 30000,
+    "category": "처치·수술",
+    "minCost": 30000,
+    "maxCost": 30000,
+    "sampleCount": 3,
+    "code": "HZDE01903"
+  },
+  {
+    "id": "mc_0291",
+    "name": "박피술(화학·중)",
+    "cost": 50000,
+    "category": "처치·수술",
+    "minCost": 50000,
+    "maxCost": 50000,
+    "sampleCount": 3,
+    "code": "HZDE01902"
+  },
+  {
+    "id": "mc_0292",
+    "name": "병변 내 주입요법(B등급)",
+    "cost": 10000,
+    "category": "처치·수술",
+    "minCost": 10000,
+    "maxCost": 10000,
+    "sampleCount": 1,
+    "code": "HZDE02102"
+  },
+  {
+    "id": "mc_0293",
+    "name": "사마귀 제거(대)",
+    "cost": 10000,
+    "category": "처치·수술",
+    "minCost": 10000,
+    "maxCost": 10000,
+    "sampleCount": 1,
+    "code": "HZDE02201"
+  },
+  {
+    "id": "mc_0294",
+    "name": "산부인과 충수절제술",
+    "cost": 100000,
+    "category": "처치·수술",
+    "minCost": 100000,
+    "maxCost": 100000,
+    "sampleCount": 1
+  },
+  {
+    "id": "mc_0295",
+    "name": "색소 레이저(소)",
+    "cost": 10000,
+    "category": "처치·수술",
+    "minCost": 10000,
+    "maxCost": 10000,
+    "sampleCount": 1,
+    "code": "N1131"
+  },
+  {
+    "id": "mc_0296",
+    "name": "소음순 절제술(성형 목적)",
+    "cost": 50000,
+    "category": "처치·수술",
+    "minCost": 50000,
+    "maxCost": 50000,
+    "sampleCount": 2,
+    "code": "HZOG00400"
+  },
+  {
+    "id": "mc_0297",
+    "name": "복재정맥 폐색술(시아노아크릴레이트·편측·유도료 포함)",
+    "cost": 1000000,
+    "category": "처치·수술",
+    "minCost": 1000000,
+    "maxCost": 1000000,
+    "sampleCount": 1,
+    "code": "OZ303"
+  },
+  {
+    "id": "mc_0298",
+    "name": "쌍꺼풀 수술(대)",
+    "cost": 300000,
+    "category": "처치·수술",
+    "minCost": 300000,
+    "maxCost": 300000,
+    "sampleCount": 2,
+    "code": "HZOP01301"
+  },
+  {
+    "id": "mc_0299",
+    "name": "쌍꺼풀 수술(소)",
+    "cost": 250000,
+    "category": "처치·수술",
+    "minCost": 250000,
+    "maxCost": 250000,
+    "sampleCount": 2,
+    "code": "HZOP01302"
+  },
+  {
+    "id": "mc_0300",
+    "name": "안구표면의 양막이식술",
+    "cost": 250000,
+    "category": "처치·수술",
+    "minCost": 250000,
+    "maxCost": 250000,
+    "sampleCount": 1,
+    "code": "SZ667"
+  },
+  {
+    "id": "mc_0301",
+    "name": "약물 유도 사정술",
+    "cost": 100000,
+    "category": "처치·수술",
+    "minCost": 100000,
+    "maxCost": 100000,
+    "sampleCount": 2
+  },
+  {
+    "id": "mc_0302",
+    "name": "여드름 제거(대)",
+    "cost": 10000,
+    "category": "처치·수술",
+    "minCost": 10000,
+    "maxCost": 10000,
+    "sampleCount": 1
+  },
+  {
+    "id": "mc_0303",
+    "name": "여드름 치료(대)",
+    "cost": 10000,
+    "category": "처치·수술",
+    "minCost": 10000,
+    "maxCost": 10000,
+    "sampleCount": 3,
+    "code": "HZDE02301"
+  },
+  {
+    "id": "mc_0304",
+    "name": "요실금 수술(개복)",
+    "cost": 522300,
+    "category": "처치·수술",
+    "minCost": 522290,
+    "maxCost": 522290,
+    "sampleCount": 1,
+    "code": "R3562"
+  },
+  {
+    "id": "mc_0305",
+    "name": "요실금 수술(인공물질·자가지방 주입)",
+    "cost": 244000,
+    "category": "처치·수술",
+    "minCost": 244030,
+    "maxCost": 244030,
+    "sampleCount": 1,
+    "code": "R3563"
+  },
+  {
+    "id": "mc_0306",
+    "name": "요실금 수술(질강 수술·기타)",
+    "cost": 256800,
+    "category": "처치·수술",
+    "minCost": 256750,
+    "maxCost": 256750,
+    "sampleCount": 1,
+    "code": "R3565"
+  },
+  {
+    "id": "mc_0307",
+    "name": "요실금 수술(질강 수술·자가근막·채취료 포함)",
+    "cost": 380900,
+    "category": "처치·수술",
+    "minCost": 380930,
+    "maxCost": 380930,
+    "sampleCount": 1,
+    "code": "R3564"
+  },
+  {
+    "id": "mc_0308",
+    "name": "유리체 주입술",
+    "cost": 84300,
+    "category": "처치·수술",
+    "minCost": 84300,
+    "maxCost": 84300,
+    "sampleCount": 1,
+    "code": "S5070"
+  },
+  {
+    "id": "mc_0316",
+    "name": "인공 괄약근 설치술",
+    "cost": 1000000,
+    "category": "처치·수술",
+    "minCost": 1000000,
+    "maxCost": 1000000,
+    "sampleCount": 2
+  },
+  {
+    "id": "mc_0317",
+    "name": "자궁내 장치 삽입술",
+    "cost": 30000,
+    "category": "처치·수술",
+    "minCost": 30000,
+    "maxCost": 30000,
+    "sampleCount": 2,
+    "code": "HZOG00800"
+  },
+  {
+    "id": "mc_0318",
+    "name": "자기장 치료(골반통·전립선통·성교통)",
+    "cost": 20000,
+    "category": "처치·수술",
+    "minCost": 20000,
+    "maxCost": 20000,
+    "sampleCount": 1,
+    "code": "MX033"
+  },
+  {
+    "id": "mc_0319",
+    "name": "자기장 치료(요실금)",
+    "cost": 30000,
+    "category": "처치·수술",
+    "minCost": 30000,
+    "maxCost": 30000,
+    "sampleCount": 1,
+    "code": "MX033"
+  },
+  {
+    "id": "mc_0322",
+    "name": "정관절제술(결찰술)",
+    "cost": 200000,
+    "category": "처치·수술",
+    "minCost": 200000,
+    "maxCost": 200000,
+    "sampleCount": 4,
+    "code": "HZUR01300"
+  },
+  {
+    "id": "mc_0327",
+    "name": "질 및 회음부 성형술(대)",
+    "cost": 1000000,
+    "category": "처치·수술",
+    "minCost": 1000000,
+    "maxCost": 1000000,
+    "sampleCount": 2,
+    "code": "HZOG01001"
+  },
+  {
+    "id": "mc_0328",
+    "name": "질 및 회음부 성형술(소)",
+    "cost": 500000,
+    "category": "처치·수술",
+    "minCost": 500000,
+    "maxCost": 500000,
+    "sampleCount": 2,
+    "code": "HZOG01003"
+  },
+  {
+    "id": "mc_0329",
+    "name": "질 및 회음부 성형술(중)",
+    "cost": 800000,
+    "category": "처치·수술",
+    "minCost": 800000,
+    "maxCost": 800000,
+    "sampleCount": 2,
+    "code": "HZOG01002"
+  },
+  {
+    "id": "mc_0330",
+    "name": "추간판 내 고주파 열응고술",
+    "cost": 500000,
+    "category": "처치·수술",
+    "minCost": 500000,
+    "maxCost": 500000,
+    "sampleCount": 1,
+    "code": "HZOS00100"
+  },
+  {
+    "id": "mc_0331",
+    "name": "추간판 내 고주파 열치료술",
+    "cost": 500000,
+    "category": "처치·수술",
+    "minCost": 500000,
+    "maxCost": 500000,
+    "sampleCount": 4
+  },
+  {
+    "id": "mc_0332",
+    "name": "충수절제술",
+    "cost": 100000,
+    "category": "처치·수술",
+    "minCost": 100000,
+    "maxCost": 100000,
+    "sampleCount": 1,
+    "code": "HZOG01100"
+  },
+  {
+    "id": "mc_0333",
+    "name": "코골음 성형술",
+    "cost": 200000,
+    "category": "처치·수술",
+    "minCost": 200000,
+    "maxCost": 200000,
+    "sampleCount": 1,
+    "code": "HZEN00501"
+  },
+  {
+    "id": "mc_0335",
+    "name": "코골이 수술(고주파 온열 이용)",
+    "cost": 100000,
+    "category": "처치·수술",
+    "minCost": 100000,
+    "maxCost": 100000,
+    "sampleCount": 1,
+    "code": "HZEN00900"
+  },
+  {
+    "id": "mc_0338",
+    "name": "경막외강 유착부위 박리시술(풍선확장 포함)",
+    "cost": 300000,
+    "category": "처치·수술",
+    "minCost": 300000,
+    "maxCost": 300000,
+    "sampleCount": 2,
+    "code": "HZNS00700"
+  },
+  {
+    "id": "mc_0339",
+    "name": "피부전기소작·냉동술(대)",
+    "cost": 100000,
+    "category": "처치·수술",
+    "minCost": 100000,
+    "maxCost": 100000,
+    "sampleCount": 1
+  },
+  {
+    "id": "mc_0340",
+    "name": "피부전기소작·냉동술(소)",
+    "cost": 30000,
+    "category": "처치·수술",
+    "minCost": 30000,
+    "maxCost": 30000,
+    "sampleCount": 1
+  },
+  {
+    "id": "mc_0341",
+    "name": "피부전기소작·냉동술(중)",
+    "cost": 50000,
+    "category": "처치·수술",
+    "minCost": 50000,
+    "maxCost": 50000,
+    "sampleCount": 1
+  },
+  {
+    "id": "mc_0342",
+    "name": "피부화학박피술(대)",
+    "cost": 100000,
+    "category": "처치·수술",
+    "minCost": 100000,
+    "maxCost": 100000,
+    "sampleCount": 1
+  },
+  {
+    "id": "mc_0343",
+    "name": "피부화학박피술(소)",
+    "cost": 30000,
+    "category": "처치·수술",
+    "minCost": 30000,
+    "maxCost": 30000,
+    "sampleCount": 1
+  },
+  {
+    "id": "mc_0344",
+    "name": "피부화학박피술(중)",
+    "cost": 50000,
+    "category": "처치·수술",
+    "minCost": 50000,
+    "maxCost": 50000,
+    "sampleCount": 1
+  },
+  {
+    "id": "mc_0345",
+    "name": "하지정맥류 고주파 정맥내막 폐쇄술",
+    "cost": 800000,
+    "category": "처치·수술",
+    "minCost": 800000,
+    "maxCost": 800000,
+    "sampleCount": 1,
+    "code": "OY201,OY202"
+  },
+  {
+    "id": "mc_0347",
+    "name": "하지정맥류 레이저 정맥폐쇄술",
+    "cost": 1000000,
+    "category": "처치·수술",
+    "minCost": 1000000,
+    "maxCost": 1000000,
+    "sampleCount": 2,
+    "code": "OZ304"
+  },
+  {
+    "id": "mc_0348",
+    "name": "IPL 코밑수염 제모(여성·1회차)",
+    "cost": 100000,
+    "category": "처치·수술",
+    "minCost": 100000,
+    "maxCost": 100000,
+    "sampleCount": 2,
+    "code": "HZDE01101"
+  },
+  {
+    "id": "mc_0349",
+    "name": "IPL 코밑수염 제모(여성·2회차)",
+    "cost": 50000,
+    "category": "처치·수술",
+    "minCost": 50000,
+    "maxCost": 50000,
+    "sampleCount": 2,
+    "code": "HZDE01102"
+  },
+  {
+    "id": "mc_0350",
+    "name": "IPL 코밑수염 제모(여성·3회차)",
+    "cost": 50000,
+    "category": "처치·수술",
+    "minCost": 50000,
+    "maxCost": 50000,
+    "sampleCount": 2,
+    "code": "HZDE01103"
+  },
+  {
+    "id": "mc_0355",
+    "name": "기관지내시경 초음파(가이드시스 포함)",
+    "cost": 770000,
+    "category": "초음파",
+    "minCost": 770000,
+    "maxCost": 770000,
+    "sampleCount": 1,
+    "code": "EZ991"
+  },
+  {
+    "id": "mc_0356",
+    "name": "기본 초음파(단순)",
+    "cost": 23200,
+    "category": "초음파",
+    "minCost": 15360,
+    "maxCost": 31170,
+    "sampleCount": 4
+  },
+  {
+    "id": "mc_0357",
+    "name": "내시경 초음파 유도 세침흡인 세포검사",
+    "cost": 800000,
+    "category": "초음파",
+    "minCost": 800000,
+    "maxCost": 800000,
+    "sampleCount": 2,
+    "code": "EZ992"
+  },
+  {
+    "id": "mc_0358",
+    "name": "동맥경화·협착·폐색 검사(1부위)",
+    "cost": 30000,
+    "category": "초음파",
+    "minCost": 30000,
+    "maxCost": 30000,
+    "sampleCount": 1,
+    "code": "SZ07201"
+  },
+  {
+    "id": "mc_0359",
+    "name": "동맥경화·협착·폐색 검사(2부위)",
+    "cost": 50000,
+    "category": "초음파",
+    "minCost": 50000,
+    "maxCost": 50000,
+    "sampleCount": 1,
+    "code": "SZ07202"
+  },
+  {
+    "id": "mc_0361",
+    "name": "두개외 혈관 도플러 초음파(기타 동맥)",
+    "cost": 56900,
+    "category": "초음파",
+    "minCost": 55740,
+    "maxCost": 58060,
+    "sampleCount": 2,
+    "code": "EB483"
+  },
+  {
+    "id": "mc_0363",
+    "name": "복부 초음파(항문)",
+    "cost": 107500,
+    "category": "초음파",
+    "minCost": 105290,
+    "maxCost": 109680,
+    "sampleCount": 2,
+    "code": "EB447"
+  },
+  {
+    "id": "mc_0364",
+    "name": "소아 복부 초음파(만 8세 미만)",
+    "cost": 219700,
+    "category": "초음파",
+    "minCost": 219740,
+    "maxCost": 219740,
+    "sampleCount": 1,
+    "code": "EB458"
+  },
+  {
+    "id": "mc_0365",
+    "name": "사지신경 종합 초음파",
+    "cost": 154200,
+    "category": "초음파",
+    "minCost": 154210,
+    "maxCost": 154210,
+    "sampleCount": 1,
+    "code": "EB504"
+  },
+  {
+    "id": "mc_0366",
+    "name": "사지혈관 도플러 초음파(동정맥루 협착 측정)",
+    "cost": 44100,
+    "category": "초음파",
+    "minCost": 44050,
+    "maxCost": 44050,
+    "sampleCount": 1,
+    "code": "EB486"
+  },
+  {
+    "id": "mc_0367",
+    "name": "사지혈관 도플러 초음파(하지정맥류 검사)",
+    "cost": 155300,
+    "category": "초음파",
+    "minCost": 152170,
+    "maxCost": 158510,
+    "sampleCount": 2,
+    "code": "EB489"
+  },
+  {
+    "id": "mc_0368",
+    "name": "심장 초음파(선천성 심질환)",
+    "cost": 34800,
+    "category": "초음파",
+    "minCost": 34040,
+    "maxCost": 35460,
+    "sampleCount": 2,
+    "code": "EB610"
+  },
+  {
+    "id": "mc_0369",
+    "name": "여성생식기 초음파(자궁 내 생리식염수 주입)",
+    "cost": 132900,
+    "category": "초음파",
+    "minCost": 132860,
+    "maxCost": 132860,
+    "sampleCount": 1,
+    "code": "EB456"
+  },
+  {
+    "id": "mc_0370",
+    "name": "유도초음파(조영)",
+    "cost": 409100,
+    "category": "초음파",
+    "minCost": 409130,
+    "maxCost": 409130,
+    "sampleCount": 1,
+    "code": "EB564020"
+  },
+  {
+    "id": "mc_0371",
+    "name": "유도초음파(조직생검·세침흡인)",
+    "cost": 106400,
+    "category": "초음파",
+    "minCost": 106400,
+    "maxCost": 106400,
+    "sampleCount": 2,
+    "code": "SEB562"
+  },
+  {
+    "id": "mc_0372",
+    "name": "유도초음파(천자·배액 시 시술부위 확인)",
+    "cost": 53200,
+    "category": "초음파",
+    "minCost": 53200,
+    "maxCost": 53200,
+    "sampleCount": 2,
+    "code": "SEB561"
+  },
+  {
+    "id": "mc_0373",
+    "name": "응급·중환자 단일 표적 초음파(1부위·1일당)",
+    "cost": 29900,
+    "category": "초음파",
+    "minCost": 29920,
+    "maxCost": 29920,
+    "sampleCount": 1,
+    "code": "EB521"
+  },
+  {
+    "id": "mc_0374",
+    "name": "응급·중환자 단일 표적 초음파(2부위 이상·1일당)",
+    "cost": 59800,
+    "category": "초음파",
+    "minCost": 59830,
+    "maxCost": 59830,
+    "sampleCount": 1,
+    "code": "EB522"
+  },
+  {
+    "id": "mc_0375",
+    "name": "응급·중환자 복합 표적 초음파",
+    "cost": 154000,
+    "category": "초음파",
+    "minCost": 153950,
+    "maxCost": 153950,
+    "sampleCount": 1,
+    "code": "EB523"
+  },
+  {
+    "id": "mc_0376",
+    "name": "임산부 초음파(제1삼분기·기형아 정밀계측)",
+    "cost": 186100,
+    "category": "초음파",
+    "minCost": 186130,
+    "maxCost": 186130,
+    "sampleCount": 1,
+    "code": "EB514"
+  },
+  {
+    "id": "mc_0377",
+    "name": "임산부 초음파(제1삼분기·임신 여부 확인)",
+    "cost": 55200,
+    "category": "초음파",
+    "minCost": 55200,
+    "maxCost": 55200,
+    "sampleCount": 1,
+    "code": "EB512"
+  },
+  {
+    "id": "mc_0378",
+    "name": "전립선·정낭 초음파(경복부)",
+    "cost": 62900,
+    "category": "초음파",
+    "minCost": 61660,
+    "maxCost": 64220,
+    "sampleCount": 2,
+    "code": "EB452"
+  },
+  {
+    "id": "mc_0379",
+    "name": "복부 초음파(제한적·간·담낭·담도·비장·췌장)",
+    "cost": 61200,
+    "category": "초음파",
+    "minCost": 61220,
+    "maxCost": 61220,
+    "sampleCount": 1,
+    "code": "SEB441001"
+  },
+  {
+    "id": "mc_0380",
+    "name": "진공보조 유방생검 유도 초음파",
+    "cost": 800000,
+    "category": "초음파",
+    "minCost": 800000,
+    "maxCost": 800000,
+    "sampleCount": 1,
+    "code": "EZ9870000"
+  },
+  {
+    "id": "mc_0382",
+    "name": "갑상선·부갑상선(제한적) 초음파",
+    "cost": 45500,
+    "category": "초음파",
+    "minCost": 45490,
+    "maxCost": 45490,
+    "sampleCount": 1,
+    "code": "EB414001"
+  },
+  {
+    "id": "mc_0383",
+    "name": "갑상선·부갑상선 외 부위(제한적) 초음파",
+    "cost": 45500,
+    "category": "초음파",
+    "minCost": 45490,
+    "maxCost": 45490,
+    "sampleCount": 1,
+    "code": "EB415001"
+  },
+  {
+    "id": "mc_0384",
+    "name": "갑상선·부갑상선(전체) 초음파",
+    "cost": 92300,
+    "category": "초음파",
+    "minCost": 90960,
+    "maxCost": 92260,
+    "sampleCount": 4
+  },
+  {
+    "id": "mc_0385",
+    "name": "갑상선·부갑상선 외 부위(전체) 초음파",
+    "cost": 92300,
+    "category": "초음파",
+    "minCost": 90960,
+    "maxCost": 92260,
+    "sampleCount": 4
+  },
+  {
+    "id": "mc_0388",
+    "name": "고관절 초음파(편측)",
+    "cost": 90100,
+    "category": "초음파",
+    "minCost": 88780,
+    "maxCost": 90050,
+    "sampleCount": 4
+  },
+  {
+    "id": "mc_0389",
+    "name": "류마티스 관절 초음파(3부위 이상·종합)",
+    "cost": 139700,
+    "category": "초음파",
+    "minCost": 137730,
+    "maxCost": 139680,
+    "sampleCount": 4
+  },
+  {
+    "id": "mc_0390",
+    "name": "발가락 초음파(편측)",
+    "cost": 65300,
+    "category": "초음파",
+    "minCost": 64350,
+    "maxCost": 65260,
+    "sampleCount": 4
+  },
+  {
+    "id": "mc_0391",
+    "name": "손가락 초음파",
+    "cost": 65300,
+    "category": "초음파",
+    "minCost": 64350,
+    "maxCost": 65260,
+    "sampleCount": 4
+  },
+  {
+    "id": "mc_0392",
+    "name": "슬관절 초음파(편측)",
+    "cost": 71900,
+    "category": "초음파",
+    "minCost": 70040,
+    "maxCost": 71900,
+    "sampleCount": 4
+  },
+  {
+    "id": "mc_0393",
+    "name": "음경 도플러 초음파",
+    "cost": 98400,
+    "category": "초음파",
+    "minCost": 97970,
+    "maxCost": 99840,
+    "sampleCount": 3
+  },
+  {
+    "id": "mc_0394",
+    "name": "남성생식기 초음파(전립선·정낭·경복부)",
+    "cost": 64200,
+    "category": "초음파",
+    "minCost": 63340,
+    "maxCost": 64220,
+    "sampleCount": 4
+  },
+  {
+    "id": "mc_0395",
+    "name": "남성생식기 초음파(전립선·정낭·경직장)",
+    "cost": 115500,
+    "category": "초음파",
+    "minCost": 113900,
+    "maxCost": 115500,
+    "sampleCount": 4
+  },
+  {
+    "id": "mc_0398",
+    "name": "복부 초음파(간·담낭·담도·비장·췌장)",
+    "cost": 120700,
+    "category": "초음파",
+    "minCost": 120140,
+    "maxCost": 122430,
+    "sampleCount": 3
+  },
+  {
+    "id": "mc_0400",
+    "name": "복부 조영 초음파(간·담낭·담도·비장·췌장)",
+    "cost": 155000,
+    "category": "초음파",
+    "minCost": 155030,
+    "maxCost": 155030,
+    "sampleCount": 1,
+    "code": "EB441020"
+  },
+  {
+    "id": "mc_0402",
+    "name": "진단 초음파(복부·항문)",
+    "cost": 109700,
+    "category": "초음파",
+    "minCost": 108140,
+    "maxCost": 109680,
+    "sampleCount": 4
+  },
+  {
+    "id": "mc_0403",
+    "name": "비·부비동 초음파",
+    "cost": 60900,
+    "category": "초음파",
+    "minCost": 60090,
+    "maxCost": 60940,
+    "sampleCount": 4
+  },
+  {
+    "id": "mc_0406",
+    "name": "신장·부신 초음파",
+    "cost": 89000,
+    "category": "초음파",
+    "minCost": 87760,
+    "maxCost": 89010,
+    "sampleCount": 4
+  },
+  {
+    "id": "mc_0407",
+    "name": "신장·부신·방광 초음파",
+    "cost": 98500,
+    "category": "초음파",
+    "minCost": 97110,
+    "maxCost": 98500,
+    "sampleCount": 4
+  },
+  {
+    "id": "mc_0409",
+    "name": "중추신경계 초음파(만 1세 미만·경천문 뇌)",
+    "cost": 198200,
+    "category": "초음파",
+    "minCost": 195430,
+    "maxCost": 198210,
+    "sampleCount": 4
+  },
+  {
+    "id": "mc_0410",
+    "name": "중추신경계 초음파(만 1세 미만·척수)",
+    "cost": 198200,
+    "category": "초음파",
+    "minCost": 195430,
+    "maxCost": 198210,
+    "sampleCount": 4
+  },
+  {
+    "id": "mc_0412",
+    "name": "말초신경 초음파(편측)",
+    "cost": 58700,
+    "category": "초음파",
+    "minCost": 58290,
+    "maxCost": 59120,
+    "sampleCount": 2
+  },
+  {
+    "id": "mc_0413",
+    "name": "경흉부 심초음파",
+    "cost": 112300,
+    "category": "초음파",
+    "minCost": 110740,
+    "maxCost": 112300,
+    "sampleCount": 4
+  },
+  {
+    "id": "mc_0414",
+    "name": "부하 심초음파(약물)",
+    "cost": 307600,
+    "category": "초음파",
+    "minCost": 307550,
+    "maxCost": 515510,
+    "sampleCount": 4
+  },
+  {
+    "id": "mc_0415",
+    "name": "부하 심초음파(운동)",
+    "cost": 292400,
+    "category": "초음파",
+    "minCost": 292420,
+    "maxCost": 490150,
+    "sampleCount": 4
+  },
+  {
+    "id": "mc_0417",
+    "name": "경흉부 심초음파(전문)",
+    "cost": 258500,
+    "category": "초음파",
+    "minCost": 254860,
+    "maxCost": 258480,
+    "sampleCount": 4
+  },
+  {
+    "id": "mc_0418",
+    "name": "태아 정밀 심초음파",
+    "cost": 388400,
+    "category": "초음파",
+    "minCost": 382980,
+    "maxCost": 388420,
+    "sampleCount": 4
+  },
+  {
+    "id": "mc_0419",
+    "name": "안구 계측 초음파(양측)",
+    "cost": 91900,
+    "category": "초음파",
+    "minCost": 91900,
+    "maxCost": 91900,
+    "sampleCount": 2,
+    "code": "SEB413"
+  },
+  {
+    "id": "mc_0420",
+    "name": "안구 초음파",
+    "cost": 91300,
+    "category": "초음파",
+    "minCost": 90630,
+    "maxCost": 91900,
+    "sampleCount": 2
+  },
+  {
+    "id": "mc_0424",
+    "name": "여성생식기 초음파(일반)",
+    "cost": 103900,
+    "category": "초음파",
+    "minCost": 102410,
+    "maxCost": 103870,
+    "sampleCount": 4
+  },
+  {
+    "id": "mc_0425",
+    "name": "진단초음파(여성생식기·자궁 내 생리식염수 주입)",
+    "cost": 132900,
+    "category": "초음파",
+    "minCost": 131010,
+    "maxCost": 132860,
+    "sampleCount": 4
+  },
+  {
+    "id": "mc_0429",
+    "name": "연부조직 초음파(일반)",
+    "cost": 65300,
+    "category": "초음파",
+    "minCost": 64350,
+    "maxCost": 65260,
+    "sampleCount": 4
+  },
+  {
+    "id": "mc_0431",
+    "name": "임산부 초음파(제2·3삼분기·고위험 임신)",
+    "cost": 149700,
+    "category": "초음파",
+    "minCost": 147580,
+    "maxCost": 149660,
+    "sampleCount": 4
+  },
+  {
+    "id": "mc_0432",
+    "name": "진단초음파(임산부·제1삼분기·기형아 정밀계측)",
+    "cost": 186100,
+    "category": "초음파",
+    "minCost": 183530,
+    "maxCost": 186130,
+    "sampleCount": 4
+  },
+  {
+    "id": "mc_0433",
+    "name": "임산부 초음파(제2·3삼분기·기형아 정밀계측)",
+    "cost": 289100,
+    "category": "초음파",
+    "minCost": 285010,
+    "maxCost": 289060,
+    "sampleCount": 4
+  },
+  {
+    "id": "mc_0435",
+    "name": "임산부 초음파(제1삼분기)",
+    "cost": 81300,
+    "category": "초음파",
+    "minCost": 80200,
+    "maxCost": 81330,
+    "sampleCount": 4
+  },
+  {
+    "id": "mc_0436",
+    "name": "임산부 초음파(제2·3삼분기)",
+    "cost": 115100,
+    "category": "초음파",
+    "minCost": 113530,
+    "maxCost": 115140,
+    "sampleCount": 4
+  },
+  {
+    "id": "mc_0437",
+    "name": "진단초음파(임산부·제1삼분기·임신 여부 확인)",
+    "cost": 55200,
+    "category": "초음파",
+    "minCost": 54430,
+    "maxCost": 55200,
+    "sampleCount": 4
+  },
+  {
+    "id": "mc_0440",
+    "name": "두개외 혈관 도플러 초음파(경동맥)",
+    "cost": 110600,
+    "category": "초음파",
+    "minCost": 109080,
+    "maxCost": 110620,
+    "sampleCount": 4
+  },
+  {
+    "id": "mc_0441",
+    "name": "진단 초음파(두개외 혈관 도플러·기타 동맥)",
+    "cost": 58100,
+    "category": "초음파",
+    "minCost": 57250,
+    "maxCost": 58060,
+    "sampleCount": 4
+  },
+  {
+    "id": "mc_0442",
+    "name": "사지혈관 도플러 초음파(동정맥루 혈류·협착)",
+    "cost": 45900,
+    "category": "초음파",
+    "minCost": 45240,
+    "maxCost": 45890,
+    "sampleCount": 3
+  },
+  {
+    "id": "mc_0443",
+    "name": "사지혈관 도플러 초음파(상지 동맥)",
+    "cost": 87900,
+    "category": "초음파",
+    "minCost": 87880,
+    "maxCost": 87880,
+    "sampleCount": 1,
+    "code": "EB484"
+  },
+  {
+    "id": "mc_0445",
+    "name": "사지혈관 도플러 초음파(상지 정맥)",
+    "cost": 87900,
+    "category": "초음파",
+    "minCost": 87880,
+    "maxCost": 87880,
+    "sampleCount": 1,
+    "code": "EB485"
+  },
+  {
+    "id": "mc_0447",
+    "name": "진단 초음파(하지정맥류·사지혈관 도플러)",
+    "cost": 158500,
+    "category": "초음파",
+    "minCost": 156290,
+    "maxCost": 158510,
+    "sampleCount": 4
+  },
+  {
+    "id": "mc_0448",
+    "name": "사지혈관 도플러 초음파(하지 동맥)",
+    "cost": 139200,
+    "category": "초음파",
+    "minCost": 139160,
+    "maxCost": 139160,
+    "sampleCount": 1,
+    "code": "EB487"
+  },
+  {
+    "id": "mc_0450",
+    "name": "사지혈관 도플러 초음파(하지 정맥)",
+    "cost": 139200,
+    "category": "초음파",
+    "minCost": 139160,
+    "maxCost": 139160,
+    "sampleCount": 1,
+    "code": "EB488"
+  },
+  {
+    "id": "mc_0452",
+    "name": "뇌혈류 초음파",
+    "cost": 129600,
+    "category": "초음파",
+    "minCost": 127780,
+    "maxCost": 129580,
+    "sampleCount": 4
+  },
+  {
+    "id": "mc_0453",
+    "name": "대동맥 도플러 초음파",
+    "cost": 86000,
+    "category": "초음파",
+    "minCost": 84760,
+    "maxCost": 85970,
+    "sampleCount": 5
+  },
+  {
+    "id": "mc_0456",
+    "name": "흉부 초음파(유방·액와부 제외)",
+    "cost": 86000,
+    "category": "초음파",
+    "minCost": 42990,
+    "maxCost": 86000,
+    "sampleCount": 5
+  },
+  {
+    "id": "mc_0457",
+    "name": "유방·액와부 초음파",
+    "cost": 124300,
+    "category": "초음파",
+    "minCost": 122600,
+    "maxCost": 124340,
+    "sampleCount": 4
+  },
+  {
+    "id": "mc_0458",
+    "name": "두개강내 뇌혈류 도플러 초음파(기본)",
+    "cost": 150000,
+    "category": "초음파",
+    "minCost": 150000,
+    "maxCost": 150000,
+    "sampleCount": 1,
+    "code": "HZ161"
+  },
+  {
+    "id": "mc_0459",
+    "name": "동맥경화도 초음파(맥파전달속도 측정)",
+    "cost": 30000,
+    "category": "초음파",
+    "minCost": 30000,
+    "maxCost": 30000,
+    "sampleCount": 1,
+    "code": "EZ868"
+  },
+  {
+    "id": "mc_0460",
+    "name": "동맥경화·협착·폐색 초음파(1부위)",
+    "cost": 40000,
+    "category": "초음파",
+    "minCost": 30000,
+    "maxCost": 50000,
+    "sampleCount": 2,
+    "code": "EZ868"
+  },
+  {
+    "id": "mc_0461",
+    "name": "검사 유도 초음파(양수천자술)",
+    "cost": 90000,
+    "category": "초음파",
+    "minCost": 90000,
+    "maxCost": 90000,
+    "sampleCount": 1
+  },
+  {
+    "id": "mc_0462",
+    "name": "검사 유도 근골격계 초음파(간단)",
+    "cost": 30000,
+    "category": "초음파",
+    "minCost": 30000,
+    "maxCost": 30000,
+    "sampleCount": 1
+  },
+  {
+    "id": "mc_0463",
+    "name": "검사 유도 근골격계 초음파(복잡)",
+    "cost": 120000,
+    "category": "초음파",
+    "minCost": 120000,
+    "maxCost": 120000,
+    "sampleCount": 1
+  },
+  {
+    "id": "mc_0464",
+    "name": "기관지내시경 초음파",
+    "cost": 400000,
+    "category": "초음파",
+    "minCost": 400000,
+    "maxCost": 400000,
+    "sampleCount": 1,
+    "code": "EZ991"
+  },
+  {
+    "id": "mc_0465",
+    "name": "내시경 초음파",
+    "cost": 200000,
+    "category": "초음파",
+    "minCost": 200000,
+    "maxCost": 200000,
+    "sampleCount": 1
+  },
+  {
+    "id": "mc_0466",
+    "name": "내시경 초음파(직장 중부)",
+    "cost": 80000,
+    "category": "초음파",
+    "minCost": 80000,
+    "maxCost": 80000,
+    "sampleCount": 1
+  },
+  {
+    "id": "mc_0467",
+    "name": "내시경 초음파(항문)",
+    "cost": 40000,
+    "category": "초음파",
+    "minCost": 40000,
+    "maxCost": 40000,
+    "sampleCount": 1
+  },
+  {
+    "id": "mc_0468",
+    "name": "경식도 심초음파(선천성 심질환)",
+    "cost": 35500,
+    "category": "초음파",
+    "minCost": 35460,
+    "maxCost": 35460,
+    "sampleCount": 3,
+    "code": "SEB610"
+  },
+  {
+    "id": "mc_0469",
+    "name": "경식도 심초음파",
+    "cost": 291000,
+    "category": "초음파",
+    "minCost": 290960,
+    "maxCost": 487710,
+    "sampleCount": 4
+  },
+  {
+    "id": "mc_0470",
+    "name": "심장내 초음파",
+    "cost": 320100,
+    "category": "초음파",
+    "minCost": 320060,
+    "maxCost": 536490,
+    "sampleCount": 4
+  },
+  {
+    "id": "mc_0471",
+    "name": "가철성 국소의치(고주파 비귀금속)",
+    "cost": 1200000,
+    "category": "치과",
+    "minCost": 1200000,
+    "maxCost": 1200000,
+    "sampleCount": 1
+  },
+  {
+    "id": "mc_0472",
+    "name": "가철성 국소의치(비귀금속)",
+    "cost": 1200000,
+    "category": "치과",
+    "minCost": 1000000,
+    "maxCost": 1200000,
+    "sampleCount": 4
+  },
+  {
+    "id": "mc_0473",
+    "name": "가철성 의치 어테치먼트 교환",
+    "cost": 150000,
+    "category": "치과",
+    "minCost": 150000,
+    "maxCost": 150000,
+    "sampleCount": 1
+  },
+  {
+    "id": "mc_0474",
+    "name": "가철성 의치(자석 교환)",
+    "cost": 150000,
+    "category": "치과",
+    "minCost": 150000,
+    "maxCost": 150000,
+    "sampleCount": 1
+  },
+  {
+    "id": "mc_0475",
+    "name": "가철성 의치용 금속 교합면 인공치",
+    "cost": 250000,
+    "category": "치과",
+    "minCost": 200000,
+    "maxCost": 250000,
+    "sampleCount": 4
+  },
+  {
+    "id": "mc_0476",
+    "name": "경질 레진 구치",
+    "cost": 30000,
+    "category": "치과",
+    "minCost": 30000,
+    "maxCost": 30000,
+    "sampleCount": 1
+  },
+  {
+    "id": "mc_0477",
+    "name": "경질 레진 전치",
+    "cost": 20000,
+    "category": "치과",
+    "minCost": 20000,
+    "maxCost": 20000,
+    "sampleCount": 1
+  },
+  {
+    "id": "mc_0478",
+    "name": "단순 골이식술",
+    "cost": 200000,
+    "category": "치과",
+    "minCost": 200000,
+    "maxCost": 200000,
+    "sampleCount": 1
+  },
+  {
+    "id": "mc_0479",
+    "name": "복잡 골이식술",
+    "cost": 1000000,
+    "category": "치과",
+    "minCost": 1000000,
+    "maxCost": 1000000,
+    "sampleCount": 1
+  },
+  {
+    "id": "mc_0480",
+    "name": "골드크라운(금니)",
+    "cost": 440000,
+    "category": "치과",
+    "minCost": 420000,
+    "maxCost": 460000,
+    "sampleCount": 2
+  },
+  {
+    "id": "mc_0481",
+    "name": "골증대술",
+    "cost": 500000,
+    "category": "치과",
+    "minCost": 500000,
+    "maxCost": 500000,
+    "sampleCount": 6,
+    "code": "JM0082T"
+  },
+  {
+    "id": "mc_0483",
+    "name": "광중합 복합 레진 충전",
+    "cost": 80000,
+    "category": "치과",
+    "minCost": 80000,
+    "maxCost": 80000,
+    "sampleCount": 2,
+    "code": "JM0001T"
+  },
+  {
+    "id": "mc_0484",
+    "name": "광중합형 글래스 아이오노머 시멘트 충전",
+    "cost": 80000,
+    "category": "치과",
+    "minCost": 80000,
+    "maxCost": 80000,
+    "sampleCount": 1,
+    "code": "UZ006"
+  },
+  {
+    "id": "mc_0485",
+    "name": "광중합형 복합 레진 충전(1치당·1면·2면·3면 이상)",
+    "cost": 80000,
+    "category": "치과",
+    "minCost": 80000,
+    "maxCost": 80000,
+    "sampleCount": 1,
+    "code": "U0239-U0241"
+  },
+  {
+    "id": "mc_0487",
+    "name": "교정 월정비",
+    "cost": 60000,
+    "category": "치과",
+    "minCost": 60000,
+    "maxCost": 60000,
+    "sampleCount": 2
+  },
+  {
+    "id": "mc_0488",
+    "name": "교합안정장치 관리",
+    "cost": 30000,
+    "category": "치과",
+    "minCost": 30000,
+    "maxCost": 30000,
+    "sampleCount": 3
+  },
+  {
+    "id": "mc_0489",
+    "name": "교합안정장치(단순·1악당)",
+    "cost": 300000,
+    "category": "치과",
+    "minCost": 300000,
+    "maxCost": 300000,
+    "sampleCount": 1
+  },
+  {
+    "id": "mc_0490",
+    "name": "교합안정장치(복잡)",
+    "cost": 600000,
+    "category": "치과",
+    "minCost": 600000,
+    "maxCost": 600000,
+    "sampleCount": 4
+  },
+  {
+    "id": "mc_0492",
+    "name": "구강 검사 및 상담",
+    "cost": 30000,
+    "category": "치과",
+    "minCost": 30000,
+    "maxCost": 30000,
+    "sampleCount": 3
+  },
+  {
+    "id": "mc_0493",
+    "name": "구취 측정검사",
+    "cost": 30000,
+    "category": "치과",
+    "minCost": 30000,
+    "maxCost": 30000,
+    "sampleCount": 4,
+    "code": "EZ917"
+  },
+  {
+    "id": "mc_0495",
+    "name": "금주조관(메리랜드·귀금속)",
+    "cost": 370000,
+    "category": "치과",
+    "minCost": 370000,
+    "maxCost": 370000,
+    "sampleCount": 4
+  },
+  {
+    "id": "mc_0496",
+    "name": "기성금관",
+    "cost": 60000,
+    "category": "치과",
+    "minCost": 60000,
+    "maxCost": 60000,
+    "sampleCount": 2
+  },
+  {
+    "id": "mc_0497",
+    "name": "나선형 합정",
+    "cost": 70000,
+    "category": "치과",
+    "minCost": 70000,
+    "maxCost": 70000,
+    "sampleCount": 4
+  },
+  {
+    "id": "mc_0498",
+    "name": "노벨가이드(서지컬 템플레이트·임플란트4개 이하)",
+    "cost": 1000000,
+    "category": "치과",
+    "minCost": 1000000,
+    "maxCost": 1000000,
+    "sampleCount": 1
+  },
+  {
+    "id": "mc_0500",
+    "name": "도재소부전장관(귀금속·A등급)",
+    "cost": 520000,
+    "category": "치과",
+    "minCost": 520000,
+    "maxCost": 520000,
+    "sampleCount": 2
+  },
+  {
+    "id": "mc_0501",
+    "name": "도재소부전장관(귀금속·B등급)",
+    "cost": 450000,
+    "category": "치과",
+    "minCost": 450000,
+    "maxCost": 450000,
+    "sampleCount": 2
+  },
+  {
+    "id": "mc_0502",
+    "name": "도재소부전장관(무깃·귀금속)",
+    "cost": 520000,
+    "category": "치과",
+    "minCost": 520000,
+    "maxCost": 520000,
+    "sampleCount": 4
+  },
+  {
+    "id": "mc_0503",
+    "name": "도재소부전장관(무깃·비귀금속)",
+    "cost": 380000,
+    "category": "치과",
+    "minCost": 380000,
+    "maxCost": 380000,
+    "sampleCount": 4
+  },
+  {
+    "id": "mc_0505",
+    "name": "도재소부전장관(비귀금속·A등급)",
+    "cost": 370000,
+    "category": "치과",
+    "minCost": 370000,
+    "maxCost": 370000,
+    "sampleCount": 2
+  },
+  {
+    "id": "mc_0506",
+    "name": "도재소부전장관(비귀금속·B등급)",
+    "cost": 350000,
+    "category": "치과",
+    "minCost": 350000,
+    "maxCost": 350000,
+    "sampleCount": 2
+  },
+  {
+    "id": "mc_0507",
+    "name": "레이저 솔더",
+    "cost": 60000,
+    "category": "치과",
+    "minCost": 60000,
+    "maxCost": 60000,
+    "sampleCount": 3
+  },
+  {
+    "id": "mc_0508",
+    "name": "레진 가공 의치(1치당)",
+    "cost": 30000,
+    "category": "치과",
+    "minCost": 30000,
+    "maxCost": 30000,
+    "sampleCount": 4
+  },
+  {
+    "id": "mc_0509",
+    "name": "로케이터(G등급)",
+    "cost": 500000,
+    "category": "치과",
+    "minCost": 500000,
+    "maxCost": 600000,
+    "sampleCount": 3
+  },
+  {
+    "id": "mc_0510",
+    "name": "임플란트 시술(국산·G등급)",
+    "cost": 1000000,
+    "category": "치과",
+    "minCost": 1000000,
+    "maxCost": 1000000,
+    "sampleCount": 3
+  },
+  {
+    "id": "mc_0511",
+    "name": "임플란트 시술(자성체)",
+    "cost": 500000,
+    "category": "치과",
+    "minCost": 500000,
+    "maxCost": 500000,
+    "sampleCount": 4
+  },
+  {
+    "id": "mc_0512",
+    "name": "임플란트 시술(헤더바)",
+    "cost": 1150000,
+    "category": "치과",
+    "minCost": 1150000,
+    "maxCost": 1150000,
+    "sampleCount": 2
+  },
+  {
+    "id": "mc_0513",
+    "name": "임플란트 귀금속 도재관",
+    "cost": 800000,
+    "category": "치과",
+    "minCost": 800000,
+    "maxCost": 800000,
+    "sampleCount": 4
+  },
+  {
+    "id": "mc_0514",
+    "name": "임플란트 비귀금속 도재관",
+    "cost": 600000,
+    "category": "치과",
+    "minCost": 600000,
+    "maxCost": 600000,
+    "sampleCount": 4
+  },
+  {
+    "id": "mc_0515",
+    "name": "임플란트 금관(백금가공)",
+    "cost": 660000,
+    "category": "치과",
+    "minCost": 660000,
+    "maxCost": 660000,
+    "sampleCount": 4
+  },
+  {
+    "id": "mc_0516",
+    "name": "임플란트 금관(슈퍼골드)",
+    "cost": 620000,
+    "category": "치과",
+    "minCost": 620000,
+    "maxCost": 620000,
+    "sampleCount": 4
+  },
+  {
+    "id": "mc_0517",
+    "name": "모형 분석용 인상(1악당)",
+    "cost": 30000,
+    "category": "치과",
+    "minCost": 30000,
+    "maxCost": 30000,
+    "sampleCount": 4
+  },
+  {
+    "id": "mc_0518",
+    "name": "보격장치(가철식)",
+    "cost": 100000,
+    "category": "치과",
+    "minCost": 100000,
+    "maxCost": 100000,
+    "sampleCount": 6,
+    "code": "JM0086T"
+  },
+  {
+    "id": "mc_0519",
+    "name": "보격장치(고정식)",
+    "cost": 50000,
+    "category": "치과",
+    "minCost": 50000,
+    "maxCost": 50000,
+    "sampleCount": 6,
+    "code": "JM0085T"
+  },
+  {
+    "id": "mc_0520",
+    "name": "보철 치료 중",
+    "cost": 10000,
+    "category": "치과",
+    "minCost": 10000,
+    "maxCost": 10000,
+    "sampleCount": 5,
+    "code": "JM0083T"
+  },
+  {
+    "id": "mc_0521",
+    "name": "부착장치(단순)",
+    "cost": 300000,
+    "category": "치과",
+    "minCost": 300000,
+    "maxCost": 300000,
+    "sampleCount": 2
+  },
+  {
+    "id": "mc_0522",
+    "name": "부착장치(보통)",
+    "cost": 350000,
+    "category": "치과",
+    "minCost": 350000,
+    "maxCost": 350000,
+    "sampleCount": 2
+  },
+  {
+    "id": "mc_0523",
+    "name": "부착장치(복잡)",
+    "cost": 440000,
+    "category": "치과",
+    "minCost": 440000,
+    "maxCost": 440000,
+    "sampleCount": 2
+  },
+  {
+    "id": "mc_0524",
+    "name": "불소 도포(1악당)",
+    "cost": 100000,
+    "category": "치과",
+    "minCost": 100000,
+    "maxCost": 100000,
+    "sampleCount": 4
+  },
+  {
+    "id": "mc_0525",
+    "name": "비변형 교정술(대)",
+    "cost": 500000,
+    "category": "치과",
+    "minCost": 500000,
+    "maxCost": 500000,
+    "sampleCount": 1,
+    "code": "HZEN00201"
+  },
+  {
+    "id": "mc_0526",
+    "name": "비변형 교정술(소)",
+    "cost": 200000,
+    "category": "치과",
+    "minCost": 200000,
+    "maxCost": 200000,
+    "sampleCount": 1,
+    "code": "HZEN00203"
+  },
+  {
+    "id": "mc_0527",
+    "name": "비변형 교정술(중)",
+    "cost": 300000,
+    "category": "치과",
+    "minCost": 300000,
+    "maxCost": 300000,
+    "sampleCount": 1,
+    "code": "HZEN00202"
+  },
+  {
+    "id": "mc_0528",
+    "name": "서지컬 스텐트(수술용·단순)",
+    "cost": 50000,
+    "category": "치과",
+    "minCost": 50000,
+    "maxCost": 50000,
+    "sampleCount": 1
+  },
+  {
+    "id": "mc_0529",
+    "name": "서지컬 스텐트(수술용·복잡)",
+    "cost": 100000,
+    "category": "치과",
+    "minCost": 100000,
+    "maxCost": 100000,
+    "sampleCount": 1
+  },
+  {
+    "id": "mc_0530",
+    "name": "세미리지드 연결체",
+    "cost": 150000,
+    "category": "치과",
+    "minCost": 150000,
+    "maxCost": 150000,
+    "sampleCount": 4
+  },
+  {
+    "id": "mc_0531",
+    "name": "심미 레진 충전",
+    "cost": 250000,
+    "category": "치과",
+    "minCost": 250000,
+    "maxCost": 250000,
+    "sampleCount": 3
+  },
+  {
+    "id": "mc_0532",
+    "name": "안면 체형",
+    "cost": 200000,
+    "category": "치과",
+    "minCost": 200000,
+    "maxCost": 200000,
+    "sampleCount": 3
+  },
+  {
+    "id": "mc_0533",
+    "name": "안면·두개기저 기타 임플란트(3차원·혈관조영·이삼중 시기)",
+    "cost": 164300,
+    "category": "치과",
+    "minCost": 164320,
+    "maxCost": 164320,
+    "sampleCount": 1,
+    "code": "HA415"
+  },
+  {
+    "id": "mc_0534",
+    "name": "오버덴쳐 오-링 교환",
+    "cost": 20000,
+    "category": "치과",
+    "minCost": 20000,
+    "maxCost": 20000,
+    "sampleCount": 1
+  },
+  {
+    "id": "mc_0535",
+    "name": "오버덴쳐 클립 교환",
+    "cost": 10000,
+    "category": "치과",
+    "minCost": 10000,
+    "maxCost": 10000,
+    "sampleCount": 1
+  },
+  {
+    "id": "mc_0536",
+    "name": "유구치 가공 치관",
+    "cost": 150000,
+    "category": "치과",
+    "minCost": 150000,
+    "maxCost": 150000,
+    "sampleCount": 3
+  },
+  {
+    "id": "mc_0539",
+    "name": "의치 이장술(간접법·단순)",
+    "cost": 190000,
+    "category": "치과",
+    "minCost": 190000,
+    "maxCost": 190000,
+    "sampleCount": 2
+  },
+  {
+    "id": "mc_0540",
+    "name": "의치 이장술(간접법·복잡)",
+    "cost": 300000,
+    "category": "치과",
+    "minCost": 300000,
+    "maxCost": 300000,
+    "sampleCount": 2
+  },
+  {
+    "id": "mc_0542",
+    "name": "의치 직접 이장술(단순)",
+    "cost": 100000,
+    "category": "치과",
+    "minCost": 100000,
+    "maxCost": 100000,
+    "sampleCount": 1
+  },
+  {
+    "id": "mc_0543",
+    "name": "의치 직접 이장술(복잡)",
+    "cost": 150000,
+    "category": "치과",
+    "minCost": 150000,
+    "maxCost": 150000,
+    "sampleCount": 2
+  },
+  {
+    "id": "mc_0544",
+    "name": "의치 수리(단순)",
+    "cost": 50000,
+    "category": "치과",
+    "minCost": 50000,
+    "maxCost": 50000,
+    "sampleCount": 1
+  },
+  {
+    "id": "mc_0545",
+    "name": "의치 수리(복잡)",
+    "cost": 100000,
+    "category": "치과",
+    "minCost": 100000,
+    "maxCost": 100000,
+    "sampleCount": 1
+  },
+  {
+    "id": "mc_0546",
+    "name": "임플란트 UCLA 스크류 교체(재료비)",
+    "cost": 50000,
+    "category": "치과",
+    "minCost": 50000,
+    "maxCost": 50000,
+    "sampleCount": 1
+  },
+  {
+    "id": "mc_0547",
+    "name": "임플란트(자석 교환)",
+    "cost": 200000,
+    "category": "치과",
+    "minCost": 200000,
+    "maxCost": 200000,
+    "sampleCount": 1
+  },
+  {
+    "id": "mc_0548",
+    "name": "임플란트 코핑 스크류 교환(재료비)",
+    "cost": 30000,
+    "category": "치과",
+    "minCost": 30000,
+    "maxCost": 30000,
+    "sampleCount": 1
+  },
+  {
+    "id": "mc_0549",
+    "name": "임플란트·크라운 재제작비(A등급)",
+    "cost": 100000,
+    "category": "치과",
+    "minCost": 100000,
+    "maxCost": 100000,
+    "sampleCount": 1
+  },
+  {
+    "id": "mc_0550",
+    "name": "임플란트·크라운 재제작비(B등급)",
+    "cost": 200000,
+    "category": "치과",
+    "minCost": 200000,
+    "maxCost": 200000,
+    "sampleCount": 1
+  },
+  {
+    "id": "mc_0552",
+    "name": "인레이(귀금속·단순)",
+    "cost": 300000,
+    "category": "치과",
+    "minCost": 300000,
+    "maxCost": 300000,
+    "sampleCount": 2
+  },
+  {
+    "id": "mc_0553",
+    "name": "인레이(귀금속·복잡)",
+    "cost": 350000,
+    "category": "치과",
+    "minCost": 350000,
+    "maxCost": 350000,
+    "sampleCount": 2
+  },
+  {
+    "id": "mc_0554",
+    "name": "인레이(포세라인/레진·단순)",
+    "cost": 270000,
+    "category": "치과",
+    "minCost": 270000,
+    "maxCost": 270000,
+    "sampleCount": 2
+  },
+  {
+    "id": "mc_0555",
+    "name": "인레이(포세라인/레진·복잡)",
+    "cost": 280000,
+    "category": "치과",
+    "minCost": 280000,
+    "maxCost": 280000,
+    "sampleCount": 2
+  },
+  {
+    "id": "mc_0556",
+    "name": "인레이·온레이 간접 충전(금 등 사용)",
+    "cost": 250000,
+    "category": "치과",
+    "minCost": 250000,
+    "maxCost": 250000,
+    "sampleCount": 1,
+    "code": "UZ004"
+  },
+  {
+    "id": "mc_0557",
+    "name": "인상채득 및 모형제작(1악당)",
+    "cost": 30000,
+    "category": "치과",
+    "minCost": 30000,
+    "maxCost": 30000,
+    "sampleCount": 1,
+    "code": "EX934"
+  },
+  {
+    "id": "mc_0558",
+    "name": "임시 가철성 국소의치",
+    "cost": 430000,
+    "category": "치과",
+    "minCost": 430000,
+    "maxCost": 430000,
+    "sampleCount": 4
+  },
+  {
+    "id": "mc_0559",
+    "name": "임시 의치(단순)",
+    "cost": 50000,
+    "category": "치과",
+    "minCost": 50000,
+    "maxCost": 50000,
+    "sampleCount": 4
+  },
+  {
+    "id": "mc_0560",
+    "name": "임시치(복잡)",
+    "cost": 150000,
+    "category": "치과",
+    "minCost": 150000,
+    "maxCost": 150000,
+    "sampleCount": 4
+  },
+  {
+    "id": "mc_0561",
+    "name": "임플란트 2차 수술(간단)",
+    "cost": 100000,
+    "category": "치과",
+    "minCost": 100000,
+    "maxCost": 100000,
+    "sampleCount": 2
+  },
+  {
+    "id": "mc_0562",
+    "name": "임플란트 2차 수술(경조직)",
+    "cost": 500000,
+    "category": "치과",
+    "minCost": 500000,
+    "maxCost": 500000,
+    "sampleCount": 1
+  },
+  {
+    "id": "mc_0563",
+    "name": "임플란트 2차 수술(연조직)",
+    "cost": 300000,
+    "category": "치과",
+    "minCost": 300000,
+    "maxCost": 300000,
+    "sampleCount": 1
+  },
+  {
+    "id": "mc_0564",
+    "name": "임플란트 주위염 치료",
+    "cost": 100000,
+    "category": "치과",
+    "minCost": 100000,
+    "maxCost": 100000,
+    "sampleCount": 3
+  },
+  {
+    "id": "mc_0565",
+    "name": "임플란트 목적 레이저 치료",
+    "cost": 100000,
+    "category": "치과",
+    "minCost": 100000,
+    "maxCost": 100000,
+    "sampleCount": 5,
+    "code": "JM0064T"
+  },
+  {
+    "id": "mc_0566",
+    "name": "임플란트 목적 상악동 거상술(측방접근·단순)",
+    "cost": 1000000,
+    "category": "치과",
+    "minCost": 1000000,
+    "maxCost": 1000000,
+    "sampleCount": 3,
+    "code": "JM0054T"
+  },
+  {
+    "id": "mc_0567",
+    "name": "임플란트 목적 상악동 거상술(편측)",
+    "cost": 300000,
+    "category": "치과",
+    "minCost": 300000,
+    "maxCost": 300000,
+    "sampleCount": 6,
+    "code": "JM0065T"
+  },
+  {
+    "id": "mc_0568",
+    "name": "임플란트 목적 하치조 측방전위술(편측)",
+    "cost": 1000000,
+    "category": "치과",
+    "minCost": 1000000,
+    "maxCost": 1000000,
+    "sampleCount": 6,
+    "code": "JM0066T"
+  },
+  {
+    "id": "mc_0570",
+    "name": "잇솔질 교습(회당)",
+    "cost": 30000,
+    "category": "치과",
+    "minCost": 20000,
+    "maxCost": 30000,
+    "sampleCount": 3
+  },
+  {
+    "id": "mc_0571",
+    "name": "자석장치",
+    "cost": 340000,
+    "category": "치과",
+    "minCost": 340000,
+    "maxCost": 340000,
+    "sampleCount": 4
+  },
+  {
+    "id": "mc_0572",
+    "name": "전부도재관(순면버니어)",
+    "cost": 400000,
+    "category": "치과",
+    "minCost": 400000,
+    "maxCost": 400000,
+    "sampleCount": 4
+  },
+  {
+    "id": "mc_0573",
+    "name": "전부도재관(전세라믹)",
+    "cost": 470000,
+    "category": "치과",
+    "minCost": 470000,
+    "maxCost": 470000,
+    "sampleCount": 4
+  },
+  {
+    "id": "mc_0574",
+    "name": "주조관(메리랜드·비귀금속)",
+    "cost": 290000,
+    "category": "치과",
+    "minCost": 290000,
+    "maxCost": 290000,
+    "sampleCount": 4
+  },
+  {
+    "id": "mc_0575",
+    "name": "주조금관(금합금)",
+    "cost": 420000,
+    "category": "치과",
+    "minCost": 420000,
+    "maxCost": 420000,
+    "sampleCount": 4
+  },
+  {
+    "id": "mc_0576",
+    "name": "주조금관(백금합금)",
+    "cost": 460000,
+    "category": "치과",
+    "minCost": 460000,
+    "maxCost": 460000,
+    "sampleCount": 4
+  },
+  {
+    "id": "mc_0577",
+    "name": "주조금관(Pd 합금)",
+    "cost": 350000,
+    "category": "치과",
+    "minCost": 350000,
+    "maxCost": 350000,
+    "sampleCount": 4
+  },
+  {
+    "id": "mc_0578",
+    "name": "즉시 또는 임시폐쇄장치",
+    "cost": 400000,
+    "category": "치과",
+    "minCost": 400000,
+    "maxCost": 500000,
+    "sampleCount": 4
+  },
+  {
+    "id": "mc_0579",
+    "name": "즉시 총의치(망사)",
+    "cost": 600000,
+    "category": "치과",
+    "minCost": 600000,
+    "maxCost": 600000,
+    "sampleCount": 4
+  },
+  {
+    "id": "mc_0580",
+    "name": "즉치 총의치(레진상)",
+    "cost": 500000,
+    "category": "치과",
+    "minCost": 500000,
+    "maxCost": 500000,
+    "sampleCount": 4
+  },
+  {
+    "id": "mc_0582",
+    "name": "총의치(레진상)",
+    "cost": 1200000,
+    "category": "치과",
+    "minCost": 1200000,
+    "maxCost": 1200000,
+    "sampleCount": 2
+  },
+  {
+    "id": "mc_0583",
+    "name": "치관 노출술(1치당)",
+    "cost": 100000,
+    "category": "치과",
+    "minCost": 100000,
+    "maxCost": 100000,
+    "sampleCount": 1,
+    "code": "UX041"
+  },
+  {
+    "id": "mc_0584",
+    "name": "치면 열구 전색",
+    "cost": 30000,
+    "category": "치과",
+    "minCost": 30000,
+    "maxCost": 30000,
+    "sampleCount": 3
+  },
+  {
+    "id": "mc_0586",
+    "name": "치아 매식 진단료(단순)",
+    "cost": 50000,
+    "category": "치과",
+    "minCost": 50000,
+    "maxCost": 50000,
+    "sampleCount": 1
+  },
+  {
+    "id": "mc_0587",
+    "name": "치아 매식 진단료(복잡)",
+    "cost": 100000,
+    "category": "치과",
+    "minCost": 100000,
+    "maxCost": 100000,
+    "sampleCount": 1
+  },
+  {
+    "id": "mc_0588",
+    "name": "치아 표백술(단순)",
+    "cost": 30000,
+    "category": "치과",
+    "minCost": 30000,
+    "maxCost": 30000,
+    "sampleCount": 1
+  },
+  {
+    "id": "mc_0589",
+    "name": "치아 표백술(복잡)",
+    "cost": 50000,
+    "category": "치과",
+    "minCost": 50000,
+    "maxCost": 50000,
+    "sampleCount": 1
+  },
+  {
+    "id": "mc_0590",
+    "name": "임플란트 수리(단순)",
+    "cost": 50000,
+    "category": "치과",
+    "minCost": 50000,
+    "maxCost": 50000,
+    "sampleCount": 1
+  },
+  {
+    "id": "mc_0591",
+    "name": "임플란트 수리(복잡)",
+    "cost": 100000,
+    "category": "치과",
+    "minCost": 100000,
+    "maxCost": 100000,
+    "sampleCount": 1
+  },
+  {
+    "id": "mc_0592",
+    "name": "임플란트 UCLA 스크류 교체",
+    "cost": 100000,
+    "category": "치과",
+    "minCost": 100000,
+    "maxCost": 100000,
+    "sampleCount": 4
+  },
+  {
+    "id": "mc_0594",
+    "name": "임플란트(임시 레진치·단순)",
+    "cost": 50000,
+    "category": "치과",
+    "minCost": 50000,
+    "maxCost": 50000,
+    "sampleCount": 1
+  },
+  {
+    "id": "mc_0595",
+    "name": "임플란트(임시 레진치·복잡)",
+    "cost": 200000,
+    "category": "치과",
+    "minCost": 200000,
+    "maxCost": 200000,
+    "sampleCount": 1
+  },
+  {
+    "id": "mc_0596",
+    "name": "임플란트(자석체 교환)",
+    "cost": 300000,
+    "category": "치과",
+    "minCost": 300000,
+    "maxCost": 300000,
+    "sampleCount": 3
+  },
+  {
+    "id": "mc_0597",
+    "name": "임플란트(지대체 교환)",
+    "cost": 300000,
+    "category": "치과",
+    "minCost": 300000,
+    "maxCost": 300000,
+    "sampleCount": 4
+  },
+  {
+    "id": "mc_0598",
+    "name": "임플란트 코핑 스크류 교환",
+    "cost": 50000,
+    "category": "치과",
+    "minCost": 50000,
+    "maxCost": 50000,
+    "sampleCount": 4
+  },
+  {
+    "id": "mc_0599",
+    "name": "치아지지 가철성 의치 오-링·이알에이 교환",
+    "cost": 50000,
+    "category": "치과",
+    "minCost": 50000,
+    "maxCost": 50000,
+    "sampleCount": 4
+  },
+  {
+    "id": "mc_0600",
+    "name": "치아지지 가철성 의치 자석체 교환",
+    "cost": 200000,
+    "category": "치과",
+    "minCost": 200000,
+    "maxCost": 200000,
+    "sampleCount": 4
+  },
+  {
+    "id": "mc_0601",
+    "name": "치아지지 가철성 의치 클립 교환",
+    "cost": 50000,
+    "category": "치과",
+    "minCost": 50000,
+    "maxCost": 50000,
+    "sampleCount": 3
+  },
+  {
+    "id": "mc_0602",
+    "name": "치주 테스트(인공치아 개당)",
+    "cost": 50000,
+    "category": "치과",
+    "minCost": 50000,
+    "maxCost": 50000,
+    "sampleCount": 3
+  },
+  {
+    "id": "mc_0603",
+    "name": "치태조절 및 예방술식(단순)",
+    "cost": 10000,
+    "category": "치과",
+    "minCost": 10000,
+    "maxCost": 10000,
+    "sampleCount": 2,
+    "code": "JM0016T"
+  },
+  {
+    "id": "mc_0604",
+    "name": "치태조절 및 예방술식(복잡)",
+    "cost": 30000,
+    "category": "치과",
+    "minCost": 30000,
+    "maxCost": 30000,
+    "sampleCount": 2,
+    "code": "JM0017T"
+  },
+  {
+    "id": "mc_0605",
+    "name": "캐드캠 세라믹 크라운",
+    "cost": 550000,
+    "category": "치과",
+    "minCost": 550000,
+    "maxCost": 550000,
+    "sampleCount": 4
+  },
+  {
+    "id": "mc_0607",
+    "name": "캐드캠 세라믹 크라운(임플란트용·단순)",
+    "cost": 700000,
+    "category": "치과",
+    "minCost": 700000,
+    "maxCost": 700000,
+    "sampleCount": 2
+  },
+  {
+    "id": "mc_0608",
+    "name": "캐드캠 세라믹 크라운(임플란트용·복잡)",
+    "cost": 800000,
+    "category": "치과",
+    "minCost": 800000,
+    "maxCost": 800000,
+    "sampleCount": 2
+  },
+  {
+    "id": "mc_0609",
+    "name": "코너스 텔레스코픽 크라운(밀링 기공비)",
+    "cost": 100000,
+    "category": "치과",
+    "minCost": 100000,
+    "maxCost": 100000,
+    "sampleCount": 2
+  },
+  {
+    "id": "mc_0611",
+    "name": "코누스 텔레스코픽 내외관(귀금속)",
+    "cost": 650000,
+    "category": "치과",
+    "minCost": 650000,
+    "maxCost": 650000,
+    "sampleCount": 4
+  },
+  {
+    "id": "mc_0612",
+    "name": "코누스 텔레스코픽 내외관(금합금)",
+    "cost": 600000,
+    "category": "치과",
+    "minCost": 600000,
+    "maxCost": 600000,
+    "sampleCount": 4
+  },
+  {
+    "id": "mc_0613",
+    "name": "코누스 텔레스코픽 내외관(백금합금)",
+    "cost": 700000,
+    "category": "치과",
+    "minCost": 700000,
+    "maxCost": 700000,
+    "sampleCount": 4
+  },
+  {
+    "id": "mc_0614",
+    "name": "코누스 텔레스코픽 내외관(비귀금속)",
+    "cost": 550000,
+    "category": "치과",
+    "minCost": 550000,
+    "maxCost": 550000,
+    "sampleCount": 4
+  },
+  {
+    "id": "mc_0615",
+    "name": "코누스 텔레스코픽 내외관(PD합금)",
+    "cost": 500000,
+    "category": "치과",
+    "minCost": 500000,
+    "maxCost": 500000,
+    "sampleCount": 4
+  },
+  {
+    "id": "mc_0617",
+    "name": "탄성 의치상 이장술",
+    "cost": 50000,
+    "category": "치과",
+    "minCost": 50000,
+    "maxCost": 50000,
+    "sampleCount": 4
+  },
+  {
+    "id": "mc_0619",
+    "name": "테레스코픽 국소 의치(간단)",
+    "cost": 880000,
+    "category": "치과",
+    "minCost": 880000,
+    "maxCost": 880000,
+    "sampleCount": 2
+  },
+  {
+    "id": "mc_0620",
+    "name": "테레스코픽 국소 의치(복잡)",
+    "cost": 1100000,
+    "category": "치과",
+    "minCost": 1100000,
+    "maxCost": 1100000,
+    "sampleCount": 2
+  },
+  {
+    "id": "mc_0621",
+    "name": "편측 가철성 국소의치(고주파비귀금속)",
+    "cost": 700000,
+    "category": "치과",
+    "minCost": 700000,
+    "maxCost": 700000,
+    "sampleCount": 4
+  },
+  {
+    "id": "mc_0622",
+    "name": "편측 가철성 국소의치(귀금속)",
+    "cost": 1200000,
+    "category": "치과",
+    "minCost": 1200000,
+    "maxCost": 1200000,
+    "sampleCount": 1
+  },
+  {
+    "id": "mc_0623",
+    "name": "편측 가철성 국소의치(비귀금속)",
+    "cost": 600000,
+    "category": "치과",
+    "minCost": 600000,
+    "maxCost": 600000,
+    "sampleCount": 4
+  },
+  {
+    "id": "mc_0624",
+    "name": "포세린관 수리(단순)",
+    "cost": 100000,
+    "category": "치과",
+    "minCost": 100000,
+    "maxCost": 100000,
+    "sampleCount": 1
+  },
+  {
+    "id": "mc_0625",
+    "name": "포세린관 수리(복잡)",
+    "cost": 200000,
+    "category": "치과",
+    "minCost": 200000,
+    "maxCost": 200000,
+    "sampleCount": 1
+  },
+  {
+    "id": "mc_0626",
+    "name": "포스트관(귀금속·단순)",
+    "cost": 230000,
+    "category": "치과",
+    "minCost": 230000,
+    "maxCost": 260000,
+    "sampleCount": 3
+  },
+  {
+    "id": "mc_0627",
+    "name": "포스트관(귀금속·복잡)",
+    "cost": 260000,
+    "category": "치과",
+    "minCost": 260000,
+    "maxCost": 260000,
+    "sampleCount": 2
+  },
+  {
+    "id": "mc_0628",
+    "name": "포스트관(그래스화이버)",
+    "cost": 220000,
+    "category": "치과",
+    "minCost": 220000,
+    "maxCost": 220000,
+    "sampleCount": 4
+  },
+  {
+    "id": "mc_0629",
+    "name": "포스트관(파라 포스트)",
+    "cost": 180000,
+    "category": "치과",
+    "minCost": 180000,
+    "maxCost": 180000,
+    "sampleCount": 4
+  },
+  {
+    "id": "mc_0630",
+    "name": "피.알.피",
+    "cost": 100000,
+    "category": "치과",
+    "minCost": 100000,
+    "maxCost": 100000,
+    "sampleCount": 4
+  },
+  {
+    "id": "mc_0631",
+    "name": "약침술",
+    "cost": 15000,
+    "category": "한방",
+    "minCost": 15000,
+    "maxCost": 15000,
+    "sampleCount": 2
+  },
+  {
+    "id": "mc_0632",
+    "name": "자율훈련법",
+    "cost": 30000,
+    "category": "한방",
+    "minCost": 30000,
+    "maxCost": 30000,
+    "sampleCount": 2
+  },
+  {
+    "id": "mc_0633",
+    "name": "간 MRI",
+    "cost": 470000,
+    "category": "MRI",
+    "minCost": 430000,
+    "maxCost": 470000,
+    "sampleCount": 5
+  },
+  {
+    "id": "mc_0635",
+    "name": "견관절 MRI",
+    "cost": 470000,
+    "category": "MRI",
+    "minCost": 430000,
+    "maxCost": 470000,
+    "sampleCount": 6
+  },
+  {
+    "id": "mc_0637",
+    "name": "경부 MRI",
+    "cost": 470000,
+    "category": "MRI",
+    "minCost": 426300,
+    "maxCost": 470000,
+    "sampleCount": 3
+  },
+  {
+    "id": "mc_0639",
+    "name": "경부혈관 MRI",
+    "cost": 428300,
+    "category": "MRI",
+    "minCost": 404380,
+    "maxCost": 428330,
+    "sampleCount": 3
+  },
+  {
+    "id": "mc_0641",
+    "name": "경추 MRI",
+    "cost": 470000,
+    "category": "MRI",
+    "minCost": 430000,
+    "maxCost": 470000,
+    "sampleCount": 5
+  },
+  {
+    "id": "mc_0643",
+    "name": "고관절 MRI",
+    "cost": 470000,
+    "category": "MRI",
+    "minCost": 430000,
+    "maxCost": 470000,
+    "sampleCount": 6
+  },
+  {
+    "id": "mc_0645",
+    "name": "골반 MRI",
+    "cost": 470000,
+    "category": "MRI",
+    "minCost": 430000,
+    "maxCost": 470000,
+    "sampleCount": 5
+  },
+  {
+    "id": "mc_0647",
+    "name": "관류 MRI(3차원 포함)",
+    "cost": 344200,
+    "category": "MRI",
+    "minCost": 331120,
+    "maxCost": 345770,
+    "sampleCount": 6
+  },
+  {
+    "id": "mc_0648",
+    "name": "관류 MRI(3차원 포함·기본검사 동시)",
+    "cost": 190500,
+    "category": "MRI",
+    "minCost": 179740,
+    "maxCost": 192960,
+    "sampleCount": 6
+  },
+  {
+    "id": "mc_0649",
+    "name": "관절외 상지 MRI",
+    "cost": 470000,
+    "category": "MRI",
+    "minCost": 430000,
+    "maxCost": 470000,
+    "sampleCount": 6
+  },
+  {
+    "id": "mc_0651",
+    "name": "관절외 하지 MRI",
+    "cost": 470000,
+    "category": "MRI",
+    "minCost": 430000,
+    "maxCost": 470000,
+    "sampleCount": 6
+  },
+  {
+    "id": "mc_0653",
+    "name": "기능적 MRI(3차원 포함)",
+    "cost": 590100,
+    "category": "MRI",
+    "minCost": 564740,
+    "maxCost": 591500,
+    "sampleCount": 6
+  },
+  {
+    "id": "mc_0654",
+    "name": "뇌 MRI",
+    "cost": 392300,
+    "category": "MRI",
+    "minCost": 370410,
+    "maxCost": 392330,
+    "sampleCount": 3
+  },
+  {
+    "id": "mc_0657",
+    "name": "뇌혈관 MRI",
+    "cost": 428300,
+    "category": "MRI",
+    "minCost": 404380,
+    "maxCost": 428330,
+    "sampleCount": 3
+  },
+  {
+    "id": "mc_0659",
+    "name": "담췌관 MRI",
+    "cost": 470000,
+    "category": "MRI",
+    "minCost": 430000,
+    "maxCost": 470000,
+    "sampleCount": 5
+  },
+  {
+    "id": "mc_0664",
+    "name": "무릎관절 MRI",
+    "cost": 470000,
+    "category": "MRI",
+    "minCost": 470000,
+    "maxCost": 470000,
+    "sampleCount": 1,
+    "code": "HE120"
+  },
+  {
+    "id": "mc_0666",
+    "name": "발목관절 MRI",
+    "cost": 470000,
+    "category": "MRI",
+    "minCost": 430000,
+    "maxCost": 470000,
+    "sampleCount": 6
+  },
+  {
+    "id": "mc_0668",
+    "name": "복부 MRI",
+    "cost": 470000,
+    "category": "MRI",
+    "minCost": 430000,
+    "maxCost": 470000,
+    "sampleCount": 5
+  },
+  {
+    "id": "mc_0670",
+    "name": "복부혈관 MRI",
+    "cost": 400000,
+    "category": "MRI",
+    "minCost": 400000,
+    "maxCost": 400000,
+    "sampleCount": 5
+  },
+  {
+    "id": "mc_0672",
+    "name": "부비동 MRI",
+    "cost": 448200,
+    "category": "MRI",
+    "minCost": 426300,
+    "maxCost": 470000,
+    "sampleCount": 2
+  },
+  {
+    "id": "mc_0674",
+    "name": "분광영상 MRI",
+    "cost": 227300,
+    "category": "MRI",
+    "minCost": 218980,
+    "maxCost": 228960,
+    "sampleCount": 6
+  },
+  {
+    "id": "mc_0675",
+    "name": "분광영상 MRI(기본검사 동시)",
+    "cost": 131300,
+    "category": "MRI",
+    "minCost": 100000,
+    "maxCost": 133830,
+    "sampleCount": 6
+  },
+  {
+    "id": "mc_0676",
+    "name": "사지혈관 MRI",
+    "cost": 400000,
+    "category": "MRI",
+    "minCost": 400000,
+    "maxCost": 400000,
+    "sampleCount": 6
+  },
+  {
+    "id": "mc_0678",
+    "name": "수관절 MRI",
+    "cost": 470000,
+    "category": "MRI",
+    "minCost": 430000,
+    "maxCost": 470000,
+    "sampleCount": 5
+  },
+  {
+    "id": "mc_0680",
+    "name": "슬관절 MRI",
+    "cost": 470000,
+    "category": "MRI",
+    "minCost": 430000,
+    "maxCost": 470000,
+    "sampleCount": 5
+  },
+  {
+    "id": "mc_0682",
+    "name": "신장 및 부신 MRI",
+    "cost": 470000,
+    "category": "MRI",
+    "minCost": 430000,
+    "maxCost": 470000,
+    "sampleCount": 5
+  },
+  {
+    "id": "mc_0684",
+    "name": "심장 MRI",
+    "cost": 470000,
+    "category": "MRI",
+    "minCost": 430000,
+    "maxCost": 470000,
+    "sampleCount": 5
+  },
+  {
+    "id": "mc_0686",
+    "name": "심혈관 MRI",
+    "cost": 400000,
+    "category": "MRI",
+    "minCost": 400000,
+    "maxCost": 400000,
+    "sampleCount": 5
+  },
+  {
+    "id": "mc_0688",
+    "name": "심혈관 MRI(3차원)",
+    "cost": 400000,
+    "category": "MRI",
+    "minCost": 400000,
+    "maxCost": 400000,
+    "sampleCount": 1,
+    "code": "HE540"
+  },
+  {
+    "id": "mc_0689",
+    "name": "안면 MRI",
+    "cost": 470000,
+    "category": "MRI",
+    "minCost": 426300,
+    "maxCost": 470000,
+    "sampleCount": 3
+  },
+  {
+    "id": "mc_0691",
+    "name": "안와 MRI",
+    "cost": 448200,
+    "category": "MRI",
+    "minCost": 426300,
+    "maxCost": 470000,
+    "sampleCount": 2
+  },
+  {
+    "id": "mc_0693",
+    "name": "영화 MRI(3차원 포함)",
+    "cost": 514300,
+    "category": "MRI",
+    "minCost": 492880,
+    "maxCost": 514270,
+    "sampleCount": 5
+  },
+  {
+    "id": "mc_0694",
+    "name": "외부필름 판독 MRI",
+    "cost": 50000,
+    "category": "MRI",
+    "minCost": 50000,
+    "maxCost": 50000,
+    "sampleCount": 2
+  },
+  {
+    "id": "mc_0695",
+    "name": "요천추 MRI",
+    "cost": 470000,
+    "category": "MRI",
+    "minCost": 430000,
+    "maxCost": 470000,
+    "sampleCount": 5
+  },
+  {
+    "id": "mc_0697",
+    "name": "요천추·흉추 MRI(동시 촬영)",
+    "cost": 225000,
+    "category": "MRI",
+    "minCost": 215000,
+    "maxCost": 235000,
+    "sampleCount": 3,
+    "code": "HE113"
+  },
+  {
+    "id": "mc_0699",
+    "name": "유방 MRI",
+    "cost": 470000,
+    "category": "MRI",
+    "minCost": 430000,
+    "maxCost": 470000,
+    "sampleCount": 5
+  },
+  {
+    "id": "mc_0701",
+    "name": "음낭 및 음경 MRI",
+    "cost": 470000,
+    "category": "MRI",
+    "minCost": 430000,
+    "maxCost": 470000,
+    "sampleCount": 5
+  },
+  {
+    "id": "mc_0703",
+    "name": "전립선 MRI",
+    "cost": 470000,
+    "category": "MRI",
+    "minCost": 430000,
+    "maxCost": 470000,
+    "sampleCount": 5
+  },
+  {
+    "id": "mc_0705",
+    "name": "주관절 MRI",
+    "cost": 470000,
+    "category": "MRI",
+    "minCost": 430000,
+    "maxCost": 470000,
+    "sampleCount": 5
+  },
+  {
+    "id": "mc_0707",
+    "name": "척추강 MRI",
+    "cost": 470000,
+    "category": "MRI",
+    "minCost": 450000,
+    "maxCost": 470000,
+    "sampleCount": 4
+  },
+  {
+    "id": "mc_0710",
+    "name": "척추강 MRI(경추·흉추·요천추 동시 촬영)",
+    "cost": 460000,
+    "category": "MRI",
+    "minCost": 450000,
+    "maxCost": 470000,
+    "sampleCount": 2,
+    "code": "HE214"
+  },
+  {
+    "id": "mc_0711",
+    "name": "천장골관절 MRI",
+    "cost": 470000,
+    "category": "MRI",
+    "minCost": 430000,
+    "maxCost": 470000,
+    "sampleCount": 5
+  },
+  {
+    "id": "mc_0713",
+    "name": "췌장 MRI",
+    "cost": 470000,
+    "category": "MRI",
+    "minCost": 430000,
+    "maxCost": 470000,
+    "sampleCount": 5
+  },
+  {
+    "id": "mc_0715",
+    "name": "측두골 MRI",
+    "cost": 470000,
+    "category": "MRI",
+    "minCost": 426300,
+    "maxCost": 470000,
+    "sampleCount": 3
+  },
+  {
+    "id": "mc_0717",
+    "name": "측두하악관절 MRI",
+    "cost": 470000,
+    "category": "MRI",
+    "minCost": 426300,
+    "maxCost": 470000,
+    "sampleCount": 3
+  },
+  {
+    "id": "mc_0719",
+    "name": "확산 MRI(기본검사 동시)",
+    "cost": 121600,
+    "category": "MRI",
+    "minCost": 116750,
+    "maxCost": 124850,
+    "sampleCount": 5
+  },
+  {
+    "id": "mc_0720",
+    "name": "흉부 MRI",
+    "cost": 470000,
+    "category": "MRI",
+    "minCost": 430000,
+    "maxCost": 470000,
+    "sampleCount": 5
+  },
+  {
+    "id": "mc_0722",
+    "name": "흉부혈관 MRI",
+    "cost": 470000,
+    "category": "MRI",
+    "minCost": 430000,
+    "maxCost": 470000,
+    "sampleCount": 5
+  },
+  {
+    "id": "mc_0724",
+    "name": "흉추 MRI",
+    "cost": 470000,
+    "category": "MRI",
+    "minCost": 430000,
+    "maxCost": 470000,
+    "sampleCount": 5
+  },
+  {
+    "id": "mc_0726",
+    "name": "경부혈관 MRI(일반 촬영·판독)",
+    "cost": 411800,
+    "category": "MRI",
+    "minCost": 411750,
+    "maxCost": 411750,
+    "sampleCount": 1,
+    "code": "HI136+HJ136+HB021"
+  },
+  {
+    "id": "mc_0727",
+    "name": "경부혈관 MRI(조영제 전·후 촬영·판독)",
+    "cost": 545800,
+    "category": "MRI",
+    "minCost": 545800,
+    "maxCost": 545800,
+    "sampleCount": 1,
+    "code": "HI236+HJ236+HB021"
+  },
+  {
+    "id": "mc_0729",
+    "name": "경추 MRI(제한적)",
+    "cost": 198200,
+    "category": "MRI",
+    "minCost": 198220,
+    "maxCost": 198220,
+    "sampleCount": 1,
+    "code": "HI409+HJ409+HB021"
+  },
+  {
+    "id": "mc_0731",
+    "name": "경추 MRI(조영제 포함)",
+    "cost": 486400,
+    "category": "MRI",
+    "minCost": 486350,
+    "maxCost": 486350,
+    "sampleCount": 1,
+    "code": "HI209+HJ209+HB021"
+  },
+  {
+    "id": "mc_0734",
+    "name": "뇌 MRI(조영제 포함)",
+    "cost": 511500,
+    "category": "MRI",
+    "minCost": 501290,
+    "maxCost": 521670,
+    "sampleCount": 2
+  },
+  {
+    "id": "mc_0737",
+    "name": "뇌혈관 MRI(조영제 포함)",
+    "cost": 545800,
+    "category": "MRI",
+    "minCost": 545800,
+    "maxCost": 545800,
+    "sampleCount": 1,
+    "code": "HI235+HJ235+HB021"
+  },
+  {
+    "id": "mc_0738",
+    "name": "부비동 MRI(PNS·촬영·판독·조영제 사용)",
+    "cost": 555400,
+    "category": "MRI",
+    "minCost": 544210,
+    "maxCost": 566580,
+    "sampleCount": 2
+  },
+  {
+    "id": "mc_0740",
+    "name": "요천추 MRI(제한적)",
+    "cost": 198200,
+    "category": "MRI",
+    "minCost": 198220,
+    "maxCost": 198220,
+    "sampleCount": 1,
+    "code": "HI411+HJ411+HB021"
+  },
+  {
+    "id": "mc_0742",
+    "name": "요천추 MRI(조영제 포함)",
+    "cost": 486400,
+    "category": "MRI",
+    "minCost": 486350,
+    "maxCost": 486350,
+    "sampleCount": 1,
+    "code": "HI211+HJ211+HB021"
+  },
+  {
+    "id": "mc_0745",
+    "name": "흉추 MRI(제한적)",
+    "cost": 198200,
+    "category": "MRI",
+    "minCost": 198220,
+    "maxCost": 198220,
+    "sampleCount": 1,
+    "code": "HI410+HJ410+HB021"
+  },
+  {
+    "id": "mc_0747",
+    "name": "흉추 MRI(조영제 포함)",
+    "cost": 486400,
+    "category": "MRI",
+    "minCost": 486350,
+    "maxCost": 486350,
+    "sampleCount": 1,
+    "code": "HI210+HJ210+HB021"
+  },
+  {
+    "id": "mc_0748",
+    "name": "흉추·요천추 MRI(동시 촬영·조영제 사용)",
+    "cost": 707400,
+    "category": "MRI",
+    "minCost": 707410,
+    "maxCost": 707410,
+    "sampleCount": 1,
+    "code": "HI210+HJ210+HI111등"
+  },
+  {
+    "id": "mc_0749",
+    "name": "경부혈관 MRI(촬영·판독)",
+    "cost": 330900,
+    "category": "MRI",
+    "minCost": 330860,
+    "maxCost": 330860,
+    "sampleCount": 1,
+    "code": "RMHI13603"
+  },
+  {
+    "id": "mc_0200",
+    "name": "4가 인플루엔자(독감) 백신(성인)",
+    "cost": 30000,
+    "category": "예방접종·주사",
+    "minCost": 30000,
+    "maxCost": 30000,
+    "sampleCount": 1
+  },
+  {
+    "id": "mc_0218",
+    "name": "박씨그리프테트라주(사노피파스퇴르)",
+    "cost": 30000,
+    "category": "예방접종·주사",
+    "minCost": 30000,
+    "maxCost": 30000,
+    "sampleCount": 1
+  },
+  {
+    "id": "mc_0226",
+    "name": "스카이셀플루 4가 프리필드시린지(성인 독감백신)",
+    "cost": 30000,
+    "category": "예방접종·주사",
+    "minCost": 30000,
+    "maxCost": 30000,
+    "sampleCount": 1
+  },
+  {
+    "id": "mc_0257",
+    "name": "플루아릭스 테트라 프리필드시린지(4가)",
+    "cost": 30000,
+    "category": "예방접종·주사",
+    "minCost": 30000,
+    "maxCost": 30000,
+    "sampleCount": 1
+  },
+  {
+    "id": "mc_0220",
+    "name": "백시플루 예방접종(4가·소아용)",
+    "cost": 40000,
+    "category": "예방접종·주사",
+    "minCost": 40000,
+    "maxCost": 40000,
+    "sampleCount": 1
+  },
+  {
+    "id": "mc_0256",
+    "name": "플루아릭스 테트라(만 3세 이상 인플루엔자·글락소)",
+    "cost": 40000,
+    "category": "예방접종·주사",
+    "minCost": 40000,
+    "maxCost": 40000,
+    "sampleCount": 1
+  },
+  {
+    "id": "mc_0208",
+    "name": "뇌수막염 백신",
+    "cost": 41000,
+    "category": "예방접종·주사",
+    "minCost": 41000,
+    "maxCost": 41000,
+    "sampleCount": 1
+  },
+  {
+    "id": "mc_0230",
+    "name": "악티브주 예방접종(사노피파스퇴르)",
+    "cost": 41000,
+    "category": "예방접종·주사",
+    "minCost": 41000,
+    "maxCost": 41000,
+    "sampleCount": 1
+  },
+  {
+    "id": "mc_0210",
+    "name": "디티에이피 백신주",
+    "cost": 32000,
+    "category": "예방접종·주사",
+    "minCost": 32000,
+    "maxCost": 32000,
+    "sampleCount": 1
+  },
+  {
+    "id": "mc_0223",
+    "name": "소아마비 백신(폴리오)",
+    "cost": 25000,
+    "category": "예방접종·주사",
+    "minCost": 25000,
+    "maxCost": 25000,
+    "sampleCount": 1
+  },
+  {
+    "id": "mc_0207",
+    "name": "녹십자 수두백신 예방접종(녹십자PBM)",
+    "cost": 29000,
+    "category": "예방접종·주사",
+    "minCost": 29000,
+    "maxCost": 29000,
+    "sampleCount": 1
+  },
+  {
+    "id": "mc_0224",
+    "name": "수두 백신",
+    "cost": 29000,
+    "category": "예방접종·주사",
+    "minCost": 29000,
+    "maxCost": 29000,
+    "sampleCount": 1
+  }
+]
