@@ -216,6 +216,6 @@ if (zeroDongAddrs.length) console.log('동 데이터 0개인 addr(도로 인식 
 
 const output = Object.fromEntries(byAddr);
 const outPath = path.join(ROOT, 'public/data/dong_outlines.json');
-fs.writeFileSync(outPath, JSON.stringify(output));
+fs.writeFileSync(outPath, `${JSON.stringify(output, null, 2)}\n`);
 const totalDongs = Object.values(output).reduce((n, arr) => n + arr.length, 0);
 console.log(`wrote dong_outlines.json - ${Object.keys(output).length}개 시/군, 동 ${totalDongs}개, ${Math.round(fs.statSync(outPath).size / 1024)} KB -> ${outPath}`);

@@ -116,5 +116,5 @@ for (const [prov, rings] of ringsByProvince) {
 }
 
 const outPath = path.join(ROOT, 'public/data/province_outlines.json');
-fs.writeFileSync(outPath, JSON.stringify(output));
+fs.writeFileSync(outPath, `${JSON.stringify(output, null, 2)}\n`);
 console.log(`wrote ${Object.keys(output).length} provinces -> ${outPath} (${Math.round(fs.statSync(outPath).size / 1024)} KB)`);
