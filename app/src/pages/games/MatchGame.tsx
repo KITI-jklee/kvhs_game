@@ -45,11 +45,30 @@ function pickRoundPairs(pool: MedicalTermPair[]): MedicalTermPair[][] {
     const categoryEntries = [...byCategory.entries()];
     let picked: MedicalTermPair[] = [];
 
+    // 카테고리 수가 size보다 적으면(작은 카테고리가 앞 라운드에서 소진된 경우)
+    // sample()이 부족한 만큼만 돌려줘서 라운드 장수가 조용히 줄어드는 버그가 있었다
+    // - 카테고리를 최대한 다양하게 채우되, 모자라면 이미 뽑은 카테고리에서 다른
+    // 항목으로 나머지를 채워 항상 정확히 size장을 채운다.
+    function drawCandidate(): MedicalTermPair[] {
+      const shuffledCategories = sample(categoryEntries, categoryEntries.length);
+      const candidate: MedicalTermPair[] = [];
+      for (const [, pairs] of shuffledCategories) {
+        if (candidate.length >= size) break;
+        candidate.push(sample(pairs, 1)[0]);
+      }
+      if (candidate.length < size) {
+        const pickedIds = new Set(candidate.map((p) => p.id));
+        const remainder = available.filter((p) => !pickedIds.has(p.id));
+        candidate.push(...sample(remainder, size - candidate.length));
+      }
+      return candidate;
+    }
+
     // An item name can itself be identical to another pair's category label.
     // Retry the draw until every visible card label in the round is unique.
     for (let attempt = 0; attempt < 500; attempt += 1) {
-      const categories = sample(categoryEntries, size);
-      const candidate = categories.map(([, pairs]) => sample(pairs, 1)[0]);
+      const candidate = drawCandidate();
+      if (candidate.length < size) continue; // 풀 자체가 부족한 극단적인 경우만 재시도
       const visibleLabels = candidate.flatMap((pair) => [pair.item_name, pair.kind_mid]);
       const normalizedLabels = visibleLabels.map((label) =>
         label.replace(/[\s.·ㆍ]/g, ''),
@@ -63,7 +82,7 @@ function pickRoundPairs(pool: MedicalTermPair[]): MedicalTermPair[][] {
     // Current data has enough distinct labels; retain a safe fallback for
     // future datasets that cannot satisfy the constraint.
     if (!picked.length) {
-      picked = sample(categoryEntries, size).map(([, pairs]) => sample(pairs, 1)[0]);
+      picked = drawCandidate();
     }
     picked.forEach((p) => used.add(p.id));
     return picked;
