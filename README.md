@@ -1,25 +1,114 @@
-# CODING AGENTS: READ THIS FIRST
+# 보훈게임 아케이드
 
-This is a **handoff bundle** from Claude Design (claude.ai/design).
+한국보훈복지의료공단의 공공데이터를 활용해 보훈의료 정보를 쉽고 재미있게 익힐 수 있도록 만든 반응형 웹 게임입니다. 모바일, 태블릿, 데스크톱에서 같은 게임을 즐길 수 있습니다.
 
-A user mocked up designs in HTML/CSS/JS using an AI design tool, then exported this bundle so a coding agent can implement the designs for real.
+> **사내 전용 자료**
+>
+> 이 프로젝트는 사내 업무 목적으로 제작되었습니다. 회사의 사전 서면 승인 없이 소스 코드, 문서, 디자인 및 기타 결과물의 전부 또는 일부를 복제, 수정, 외부 공개, 배포하거나 상업적으로 이용할 수 없습니다.
 
-## What you should do — IMPORTANT
+## 게임 소개
 
-**Read the chat transcripts first.** There are 1 chat transcript(s) in `chats/`. The transcripts show the full back-and-forth between the user and the design assistant — they tell you **what the user actually wants** and **where they landed** after iterating. Don't skip them. The final HTML files are the output, but the chat is where the intent lives.
+### 1. 가장 가까운 위탁병원 찾기
 
-**Read `project/보훈데이터 아케이드 - 모바일 태블릿 웹.html` in full.** The user had this file open when they triggered the handoff, so it's almost certainly the primary design they want built. Read it top to bottom — don't skim. Then **follow its imports**: open every file it pulls in (shared components, CSS, scripts) so you understand how the pieces fit together before you start implementing.
+지도에 표시된 위치와 병원 정보를 살펴보고 가장 가까운 위탁병원을 찾는 게임입니다.
 
-**If anything is ambiguous, ask the user to confirm before you start implementing.** It's much cheaper to clarify scope up front than to build the wrong thing.
+### 2. 의료비 감각 테스트
 
-## About the design files
+비급여 진료 항목의 가격을 예상하거나 비교하며 의료비에 대한 감각을 확인하는 게임입니다.
 
-The design medium is **HTML/CSS/JS** — these are prototypes, not production code. Your job is to **recreate them pixel-perfectly** in whatever technology makes sense for the target codebase (React, Vue, native, whatever fits). Match the visual output; don't copy the prototype's internal structure unless it happens to fit.
+### 3. 보훈의료 용어 짝맞추기
 
-**Don't render these files in a browser or take screenshots unless the user asks you to.** Everything you need — dimensions, colors, layout rules — is spelled out in the source. Read the HTML and CSS directly; a screenshot won't tell you anything they don't.
+진료 항목과 분류가 적힌 카드를 기억해 올바른 짝을 찾는 게임입니다. 총 3라운드로 진행되며 라운드마다 카드 수가 늘어납니다.
 
-## Bundle contents
+플레이 결과에 따라 점수와 보훈 등급을 확인할 수 있으며, 최고 점수와 등급은 브라우저에 저장됩니다.
 
-- `README.md` — this file
-- `chats/` — conversation transcripts (read these!)
-- `project/` — the `Web game mobile design` project files (HTML prototypes, assets, components)
+## 기술 구성
+
+- React 19
+- TypeScript
+- Vite
+- React Router
+- CSS Modules
+- Vitest
+- oxlint
+
+## 시작하기
+
+Node.js와 npm이 설치되어 있어야 합니다.
+
+```bash
+cd app
+npm install
+npm run dev
+```
+
+개발 서버를 실행한 뒤 터미널에 표시되는 주소로 접속합니다. 기본 주소는 `http://localhost:5173`입니다.
+
+## 주요 명령어
+
+명령어는 `app` 디렉터리에서 실행합니다.
+
+```bash
+npm run dev      # 개발 서버 실행
+npm run build    # 타입 검사 및 프로덕션 빌드
+npm run preview  # 빌드 결과 미리보기
+npm run lint     # 정적 분석
+npm run test     # 테스트 실행
+```
+
+## 프로젝트 구조
+
+```text
+kvhs_game/
+├─ app/
+│  ├─ public/data/       # 게임에서 사용하는 정적 JSON 데이터
+│  └─ src/
+│     ├─ components/     # 공통 UI 컴포넌트
+│     ├─ data/           # 데이터 로더, 타입 및 게임 목록
+│     ├─ lib/            # 점수 계산과 공통 유틸리티
+│     ├─ pages/          # 홈, 결과, 등급 및 게임 화면
+│     ├─ state/          # 게임 진행 상태
+│     └─ styles/         # 공통 스타일과 디자인 토큰
+├─ data/                 # 공공데이터 원본 및 가공 중간 파일
+├─ docs/                 # 제품 결정 사항
+├─ extract_kvhs_data.py  # 공공데이터포털 데이터 수집 스크립트
+└─ build_game_data.py    # 웹 게임용 JSON 생성 스크립트
+```
+
+## 주요 경로
+
+| 경로 | 화면 |
+| --- | --- |
+| `/` | 메인 화면 |
+| `/games/location` | 가장 가까운 위탁병원 찾기 |
+| `/games/medical-cost` | 의료비 감각 테스트 |
+| `/games/match` | 보훈의료 용어 짝맞추기 |
+| `/result` | 게임 결과 |
+| `/grade` | 내 보훈 등급 |
+
+## 게임 데이터 갱신
+
+앱은 시작할 때 `app/public/data`의 정적 JSON 파일을 불러옵니다. 원본 데이터를 새로 내려받고 게임용 데이터로 변환하려면 저장소 루트에서 다음 순서로 실행합니다.
+
+1. `.env.example`을 참고해 `DATA_GO_KR_SERVICE_KEY` 환경 변수를 설정합니다.
+2. 공공데이터포털에서 원본 데이터를 수집합니다.
+
+   ```bash
+   python extract_kvhs_data.py
+   ```
+
+3. 웹 게임용 JSON을 생성합니다.
+
+   ```bash
+   python build_game_data.py
+   ```
+
+서비스 키와 `.env.local` 같은 로컬 환경 파일은 저장소에 커밋하지 마세요.
+
+## 참고 문서
+
+게임 규칙과 현재 적용된 제품 결정은 [docs/current-product-decisions.md](docs/current-product-decisions.md)에서 확인할 수 있습니다.
+
+## 이용 제한
+
+이 저장소의 모든 자료는 사내 사용을 전제로 합니다. 별도의 허가가 없는 한 외부 공유 및 재배포를 금지합니다.
