@@ -149,6 +149,9 @@
      때 3장씩"). */
   .grid[data-card-count='16'] {
     grid-template-columns: repeat(4, 1fr);
+    width: 100%;
+    max-width: 920px;
+    margin-inline: auto;
   }
   .grid[data-card-count='20'] {
     grid-template-columns: repeat(5, 1fr);
