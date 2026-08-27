@@ -1,3 +1,4 @@
+import { cx } from '../lib/cx';
 import styles from './ProgressBar.module.css';
 
 interface ProgressBarProps {
@@ -8,8 +9,8 @@ interface ProgressBarProps {
 }
 
 export function ProgressBar({ percent, tone = 'default', fill = 'default', height }: ProgressBarProps) {
-  const trackClass = [styles.track, tone !== 'default' ? styles[tone] : ''].filter(Boolean).join(' ');
-  const fillClass = [styles.fill, fill !== 'default' ? styles[fill] : ''].filter(Boolean).join(' ');
+  const trackClass = cx(styles.track, tone !== 'default' && styles[tone]);
+  const fillClass = cx(styles.fill, fill !== 'default' && styles[fill]);
   return (
     <div className={trackClass} style={height ? { height } : undefined}>
       <div className={fillClass} style={{ width: `${Math.max(0, Math.min(100, percent))}%` }} />

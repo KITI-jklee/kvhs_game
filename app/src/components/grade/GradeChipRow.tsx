@@ -1,4 +1,5 @@
 import type { Grade } from '../../data/types';
+import { cx } from '../../lib/cx';
 import styles from './GradeChipRow.module.css';
 
 interface GradeChipRowProps {
@@ -16,13 +17,13 @@ export function GradeChipRow({ grades, currentGrade, onSelect }: GradeChipRowPro
             key={g.name}
             type="button"
             onClick={onSelect}
-            className={[styles.chip, g.name === currentGrade.name ? styles.current : ''].join(' ')}
+            className={cx(styles.chip, g.name === currentGrade.name && styles.current)}
           >
             <span className={styles.chipIcon}>{g.icon}</span>
             {g.name}
           </button>
         ) : (
-          <span key={g.name} className={[styles.chip, g.name === currentGrade.name ? styles.current : ''].join(' ')}>
+          <span key={g.name} className={cx(styles.chip, g.name === currentGrade.name && styles.current)}>
             <span className={styles.chipIcon}>{g.icon}</span>
             {g.name}
           </span>

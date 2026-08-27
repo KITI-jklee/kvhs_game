@@ -15,6 +15,7 @@ import { formatClock, formatMinSec } from '../../lib/format';
 import { sample } from '../../lib/array';
 import { useGame } from '../../state/gameState';
 import { computeMatchScore, MATCH_MAX_SCORE } from '../../lib/matchScore';
+import { restartGame } from '../../lib/restart';
 import styles from './MatchGame.module.css';
 
 /** FR-G3-01: 라운드가 오를수록 6→8→10 페어(12→16→20장)로 늘어난다. */
@@ -247,12 +248,7 @@ export function MatchGame() {
     setPaused(false);
   };
   const handleExit = () => navigate('/');
-  const handleRestart = () => {
-    try {
-      sessionStorage.setItem('bohun_arcade.intentional_restart', '1');
-    } catch { /* reload still resets the game */ }
-    window.location.reload();
-  };
+  const handleRestart = restartGame;
 
   if (!pairs.length) {
     return <FullScreenNotice variant="modal" icon="⏳" title="게임 데이터를 불러오는 중입니다..." />;

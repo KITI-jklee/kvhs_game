@@ -1,6 +1,7 @@
 import type { LatLng } from './geo';
 import { haversineKm } from './geo';
 import { shuffle } from './array';
+import { createCachedFetcher } from './fetchOnce';
 
 export interface RegionsIndex {
   /** 도(道) 이름 -> 그 도에 속한 시/군/구 addr_hint 목록. */
@@ -9,28 +10,8 @@ export interface RegionsIndex {
   centers: Record<string, LatLng>;
 }
 
-let cache: RegionsIndex | null = null;
-let inflight: Promise<RegionsIndex> | null = null;
-
 /** `_regions.json`(시/군/구 목록 + 중심점)을 1회만 받아 캐시한다. */
-export function loadRegionsIndex(): Promise<RegionsIndex> {
-  if (cache) return Promise.resolve(cache);
-  if (!inflight) {
-    // `force-cache`는 쓰지 않는다 - 빌드 스크립트를 다시 돌리면 이 파일
-    // 내용이 바뀌는데, force-cache는 서버 재검증 없이 브라우저 캐시를
-    // 무조건 써서 데이터를 고쳐도 옛 내용이 계속 뜨는 문제가 있었다.
-    inflight = fetch('/data/city_outlines/_regions.json')
-      .then((res) => {
-        if (!res.ok) throw new Error(`regions index fetch failed: ${res.status}`);
-        return res.json() as Promise<RegionsIndex>;
-      })
-      .then((data) => {
-        cache = data;
-        return data;
-      });
-  }
-  return inflight;
-}
+export const loadRegionsIndex = createCachedFetcher<RegionsIndex>('/data/city_outlines/_regions.json');
 
 export interface HospitalPoint {
   id: string;

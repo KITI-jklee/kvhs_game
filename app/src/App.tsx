@@ -4,6 +4,7 @@ import type { ReactNode } from 'react';
 import { GameProvider } from './state/GameContext';
 import { GameDataProvider } from './data/loader';
 import { useGameData } from './data/gameDataContext';
+import { consumeIntentionalRestartFlag } from './lib/restart';
 import { FullScreenNotice } from './components/FullScreenNotice';
 import { Home } from './pages/Home';
 import { LocationGame } from './pages/games/LocationGame';
@@ -41,14 +42,7 @@ function RefreshToHome() {
   useEffect(() => {
     if (refreshCheckDone) return;
     refreshCheckDone = true;
-    try {
-      if (sessionStorage.getItem('bohun_arcade.intentional_restart') === '1') {
-        sessionStorage.removeItem('bohun_arcade.intentional_restart');
-        return;
-      }
-    } catch {
-      // sessionStorage가 막힌 환경에서도 일반 새로고침 처리는 계속한다.
-    }
+    if (consumeIntentionalRestartFlag()) return;
     const navigation = performance.getEntriesByType('navigation')[0] as PerformanceNavigationTiming | undefined;
     if (navigation?.type === 'reload' && location.pathname !== '/') {
       navigate('/', { replace: true });

@@ -24,6 +24,8 @@ import {
   type NearestRound,
 } from '../../lib/nearestHospital';
 import { shuffle } from '../../lib/array';
+import { cx } from '../../lib/cx';
+import { restartGame } from '../../lib/restart';
 import styles from './LocationGame.module.css';
 
 const ROUND_COUNT = 5;
@@ -283,14 +285,7 @@ export function LocationGame() {
   const handlePause = () => setPaused(true);
   const handleResume = () => setPaused(false);
   const handleExit = () => navigate('/');
-  const handleRestart = () => {
-    try {
-      sessionStorage.setItem('bohun_arcade.intentional_restart', '1');
-    } catch {
-      /* reload still resets the game */
-    }
-    window.location.reload();
-  };
+  const handleRestart = restartGame;
 
   const handleNext = () => {
     if (isLastRound) {
@@ -335,7 +330,7 @@ export function LocationGame() {
   const locationLabel = dongName ? `${countyLabel} ${dongName} 인근` : countyLabel;
   const roundRegion = countyAddr && region?.countyAddr === countyAddr ? region : null;
   const highlight = roundChoice?.dong ? { rings: roundChoice.dong.rings } : null;
-  const pins: MapPin[] = roundChoice?.countyAddr === countyAddr
+  const pins: MapPin[] = roundChoice
     ? roundChoice.round.shuffled.map((c) => ({ id: c.id, center: c.center, label: c.name }))
     : [];
 
@@ -380,7 +375,7 @@ export function LocationGame() {
                 있었다(사용자 피드백) - 모바일에서는 이 카드 우측 상단에
                 따로 보여준다. */}
             {!revealed && (
-              <span className={[styles.mobileTimer, 'hide-on-desktop'].join(' ')}>⏱ 남은 시간 {secondsLeft}초</span>
+              <span className={cx(styles.mobileTimer, 'hide-on-desktop')}>⏱ 남은 시간 {secondsLeft}초</span>
             )}
           </div>
           <IconTile size={52} className="hide-until-desktop">
@@ -395,7 +390,7 @@ export function LocationGame() {
             <span className={styles.qHint}>가장 가까운 위탁병원은 어디일까요?</span>
           </div>
           {!revealed && (
-            <div className={[styles.noteBox, 'hide-until-desktop'].join(' ')}>
+            <div className={cx(styles.noteBox, 'hide-until-desktop')}>
               <span aria-hidden style={{ fontSize: 14, color: 'var(--color-ink)' }}>
                 ⏱
               </span>
@@ -408,7 +403,7 @@ export function LocationGame() {
         </div>
 
         <div className={styles.mapPanel}>
-          <span className={[styles.mapLabel, 'hide-until-desktop'].join(' ')}>
+          <span className={cx(styles.mapLabel, 'hide-until-desktop')}>
             ◈ {countyLabel} 지도 · 남은 시간 {secondsLeft}초
           </span>
           <KoreaMap
@@ -438,7 +433,7 @@ export function LocationGame() {
             </div>
           ) : (
             <div className={styles.confirmWrap}>
-              <span className={[styles.confirmHint, 'hide-on-desktop'].join(' ')}>
+              <span className={cx(styles.confirmHint, 'hide-on-desktop')}>
                 지도 위 병원 후보 중 하나를 탭해서 골라보세요
               </span>
               <Button variant="accent" disabled={!selectedId || paused || showIntro} onClick={handleConfirm}>

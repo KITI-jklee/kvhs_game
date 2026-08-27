@@ -1,5 +1,6 @@
 import type { DeckCard } from '../lib/matchDeck';
 import { formatWon } from '../lib/format';
+import { cx } from '../lib/cx';
 import styles from './MatchCard.module.css';
 
 interface MatchCardProps {
@@ -15,21 +16,21 @@ interface MatchCardProps {
  * 않으므로 실제 카드가 돌아가는 애니메이션이 나온다(참고 영상 반영).
  */
 export function MatchCard({ card, faceUp, matched, onTap }: MatchCardProps) {
-  const classes = [styles.card, matched ? styles.matched : ''].filter(Boolean).join(' ');
+  const classes = cx(styles.card, matched && styles.matched);
 
   return (
     <button type="button" className={classes} onClick={onTap} disabled={faceUp} aria-label={faceUp ? card.title : `카드 ${card.num}`}>
-      <div className={[styles.inner, faceUp ? styles.flipped : ''].join(' ')}>
-        <div className={[styles.face, styles.faceBack].join(' ')}>
+      <div className={cx(styles.inner, faceUp && styles.flipped)}>
+        <div className={cx(styles.face, styles.faceBack)}>
           <div className={styles.markWrap}>
-            <div className={[styles.bar, styles.barOutline].join(' ')} />
-            <div className={[styles.bar, styles.barFill].join(' ')} />
-            <div className={[styles.bar, styles.barOutline].join(' ')} />
+            <div className={cx(styles.bar, styles.barOutline)} />
+            <div className={cx(styles.bar, styles.barFill)} />
+            <div className={cx(styles.bar, styles.barOutline)} />
           </div>
           <span className={styles.numStyle}>{card.num}</span>
         </div>
 
-        <div className={[styles.face, styles.faceFront].join(' ')}>
+        <div className={cx(styles.face, styles.faceFront)}>
           <span className={styles.eyebrow}>
             {card.kind === 'item' ? (
               <>

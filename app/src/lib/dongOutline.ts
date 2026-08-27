@@ -1,13 +1,11 @@
 import type { LatLng } from './geo';
+import { createCachedFetcher } from './fetchOnce';
 
 export interface DongOutline {
   name: string;
   center: LatLng;
   rings: [number, number][][];
 }
-
-let cache: Record<string, DongOutline[]> | null = null;
-let inflight: Promise<Record<string, DongOutline[]>> | null = null;
 
 /**
  * addr_hint(시/군/구) -> 그 안에 속한 읍/면/동 목록(`scripts/build-dong-outlines.cjs`
@@ -20,26 +18,7 @@ let inflight: Promise<Record<string, DongOutline[]>> | null = null;
  * 배경처럼 라운드마다 다른 시/군이 뽑힐 수 있어 지연 로드보다는 게임
  * 시작 시 1회 받아 캐시하는 쪽이 더 간단하다.
  */
-export function loadDongOutlines(): Promise<Record<string, DongOutline[]>> {
-  if (cache) return Promise.resolve(cache);
-  if (!inflight) {
-    // `force-cache`는 쓰지 않는다 - 이 파일은 빌드 스크립트를 다시 돌리면
-    // 내용이 바뀌는데, force-cache는 브라우저 캐시가 있으면 서버에 새로
-    // 확인하지도 않고 무조건 그 캐시를 써서 데이터를 고쳐도 사용자 화면에는
-    // 계속 옛 내용이 뜨는 문제가 있었다(사용자 피드백: "아직도 이렇게
-    // 안뜨는데?"). 기본 캐시 정책(필요시 서버에 재검증)이면 이 문제가 없다.
-    inflight = fetch('/data/dong_outlines.json')
-      .then((res) => {
-        if (!res.ok) throw new Error(`dong outlines fetch failed: ${res.status}`);
-        return res.json() as Promise<Record<string, DongOutline[]>>;
-      })
-      .then((data) => {
-        cache = data;
-        return data;
-      });
-  }
-  return inflight;
-}
+export const loadDongOutlines = createCachedFetcher<Record<string, DongOutline[]>>('/data/dong_outlines.json');
 
 // ray casting - `scripts/build-dong-outlines.cjs`에서 쓴 것과 같은 알고리즘.
 function pointInRing(px: number, py: number, ring: [number, number][]): boolean {

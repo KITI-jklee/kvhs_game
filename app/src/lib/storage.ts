@@ -90,6 +90,8 @@ export function overallScoreFromBestScores(bestScores: BestScores): number {
 }
 
 export interface RecordResultOutcome {
+  /** 0~500으로 클램프된 이번 판 점수. */
+  score: number;
   prevBest: number;
   diff: number;
   isNewBest: boolean;
@@ -114,5 +116,5 @@ export function recordResult(game: GameId, score: number, grades: Grade[]): Reco
   const grade = getGrade(clamped, grades);
   writeLastResult({ game, score: clamped, grade, played_at: new Date().toISOString() });
 
-  return { prevBest, diff, isNewBest, grade, bestScores: nextBest };
+  return { score: clamped, prevBest, diff, isNewBest, grade, bestScores: nextBest };
 }

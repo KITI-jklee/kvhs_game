@@ -16,11 +16,11 @@ export function GameProvider({ children }: { children: ReactNode }) {
       setBestScores(outcome.bestScores);
       setLastResult({
         ...result,
-        score: Math.max(0, Math.min(500, Math.round(result.score))),
+        score: outcome.score,
         prevBest: outcome.prevBest,
         diff: outcome.diff,
         isNewBest: outcome.isNewBest,
-        gradeProgress: getGradeProgress(result.score, grades),
+        gradeProgress: getGradeProgress(outcome.score, grades),
       });
     },
     [grades],

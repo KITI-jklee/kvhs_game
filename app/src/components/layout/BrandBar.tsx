@@ -1,5 +1,6 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { LogoMark } from '../icons/Glyphs';
+import { cx } from '../../lib/cx';
 import styles from './BrandBar.module.css';
 
 const NAV_LINKS = [
@@ -20,9 +21,7 @@ export function BrandBar({ variant = 'home', tone = 'light' }: BrandBarProps) {
 
   return (
     <header
-      className={[styles.bar, variant === 'game' ? styles.hiddenUntilDesktop : '', tone === 'dark' ? styles.dark : '']
-        .filter(Boolean)
-        .join(' ')}
+      className={cx(styles.bar, variant === 'game' && styles.hiddenUntilDesktop, tone === 'dark' && styles.dark)}
     >
       <div className={styles.inner}>
         <Link to="/" className={styles.brand}>
@@ -44,7 +43,7 @@ export function BrandBar({ variant = 'home', tone = 'light' }: BrandBarProps) {
             <Link
               key={link.to}
               to={link.to}
-              className={[styles.navLink, location.pathname === link.to ? styles.active : ''].join(' ')}
+              className={cx(styles.navLink, location.pathname === link.to && styles.active)}
             >
               {link.label}
             </Link>

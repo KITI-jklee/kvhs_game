@@ -23,6 +23,8 @@ import {
   type RoundSpec,
 } from '../../lib/medicalCost';
 import { shuffle } from '../../lib/array';
+import { cx } from '../../lib/cx';
+import { restartGame } from '../../lib/restart';
 import styles from './MedicalCostGame.module.css';
 
 const SLIDER_STEPS = 1000;
@@ -142,7 +144,7 @@ export function MedicalCostGame() {
         {round.bands.map((band, i) => (
           <div
             key={i}
-            className={[styles.bandResultRow, i === round.correctIndex ? styles.bandResultCorrect : ''].join(' ')}
+            className={cx(styles.bandResultRow, i === round.correctIndex && styles.bandResultCorrect)}
           >
             <span>
               {i + 1}. {band.label}
@@ -258,7 +260,7 @@ export function MedicalCostGame() {
           // 표시한다 - 하이라이트 + 태그를 같이 보면 적중/오답/놓침도 그대로
           // 읽어낼 수 있다.
           return (
-            <div key={item.id} className={[styles.bandResultRow, wasPicked ? styles.bandResultCorrect : ''].join(' ')}>
+            <div key={item.id} className={cx(styles.bandResultRow, wasPicked && styles.bandResultCorrect)}>
               <span>{item.name}</span>
               <span>
                 <b className={styles.priceStrong}>{formatWon(item.cost)}</b>{' '}
@@ -288,7 +290,7 @@ export function MedicalCostGame() {
         {[round.refItem, round.nextItem].map((item) => (
           <div
             key={item.id}
-            className={[styles.bandResultRow, item.id === pricierId ? styles.bandResultCorrect : ''].join(' ')}
+            className={cx(styles.bandResultRow, item.id === pricierId && styles.bandResultCorrect)}
           >
             <span>{item.name}</span>
             <span>
@@ -334,14 +336,7 @@ export function MedicalCostGame() {
   const handlePause = () => setPaused(true);
   const handleResume = () => setPaused(false);
   const handleExit = () => navigate('/');
-  const handleRestart = () => {
-    try {
-      sessionStorage.setItem('bohun_arcade.intentional_restart', '1');
-    } catch {
-      /* reload still resets the game */
-    }
-    window.location.reload();
-  };
+  const handleRestart = restartGame;
 
   if (!round) {
     return <FullScreenNotice variant="modal" icon="⏳" title="게임 데이터를 불러오는 중입니다..." />;
@@ -382,7 +377,7 @@ export function MedicalCostGame() {
         <span className={styles.qPill}>
           ROUND {roundIndex + 1} <span>/ {ROUND_COUNT}</span>
         </span>
-        <div className={[styles.deskSide, styles.deskSideRight].join(' ')}>
+        <div className={cx(styles.deskSide, styles.deskSideRight)}>
           <span className={styles.correctText}>
             적중 <b>{hitCount}</b>
           </span>
@@ -508,7 +503,7 @@ export function MedicalCostGame() {
                         ref={(el) => {
                           reorderRowRefs.current[i] = el;
                         }}
-                        className={[styles.reorderRow, dragIndex === i ? styles.reorderRowDragging : ''].join(' ')}
+                        className={cx(styles.reorderRow, dragIndex === i && styles.reorderRowDragging)}
                         style={dragIndex === i ? { transform: `translateY(${dragY}px)` } : undefined}
                         onPointerDown={handleReorderPointerDown(i)}
                         onPointerMove={handleReorderPointerMove(reorderOrder.length)}
@@ -549,7 +544,7 @@ export function MedicalCostGame() {
                         <button
                           key={item.id}
                           type="button"
-                          className={[styles.budgetCard, picked ? styles.budgetCardPicked : ''].join(' ')}
+                          className={cx(styles.budgetCard, picked && styles.budgetCardPicked)}
                           disabled={disabled}
                           onClick={() => toggleBudgetPick(item.id)}
                         >
@@ -611,7 +606,7 @@ export function MedicalCostGame() {
         </div>
 
         {revealed && reveal && (
-          <div className={[styles.resultBox, styles[reveal.tone]].join(' ')}>
+          <div className={cx(styles.resultBox, styles[reveal.tone])}>
             <div className={styles.resultHead}>
               <span className={styles.resultBadge}>{reveal.verdictLabel}</span>
               <span className={styles.resultPoints}>+{reveal.points}</span>

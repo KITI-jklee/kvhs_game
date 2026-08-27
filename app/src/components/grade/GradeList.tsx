@@ -1,4 +1,5 @@
 import type { Grade } from '../../data/types';
+import { cx } from '../../lib/cx';
 import styles from './GradeList.module.css';
 
 interface GradeListProps {
@@ -16,14 +17,14 @@ export function GradeList({ grades, currentIndex }: GradeListProps) {
         return (
           <div
             key={g.name}
-            className={[styles.item, isCurrent ? styles.current : '', i > currentIndex ? styles.locked : ''].join(' ')}
+            className={cx(styles.item, isCurrent && styles.current, i > currentIndex && styles.locked)}
           >
             <span className={styles.icon}>{g.icon}</span>
             <div className={styles.body}>
               <span className={styles.name}>{g.name}</span>
               <span className={styles.range}>{g.range}</span>
             </div>
-            <span className={[styles.mark, isCurrent ? styles.current : ''].join(' ')}>{markLabel}</span>
+            <span className={cx(styles.mark, isCurrent && styles.current)}>{markLabel}</span>
           </div>
         );
       })}

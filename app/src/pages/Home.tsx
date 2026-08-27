@@ -4,6 +4,7 @@ import { GameCard } from '../components/GameCard';
 import { GradeChipRow } from '../components/grade/GradeChipRow';
 import { getGames } from '../data/provider';
 import { useGame } from '../state/gameState';
+import { cx } from '../lib/cx';
 import styles from './Home.module.css';
 
 export function Home() {
@@ -54,7 +55,7 @@ export function Home() {
         {/* 데스크톱: 등급 칩 나열형 배너 */}
         <button
           type="button"
-          className={[styles.gradeBand, 'hide-until-desktop'].join(' ')}
+          className={cx(styles.gradeBand, 'hide-until-desktop')}
           onClick={() => navigate('/grade')}
         >
           <div className={styles.gradeBandHead}>
@@ -69,7 +70,7 @@ export function Home() {
         {/* 모바일·태블릿: 한 줄 요약 카드 */}
         <button
           type="button"
-          className={[styles.gradeCompact, 'hide-on-desktop'].join(' ')}
+          className={cx(styles.gradeCompact, 'hide-on-desktop')}
           onClick={() => navigate('/grade')}
         >
           <span className={styles.gradeCompactIcon}>{overallProgress.grade.icon}</span>

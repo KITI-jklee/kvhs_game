@@ -1,6 +1,7 @@
 import { Fragment, useEffect, useMemo, useRef, useState, type CSSProperties } from 'react';
 import type { Bounds, LatLng, Point } from '../../lib/geo';
 import { createProjection, fitBoundsToAspect } from '../../lib/geo';
+import { cx } from '../../lib/cx';
 import styles from './KoreaMap.module.css';
 
 /** "가장 가까운 위탁병원 찾기" 게임용 확대 지도 - 관련된 도(道) 경계를 배경으로 보여준다. */
@@ -149,6 +150,26 @@ export function KoreaMap({ region, highlight, pins, selectedId, correctId, revea
     return offsets;
   }, [pins, projection]);
 
+  // 라벨(span)과 핀 원(svg circle)을 z-order 때문에 서로 다른 두 블록으로
+  // 나눠 그리지만(아래 렌더 참고), 각 핀의 선택/정답/오답 판정과 화면 좌표는
+  // 두 블록에 공통이므로 여기서 한 번만 계산해 재사용한다.
+  const pinViews = useMemo(() => {
+    if (!projection) return [];
+    return pins.map((pin) => {
+      const isSelected = selectedId === pin.id;
+      const isCorrect = revealed && pin.id === correctId;
+      const isWrongPick = revealed && isSelected && pin.id !== correctId;
+      return {
+        pin,
+        p: projection.project(pin.center),
+        isSelected,
+        isCorrect,
+        isWrongPick,
+        offsetIndex: labelOffsetIndex.get(pin.id) ?? 0,
+      };
+    });
+  }, [pins, projection, selectedId, revealed, correctId, labelOffsetIndex]);
+
   const highlightPaths = useMemo(() => {
     if (!highlight || !projection) return [];
     const projectedRings = highlight.rings.map((ring) => ring.map(([lng, lat]) => projection.project({ lat, lng })));
@@ -168,10 +189,10 @@ export function KoreaMap({ region, highlight, pins, selectedId, correctId, revea
     if (scale <= 1) return projectedRings.map((ring) => polygonPath(ring));
 
     // 너무 작으면 중심 기준으로 확대 - 모양은 그대로 유지하고 크기만 키운다.
-    const cx = (minX + maxX) / 2;
-    const cy = (minY + maxY) / 2;
+    const centerX = (minX + maxX) / 2;
+    const centerY = (minY + maxY) / 2;
     return projectedRings.map((ring) =>
-      polygonPath(ring.map((p) => ({ x: cx + (p.x - cx) * scale, y: cy + (p.y - cy) * scale }))),
+      polygonPath(ring.map((p) => ({ x: centerX + (p.x - centerX) * scale, y: centerY + (p.y - centerY) * scale }))),
     );
   }, [highlight, projection]);
 
@@ -211,20 +232,13 @@ export function KoreaMap({ region, highlight, pins, selectedId, correctId, revea
          막히지 않았지만, 핀 자체가 안 보이면 눌러야 할 위치를 알 수 없다 -
          핀 원을 별도 svg로 라벨 위에 그려서 어떤 라벨과 겹치든 클릭 대상이
          가려지지 않게 한다. */}
-      {pins.map((pin) => {
-        const p = projection.project(pin.center);
-        const isSelected = selectedId === pin.id;
-        const isCorrect = revealed && pin.id === correctId;
-        const isWrongPick = revealed && isSelected && pin.id !== correctId;
-        const labelClass = [
+      {pinViews.map(({ pin, p, isSelected, isCorrect, isWrongPick, offsetIndex }) => {
+        const labelClass = cx(
           styles.pinLabel,
-          isCorrect ? styles.pinLabelCorrect : '',
-          isWrongPick ? styles.pinLabelWrong : '',
-          isSelected && !isCorrect && !isWrongPick ? styles.pinLabelSelected : '',
-        ]
-          .filter(Boolean)
-          .join(' ');
-        const offsetIndex = labelOffsetIndex.get(pin.id) ?? 0;
+          isCorrect && styles.pinLabelCorrect,
+          isWrongPick && styles.pinLabelWrong,
+          isSelected && !isCorrect && !isWrongPick && styles.pinLabelSelected,
+        );
         const dyPx = labelDy(offsetIndex);
         const leftPct = `${(p.x / projection.width) * 100}%`;
         const topPct = `${(p.y / projection.height) * 100}%`;
@@ -243,7 +257,7 @@ export function KoreaMap({ region, highlight, pins, selectedId, correctId, revea
                어느 라벨이 어느 핀 것인지 명확히 보여준다. */}
             {offsetIndex > 0 && (
               <span
-                className={[styles.pinLeader, labelClass].join(' ')}
+                className={cx(styles.pinLeader, labelClass)}
                 style={
                   {
                     left: leftPct,
@@ -277,20 +291,14 @@ export function KoreaMap({ region, highlight, pins, selectedId, correctId, revea
         preserveAspectRatio="none"
         role="presentation"
       >
-        {pins.map((pin) => {
-          const p = projection.project(pin.center);
-          const isSelected = selectedId === pin.id;
-          const isCorrect = revealed && pin.id === correctId;
-          const isWrongPick = revealed && isSelected && pin.id !== correctId;
-          const groupClass = [
+        {pinViews.map(({ pin, p, isSelected, isCorrect, isWrongPick }) => {
+          const groupClass = cx(
             styles.pinBtn,
-            disabled || revealed ? styles.pinDisabled : '',
-            isCorrect ? styles.pinCorrect : '',
-            isWrongPick ? styles.pinWrong : '',
-            isSelected && !revealed ? styles.pinSelected : '',
-          ]
-            .filter(Boolean)
-            .join(' ');
+            (disabled || revealed) && styles.pinDisabled,
+            isCorrect && styles.pinCorrect,
+            isWrongPick && styles.pinWrong,
+            isSelected && !revealed && styles.pinSelected,
+          );
           return (
             <g
               key={pin.id}

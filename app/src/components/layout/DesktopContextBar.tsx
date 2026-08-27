@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react';
+import { cx } from '../../lib/cx';
 import styles from './DesktopContextBar.module.css';
 
 interface DesktopContextBarProps {
@@ -11,10 +12,10 @@ interface DesktopContextBarProps {
 /** Desktop-only floating status bar shown beneath BrandBar during gameplay. */
 export function DesktopContextBar({ onBack, onPause, children, onDark }: DesktopContextBarProps) {
   return (
-    <div className={[styles.wrap, onDark ? styles.onDark : ''].join(' ')}>
+    <div className={cx(styles.wrap, onDark && styles.onDark)}>
       <button
         type="button"
-        className={[styles.back, onDark ? styles.onDark : ''].join(' ')}
+        className={cx(styles.back, onDark && styles.onDark)}
         onClick={onBack}
         aria-label="뒤로 가기"
       >
@@ -24,7 +25,7 @@ export function DesktopContextBar({ onBack, onPause, children, onDark }: Desktop
       {onPause && (
         <button
           type="button"
-          className={[styles.pause, onDark ? styles.onDark : ''].join(' ')}
+          className={cx(styles.pause, onDark && styles.onDark)}
           onClick={onPause}
           aria-label="일시정지"
         >
