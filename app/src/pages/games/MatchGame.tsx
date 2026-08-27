@@ -319,7 +319,7 @@ export function MatchGame() {
           </div>
         </div>
 
-        <div className={styles.grid} data-card-count={deck.length}>
+        <div className={styles.grid} data-card-count={deck.length} data-round={roundIndex + 1}>
           {deck.map((card) => (
             <MatchCard
               key={card.key}

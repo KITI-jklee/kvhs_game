@@ -6,6 +6,8 @@ import { haversineKm } from './geo';
 import { RANK_POINTS, pointsForPick, selectNearestChoices, type HospitalPoint } from './nearestHospital';
 import {
   BUDGET_ITEM_COUNT,
+  SLIDER_MAX,
+  SLIDER_MIN,
   pickBandChoices,
   pickBudgetRound,
   pickHigherLowerRound,
@@ -94,8 +96,8 @@ describe('게임② 의료비 감각 테스트 로직', () => {
   ];
 
   it('라운드① 슬라이더: 로그 스케일 위치 0/1이 최소/최대 가격에 대응하고, 오차율로 채점한다', () => {
-    expect(sliderPositionToPrice(0)).toBe(10_000);
-    expect(sliderPositionToPrice(1)).toBe(5_000_000);
+    expect(sliderPositionToPrice(0)).toBe(SLIDER_MIN);
+    expect(sliderPositionToPrice(1)).toBe(SLIDER_MAX);
     expect(scoreSlider(430_000, 430_000).points).toBe(100); // 오차 0%
     expect(scoreSlider(300_000, 430_000)).toEqual({ points: 40, label: 'CLOSE', errorPercent: 30 }); // 오차 30%
     expect(scoreSlider(10_000, 1_000_000).points).toBe(0); // 오차 99%

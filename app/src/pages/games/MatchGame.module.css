@@ -147,7 +147,7 @@
      1라운드(12장)만은 예외로 기본 4열(=세로 3장씩)을 그대로 써서 한
      화면에 다 보이게 한다(사용자 피드백: "1라운드일 때만 세로로 봤을
      때 3장씩"). */
-  .grid[data-card-count='16'] {
+  .grid[data-round='2'] {
     grid-template-columns: repeat(4, 1fr);
     width: 100%;
     max-width: 920px;
