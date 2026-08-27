@@ -83,10 +83,8 @@ function drawCard(canvas: HTMLCanvasElement, result: FinishedResult, grade: Grad
   ctx.fillText(new Date().toLocaleDateString('ko-KR'), 46, H - 40);
 }
 
-/** iOS Safari는 `<a download>`를 지원하지 않는다 - 클릭해도 그냥 이미지가
- * 새 창에서 열리거나 아무 반응이 없다(사용자 피드백: "아이폰에서 다운로드가
- * 안돼요"). 표준적인 우회법은 새 탭에 이미지를 직접 열어 "길게 눌러 저장"을
- * 안내하는 것뿐이라, iOS에서는 다운로드 시도 자체를 그 방식으로 바꾼다. */
+/** iOS Safari는 `<a download>`를 지원하지 않아 클릭해도 반응이 없다 -
+ * 새 탭에 이미지를 직접 열어 "길게 눌러 저장"을 안내하는 방식으로 대체한다. */
 function isIOS(): boolean {
   if (typeof navigator === 'undefined') return false;
   const ua = navigator.userAgent;
@@ -132,9 +130,8 @@ export function ShareOverlay({ result, grade, onClose }: ShareOverlayProps) {
     if (iosFallback) {
       // `<a download>`가 무시되니, 이미지를 새 탭에 그대로 열어 길게 눌러
       // "사진에 저장"하도록 안내한다(아래 iosNote 문구와 짝을 이룸). data:
-      // URL은 최근 브라우저에서 최상위 프레임 이동 자체가 막혀 있어서
-      // (사용자 피드백으로 실측: "Not allowed to navigate top frame to data
-      // URL"), 반드시 blob URL을 써야 팝업이 막혔을 때의 대체 경로도 연다.
+      // URL은 최근 브라우저에서 최상위 프레임 이동이 막혀 있으므로, 반드시
+      // blob URL을 써야 팝업이 막혔을 때의 대체 경로(window.location.href)도 연다.
       canvas.toBlob((blob) => {
         if (!blob) {
           setFailed(true);

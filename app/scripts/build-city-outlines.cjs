@@ -1,33 +1,8 @@
 /**
- * "가장 가까운 위탁병원 찾기" 게임의 시/군/구 목록 + 대표 위치점(`_regions.json`)을
- * 만든다 - 라운드마다 지역을 뽑고, 그 안의 동을 무작위로 골라 원점으로 쓰고
- * (`LocationGame.tsx`), 오답 후보 병원이 어느 도에 속하는지 판단할 때 쓴다.
- *
- * 원래는 시/군/구를 확대해서 보여주는 지도 기능(개별 경계선 파일 + manifest)이
- * 있었는데, 그 화면이 "시/군 전체를 보여주면 후보가 다 그 안에 들어와 판단
- * 근거가 없다"는 이유로 도(道) 배경 + 동(洞) 강조 방식으로 바뀌면서
- * 필요 없어졌다(사용자 확인: "이거 이제 필요없는거야?" - 코드에서 실제로
- * 참조가 없음을 확인 후 제거) - 그래서 이 스크립트는 이제 `_regions.json`만
- * 만든다. 시/군/구 경계선 자체(도 배경용)는 `build-province-outlines.cjs`가
- * 이 스크립트와 같은 municipalities 데이터에서 도 단위로 합쳐 만든다.
- *
- * 앱 런타임에서는 실행되지 않고, `public/data/hospital_locations.json`이
- * 바뀌어 새 지역이 추가될 때만 다시 돌리면 된다.
- *
- * 데이터 출처: southkorea/southkorea-maps 저장소의 2018년 시군구
- * TopoJSON(WGS84, 이미 위경도 좌표계라 별도 좌표변환 불필요).
- *   https://github.com/southkorea/southkorea-maps
- *   raw: kostat/2018/json/skorea-municipalities-2018-topo-simple.json
- * `skorea-municipalities-2018-topo-simple.json`으로 이 폴더에 받아두었다 -
- * 새로 받으려면 위 raw URL을 그대로 다시 받으면 된다.
- *
- * 실행: `node scripts/build-city-outlines.cjs` (app/ 안에서, topojson-client가
- * devDependency로 설치되어 있어야 한다).
- *
- * 데이터셋이 2018년 기준이라 이후 행정구역 개편과는 이름이 다를 수 있어
- * (강원도→강원특별자치도, 전라북도→전북특별자치도, 인천 남구→미추홀구 등),
- * `hospital_locations.json`의 `addr_hint`와 맞춰주는 별칭 처리를 해 둔다. 새
- * 지역이 "unresolved"로 나오면 이 파일의 alias/그룹핑 로직에 케이스를 추가할 것.
+ * 위치 게임용 시/군/구 목록과 대표 육지점(`_regions.json`)을 만든다.
+ * 출처: southkorea/southkorea-maps의 2018년 시군구 TopoJSON(WGS84).
+ * 실행: app/에서 `node scripts/build-city-outlines.cjs`.
+ * 새 지역이 unresolved라면 2018년 이후 개편명을 아래 별칭에 추가한다.
  */
 const fs = require('fs');
 const path = require('path');
@@ -125,16 +100,12 @@ function ringArea(ring) {
   return Math.abs(sum) / 2;
 }
 
-/** 여러 링(본토 + 부속 도서) 중 면적이 가장 큰 것 - "위치" 표시용 중심점은
- * 이 본토 링만 기준으로 잡아야, 제주시(추자도 포함)처럼 멀리 떨어진 작은
- * 부속 섬이 bbox를 바다 쪽으로 끌고 가 중심점이 엉뚱한 해상에 찍히는 문제가
- * 생기지 않는다. */
+/** 부속 섬 때문에 대표점이 바다로 밀리지 않도록 가장 큰 육지 링을 고른다. */
 function mainlandRing(rings) {
   return rings.reduce((best, ring) => (ringArea(ring) > ringArea(best) ? ring : best), rings[0]);
 }
 
-// 다각형 무게중심(signed area 가중 평균) - bbox 중심보다 실제 육지 위에 있을
-// 확률이 훨씬 높다(오목한 해안선이라도 무게중심은 대체로 뭍 쪽으로 쏠림).
+// bbox 중심보다 육지에 있을 확률이 높은 다각형 무게중심.
 function ringCentroid(ring) {
   let a6 = 0, cx = 0, cy = 0;
   for (let i = 0; i < ring.length; i++) {
@@ -150,9 +121,7 @@ function ringCentroid(ring) {
   return [cx / (6 * a), cy / (6 * a)];
 }
 
-// ray casting - 점이 링(외곽선) 내부에 있는지. 신안군처럼 극단적으로 잘게
-// 갈라진 다도해 섬은 무게중심조차 뭍 대신 만 안쪽 바다에 찍힐 수 있어서,
-// 이 검사로 걸러내고 링 위의 실제 꼭짓점으로 대체한다(아래 landPointOfRing).
+// Ray casting으로 점이 링 내부인지 검사한다.
 function pointInRing([px, py], ring) {
   let inside = false;
   for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
@@ -166,12 +135,7 @@ function pointInRing([px, py], ring) {
   return inside;
 }
 
-/** 반드시 그 링(육지) 안에 있는 점 하나 - 무게중심이 만이나 굴곡(사천시의
- * 사천만처럼 해안선이 심하게 갈라진 경우) 때문에 바다에 찍히면, bbox 안을
- * 격자로 훑어 실제로 링 "내부"인 점들 중 무게중심에 가장 가까운 점으로
- * 대체한다. (꼭짓점은 경계선 "위"라 판정이 애매해서 대신 쓰지 않는다 -
- * 격자점은 확실히 내부인 점만 후보로 삼는다.) 격자를 촘촘히 할수록 정확하지만
- * 빌드 1회성 스크립트라 정확도를 우선한다. */
+/** 무게중심이 바다에 있으면 격자 내부점 중 가장 가까운 점을 반환한다. */
 function landPointOfRing(ring) {
   const centroid = ringCentroid(ring);
   if (pointInRing(centroid, ring)) return centroid;
@@ -200,27 +164,21 @@ function landPointOfRing(ring) {
       }
     }
   }
-  // 격자에서도 못 찾으면(극단적으로 얇은 지형) 무게중심을 그대로 쓴다 -
-  // 바다에 찍힐 위험은 있지만 못 찾는 경우는 없어야 하며, 값이라도 있어야
-  // 라운드가 아예 깨지지 않는다.
+  // 극단적으로 얇은 지형에서도 값은 유지해 라운드 생성을 보장한다.
   return best ?? centroid;
 }
 
 const outDir = path.join(ROOT, 'public/data/city_outlines');
 fs.mkdirSync(outDir, { recursive: true });
 
-// ---- 도(道) 단위 4지선다 위치퀴즈용 인덱스 ----
-// 라운드마다 "같은 도 안의 다른 도시들"을 오답 후보로 뽑으려면 시/군/구
-// 230개를 전부 fetch하지 않고도 (1) 어느 도에 어떤 도시들이 있는지,
-// (2) 각 도시의 대략적 위치(중심점)를 알아야 한다.
+// 도별 도시 목록과 대표점을 묶은 위치 퀴즈 인덱스.
 const provinces = {};
 const centers = {};
 for (const [addr, features] of resolved) {
   const rings = collectRings(features);
   const prov = addr.split(' ')[0];
   (provinces[prov] ??= []).push(addr);
-  // bbox 중심이 아니라, 본토 링(위 mainlandRing) 위의 실제 육지 점(landPointOfRing)을
-  // 쓴다 - bbox 중심은 신안군처럼 잘게 갈라진 다도해에서 만 안쪽 바다에 찍힐 수 있다.
+  // 다도해 지역에서도 바다를 피하도록 가장 큰 링의 육지점을 쓴다.
   const [lng, lat] = landPointOfRing(mainlandRing(rings));
   centers[addr] = {
     lat: Math.round(lat * 1e5) / 1e5,

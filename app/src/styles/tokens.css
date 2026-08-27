@@ -1,12 +1,5 @@
-/**
- * Design tokens for 보훈데이터 아케이드.
- * Values are taken directly from the Claude Design source
- * (project/보훈데이터 아케이드 모바일.dc.html) so the production build
- * stays visually faithful to the approved design.
- */
 :root {
-  /* ---- Palette: mint / deep-green ("veterans arcade" tone) ---- */
-  --color-bg: #fbfdfc; /* page background - 흰색과 #f6faf8의 중간 채도(사용자 요청) */
+  --color-bg: #fbfdfc;
   --color-surface: #ffffff; /* cards */
   --color-line: #e3ede8; /* hairline borders */
 
@@ -62,9 +55,6 @@
   --header-h: 64px;
 }
 
-/* 원본 디자인(웹 1280 목업)은 데스크톱에서 페이지 배경을 흰색으로 쓰고,
-   민트(--color-bg)는 모바일·태블릿 전용이다(의료비 감각 테스트 화면은 자체
-   다크 그라데이션 배경을 쓰므로 이 토큰의 영향을 받지 않는다). */
 @media (min-width: 1024px) {
   :root {
     --color-bg: #ffffff;

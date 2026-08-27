@@ -1,21 +1,7 @@
 /**
- * "가장 가까운 위탁병원 찾기" 게임의 지도 배경용 도(道) 단위 경계 데이터를 만든다.
- *
- * 배경: 병원 후보는 실제 최단거리 기준으로 뽑히기 때문에 종종 시작 지점의
- * 시/군/구 경계 밖(이웃 시/군, 드물게 이웃 도)에 위치한다. 시작 지점이 속한
- * 시/군 경계만 배경으로 그리면 그 밖의 후보가 빈 그리드 위에 덩그러니 떠
- * 있는 것처럼 보인다 - 그래서 배경은 시/군이 아니라 도 단위로 그린다.
- *
- * 원래는 별도의 "도" 단위 TopoJSON(skorea-provinces-2018-topo-simple.json)을
- * 썼는데, 그 데이터셋 자체가 부산 영도구처럼 다리로만 연결된 작은 섬을
- * 통째로 빼먹은 게 있었다(사용자 피드백: "왜 바다처럼 나오는거야?" - 동삼3동
- * 강조 영역이 진짜 배경 땅 없이 빈 바다 위에 떠 있었음) - 단순화 과정에서
- * 누락된 것으로 보인다. 그래서 이미 시/군 단위로 검증해 둔
- * `build-city-outlines.cjs`의 시/군 경계(skorea-municipalities-2018-topo-simple.json,
- * 영도구 포함해서 정상 확인됨)를 도 단위로 합쳐서 배경을 만든다 - 시/군을
- * 다 모으면 그 도가 되므로 별도 데이터셋이 필요 없고, 누락도 없다.
- *
- * 실행: `node scripts/build-province-outlines.cjs` (app/ 안에서).
+ * 위치 게임의 도(道) 단위 배경 경계를 만든다.
+ * 섬 누락을 피하려고 별도 도 데이터 대신 검증된 시/군 경계를 도별로 합친다.
+ * 실행: app/에서 `node scripts/build-province-outlines.cjs`.
  */
 const fs = require('fs');
 const path = require('path');
@@ -98,9 +84,7 @@ function bboxOfRings(rings) {
   return { lonMin, lonMax, latMin, latMax };
 }
 
-// addr(시/군)들을 도 단위로 묶어 그 도에 속한 모든 시/군의 링을 합친다.
-// hospital_locations.json에 실린 addr만 다루므로, 실제로 배경으로 그려질
-// 도들은 전부 빠짐없이 커버된다.
+// 병원 데이터에 있는 시/군 링을 도 단위로 합친다.
 const ringsByProvince = new Map();
 for (const [addr, features] of resolved) {
   const prov = addr.split(' ')[0];

@@ -39,9 +39,7 @@ function cityLabel(addr: string): string {
   return addr.split(' ')[1] ?? addr;
 }
 
-/** `pickedId`가 null이면(시간 초과까지 아무것도 안 고름) "빗나갔다"가 아니라
- * "시간이 초과됐다"로 - 둘 다 0점이라 점수만 보면 같지만, 안 고른 것과
- * 골랐는데 틀린 건 다른 상황이라 문구도 구분한다(사용자 피드백). */
+/** 미선택 시간 초과와 오답 문구를 구분한다. */
 function verdictForPoints(points: number, pickedId: string | null): string {
   if (pickedId === null) return '시간이 초과됐어요';
   if (points === RANK_POINTS[0]) return '정답이에요!';
@@ -53,14 +51,9 @@ function verdictForPoints(points: number, pickedId: string | null): string {
 
 interface RoundChoice {
   countyAddr: string;
-  /** "보훈 대상자"가 있는 동(읍/면/동) - 시/군 전체를 다 강조하면 후보 병원이
-   * 다 그 안에 들어와 판단 근거가 없어지므로(사용자 피드백), 시/군보다 한
-   * 단계 좁은 동 하나를 라운드마다 무작위로 골라 지도에 옅게 강조하고 위치
-   * 문구에도 그 동 이름을 쓴다. 그 시/군에 동 데이터가 없으면(정상적으로는
-   * 발생하지 않아야 함) null - 이때는 시/군 이름만 보여주고 강조도 생략한다. */
+  /** 강조할 읍/면/동. 데이터가 없으면 null. */
   dong: DongOutline | null;
-  /** 실제 거리 계산/지도 중심에 쓰는 원점 - `dong?.center`가 있으면 그것,
-   * 없으면 시/군 중심(`RegionsIndex.centers`)으로 대체한다. */
+  /** 거리 계산 원점. 동 중심이 없으면 시/군 중심이다. */
   origin: LatLng;
   round: NearestRound;
 }
@@ -120,24 +113,13 @@ export function LocationGame() {
     pausedRef.current = paused;
   }, [paused]);
 
-  // 앱 시작 시 1회: 이번 판 5라운드에서 쓸 지역 + 병원 후보를 미리 다 뽑아
-  // 둔다. `_regions.json`은 시/군 확대 지도 기능에서 이미 만들어 둔 시/군/구
-  // 목록 + 중심점 인덱스를 그대로 재사용한다.
-  //
-  // 후보들이 서로 아주 가까운 건 문제 삼지 않는다 - 부산처럼 병원이 촘촘한
-  // 대도시라면 후보 5곳이 좁은 범위에 몰려 있는 게 오히려 자연스럽다(사용자
-  // 피드백). 대신 두 후보가 지도 위에서 핀/라벨이 겹쳐 하나처럼 보이는 것만
-  // `selectNearestChoices`의 `minSeparationKm`으로 막는다.
+  // 한 게임의 지역과 후보를 시작 시 확정한다.
   useEffect(() => {
     if (!pool.length) return;
     let cancelled = false;
     Promise.all([loadRegionsIndex(), loadDongOutlines()]).then(([index, dongsByAddr]) => {
       if (cancelled) return;
-      // 병원 주소를 "OO시"까지가 아니라 "OO시 OO동"까지 보여달라는 요청
-      // (사용자 피드백)에 따라, 병원 좌표가 실제로 어느 동 경계 안에
-      // 들어가는지 역지오코딩한다 - hospital_locations.json 자체엔 동
-      // 정보가 없고 좌표만 있어서, 이미 갖고 있는 동 경계 데이터로 직접
-      // 찾는다. 못 찾으면(경계 위 오차 등) 시/군까지만 보여준다.
+      // 좌표를 동 경계에 대입하고 실패하면 시/군 주소만 쓴다.
       const hospitalPoints: HospitalPoint[] = pool.map((h) => {
         const dongName = findDongName(dongsByAddr[h.addr_hint] ?? [], { lat: h.latitude, lng: h.longitude });
         return {
@@ -154,10 +136,6 @@ export function LocationGame() {
       for (const addr of candidates) {
         if (rounds.length >= ROUND_COUNT) break;
         if (usedAddrs.has(addr)) continue;
-        // 그 시/군 안의 동 하나를 라운드마다 무작위로 골라 "보훈 대상자"의
-        // 위치로 쓴다 - 시/군 중심 고정점 하나만 쓰면 매번 같은 지점이라
-        // 다양성이 없고, 시/군 전체를 강조하면 후보가 다 그 안에 들어와
-        // 판단 근거가 없어진다(사용자 피드백).
         const dongList = dongsByAddr[addr];
         const dong = dongList?.length ? shuffle(dongList)[0] : null;
         const origin = dong?.center ?? index.centers[addr];
@@ -176,19 +154,7 @@ export function LocationGame() {
   const roundChoice = setup?.rounds[roundIndex] ?? null;
   const countyAddr = roundChoice?.countyAddr ?? null;
 
-  // 라운드마다 배경 지도를 만든다. 후보 병원/점수는 위에서 이미 다 정해져
-  // 있으니, 여기서는 지도에 그릴 배경만 만든다.
-  //
-  // 배경으로 그리는 땅(도 경계)과 화면에 실제로 보여줄 확대 범위(줌)는
-  // 서로 다른 문제라 따로 계산한다:
-  // - 땅: 후보 병원이 시작 지점의 시/군 밖(이웃 시/군, 드물게 이웃 도)에
-  //   있는 경우가 흔해서, 관련된 도(道) 전체를 합쳐 그린다(안 그러면 그
-  //   시/군 밖 후보가 빈 그리드 위에 덩그러니 떠 있게 됨).
-  // - 줌: 도 전체 크기로 맞추면, 후보들이 실제로는 한 동네에 몰려있을 때도
-  //   지도가 넓게 잡혀 핀 라벨이 서로 겹친다 - 그래서 줌은 도 크기와 무관하게
-  //   시작점+병원 후보들의 실제 위치만 기준으로 딱 맞게 잡는다
-  //   (`boundsForPoints`). 도 폴리곤 중 화면 밖으로 나가는 부분은 그냥 안
-  //   보일 뿐이고, 렌더링엔 문제없다.
+  // 배경은 관련 도 전체, 줌은 실제 후보 위치를 기준으로 잡는다.
   useEffect(() => {
     if (!countyAddr || !roundChoice) return;
     const { origin } = roundChoice;
@@ -213,9 +179,7 @@ export function LocationGame() {
     };
   }, [countyAddr, roundChoice]);
 
-  // finishRound(아래)의 정체성을 고정해 두어야, roundChoice/region이 라운드
-  // 도중에 로드 완료되며 갈아끼워질 때 타이머 effect가 재실행되어 카운트다운이
-  // 처음으로 되돌아가는 일이 없다(regionRef와 같은 패턴).
+  // 비동기 지도 로드가 타이머를 초기화하지 않도록 현재 라운드를 ref에 둔다.
   const roundChoiceRef = useRef<RoundChoice | null>(null);
   useEffect(() => {
     roundChoiceRef.current = roundChoice;
@@ -223,9 +187,7 @@ export function LocationGame() {
 
   const isLastRound = roundIndex >= ROUND_COUNT - 1;
 
-  // 라운드당 정확히 한 번만 채점되도록 ref로 가드한다. (React StrictMode는
-  // setState(updaterFn) 형태의 업데이터 함수를 순수성 검증을 위해 개발 모드에서
-  // 두 번 호출하므로, 점수 반영 같은 부수효과는 업데이터 함수 안에 두지 않는다.)
+  // StrictMode에서도 라운드당 한 번만 채점한다.
   const revealedRef = useRef(false);
   useEffect(() => {
     revealedRef.current = revealed;
@@ -323,9 +285,7 @@ export function LocationGame() {
 
   const secondsLeft = Math.ceil(remainingMs / 1000);
   const countyLabel = countyAddr ?? '';
-  // 동 이름까지 있으면 "경기도 양주시 옥정동 인근", 없으면(동 데이터가 없는
-  // 극히 드문 경우) 시/군 이름까지만 - 시/군 전체를 강조하면 후보 병원이 다
-  // 그 안에 들어와 판단 근거가 없어지므로, 되도록 동 단위까지 좁혀서 보여준다.
+  // 동 이름까지 있으면 "경기도 양주시 옥정동 인근", 없으면 시/군 이름까지만.
   const dongName = roundChoice?.dong?.name ?? null;
   const locationLabel = dongName ? `${countyLabel} ${dongName} 인근` : countyLabel;
   const roundRegion = countyAddr && region?.countyAddr === countyAddr ? region : null;
@@ -370,10 +330,8 @@ export function LocationGame() {
         <div className={styles.questionPanel}>
           <div className={styles.qHeaderRow}>
             <span className={styles.qEyebrow}>MISSION {String(roundIndex + 1).padStart(2, '0')}</span>
-            {/* 데스크톱엔 아래 noteBox에 남은 시간이 있지만 그건 데스크톱
-                전용이라, 모바일에선 카운트다운이 아예 안 보이는 문제가
-                있었다(사용자 피드백) - 모바일에서는 이 카드 우측 상단에
-                따로 보여준다. */}
+            {/* 데스크톱엔 아래 noteBox에 남은 시간이 있지만 데스크톱 전용이라,
+                모바일에서는 이 카드 우측 상단에 따로 보여준다. */}
             {!revealed && (
               <span className={cx(styles.mobileTimer, 'hide-on-desktop')}>⏱ 남은 시간 {secondsLeft}초</span>
             )}

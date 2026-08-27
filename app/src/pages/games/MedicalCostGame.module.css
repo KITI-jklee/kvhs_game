@@ -86,9 +86,6 @@
   min-height: 0;
   display: flex;
   flex-direction: column;
-  /* 진행바 바로 아래 문제 카드가 상단에 딱 붙어 보였다(사용자 피드백:
-     "카드 좀 내려줘 너무 위에 붙어있어") - 진행바와 카드(.roundArea) 사이
-     간격만 넉넉히 띄운다. */
   gap: 26px;
   padding: 16px 20px 26px;
 }
@@ -97,9 +94,6 @@
   flex: none;
 }
 
-/* 진행바 다음 영역(카드+결과) - 진행바는 상단 바 바로 아래에 고정하고,
-   카드만 남는 공간 안에서 세로로 가운데 맞춘다(사용자 피드백: 모바일에서도
-   카드가 화면 가운데 오면 좋겠다). */
 .roundArea {
   flex: 1;
   min-height: 0;
@@ -169,7 +163,6 @@
   color: var(--color-muted-2);
 }
 
-/* ---- 라운드① 슬라이더 ---- */
 .sliderValue {
   font: 700 32px 'Pretendard Variable';
   color: var(--color-accent-strong);
@@ -182,10 +175,7 @@
   height: 6px;
 }
 
-/* 슬라이더가 로그 스케일이라 눈금도 균등 간격이 아니라 실제 로그 위치에
-   맞춰 찍어야 한다(사용자 피드백: 라벨 위치와 실제 값 위치가 어긋나 있었음)
-   - flex space-between 대신 각 눈금을 pricePositionRatio로 계산한 left%에
-   절대 위치시킨다. */
+/* 눈금을 로그 스케일의 실제 위치에 배치한다. */
 .sliderTicks {
   position: relative;
   width: 100%;
@@ -243,21 +233,16 @@
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid transparent;
   font: 500 12.5px 'Pretendard Variable';
-  /* 이 카드는 어두운 배경이라 기본 잉크색(어두운 색)을 그대로 물려받으면
-     글자가 안 보인다(사용자 피드백: "글자가 꺼매가지고 안보인다") -
-     .detailRow와 똑같이 밝은 색을 명시한다. */
   color: var(--color-accent-pale);
 }
 .bandResultRow + .bandResultRow {
   margin-top: 8px;
 }
-/* 정답 행은 선택 전 카드(.bandCard)처럼 테두리로 강조한다. */
 .bandResultCorrect {
   background: rgba(42, 191, 158, 0.14);
   border-color: var(--color-accent);
 }
-/* 순서 맞추기/예산 라운드 결과의 가격 표시용 - .tagOk/.tagMiss와 클래스를
-   나눠서, 명시도(specificity) 충돌로 정답/오답 색이 덮어써지지 않게 한다. */
+/* 정답/오답 태그와의 명시도 충돌을 피한다. */
 .priceStrong {
   color: #fff;
   font-weight: 700;
@@ -273,7 +258,6 @@
   color: var(--color-fake);
 }
 
-/* ---- 라운드③ 순서 맞추기 ---- */
 .reorderList {
   width: 100%;
   display: flex;
@@ -289,8 +273,7 @@
   border-radius: 12px;
   padding: 10px 12px;
   background: #fff;
-  /* 마우스/터치로 직접 끌어서 옮긴다 - touch-action:none이 없으면 모바일에서
-     드래그 제스처가 페이지 스크롤로 먹힌다. */
+  /* 드래그를 페이지 스크롤로 해석하지 않게 한다. */
   touch-action: none;
   cursor: grab;
   user-select: none;
@@ -319,7 +302,6 @@
   letter-spacing: -1px;
 }
 
-/* ---- 라운드④ 예산 챌린지 ---- */
 .budgetPill {
   background: var(--color-dark-1);
   color: #fff;
@@ -352,18 +334,12 @@
   cursor: default;
   opacity: 0.6;
 }
-/* 멀티 선택 토글 상태 - .bandResultCorrect와 같은 민트 강조를 써서
-   "선택됨"이라는 시각 언어를 결과 카드와 통일한다. */
 .budgetCardPicked {
   background: rgba(42, 191, 158, 0.14);
   border-color: var(--color-accent);
   color: var(--color-accent-strong);
 }
 
-/* ---- 라운드⑤ 더 비싼 것 고르기 ---- */
-/* 기준 가격을 미리 보여주지 않고 두 항목을 대등하게 비교하게 하므로, 예전
-   HIGHER(강조)/LOWER(기본) 버튼처럼 한쪽을 시각적으로 우대하지 않고 두
-   버튼을 완전히 동일한 스타일로 둔다. */
 .hlButtons {
   width: 100%;
   display: grid;
@@ -476,10 +452,6 @@
   flex-direction: column;
 }
 
-/* 라운드① 슬라이더 결과 - 예전엔 "내 예상 / 300,000원"을 한 줄에 좌우로
-   늘어놓기만 했는데, 글자 크기가 작고 값도 라벨과 비슷한 무게로 보여서
-   잘 안 읽혔다(사용자 피드백: "지금은 잘 안보여"). 세 값을 각각 박스로
-   나누고 값을 라벨보다 훨씬 크고 밝게 키워서 한눈에 비교되게 한다. */
 .statGrid {
   width: 100%;
   display: grid;
@@ -522,10 +494,6 @@
     display: none;
   }
   .body {
-    /* 진행바가 위쪽 바(DesktopContextBar)와 같은 폭·같은 좌우 경계를
-       쓰도록, .body 자체를 그 바와 똑같은 max-width 공식으로 맞춘다
-       (사용자 피드백: "위에 바랑 길이 똑같이"). 좌우 패딩은 안 주고
-       max-width로만 폭을 제한해야 두 요소의 너비가 정확히 일치한다. */
     padding: 10px 0 48px;
     gap: 18px;
     max-width: calc(var(--content-max) - 88px);
@@ -533,8 +501,6 @@
     width: 100%;
   }
   .roundArea {
-    /* 카드(+결과)는 기존처럼 좁게 유지하고, 그 안에서 가운데로 옮긴다
-       (가운데 정렬 자체는 기본 규칙에 이미 있음). */
     max-width: 640px;
     margin: 0 auto;
     width: 100%;

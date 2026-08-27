@@ -4,9 +4,7 @@
   opacity: 0;
   animation-name: petalFall;
   animation-timing-function: ease-in;
-  /* 한 번 떨어지고 끝나는 게 아니라, 화면이 떠 있는 동안 계속 떨어지도록
-     반복한다(사용자 피드백) - 조각마다 딜레이/속도가 달라서 계속 봐도
-     한 무리가 통째로 반복되는 느낌은 안 든다. */
+  /* 조각별 속도와 지연을 달리해 반복 패턴을 분산한다. */
   animation-iteration-count: infinite;
 }
 

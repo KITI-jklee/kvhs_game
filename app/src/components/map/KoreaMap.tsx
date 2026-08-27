@@ -19,62 +19,55 @@ export interface MapPin {
   label: string;
 }
 
-/** "보훈 대상자"가 있는 동네(읍/면/동) 경계 - 시/군 전체를 강조하면 후보
- * 병원이 다 그 안에 들어와 판단 근거가 없어지므로(사용자 피드백), 시/군보다
- * 한 단계 더 좁은 동 하나만 옅게 강조해서 보여준다. */
+/** 강조할 읍/면/동 경계. */
 export interface MapHighlight {
   /** GeoJSON 관례대로 [lng, lat] 순서인 다각형 외곽선들. */
   rings: [number, number][][];
 }
 
-/** 후보가 넓은 범위(도 경계 밖 여러 시/군)에 걸쳐 있는 라운드에서는 지도가
- * 그만큼 축소되는데, 그 시/군 안의 작은 동(예: 도심 동)은 실제 지리적
- * 크기가 작아서 화면에서 몇 px짜리 점으로 줄어든다 - 하필 정답 병원 핀이
- * (동 중심과 가장 가까운 병원이니 자주 그 위에) 그 작은 영역을 통째로
- * 덮어버려 강조 표시가 안 보이는 문제가 있었다(사용자 피드백: "인근 위치가
- * 안뜨는데?"). 강조 영역의 화면상 크기가 이 값보다 작으면 중심을 기준으로
- * 확대해서 최소한 이 정도는 보이게 한다. */
+/** 핀에 가리지 않을 강조 영역의 최소 크기. */
 const MIN_HIGHLIGHT_SIZE_PX = 32;
 
-/** 컨테이너 비율(가로/세로)을 그대로 fitBoundsToAspect에 넘기면, 후보들이
- * 남북으로 길게 퍼진 라운드(예: 해안선을 따라 늘어선 병원들)에서 컨테이너가
- * 세로로 좁고 길수록 지리적 범위(latSpan)까지 그만큼 늘어나 핀 간격이
- * 오히려 더 촘촘해진다(사용자 피드백: "위아래로 길거나 범위가 넓어서 잘
- * 안 보인다"). 컨테이너 비율에 이 값 이상의 하한을 둬서 latSpan이 필요
- * 이상으로 늘어나지 않게 하고, 남는 세로 공간은 위아래 여백(grid 배경)으로
- * 흡수한다 - letterbox가 조금 생기더라도 핀 사이 실제 간격을 지키는 쪽이
- * 낫다. */
+/** 지나치게 좁은 화면비에서도 핀 간격을 유지하기 위한 하한. */
 const MIN_CONTAINER_ASPECT = 0.62;
 
-/** 핀 원(반지름 9 + 테두리)이 실제로 차지하는 화면상 크기 - 라벨-핀 연결선을
- * 핀 중심이 아니라 원 바깥 가장자리부터 시작하게 해서 선이 원을 뚫고
- * 나오지 않게 한다. */
-const PIN_LABEL_GAP = 11;
+/** 핀 원의 반지름(뷰박스 단위) - 핀 그래픽과 라벨 배치 계산이 모두 이 값을 같이 쓴다. */
+const PIN_VISUAL_RADIUS = 7;
 
-/** 핀 2개 이상이 겹칠 때 라벨을 전부 아래로만 계단식으로 쌓으면, 핀에서
- * 먼 라벨일수록 "이게 저 핀 이름이 맞나?" 헷갈려 보인다(사용자 피드백:
- * "붙어있을 땐 하나는 위에 적히고 하나는 아래에 적히고 그럼 되지 않나?").
- * 그래서 위/아래를 번갈아 배치한다 - 클러스터 안에서 몇 번째로 겹치는지에
- * 따라 짝수 번째는 아래, 홀수 번째는 위로 보내고, 같은 방향 안에서만 더
- * 멀리 밀어낸다(레벨). 위쪽은 라벨 한 줄 높이만큼 더 확보해야 핀 원 위로
- * 글자가 안 걸친다. */
-const LABEL_BELOW_BASE = 14;
-const LABEL_ABOVE_BASE = 26;
-const LABEL_STEP = 22;
+/** 연결선을 시작할 핀 가장자리 간격. */
+const PIN_LABEL_GAP = 7;
 
-/** offsetIndex(클러스터 내 순번)를 라벨의 수직 오프셋(px, 부호로 위/아래
- * 구분)으로 바꾼다. */
-function labelDy(offsetIndex: number): number {
-  const level = Math.floor(offsetIndex / 2);
-  const isAbove = offsetIndex % 2 === 1;
-  return isAbove ? -(LABEL_ABOVE_BASE + level * LABEL_STEP) : LABEL_BELOW_BASE + level * LABEL_STEP;
+/** 라벨의 최소 상하 간격. */
+const LABEL_BELOW_BASE = 6;
+const LABEL_ABOVE_BASE = 18;
+const LABEL_STEP = 14;
+
+/** 라벨 이동량과 연결선 여부. */
+interface LabelPlacement {
+  dy: number;
+  dx: number;
+  needsLeader: boolean;
 }
+
+/** 실제 좌표는 유지하며 화면의 핀만 떨어뜨릴 최소 거리. */
+const MIN_PIN_SEPARATION_PX = 26;
+
+/** 글자 수로 라벨 충돌 폭을 추정한다. */
+function estimateLabelHalfWidth(label: string): number {
+  let width = 0;
+  for (const ch of label) width += ch === ' ' ? 5 : 10.5; // 폰트 10.5px 기준 대략치
+  return width / 2;
+}
+
+/** 라벨 한 줄의 추정 높이. */
+const LABEL_LINE_PX = 16;
+/** 지도 테두리에서 이 정도는 남기고 라벨 방향을 반대로 뒤집는다. */
+const EDGE_MARGIN_PX = 4;
 
 interface KoreaMapProps {
   /** 아직 로딩 중이면 null - 로딩 스켈레톤을 보여준다. */
   region: MapRegion | null;
-  /** "보훈 대상자"가 있는 동(읍/면/동) 영역 - 시/군 전체 지도 위에 그 동만
-   * 옅게 강조해서, 후보 병원 중 그 동에서 가장 가까운 곳을 가늠하게 한다. */
+  /** 강조할 읍/면/동 영역. */
   highlight: MapHighlight | null;
   pins: MapPin[];
   selectedId: string | null;
@@ -93,18 +86,21 @@ function polygonPath(points: Point[]): string {
 }
 
 export function KoreaMap({ region, highlight, pins, selectedId, correctId, revealed, disabled, onSelect }: KoreaMapProps) {
-  // 컨테이너가 실제로 차지하는 화면 비율을 측정해서, viewBox 비율을 거기에
-  // 정확히 맞춘다(fitBoundsToAspect) - letterbox(빈 여백)도, 강제 늘림(핀이
-  // 타원으로 찌그러짐)도 없이 지도를 꽉 채우려면 둘 중 하나가 아니라
-  // "지리적 범위 자체"를 컨테이너 비율에 맞게 넓혀야 한다.
+  // 컨테이너 화면비에 맞춰 지리 범위를 확장한다.
   const wrapRef = useRef<HTMLDivElement>(null);
   const [aspect, setAspect] = useState(1);
+  const [containerHeightPx, setContainerHeightPx] = useState(0);
+  const [containerWidthPx, setContainerWidthPx] = useState(0);
   useEffect(() => {
     const el = wrapRef.current;
     if (!el) return;
     const measure = () => {
       const rect = el.getBoundingClientRect();
-      if (rect.width > 0 && rect.height > 0) setAspect(rect.width / rect.height);
+      if (rect.width > 0 && rect.height > 0) {
+        setAspect(rect.width / rect.height);
+        setContainerHeightPx(rect.height);
+        setContainerWidthPx(rect.width);
+      }
     };
     measure();
     const observer = new ResizeObserver(measure);
@@ -123,36 +119,144 @@ export function KoreaMap({ region, highlight, pins, selectedId, correctId, revea
     return region.rings.map((ring) => polygonPath(ring.map(([lng, lat]) => projection.project({ lat, lng }))));
   }, [region, projection]);
 
-  // 병원 후보가 실제로 서로 가까울 때(같은 동네에 여러 곳) 라벨(이름표)이
-  // 겹쳐서 안 보이는 문제가 있었다(사용자 피드백) - 핀 좌표 사이 실제 거리가
-  // 규칙(minSeparationKm)을 지켜도, 후보가 아주 넓게 퍼진 라운드에서는 지도가
-  // 그만큼 축소되어 화면상 거리가 다시 가까워질 수 있다. 핀 자체 위치는
-  // 정확해야 하니 그대로 두고, 라벨만 서로 겹치는 핀끼리 계단식으로 아래로
-  // 내려서 겹치지 않게 한다.
-  const labelOffsetIndex = useMemo(() => {
-    if (!projection) return new Map<string, number>();
-    const projected = pins.map((pin) => ({ id: pin.id, p: projection.project(pin.center) }));
-    const CLUSTER_RADIUS = 42; // viewBox 단위 - 핀 히트 영역(18) + 라벨 폭 절반 정도
-    const offsets = new Map<string, number>();
-    for (let i = 0; i < projected.length; i++) {
-      const { id, p } = projected[i];
-      const usedIndices = new Set<number>();
-      for (let j = 0; j < i; j++) {
-        const other = projected[j];
-        const dx = other.p.x - p.x;
-        const dy = other.p.y - p.y;
-        if (Math.hypot(dx, dy) < CLUSTER_RADIUS) usedIndices.add(offsets.get(other.id) ?? 0);
-      }
-      let idx = 0;
-      while (usedIndices.has(idx)) idx++;
-      offsets.set(id, idx);
-    }
-    return offsets;
+  const projectedPins = useMemo(() => {
+    if (!projection) return [];
+    return pins.map((pin) => ({ id: pin.id, label: pin.label, p: projection.project(pin.center) }));
   }, [pins, projection]);
 
-  // 라벨(span)과 핀 원(svg circle)을 z-order 때문에 서로 다른 두 블록으로
-  // 나눠 그리지만(아래 렌더 참고), 각 핀의 선택/정답/오답 판정과 화면 좌표는
-  // 두 블록에 공통이므로 여기서 한 번만 계산해 재사용한다.
+  // 충돌 계산은 가변 viewBox가 아닌 화면 px 기준으로 한다.
+  const pxScale = projection && containerHeightPx > 0 ? containerHeightPx / projection.height : 1;
+
+  // 실제 좌표는 유지하고 겹친 핀의 표시 위치만 반발시킨다.
+  const nudgedPositions = useMemo(() => {
+    const positions = new Map(projectedPins.map(({ id, p }) => [id, { ...p }]));
+    const ids = projectedPins.map((p) => p.id);
+    const minSepUnits = MIN_PIN_SEPARATION_PX / pxScale;
+    for (let iter = 0; iter < 6; iter++) {
+      let moved = false;
+      for (let i = 0; i < ids.length; i++) {
+        for (let j = i + 1; j < ids.length; j++) {
+          const a = positions.get(ids[i])!;
+          const b = positions.get(ids[j])!;
+          let dx = b.x - a.x;
+          let dy = b.y - a.y;
+          let dist = Math.hypot(dx, dy);
+          if (dist >= minSepUnits) continue;
+          moved = true;
+          if (dist < 0.001) {
+            dx = 1;
+            dy = 0;
+            dist = 1;
+          }
+          const push = (minSepUnits - dist) / 2;
+          const ux = dx / dist;
+          const uy = dy / dist;
+          a.x -= ux * push;
+          a.y -= uy * push;
+          b.x += ux * push;
+          b.y += uy * push;
+        }
+      }
+      if (!moved) break;
+    }
+    return positions;
+  }, [projectedPins, pxScale]);
+
+  // 핀과 라벨 충돌을 같은 화면 px 단위로 계산한다.
+  const labelPlacement = useMemo(() => {
+    const placement = new Map<string, LabelPlacement>();
+    const ids = projectedPins.map((p) => p.id);
+    if (!ids.length) return placement;
+    const labelById = new Map(projectedPins.map((p) => [p.id, p.label]));
+    const px = new Map(ids.map((id) => {
+      const p = nudgedPositions.get(id)!;
+      return [id, { x: p.x * pxScale, y: p.y * pxScale }];
+    }));
+    // 충돌 검사에 쓸 핀 반지름과 최소 여유.
+    const pinRadiusPx = PIN_VISUAL_RADIUS * pxScale + 3;
+    // 배율이 커져도 라벨이 자기 핀을 벗어나게 최소 간격을 보정한다.
+    const visualPinRadiusPx = PIN_VISUAL_RADIUS * pxScale + 2;
+    const clearanceMarginPx = 1;
+    const belowBase = Math.max(LABEL_BELOW_BASE, visualPinRadiusPx + clearanceMarginPx);
+    const aboveBase = Math.max(LABEL_ABOVE_BASE, visualPinRadiusPx + clearanceMarginPx + LABEL_LINE_PX);
+
+    // 아래쪽부터 실제 충돌이 없는 첫 자리를 선택한다.
+    const placedRects: { left: number; right: number; top: number; bottom: number }[] = [];
+    const order = [...ids].sort((a, b) => px.get(b)!.y - px.get(a)!.y);
+    for (const id of order) {
+      const p = px.get(id)!;
+      const halfW = estimateLabelHalfWidth(labelById.get(id)!) + 4;
+      let dir: 'above' | 'below' = 'below';
+      let level = 0;
+      let dy = 0;
+      let rect = { left: 0, right: 0, top: 0, bottom: 0 };
+      let found = false;
+      // 빈자리가 없으면 충돌 점수가 가장 낮은 후보를 쓴다.
+      let bestScore = Infinity;
+      let bestDir: 'above' | 'below' = dir;
+      let bestLevel = level;
+      let bestDy = dy;
+      let bestRect = rect;
+      for (let attempt = 0; attempt < 8 && !found; attempt++) {
+        dir = attempt % 2 === 0 ? 'below' : 'above';
+        level = Math.floor(attempt / 2);
+        dy = dir === 'below' ? belowBase + level * LABEL_STEP : -(aboveBase + level * LABEL_STEP);
+        rect = { left: p.x - halfW, right: p.x + halfW, top: p.y + dy, bottom: p.y + dy + LABEL_LINE_PX };
+        const hitsPin = ids.some((otherId) => {
+          if (otherId === id) return false;
+          const op = px.get(otherId)!;
+          const closestX = Math.max(rect.left, Math.min(op.x, rect.right));
+          const closestY = Math.max(rect.top, Math.min(op.y, rect.bottom));
+          const dx = op.x - closestX;
+          const dyy = op.y - closestY;
+          return dx * dx + dyy * dyy < pinRadiusPx * pinRadiusPx;
+        });
+        const hitsLabel = placedRects.some(
+          (r) => rect.left < r.right && rect.right > r.left && rect.top < r.bottom && rect.bottom > r.top,
+        );
+        // 라벨 충돌과 지도 밖 잘림을 함께 검사한다.
+        const hitsTopEdge = containerHeightPx > 0 && rect.top < EDGE_MARGIN_PX;
+        const hitsBottomEdge = containerHeightPx > 0 && rect.bottom > containerHeightPx - EDGE_MARGIN_PX;
+        found = !hitsLabel && !hitsTopEdge && !hitsBottomEdge;
+        // 핀, 라벨, 테두리 순으로 충돌 비용을 매긴다.
+        const score = (hitsPin ? 100 : 0) + (hitsLabel ? 10 : 0) + (hitsTopEdge || hitsBottomEdge ? 1 : 0);
+        if (score < bestScore) {
+          bestScore = score;
+          bestDir = dir;
+          bestLevel = level;
+          bestDy = dy;
+          bestRect = rect;
+        }
+      }
+      if (!found) {
+        dir = bestDir;
+        level = bestLevel;
+        dy = bestDy;
+        rect = bestRect;
+      }
+      placedRects.push(rect);
+      placement.set(id, { dy, dx: 0, needsLeader: !(dir === 'below' && level === 0) });
+    }
+
+    // 좌우 테두리를 넘는 만큼 라벨을 안쪽으로 민다.
+    if (containerWidthPx > 0) {
+      for (const id of ids) {
+        const placed = placement.get(id)!;
+        const p = px.get(id)!;
+        const halfW = estimateLabelHalfWidth(labelById.get(id)!) + 4;
+        const left = p.x - halfW;
+        const right = p.x + halfW;
+        let dx = 0;
+        if (left < EDGE_MARGIN_PX) dx = EDGE_MARGIN_PX - left;
+        else if (right > containerWidthPx - EDGE_MARGIN_PX) dx = containerWidthPx - EDGE_MARGIN_PX - right;
+        if (dx !== 0) placement.set(id, { ...placed, dx, needsLeader: true });
+      }
+    }
+
+    return placement;
+  }, [projectedPins, nudgedPositions, pxScale, containerHeightPx, containerWidthPx]);
+
+  // 분리 렌더링하는 라벨과 핀의 공통 상태를 계산한다.
   const pinViews = useMemo(() => {
     if (!projection) return [];
     return pins.map((pin) => {
@@ -161,14 +265,14 @@ export function KoreaMap({ region, highlight, pins, selectedId, correctId, revea
       const isWrongPick = revealed && isSelected && pin.id !== correctId;
       return {
         pin,
-        p: projection.project(pin.center),
+        p: nudgedPositions.get(pin.id) ?? projection.project(pin.center),
         isSelected,
         isCorrect,
         isWrongPick,
-        offsetIndex: labelOffsetIndex.get(pin.id) ?? 0,
+        placement: labelPlacement.get(pin.id) ?? { dy: LABEL_BELOW_BASE, dx: 0, needsLeader: false },
       };
     });
-  }, [pins, projection, selectedId, revealed, correctId, labelOffsetIndex]);
+  }, [pins, projection, nudgedPositions, selectedId, revealed, correctId, labelPlacement]);
 
   const highlightPaths = useMemo(() => {
     if (!highlight || !projection) return [];
@@ -204,12 +308,58 @@ export function KoreaMap({ region, highlight, pins, selectedId, correctId, revea
     );
   }
 
+  // 선택 전에는 핀을, 공개 후에는 라벨을 위에 그린다.
+  const labelElements = pinViews.map(({ pin, p, isSelected, isCorrect, isWrongPick, placement }) => {
+    const labelClass = cx(
+      styles.pinLabel,
+      isCorrect && styles.pinLabelCorrect,
+      isWrongPick && styles.pinLabelWrong,
+      isSelected && !isCorrect && !isWrongPick && styles.pinLabelSelected,
+    );
+    const dyPx = placement.dy;
+    const dxPx = placement.dx;
+    const leftPct = `${(p.x / projection.width) * 100}%`;
+    const topPct = `${(p.y / projection.height) * 100}%`;
+    // 연결선은 핀 가장자리부터 라벨의 가까운 끝까지만 그린다.
+    const lineTop = dyPx > 0 ? PIN_LABEL_GAP : dyPx + LABEL_LINE_PX;
+    const lineLength = Math.max(0, dyPx > 0 ? dyPx - PIN_LABEL_GAP : -PIN_LABEL_GAP - (dyPx + LABEL_LINE_PX));
+    return (
+      <Fragment key={pin.id}>
+        {placement.needsLeader && (
+          <span
+            className={cx(styles.pinLeader, labelClass)}
+            style={
+              {
+                left: leftPct,
+                top: topPct,
+                transform: `translate(calc(-50% + ${dxPx}px), ${lineTop}px)`,
+                height: `${lineLength}px`,
+              } as CSSProperties
+            }
+            aria-hidden
+          />
+        )}
+        <span
+          className={labelClass}
+          style={
+            {
+              left: leftPct,
+              top: topPct,
+              '--label-dy': `${dyPx}px`,
+              '--label-dx': `${dxPx}px`,
+            } as CSSProperties
+          }
+        >
+          {pin.label}
+        </span>
+      </Fragment>
+    );
+  });
+
   return (
     <div className={styles.wrap} ref={wrapRef}>
       <div className={styles.grid} />
 
-      {/* 땅/강조 영역은 그대로 라벨보다 아래에 둔다(불투명 색이라 라벨보다
-         위로 가면 라벨이 통째로 안 보임). */}
       <svg
         className={styles.svg}
         viewBox={`0 0 ${projection.width} ${projection.height}`}
@@ -225,65 +375,7 @@ export function KoreaMap({ region, highlight, pins, selectedId, correctId, revea
         ))}
       </svg>
 
-      {/* 라벨(이름표)을 핀보다 먼저(=아래) 그린다 - 핀 후보가 서로 가까운
-         동네에선 계단식 오프셋을 줘도 라벨이 옆 핀의 원까지 뒤덮는 경우가
-         있었다(사용자 피드백: "모바일에서 클릭이 글자에 가려져서 안 보이는
-         경우도 있네"). 클릭 판정은 라벨이 pointer-events:none이라 원래도
-         막히지 않았지만, 핀 자체가 안 보이면 눌러야 할 위치를 알 수 없다 -
-         핀 원을 별도 svg로 라벨 위에 그려서 어떤 라벨과 겹치든 클릭 대상이
-         가려지지 않게 한다. */}
-      {pinViews.map(({ pin, p, isSelected, isCorrect, isWrongPick, offsetIndex }) => {
-        const labelClass = cx(
-          styles.pinLabel,
-          isCorrect && styles.pinLabelCorrect,
-          isWrongPick && styles.pinLabelWrong,
-          isSelected && !isCorrect && !isWrongPick && styles.pinLabelSelected,
-        );
-        const dyPx = labelDy(offsetIndex);
-        const leftPct = `${(p.x / projection.width) * 100}%`;
-        const topPct = `${(p.y / projection.height) * 100}%`;
-        // 연결선은 "핀 원 가장자리"부터 "라벨 시작 지점"까지만 그린다 - 아래로
-        // 밀린 라벨(dy > 0)이면 +GAP에서 dy까지, 위로 밀린 라벨(dy < 0)이면
-        // dy에서 -GAP까지. 두 경우 다 선의 위쪽 끝(lineTop)에서 길이(length)만큼
-        // 아래로 그으면 되도록 부호를 맞춰 정리한 값이다.
-        const lineTop = dyPx > 0 ? PIN_LABEL_GAP : dyPx;
-        const lineLength = Math.abs(dyPx) - PIN_LABEL_GAP;
-        return (
-          <Fragment key={pin.id}>
-            {/* 핀 후보 3곳 이상이 실제로 서로 아주 가까울 때는 계단식으로
-               내려간 라벨이 자기 핀에서 멀어 보여 "핀이랑 이름이 떨어져
-               있다"는 오해를 산다(사용자 피드백) - 라벨이 원래 자리(dy=0)에서
-               한 칸이라도 밀려났으면, 핀에서 라벨까지 얇은 선으로 이어서
-               어느 라벨이 어느 핀 것인지 명확히 보여준다. */}
-            {offsetIndex > 0 && (
-              <span
-                className={cx(styles.pinLeader, labelClass)}
-                style={
-                  {
-                    left: leftPct,
-                    top: topPct,
-                    transform: `translate(-50%, ${lineTop}px)`,
-                    height: `${lineLength}px`,
-                  } as CSSProperties
-                }
-                aria-hidden
-              />
-            )}
-            <span
-              className={labelClass}
-              style={
-                {
-                  left: leftPct,
-                  top: topPct,
-                  '--label-dy': `${dyPx}px`,
-                } as CSSProperties
-              }
-            >
-              {pin.label}
-            </span>
-          </Fragment>
-        );
-      })}
+      {!revealed && labelElements}
 
       <svg
         className={styles.svg}
@@ -309,14 +401,14 @@ export function KoreaMap({ region, highlight, pins, selectedId, correctId, revea
               }}
             >
               <circle className={styles.pinHit} r={18} />
-              <circle className={styles.pinCircle} r={9} />
+              <circle className={styles.pinCircle} r={PIN_VISUAL_RADIUS} />
               {isCorrect && (
-                <text className={styles.pinMark} y={3.5} textAnchor="middle">
+                <text className={styles.pinMark} y={2.8} textAnchor="middle">
                   ✓
                 </text>
               )}
               {isWrongPick && (
-                <text className={styles.pinMark} y={3.5} textAnchor="middle">
+                <text className={styles.pinMark} y={2.8} textAnchor="middle">
                   ✕
                 </text>
               )}
@@ -324,6 +416,8 @@ export function KoreaMap({ region, highlight, pins, selectedId, correctId, revea
           );
         })}
       </svg>
+
+      {revealed && labelElements}
 
     </div>
   );

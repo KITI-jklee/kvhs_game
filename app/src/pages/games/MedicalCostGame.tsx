@@ -158,10 +158,9 @@ export function MedicalCostGame() {
     );
   };
 
-  // 화살표 버튼 대신 마우스/터치로 직접 끌어서 순서를 바꾼다(사용자 피드백)
-  // - Pointer Capture를 쓰면 드래그 중 손가락/마우스가 그 행 바깥으로 나가도
-  // move/up 이벤트가 계속 그 행으로 들어와서, window 레벨 리스너 없이도
-  // 동작한다.
+  // 화살표 버튼 대신 마우스/터치로 직접 끌어서 순서를 바꾼다 - Pointer
+  // Capture를 쓰면 드래그 중 포인터가 행 바깥으로 나가도 move/up 이벤트가
+  // 계속 그 행으로 들어와서, window 레벨 리스너 없이도 동작한다.
   const reorderRowRefs = useRef<(HTMLDivElement | null)[]>([]);
   const dragRef = useRef<{ index: number; startY: number; rowHeight: number } | null>(null);
   const [dragIndex, setDragIndex] = useState<number | null>(null);
@@ -254,11 +253,9 @@ export function MedicalCostGame() {
         {round.items.map((item) => {
           const isFit = fitSet.has(item.id);
           const wasPicked = budgetPicks.has(item.id);
-          // 항목마다 "적중/오답/놓침"처럼 내 선택이 맞았는지를 알려주는
-          // 대신, 항목 자체가 예산 안에 드는지 사실을 그대로 보여주고
-          // (사용자 피드백: 이미지처럼) 내가 고른 항목은 하이라이트로 따로
-          // 표시한다 - 하이라이트 + 태그를 같이 보면 적중/오답/놓침도 그대로
-          // 읽어낼 수 있다.
+          // "적중/오답/놓침" 대신 항목 자체가 예산 안에 드는지를 그대로
+          // 보여주고, 내가 고른 항목은 하이라이트로 따로 표시한다 - 둘을
+          // 같이 보면 적중/오답/놓침도 자연히 읽힌다.
           return (
             <div key={item.id} className={cx(styles.bandResultRow, wasPicked && styles.bandResultCorrect)}>
               <span>{item.name}</span>
@@ -274,10 +271,8 @@ export function MedicalCostGame() {
     );
   };
 
-  // 기준 가격을 미리 보여주고 "다음 항목이 그보다 높은지/낮은지" 맞히던
-  // 방식(HIGHER/LOWER) 대신, 두 항목 다 가격을 가리고 "어느 쪽이 더
-  // 비쌀까"만 순수하게 비교하도록 바꿨다(사용자 피드백) - 미리 주어지는
-  // 기준값이 없어서 온전히 감으로 비교해야 한다.
+  // 기준 가격을 미리 보여주는 대신, 두 항목 다 가격을 가리고 "어느 쪽이 더
+  // 비쌀까"만 순수하게 감으로 비교하게 한다.
   const handleHigherLowerPick = (pickedId: string) => {
     if (!round || round.kind !== 'higherLower' || revealed) return;
     const pricierId = round.isHigher ? round.nextItem.id : round.refItem.id;

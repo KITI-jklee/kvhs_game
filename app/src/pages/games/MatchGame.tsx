@@ -23,8 +23,7 @@ const ROUND_SIZES = [6, 8, 10];
 const MATCH_HOLD_MS = 520;
 const MISMATCH_HOLD_MS = 820;
 const FINISH_DELAY_MS = 1100;
-/** 라운드 시작마다 카드를 전부 잠깐 보여주고 외울 시간을 준 뒤 뒤집는다
- * (사용자 요청). */
+/** 라운드 시작 시 카드 앞면을 보여주는 시간. */
 const PREVIEW_MS = 3000;
 
 // 5-3: 완료 시간·오답 횟수 기준 0~500점(최저 100점) 환산. 기준값은

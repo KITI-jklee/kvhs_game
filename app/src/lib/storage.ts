@@ -1,15 +1,4 @@
-/**
- * 브라우저 localStorage 계약 (API 명세서 C장 / DB 설계서 03·06·08 시트).
- * 서버가 없으므로 개인 최고기록·등급 계산은 전부 여기서 처리한다.
- *
- * 키:
- *   bohun_arcade.best_scores = { location, medical_cost, term_match }  (각 0~500)
- *   bohun_arcade.last_result = { game, score, grade, played_at }
- *
- * 예외 처리 원칙(기능설계서 8장): localStorage 접근 불가(프라이버시 모드 등)
- * 또는 값 손상 시 prevBest=0으로 간주하고 조용히 진행한다. 저장 실패도
- * 화면을 막지 않는다.
- */
+/** localStorage가 손상되거나 막혀도 기본값으로 계속 진행한다. */
 import type { GameId, Grade } from '../data/types';
 import { getGrade } from './grade';
 
@@ -50,7 +39,6 @@ function writeBestScores(next: BestScores): void {
   try {
     window.localStorage.setItem(LS_BEST_SCORES, JSON.stringify(next));
   } catch {
-    // 저장 실패는 조용히 무시(기능설계서 8장)
   }
 }
 
@@ -75,14 +63,10 @@ function writeLastResult(result: LastResult): void {
   try {
     window.localStorage.setItem(LS_LAST_RESULT, JSON.stringify(result));
   } catch {
-    // 저장 실패는 조용히 무시
   }
 }
 
-/** 종합 등급은 세 게임 중 최고점 하나가 아니라, 실제로 플레이해본 게임들의
- * 평균으로 매긴다(사용자 피드백) - 안 해본 게임까지 0점으로 같이 평균 내면
- * "몰라서 0점"과 "아직 안 해봄"을 구분 못 해서 부당하게 낮아지므로, 0점인
- * (=미도전) 게임은 평균에서 뺀다. 하나도 안 해봤으면 0점. */
+/** 종합 점수는 미도전 게임을 제외한 평균이다. */
 export function overallScoreFromBestScores(bestScores: BestScores): number {
   const played = Object.values(bestScores).filter((score) => score > 0);
   if (played.length === 0) return 0;
@@ -99,10 +83,7 @@ export interface RecordResultOutcome {
   bestScores: BestScores;
 }
 
-/**
- * DB 설계서 06_등급산정로직의 onResultScreenEnter(game, score)를 그대로 구현.
- * 결과 화면 진입 시(또는 게임 종료 시) 정확히 한 번 호출한다.
- */
+/** 결과 화면 진입 시 한 번 호출한다. */
 export function recordResult(game: GameId, score: number, grades: Grade[]): RecordResultOutcome {
   const clamped = Math.max(0, Math.min(500, Math.round(score)));
   const best = readBestScores();

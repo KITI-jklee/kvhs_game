@@ -137,8 +137,6 @@
   transition: transform 180ms ease, box-shadow 180ms ease;
 }
 
-/* 게임 카드와 같은 hover 리프트 - 이 배너도 카드처럼 생겼으니 마우스를
-   올렸을 때 같은 방식으로 반응해야 자연스럽다(사용자 피드백). */
 @media (hover: hover) {
   .gradeBand:hover,
   .gradeCompact:hover {

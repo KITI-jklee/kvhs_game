@@ -1,12 +1,4 @@
-/**
- * Shared data shapes for the arcade.
- *
- * `HospitalLocation` / `MedicalTermPair` mirror the static JSON contract in
- * the API 명세서 (B장) and DB 설계서 (05_정적JSON_명세) byte for byte - field
- * names must stay in sync with `build_game_data.py`'s output and with
- * `public/data/*.json`. `MedicalCostItem`은 별도로 `scripts/build-medical-costs.cjs`가
- * 만든다(원본 명세서 이후 추가된 게임②).
- */
+/** 필드명은 정적 JSON 생성 스크립트의 출력과 일치해야 한다. */
 
 export type GameId = 'location' | 'medical_cost' | 'term_match';
 
@@ -40,9 +32,7 @@ export interface HospitalLocation {
   region_note?: string;
 }
 
-/** 게임② 콘텐츠(의료비 감각 테스트) - `scripts/build-medical-costs.cjs`가
- * 실제 비급여 수가 공개 데이터(`suga_보훈병원_비급여수가정보.json`)에서
- * 큐레이션해서 만든다. */
+/** build-medical-costs.cjs가 생성하는 의료비 항목. */
 export interface MedicalCostItem {
   id: string;
   name: string;

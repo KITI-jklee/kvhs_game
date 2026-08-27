@@ -1,26 +1,8 @@
 /**
- * "가장 가까운 위탁병원 찾기" 게임의 "보훈 대상자 위치" 힌트를 시/군 전체가
- * 아니라 그 안의 읍/면/동 단위로 보여주기 위한 경계 데이터를 만든다.
- *
- * 배경: 시/군 전체를 옅게 채우는 방식은 후보 병원이 다 그 안에 들어오니까
- * "판단 근거가 없다"는 사용자 피드백에 따라, 시/군 안의 특정 동(예: "경기도
- * 양주시 옥정동")만 옅게 강조 표시하도록 바꾼다. 그러려면 읍/면/동 단위
- * 경계선 + 이름 데이터가 필요하다(기존 city_outlines/province_outlines는
- * 시/군, 도 단위뿐).
- *
- * 데이터 출처: southkorea/southkorea-maps 저장소의 2018년 읍면동(submunicipalities)
- * TopoJSON(WGS84).
- *   https://github.com/southkorea/southkorea-maps
- *   raw: kostat/2018/json/skorea-submunicipalities-2018-topo-simple.json
- * `skorea-submunicipalities-2018-topo-simple.json`으로 이 폴더에 받아두었다.
- *
- * 읍/면/동 -> 부모 시/군 대응: 이 데이터셋의 `code`는 7자리(예: "1101053" =
- * 종로구 "11010" + 동 순번 "53")라, 앞 5자리가 municipalities 데이터셋의
- * `code`(예: 종로구 "11010")와 그대로 일치한다 - build-city-outlines.cjs와
- * 동일한 시/군 분해·별칭 로직으로 addr_hint별 5자리 코드 집합을 만들고, 그
- * 집합에 속하는 동만 그 addr의 것으로 묶는다.
- *
- * 실행: `node scripts/build-dong-outlines.cjs` (app/ 안에서).
+ * 위치 게임에서 강조할 읍/면/동 경계 데이터를 만든다.
+ * 출처: southkorea/southkorea-maps의 2018년 읍면동 TopoJSON(WGS84).
+ * 7자리 동 코드는 앞 5자리 시/군 코드로 `addr_hint`에 연결한다.
+ * 실행: app/에서 `node scripts/build-dong-outlines.cjs`.
  */
 const fs = require('fs');
 const path = require('path');
@@ -87,10 +69,7 @@ for (const addr of addrList) {
   if (filtered.length) resolved.set(addr, filtered);
 }
 
-// 5자리 코드 -> 그 코드를 쓰는 addr들 (분구된 시는 여러 개, "부산진구"/"진구"
-// 오타처럼 같은 지역을 가리키는 addr_hint가 두 가지로 들어와도 둘 다 담는다 -
-// Map<code, addr>로 하나만 남기면 나중에 들어온 쪽이 앞의 것을 덮어써서 다른
-// 쪽 addr은 동 데이터가 0개가 되어 버린다).
+// 같은 지역의 별칭도 보존해야 하므로 코드 하나에 여러 addr을 연결한다.
 const addrsByCityCode = new Map();
 for (const [addr, features] of resolved) {
   for (const f of features) {
@@ -177,13 +156,7 @@ function landPointOfRing(ring) {
   return best ?? centroid;
 }
 
-// 행정구역상으로는 그 시/군 소속이지만, 실제로는 본토(그 섬)보다 육지에
-// 훨씬 가까운 예외적인 동/읍/면 - "제주도는 병원이 20개나 있으니 항상 제주
-// 안에서만 후보가 나와야 한다"는 사용자 기대와 달리, 추자면(추자도)은
-// 제주 본섬보다 전남 완도가 훨씬 가까워서(약 34km vs 제주 본섬까지 90km+)
-// 그 동을 뽑으면 정답 자체가 육지 병원이 되어버린다 - 원래 위치상 그게
-// 맞는 답이지만, 게임 취지("제주는 제주 안에서")에 안 맞으므로 아예 후보
-// 동 목록에서 뺀다.
+// 추자면은 제주 본섬보다 완도가 가까워 게임 기대와 어긋나므로 제외한다.
 const EXCLUDED_DONGS = new Set(['제주특별자치도 제주시:추자면']);
 
 const byAddr = new Map();

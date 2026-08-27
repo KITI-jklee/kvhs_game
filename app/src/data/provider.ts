@@ -1,16 +1,6 @@
 import type { GameSummary, Grade } from './types';
 
-/**
- * ---------------------------------------------------------------------------
- * STATIC APP CONTENT (games list, grade table)
- * ---------------------------------------------------------------------------
- * Game *content* (hospital locations/names, term pairs) is no longer mocked
- * here - it's loaded at app start from `public/data/*.json` via
- * `data/loader.tsx`, which is the seam for the real 한국보훈복지의료공단 데이터
- * (see `build_game_data.py`). This file only holds content that has no
- * external data source: the game catalogue and the grade table.
- * ---------------------------------------------------------------------------
- */
+// 외부 데이터가 없는 게임 목록과 등급표. 게임 데이터는 loader.tsx에서 읽는다.
 
 const GAMES: GameSummary[] = [
   {
