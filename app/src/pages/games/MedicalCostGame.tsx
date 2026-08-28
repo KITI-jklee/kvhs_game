@@ -17,6 +17,7 @@ import {
   SLIDER_MAX,
   SLIDER_MIN,
   buildRounds,
+  clampPrice,
   pricePositionRatio,
   scoreBudgetPicks,
   scoreReorder,
@@ -76,7 +77,7 @@ function shuffledDisplayOrder(items: MedicalCostItem[]): MedicalCostItem[] {
  * click이 그 경우엔 스스로를 건너뛴다 - 두 경로가 절대 같은 타이밍에
  * 겹쳐 실행되지 않으므로 한 번 눌러 값이 2배로 뛰는 일이 구조적으로
  * 불가능하다. */
-function useHoldStep(onTick: () => void) {
+function useHoldStep(onTick: () => void, disabled: boolean) {
   const onTickRef = useRef(onTick);
   useEffect(() => {
     onTickRef.current = onTick;
@@ -94,11 +95,20 @@ function useHoldStep(onTick: () => void) {
 
   useEffect(() => clearTimers, []);
 
+  // 홀드 도중 멀티터치로 다른 손가락이 일시정지/공개를 눌러도 이 버튼에는
+  // pointerup/leave/cancel이 오지 않을 수 있다(터치는 최초 타깃에 암묵적으로
+  // 캡처된다) - disabled로 바뀌는 즉시 반복 타이머를 직접 끊어준다.
+  useEffect(() => {
+    if (disabled) clearTimers();
+  }, [disabled]);
+
   return {
     onPointerDown: () => {
+      if (disabled) return;
       clearTimers();
       repeatStartedRef.current = false;
       timeoutRef.current = setTimeout(() => {
+        if (disabled) return; // 450ms 사이 disabled로 바뀌었으면 반복을 시작하지 않는다
         repeatStartedRef.current = true;
         onTickRef.current(); // 반복 모드로 전환되는 순간의 첫 틱
         intervalRef.current = setInterval(() => onTickRef.current(), 90);
@@ -148,6 +158,8 @@ export function MedicalCostGame() {
   const [budgetPicks, setBudgetPicks] = useState<Set<string>>(new Set());
 
   const round = rounds?.[roundIndex] ?? null;
+  // useHoldStep에도 넘겨야 해서 조기 return(round 없을 때)보다 앞서 계산한다.
+  const disabled = paused || showIntro || revealed;
 
   const isLastRound = roundIndex >= ROUND_COUNT - 1;
 
@@ -161,13 +173,13 @@ export function MedicalCostGame() {
   };
 
   const adjustSliderPrice = (amount: number) => {
-    setSliderPrice((price) => Math.min(SLIDER_MAX, Math.max(SLIDER_MIN, price + amount)));
+    setSliderPrice((price) => clampPrice(price + amount));
   };
 
-  const stepMinusCoarse = useHoldStep(() => adjustSliderPrice(-10_000));
-  const stepMinusFine = useHoldStep(() => adjustSliderPrice(-1_000));
-  const stepPlusFine = useHoldStep(() => adjustSliderPrice(1_000));
-  const stepPlusCoarse = useHoldStep(() => adjustSliderPrice(10_000));
+  const stepMinusCoarse = useHoldStep(() => adjustSliderPrice(-10_000), disabled);
+  const stepMinusFine = useHoldStep(() => adjustSliderPrice(-1_000), disabled);
+  const stepPlusFine = useHoldStep(() => adjustSliderPrice(1_000), disabled);
+  const stepPlusCoarse = useHoldStep(() => adjustSliderPrice(10_000), disabled);
 
   const handleSliderConfirm = () => {
     if (!round || round.kind !== 'slider') return;
@@ -398,8 +410,6 @@ export function MedicalCostGame() {
   if (!round) {
     return <FullScreenNotice variant="modal" icon="⏳" title="게임 데이터를 불러오는 중입니다..." />;
   }
-
-  const disabled = paused || showIntro || revealed;
 
   return (
     <div className={styles.page}>

@@ -36,8 +36,9 @@
   padding: 9px;
   display: flex;
   flex-direction: column;
-  /* 긴 항목명이 카드 밖으로 넘지 않게 한다. */
-  overflow: hidden;
+  /* 긴 항목명은 .title이 자체 line-clamp + overflow:hidden(아래)으로 이미
+     잘라낸다 - 여기서 또 overflow:hidden을 걸면 카드 모서리에 -1px로 살짝
+     겹쳐 붙인 매칭 체크 배지(.check)까지 같이 잘려나가므로 걸지 않는다. */
 }
 
 .faceBack {

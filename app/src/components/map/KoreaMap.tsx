@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useMemo, useRef, useState, type CSSProperties } from 'react';
+import { Fragment, useLayoutEffect, useMemo, useRef, useState, type CSSProperties } from 'react';
 import type { Bounds, LatLng, Point } from '../../lib/geo';
 import { createProjection, fitBoundsToAspect } from '../../lib/geo';
 import { cx } from '../../lib/cx';
@@ -73,6 +73,9 @@ interface KoreaMapProps {
   selectedId: string | null;
   /** `revealed`가 true일 때만 의미 있음. */
   correctId: string | null;
+  /** 1등과는 다른 핀을 골랐지만 거리가 사실상 같아 정답으로 인정된 경우 - `revealed`가
+   * true일 때만 의미 있고, 이때는 고른 핀도 오답(✕)이 아니라 정답으로 그려야 한다. */
+  tieCredited?: boolean;
   revealed: boolean;
   disabled?: boolean;
   onSelect: (id: string) => void;
@@ -85,13 +88,25 @@ function polygonPath(points: Point[]): string {
   return `M ${first.x} ${first.y} ${rest.map((p) => `L ${p.x} ${p.y}`).join(' ')} Z`;
 }
 
-export function KoreaMap({ region, highlight, pins, selectedId, correctId, revealed, disabled, onSelect }: KoreaMapProps) {
+export function KoreaMap({
+  region,
+  highlight,
+  pins,
+  selectedId,
+  correctId,
+  tieCredited = false,
+  revealed,
+  disabled,
+  onSelect,
+}: KoreaMapProps) {
   // 컨테이너 화면비에 맞춰 지리 범위를 확장한다.
   const wrapRef = useRef<HTMLDivElement>(null);
   const [aspect, setAspect] = useState(1);
   const [containerHeightPx, setContainerHeightPx] = useState(0);
   const [containerWidthPx, setContainerWidthPx] = useState(0);
-  useEffect(() => {
+  // useEffect(페인트 후 실행)가 아니라 useLayoutEffect(페인트 전 실행)를 써야
+  // 마운트 첫 프레임에 SVG가 0x0(빈 지도)로 잠깐 그려지는 걸 막을 수 있다.
+  useLayoutEffect(() => {
     const el = wrapRef.current;
     if (!el) return;
     const measure = () => {
@@ -148,6 +163,10 @@ export function KoreaMap({ region, highlight, pins, selectedId, correctId, revea
   const pxScale = projection && contentBox.height > 0 ? contentBox.height / projection.height : 1;
 
   // 실제 좌표는 유지하고 겹친 핀의 표시 위치만 반발시킨다.
+  // 주의: 이건 화면 px 기준 뭉침/겹침 방지이고, 실제 위경도(km) 기준 뭉침 방지는
+  // lib/nearestHospital.ts의 selectNearestChoices(clusterRadiusKm/wouldCluster)가
+  // 별도로 담당한다. 두 로직은 서로 참조하지 않는 독립된 안전장치이니, 한쪽을
+  // 단순화하거나 제거할 때는 반드시 다른 쪽이 같은 문제를 커버하는지 확인할 것.
   const nudgedPositions = useMemo(() => {
     const positions = new Map(projectedPins.map(({ id, p }) => [id, { ...p }]));
     const ids = projectedPins.map((p) => p.id);
@@ -298,8 +317,21 @@ export function KoreaMap({ region, highlight, pins, selectedId, correctId, revea
     }
     for (const [id, value] of best.result) placement.set(id, value);
 
-    // 지도 좌우 경계를 넘는 라벨은 안쪽으로 민다.
+    // 지도 좌우 경계를 넘는 라벨은 안쪽으로 민다 - 다만 그 이동으로 다른 핀/라벨과
+    // 새로 겹치게 되면 밀지 않는다(화면 밖으로 살짝 넘치는 것보다 다른 라벨/핀과
+    // 겹치는 쪽이 더 눈에 띄는 문제라, 앞서 고른 충돌 없는 배치를 깨지 않는다).
     if (contentBox.width > 0) {
+      const currentRect = (id: string) => {
+        const placed = placement.get(id)!;
+        const p = px.get(id)!;
+        const halfW = estimateLabelHalfWidth(labelById.get(id)!) + 4;
+        return {
+          left: p.x + placed.dx - halfW,
+          right: p.x + placed.dx + halfW,
+          top: p.y + placed.dy,
+          bottom: p.y + placed.dy + LABEL_LINE_PX,
+        };
+      };
       for (const id of ids) {
         const placed = placement.get(id)!;
         const p = px.get(id)!;
@@ -309,7 +341,23 @@ export function KoreaMap({ region, highlight, pins, selectedId, correctId, revea
         let dx = placed.dx;
         if (left < EDGE_MARGIN_PX) dx = placed.dx + (EDGE_MARGIN_PX - left);
         else if (right > contentBox.width - EDGE_MARGIN_PX) dx = placed.dx + (contentBox.width - EDGE_MARGIN_PX - right);
-        if (dx !== placed.dx) placement.set(id, { ...placed, dx, needsLeader: true });
+        if (dx === placed.dx) continue;
+        const shiftedRect = { left: p.x + dx - halfW, right: p.x + dx + halfW, top: p.y + placed.dy, bottom: p.y + placed.dy + LABEL_LINE_PX };
+        const hitsOtherPin = ids.some((otherId) => {
+          if (otherId === id) return false;
+          const op = px.get(otherId)!;
+          const closestX = Math.max(shiftedRect.left, Math.min(op.x, shiftedRect.right));
+          const closestY = Math.max(shiftedRect.top, Math.min(op.y, shiftedRect.bottom));
+          const dxp = op.x - closestX;
+          const dyy = op.y - closestY;
+          return dxp * dxp + dyy * dyy < pinRadiusPx * pinRadiusPx;
+        });
+        const hitsOtherLabel = ids.some((otherId) => {
+          if (otherId === id) return false;
+          const r = currentRect(otherId);
+          return shiftedRect.left < r.right && shiftedRect.right > r.left && shiftedRect.top < r.bottom && shiftedRect.bottom > r.top;
+        });
+        if (!hitsOtherPin && !hitsOtherLabel) placement.set(id, { ...placed, dx, needsLeader: true });
       }
     }
 
@@ -321,8 +369,12 @@ export function KoreaMap({ region, highlight, pins, selectedId, correctId, revea
     if (!projection) return [];
     return pins.map((pin) => {
       const isSelected = selectedId === pin.id;
-      const isCorrect = revealed && pin.id === correctId;
-      const isWrongPick = revealed && isSelected && pin.id !== correctId;
+      // 1등 핀은 항상 정답으로 표시하고, 1등과 다른 핀이라도 거리가 미미해 정답으로
+      // 인정된 픽(tieCredited)이면 오답(✕)이 아니라 정답으로 그린다 - 점수/문구와
+      // 지도 표시가 서로 다른 답을 말하는 모순을 막는다.
+      const isTiedPick = revealed && isSelected && tieCredited && pin.id !== correctId;
+      const isCorrect = revealed && (pin.id === correctId || isTiedPick);
+      const isWrongPick = revealed && isSelected && pin.id !== correctId && !isTiedPick;
       return {
         pin,
         p: nudgedPositions.get(pin.id) ?? projection.project(pin.center),
@@ -332,7 +384,7 @@ export function KoreaMap({ region, highlight, pins, selectedId, correctId, revea
         placement: labelPlacement.get(pin.id) ?? { dy: LABEL_BELOW_BASE, dx: 0, needsLeader: false },
       };
     });
-  }, [pins, projection, nudgedPositions, selectedId, revealed, correctId, labelPlacement]);
+  }, [pins, projection, nudgedPositions, selectedId, revealed, correctId, tieCredited, labelPlacement]);
 
   const highlightPaths = useMemo(() => {
     if (!highlight || !projection) return [];

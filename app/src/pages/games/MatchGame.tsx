@@ -10,7 +10,7 @@ import { PauseOverlay } from '../../components/PauseOverlay';
 import { GameIntroOverlay } from '../../components/GameIntroOverlay';
 import { useGameData } from '../../data/gameDataContext';
 import type { MedicalTermPair } from '../../data/types';
-import { buildMatchDeck, type DeckCard } from '../../lib/matchDeck';
+import { buildMatchDeck, isFallbackCategoryMatch, type DeckCard } from '../../lib/matchDeck';
 import { formatClock, formatMinSec } from '../../lib/format';
 import { sample } from '../../lib/array';
 import { useGame } from '../../state/gameState';
@@ -221,9 +221,8 @@ export function MatchGame() {
     const aCategory = pairs[a.pairIndex]?.kind_mid;
     const bCategory = pairs[b.pairIndex]?.kind_mid;
     // 중복된 분류는 정확한 쌍이 아니어도 같은 분류끼리 정답으로 인정한다.
-    const isFallbackCategoryMatch =
-      a.kind !== b.kind && aCategory !== undefined && aCategory === bCategory && duplicatedCategories.has(aCategory);
-    if (a.pairIndex === b.pairIndex || isFallbackCategoryMatch) {
+    const fallbackMatch = isFallbackCategoryMatch(a.kind, b.kind, aCategory, bCategory, duplicatedCategories);
+    if (a.pairIndex === b.pairIndex || fallbackMatch) {
       const nextMatchedCardKeys = [...matchedCardKeys, a.key, b.key];
       scheduleTransition(() => {
         setMatchedCardKeys(nextMatchedCardKeys);

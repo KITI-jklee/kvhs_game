@@ -11,6 +11,13 @@ export const SLIDER_MIN = 10_000;
 // 실제 데이터 상한에 맞춰 정답이 없는 슬라이더 구간을 없앤다.
 export const SLIDER_MAX = 1_200_000;
 
+/** 가격을 슬라이더가 다룰 수 있는 [SLIDER_MIN, SLIDER_MAX] 범위로 자른다 -
+ * 슬라이더 위치 변환과 +-버튼 조정이 모두 이 함수를 같이 써야 두 곳의
+ * 클램프 규칙이 따로 놀지 않는다. */
+export function clampPrice(price: number): number {
+  return Math.min(SLIDER_MAX, Math.max(SLIDER_MIN, price));
+}
+
 /** 슬라이더 위치(0~1) -> 실제 가격(원, 1천원 단위로 보기 좋게 반올림). */
 export function sliderPositionToPrice(t: number): number {
   const clamped = Math.min(1, Math.max(0, t));
@@ -20,7 +27,7 @@ export function sliderPositionToPrice(t: number): number {
 
 /** 가격을 로그 슬라이더 위치(0~1)로 변환한다. */
 export function pricePositionRatio(price: number): number {
-  const clamped = Math.min(SLIDER_MAX, Math.max(SLIDER_MIN, price));
+  const clamped = clampPrice(price);
   return Math.log(clamped / SLIDER_MIN) / Math.log(SLIDER_MAX / SLIDER_MIN);
 }
 

@@ -167,6 +167,13 @@ export function LocationGame() {
   const roundChoice = setup?.rounds[roundIndex] ?? null;
   const countyAddr = roundChoice?.countyAddr ?? null;
 
+  // roundChoice가 바뀌지 않는 한(라운드 중 카운트다운 tick마다도) 같은 배열 참조를
+  // 유지해야 KoreaMap의 라벨 배치 useMemo가 매 100ms마다 다시 도는 걸 막을 수 있다.
+  const pins: MapPin[] = useMemo(
+    () => (roundChoice ? roundChoice.round.shuffled.map((c) => ({ id: c.id, center: c.center, label: c.name })) : []),
+    [roundChoice],
+  );
+
   // 배경은 관련 도 전체, 줌은 실제 후보 위치를 기준으로 잡는다.
   useEffect(() => {
     if (!countyAddr || !roundChoice) return;
@@ -305,9 +312,6 @@ export function LocationGame() {
   const locationLabel = dongName ? `${countyLabel} ${dongName} 인근` : countyLabel;
   const roundRegion = countyAddr && region?.countyAddr === countyAddr ? region : null;
   const highlight = roundChoice?.dong ? { rings: roundChoice.dong.rings } : null;
-  const pins: MapPin[] = roundChoice
-    ? roundChoice.round.shuffled.map((c) => ({ id: c.id, center: c.center, label: c.name }))
-    : [];
 
   return (
     <div className={styles.page}>
@@ -385,6 +389,7 @@ export function LocationGame() {
             pins={pins}
             selectedId={selectedId}
             correctId={roundChoice?.round.ranked[0]?.id ?? null}
+            tieCredited={reveal?.tieCredited ?? false}
             revealed={revealed}
             disabled={paused || showIntro}
             onSelect={handleSelect}
