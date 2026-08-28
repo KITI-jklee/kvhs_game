@@ -61,29 +61,54 @@ export function selectNearestChoices(
   const widenedPool = searchPool.filter((c) => c.km >= preferredMinKm).sort((a, b) => a.km - b.km);
   const fallbackPool = [...searchPool].sort((a, b) => a.km - b.km);
 
+  // 지도 규모에 비례한 반경으로 핀 3개 이상이 몰리는 것을 막는다.
+  const clusterRadiusKm = Math.max(correct.km * preferredGapMax * 0.18, 2);
+
   const chosen: NearestChoice[] = [correct];
-  const tryFill = (pool: NearestChoice[], respectSeparation: boolean) => {
+  const tryFill = (pool: NearestChoice[], respectSeparation: boolean, respectCluster: boolean) => {
     for (const candidate of pool) {
       if (chosen.length - 1 >= decoyCount) break;
       if (chosen.some((c) => c.id === candidate.id)) continue;
       const tooClose = respectSeparation && chosen.some((c) => haversineKm(c.center, candidate.center) < minSeparationKm);
-      if (!tooClose) chosen.push(candidate);
+      // 후보 추가 후 전체 집합에서 3개 이상 뭉치는지 검사한다.
+      const tentative = respectCluster ? [...chosen, candidate] : null;
+      const wouldCluster =
+        respectCluster &&
+        tentative!.some(
+          (p) => tentative!.filter((q) => q !== p && haversineKm(p.center, q.center) < clusterRadiusKm).length >= 2,
+        );
+      if (!tooClose && !wouldCluster) chosen.push(candidate);
     }
   };
-  // 거리 띠보다 핀 간격을 우선한다.
-  tryFill(preferredPool, true);
-  tryFill(widenedPool, true);
-  tryFill(fallbackPool, true);
-  tryFill(preferredPool, false);
-  tryFill(widenedPool, false);
-  tryFill(fallbackPool, false);
+  // 거리와 간격 조건을 단계적으로 완화해 후보 수를 채운다.
+  tryFill(preferredPool, true, true);
+  tryFill(widenedPool, true, true);
+  tryFill(fallbackPool, true, true);
+  tryFill(preferredPool, false, true);
+  tryFill(widenedPool, false, true);
+  tryFill(fallbackPool, false, true);
+  tryFill(preferredPool, false, false);
+  tryFill(widenedPool, false, false);
+  tryFill(fallbackPool, false, false);
 
   const ranked = chosen.sort((a, b) => a.km - b.km);
   return { ranked, shuffled: shuffle(ranked) };
 }
 
-/** `ranked`에서 고른 병원의 순위(0=1등)를 찾아 그 등수의 점수를 돌려준다. */
+/** 1등과의 차이가 10% 또는 300m 이내면 동률로 인정한다. */
+export function isTiedWithNearest(ranked: NearestChoice[], pickedId: string | null): boolean {
+  if (!ranked.length || !pickedId) return false;
+  const correct = ranked[0];
+  if (pickedId === correct.id) return true;
+  const picked = ranked.find((c) => c.id === pickedId);
+  if (!picked) return false;
+  const tolerance = Math.max(correct.km * 0.1, 0.3);
+  return picked.km - correct.km <= tolerance;
+}
+
+/** 선택한 병원의 순위 점수를 반환하며, 동률은 1등으로 처리한다. */
 export function pointsForPick(ranked: NearestChoice[], pickedId: string | null): number {
+  if (isTiedWithNearest(ranked, pickedId)) return RANK_POINTS[0];
   const index = ranked.findIndex((c) => c.id === pickedId);
   if (index < 0 || index >= RANK_POINTS.length) return 0;
   return RANK_POINTS[index];

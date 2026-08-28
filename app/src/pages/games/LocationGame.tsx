@@ -17,6 +17,7 @@ import { loadProvinceOutlines, type ProvinceOutline } from '../../lib/provinceOu
 import { findDongName, loadDongOutlines, type DongOutline } from '../../lib/dongOutline';
 import {
   RANK_POINTS,
+  isTiedWithNearest,
   loadRegionsIndex,
   pointsForPick,
   selectNearestChoices,
@@ -77,6 +78,8 @@ interface RevealInfo {
   pickedName: string | null;
   pickedAddr: string | null;
   pickedKm: number | null;
+  /** 1등과는 다른 병원을 골랐지만 거리가 사실상 같아 정답으로 인정된 경우. */
+  tieCredited: boolean;
 }
 
 interface RoundRecord {
@@ -130,14 +133,24 @@ export function LocationGame() {
           addr: dongName ? `${h.addr_hint} ${dongName}` : h.addr_hint,
         };
       });
+      // 쿼리 파라미터로 테스트할 첫 지역을 지정할 수 있다.
+      const debugParams = new URLSearchParams(window.location.search);
+      const debugAddr = debugParams.get('debugAddr');
+      const debugDong = debugParams.get('debugDong');
+
       const candidates = shuffle(Object.keys(index.centers));
+      if (debugAddr && index.centers[debugAddr]) {
+        candidates.splice(candidates.indexOf(debugAddr), 1);
+        candidates.unshift(debugAddr);
+      }
       const rounds: RoundChoice[] = [];
       const usedAddrs = new Set<string>();
       for (const addr of candidates) {
         if (rounds.length >= ROUND_COUNT) break;
         if (usedAddrs.has(addr)) continue;
         const dongList = dongsByAddr[addr];
-        const dong = dongList?.length ? shuffle(dongList)[0] : null;
+        const forcedDong = addr === debugAddr && debugDong ? dongList?.find((d) => d.name === debugDong) : undefined;
+        const dong = forcedDong ?? (dongList?.length ? shuffle(dongList)[0] : null);
         const origin = dong?.center ?? index.centers[addr];
         const round = selectNearestChoices(hospitalPoints, origin, DECOY_COUNT, SEARCH_POOL_SIZE);
         if (round.ranked.length < 2) continue; // 최소 정답+오답 1개는 있어야 라운드가 성립
@@ -202,6 +215,7 @@ export function LocationGame() {
     const correct = ranked[0];
     const picked = pickedId ? ranked.find((c) => c.id === pickedId) ?? null : null;
     const points = pointsForPick(ranked, pickedId);
+    const tieCredited = Boolean(picked) && picked!.id !== correct.id && isTiedWithNearest(ranked, pickedId);
     setRevealed(true);
     setScore((s) => s + points);
     setReveal({
@@ -213,6 +227,7 @@ export function LocationGame() {
       pickedName: picked && picked.id !== correct.id ? picked.name : null,
       pickedAddr: picked && picked.id !== correct.id ? picked.addr ?? '' : null,
       pickedKm: picked && picked.id !== correct.id ? Math.round(picked.km * 10) / 10 : null,
+      tieCredited,
     });
     setRecords((r) => [...r, { countyLabel: cityLabel(rc.countyAddr), correctName: correct.name, points }]);
   }, []);
@@ -383,6 +398,7 @@ export function LocationGame() {
                 {reveal.correctAddr && ` (${reveal.correctAddr})`} · 약 {reveal.correctKm}km
                 {reveal.pickedName &&
                   ` · 내 선택: ${reveal.pickedName}${reveal.pickedAddr ? ` (${reveal.pickedAddr})` : ''} · 약 ${reveal.pickedKm}km`}
+                {reveal.tieCredited && ' · 거리 차이가 미미해 정답으로 함께 인정했어요'}
               </span>
               <span className={styles.gain}>+{reveal.points}</span>
               <Button variant="ink" className={styles.next} onClick={handleNext}>
