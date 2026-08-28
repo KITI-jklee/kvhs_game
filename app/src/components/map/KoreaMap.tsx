@@ -108,11 +108,31 @@ export function KoreaMap({ region, highlight, pins, selectedId, correctId, revea
     return () => observer.disconnect();
   }, []);
 
+  // 세로로 긴 화면에서도 지도의 최소 비율을 유지해 거리 왜곡을 막는다.
   const clampedAspect = Math.max(aspect, MIN_CONTAINER_ASPECT);
   const projection = useMemo(
     () => (region ? createProjection(fitBoundsToAspect(region.bounds, clampedAspect)) : null),
     [region, clampedAspect],
   );
+
+  // 지도 비율을 유지하며 컨테이너에 들어가는 최대 영역을 계산한다.
+  const contentBox = useMemo(() => {
+    if (!projection || containerWidthPx <= 0 || containerHeightPx <= 0) {
+      return { width: containerWidthPx, height: containerHeightPx, offsetX: 0, offsetY: 0 };
+    }
+    const contentAspect = projection.width / projection.height;
+    const containerAspect = containerWidthPx / containerHeightPx;
+    if (containerAspect > contentAspect) {
+      // 좌우 여백을 둔다.
+      const height = containerHeightPx;
+      const width = height * contentAspect;
+      return { width, height, offsetX: (containerWidthPx - width) / 2, offsetY: 0 };
+    }
+    // 위아래 여백을 둔다.
+    const width = containerWidthPx;
+    const height = width / contentAspect;
+    return { width, height, offsetX: 0, offsetY: (containerHeightPx - height) / 2 };
+  }, [projection, containerWidthPx, containerHeightPx]);
 
   const landPaths = useMemo(() => {
     if (!region || !projection) return [];
@@ -124,8 +144,8 @@ export function KoreaMap({ region, highlight, pins, selectedId, correctId, revea
     return pins.map((pin) => ({ id: pin.id, label: pin.label, p: projection.project(pin.center) }));
   }, [pins, projection]);
 
-  // 충돌 계산은 가변 viewBox가 아닌 화면 px 기준으로 한다.
-  const pxScale = projection && containerHeightPx > 0 ? containerHeightPx / projection.height : 1;
+  // 충돌은 여백을 제외한 실제 지도 영역의 px 기준으로 계산한다.
+  const pxScale = projection && contentBox.height > 0 ? contentBox.height / projection.height : 1;
 
   // 실제 좌표는 유지하고 겹친 핀의 표시 위치만 반발시킨다.
   const nudgedPositions = useMemo(() => {
@@ -180,81 +200,121 @@ export function KoreaMap({ region, highlight, pins, selectedId, correctId, revea
     const belowBase = Math.max(LABEL_BELOW_BASE, visualPinRadiusPx + clearanceMarginPx);
     const aboveBase = Math.max(LABEL_ABOVE_BASE, visualPinRadiusPx + clearanceMarginPx + LABEL_LINE_PX);
 
-    // 아래쪽부터 실제 충돌이 없는 첫 자리를 선택한다.
-    const placedRects: { left: number; right: number; top: number; bottom: number }[] = [];
-    const order = [...ids].sort((a, b) => px.get(b)!.y - px.get(a)!.y);
-    for (const id of order) {
-      const p = px.get(id)!;
-      const halfW = estimateLabelHalfWidth(labelById.get(id)!) + 4;
-      let dir: 'above' | 'below' = 'below';
-      let level = 0;
-      let dy = 0;
-      let rect = { left: 0, right: 0, top: 0, bottom: 0 };
-      let found = false;
-      // 빈자리가 없으면 충돌 점수가 가장 낮은 후보를 쓴다.
-      let bestScore = Infinity;
-      let bestDir: 'above' | 'below' = dir;
-      let bestLevel = level;
-      let bestDy = dy;
-      let bestRect = rect;
-      for (let attempt = 0; attempt < 8 && !found; attempt++) {
-        dir = attempt % 2 === 0 ? 'below' : 'above';
-        level = Math.floor(attempt / 2);
-        dy = dir === 'below' ? belowBase + level * LABEL_STEP : -(aboveBase + level * LABEL_STEP);
-        rect = { left: p.x - halfW, right: p.x + halfW, top: p.y + dy, bottom: p.y + dy + LABEL_LINE_PX };
-        const hitsPin = ids.some((otherId) => {
-          if (otherId === id) return false;
-          const op = px.get(otherId)!;
-          const closestX = Math.max(rect.left, Math.min(op.x, rect.right));
-          const closestY = Math.max(rect.top, Math.min(op.y, rect.bottom));
-          const dx = op.x - closestX;
-          const dyy = op.y - closestY;
-          return dx * dx + dyy * dyy < pinRadiusPx * pinRadiusPx;
-        });
-        const hitsLabel = placedRects.some(
-          (r) => rect.left < r.right && rect.right > r.left && rect.top < r.bottom && rect.bottom > r.top,
-        );
-        // 라벨 충돌과 지도 밖 잘림을 함께 검사한다.
-        const hitsTopEdge = containerHeightPx > 0 && rect.top < EDGE_MARGIN_PX;
-        const hitsBottomEdge = containerHeightPx > 0 && rect.bottom > containerHeightPx - EDGE_MARGIN_PX;
-        found = !hitsLabel && !hitsTopEdge && !hitsBottomEdge;
-        // 핀, 라벨, 테두리 순으로 충돌 비용을 매긴다.
-        const score = (hitsPin ? 100 : 0) + (hitsLabel ? 10 : 0) + (hitsTopEdge || hitsBottomEdge ? 1 : 0);
-        if (score < bestScore) {
-          bestScore = score;
-          bestDir = dir;
-          bestLevel = level;
-          bestDy = dy;
-          bestRect = rect;
-        }
-      }
-      if (!found) {
-        dir = bestDir;
-        level = bestLevel;
-        dy = bestDy;
-        rect = bestRect;
-      }
-      placedRects.push(rect);
-      placement.set(id, { dy, dx: 0, needsLeader: !(dir === 'below' && level === 0) });
-    }
+    // 좌우 라벨의 핀 중심 기준 간격.
+    const sideGapPx = visualPinRadiusPx + clearanceMarginPx + 3;
 
-    // 좌우 테두리를 넘는 만큼 라벨을 안쪽으로 민다.
-    if (containerWidthPx > 0) {
+    // 충돌 없는 후보 중 핀에서 가장 가까운 위치를 고른다.
+    type Direction = 'below' | 'above' | 'left' | 'right';
+    type Candidate = { dir: Direction; level: number; dx: number; dy: number; rect: { left: number; right: number; top: number; bottom: number } };
+
+    const rectFor = (p: { x: number; y: number }, halfW: number, dir: Direction, level: number) => {
+      if (dir === 'below' || dir === 'above') {
+        const dy = dir === 'below' ? belowBase + level * LABEL_STEP : -(aboveBase + level * LABEL_STEP);
+        return { dx: 0, dy, rect: { left: p.x - halfW, right: p.x + halfW, top: p.y + dy, bottom: p.y + dy + LABEL_LINE_PX } };
+      }
+      // 좌우 라벨은 핀 옆에 세로 중앙 정렬한다.
+      const sideOffset = sideGapPx + halfW + level * LABEL_STEP;
+      const dx = dir === 'left' ? -sideOffset : sideOffset;
+      const dy = -LABEL_LINE_PX / 2;
+      return { dx, dy, rect: { left: p.x + dx - halfW, right: p.x + dx + halfW, top: p.y + dy, bottom: p.y + dy + LABEL_LINE_PX } };
+    };
+
+    // 주어진 순서로 라벨을 배치하고 최대 핀-라벨 거리를 계산한다.
+    const computeForOrder = (order: string[]) => {
+      const placedRects: { left: number; right: number; top: number; bottom: number }[] = [];
+      const result = new Map<string, LabelPlacement>();
+      let maxDist = 0;
+      for (const id of order) {
+        const p = px.get(id)!;
+        const halfW = estimateLabelHalfWidth(labelById.get(id)!) + 4;
+        const candidates: { dir: Direction; level: number }[] = [];
+        for (let level = 0; level < 4; level++) {
+          candidates.push({ dir: 'below', level });
+          candidates.push({ dir: 'above', level });
+          candidates.push({ dir: 'left', level });
+          candidates.push({ dir: 'right', level });
+        }
+
+        let bestFound: Candidate | null = null;
+        let bestFoundDist = Infinity;
+        // 빈자리가 없으면 충돌 점수가 가장 낮은 후보를 쓴다.
+        let bestFallback: Candidate | null = null;
+        let bestFallbackScore = Infinity;
+        for (const { dir, level } of candidates) {
+          const { dx, dy, rect } = rectFor(p, halfW, dir, level);
+          const hitsPin = ids.some((otherId) => {
+            if (otherId === id) return false;
+            const op = px.get(otherId)!;
+            const closestX = Math.max(rect.left, Math.min(op.x, rect.right));
+            const closestY = Math.max(rect.top, Math.min(op.y, rect.bottom));
+            const dxp = op.x - closestX;
+            const dyy = op.y - closestY;
+            return dxp * dxp + dyy * dyy < pinRadiusPx * pinRadiusPx;
+          });
+          const hitsLabel = placedRects.some(
+            (r) => rect.left < r.right && rect.right > r.left && rect.top < r.bottom && rect.bottom > r.top,
+          );
+          // 실제 지도 영역을 기준으로 충돌과 잘림을 검사한다.
+          const hitsTopEdge = contentBox.height > 0 && rect.top < EDGE_MARGIN_PX;
+          const hitsBottomEdge = contentBox.height > 0 && rect.bottom > contentBox.height - EDGE_MARGIN_PX;
+          const attemptFound = !hitsLabel && !hitsTopEdge && !hitsBottomEdge;
+          const candidate: Candidate = { dir, level, dx, dy, rect };
+          if (attemptFound) {
+            const dist = Math.hypot(dx, dy + LABEL_LINE_PX / 2);
+            if (dist < bestFoundDist) {
+              bestFoundDist = dist;
+              bestFound = candidate;
+            }
+            continue;
+          }
+          // 핀, 라벨, 테두리 순으로 충돌 비용을 매긴다.
+          const score = (hitsPin ? 100 : 0) + (hitsLabel ? 10 : 0) + (hitsTopEdge || hitsBottomEdge ? 1 : 0);
+          if (score < bestFallbackScore) {
+            bestFallbackScore = score;
+            bestFallback = candidate;
+          }
+        }
+        const chosen = bestFound ?? bestFallback!;
+        placedRects.push(chosen.rect);
+        const isAdjacent = ((chosen.dir === 'below' || chosen.dir === 'left' || chosen.dir === 'right') && chosen.level === 0);
+        result.set(id, { dy: chosen.dy, dx: chosen.dx, needsLeader: !isAdjacent });
+        const chosenDist = Math.hypot(chosen.dx, chosen.dy + LABEL_LINE_PX / 2);
+        if (chosenDist > maxDist) maxDist = chosenDist;
+      }
+      return { result, maxDist };
+    };
+
+    // 여러 처리 순서 중 최대 핀-라벨 거리가 가장 짧은 결과를 쓴다.
+    const orderCandidates: string[][] = [
+      [...ids].sort((a, b) => px.get(b)!.y - px.get(a)!.y),
+      [...ids].sort((a, b) => px.get(a)!.y - px.get(b)!.y),
+      [...ids].sort((a, b) => px.get(a)!.x - px.get(b)!.x),
+      [...ids].sort((a, b) => px.get(b)!.x - px.get(a)!.x),
+    ];
+    let best = computeForOrder(orderCandidates[0]);
+    for (let i = 1; i < orderCandidates.length; i++) {
+      const candidate = computeForOrder(orderCandidates[i]);
+      if (candidate.maxDist < best.maxDist) best = candidate;
+    }
+    for (const [id, value] of best.result) placement.set(id, value);
+
+    // 지도 좌우 경계를 넘는 라벨은 안쪽으로 민다.
+    if (contentBox.width > 0) {
       for (const id of ids) {
         const placed = placement.get(id)!;
         const p = px.get(id)!;
         const halfW = estimateLabelHalfWidth(labelById.get(id)!) + 4;
-        const left = p.x - halfW;
-        const right = p.x + halfW;
-        let dx = 0;
-        if (left < EDGE_MARGIN_PX) dx = EDGE_MARGIN_PX - left;
-        else if (right > containerWidthPx - EDGE_MARGIN_PX) dx = containerWidthPx - EDGE_MARGIN_PX - right;
-        if (dx !== 0) placement.set(id, { ...placed, dx, needsLeader: true });
+        const left = p.x + placed.dx - halfW;
+        const right = p.x + placed.dx + halfW;
+        let dx = placed.dx;
+        if (left < EDGE_MARGIN_PX) dx = placed.dx + (EDGE_MARGIN_PX - left);
+        else if (right > contentBox.width - EDGE_MARGIN_PX) dx = placed.dx + (contentBox.width - EDGE_MARGIN_PX - right);
+        if (dx !== placed.dx) placement.set(id, { ...placed, dx, needsLeader: true });
       }
     }
 
     return placement;
-  }, [projectedPins, nudgedPositions, pxScale, containerHeightPx, containerWidthPx]);
+  }, [projectedPins, nudgedPositions, pxScale, contentBox]);
 
   // 분리 렌더링하는 라벨과 핀의 공통 상태를 계산한다.
   const pinViews = useMemo(() => {
@@ -318,8 +378,11 @@ export function KoreaMap({ region, highlight, pins, selectedId, correctId, revea
     );
     const dyPx = placement.dy;
     const dxPx = placement.dx;
-    const leftPct = `${(p.x / projection.width) * 100}%`;
-    const topPct = `${(p.y / projection.height) * 100}%`;
+    // 라벨 위치는 핀과 동일하게 실제 지도 영역의 px 좌표를 사용한다.
+    const leftPx = contentBox.offsetX + (p.x / projection.width) * contentBox.width;
+    const topPx = contentBox.offsetY + (p.y / projection.height) * contentBox.height;
+    const leftCss = `${leftPx}px`;
+    const topCss = `${topPx}px`;
     // 연결선은 핀 가장자리부터 라벨의 가까운 끝까지만 그린다.
     const lineTop = dyPx > 0 ? PIN_LABEL_GAP : dyPx + LABEL_LINE_PX;
     const lineLength = Math.max(0, dyPx > 0 ? dyPx - PIN_LABEL_GAP : -PIN_LABEL_GAP - (dyPx + LABEL_LINE_PX));
@@ -330,8 +393,8 @@ export function KoreaMap({ region, highlight, pins, selectedId, correctId, revea
             className={cx(styles.pinLeader, labelClass)}
             style={
               {
-                left: leftPct,
-                top: topPct,
+                left: leftCss,
+                top: topCss,
                 transform: `translate(calc(-50% + ${dxPx}px), ${lineTop}px)`,
                 height: `${lineLength}px`,
               } as CSSProperties
@@ -343,8 +406,8 @@ export function KoreaMap({ region, highlight, pins, selectedId, correctId, revea
           className={labelClass}
           style={
             {
-              left: leftPct,
-              top: topPct,
+              left: leftCss,
+              top: topCss,
               '--label-dy': `${dyPx}px`,
               '--label-dx': `${dxPx}px`,
             } as CSSProperties
@@ -356,12 +419,21 @@ export function KoreaMap({ region, highlight, pins, selectedId, correctId, revea
     );
   });
 
+  // 배경과 핀 SVG에 같은 영역을 적용해 지도 비율을 유지한다.
+  const svgBoxStyle: CSSProperties = {
+    left: contentBox.offsetX,
+    top: contentBox.offsetY,
+    width: contentBox.width,
+    height: contentBox.height,
+  };
+
   return (
     <div className={styles.wrap} ref={wrapRef}>
       <div className={styles.grid} />
 
       <svg
         className={styles.svg}
+        style={svgBoxStyle}
         viewBox={`0 0 ${projection.width} ${projection.height}`}
         preserveAspectRatio="none"
         role="presentation"
@@ -379,6 +451,7 @@ export function KoreaMap({ region, highlight, pins, selectedId, correctId, revea
 
       <svg
         className={styles.svg}
+        style={svgBoxStyle}
         viewBox={`0 0 ${projection.width} ${projection.height}`}
         preserveAspectRatio="none"
         role="presentation"

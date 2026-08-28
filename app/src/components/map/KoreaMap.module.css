@@ -19,10 +19,8 @@
 }
 
 .svg {
+  /* 위치와 크기는 contentBox 기준 인라인 스타일로 지정한다. */
   position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
 }
 
 .landmass {
