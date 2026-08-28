@@ -61,16 +61,39 @@ export function selectNearestChoices(
   const widenedPool = searchPool.filter((c) => c.km >= preferredMinKm).sort((a, b) => a.km - b.km);
   const fallbackPool = [...searchPool].sort((a, b) => a.km - b.km);
 
-  // 지도 규모에 비례한 반경으로 핀 3개 이상이 몰리는 것을 막는다.
-  // correct.km에만 비례하면, 정답은 아주 가까운데(예: 1.6km) 후보 풀이
-  // 희박해 디코이가 훨씬 멀리서(10~14km) 뽑히는 지역(예: 옥천군)에서는
-  // 반경이 지나치게 작게 나와 화면상 뭉쳐 보여도 못 잡아낸다. 실제 지도
-  // 스케일은 정답 거리가 아니라 "이번에 뽑힐 만한 오답들이 실제로 얼마나
-  // 떨어져 있는지"로 정해야 한다 - 제약 없이 그냥 가까운 순으로
-  // decoyCount개를 뽑았을 때 나올 거리(검색 풀의 decoyCount번째)를 그
-  // 라운드의 자연스러운 스케일로 쓴다.
-  const scaleRefKm = searchPool[Math.min(decoyCount - 1, searchPool.length - 1)]?.km ?? correct.km;
-  const clusterRadiusKm = Math.max(scaleRefKm * 0.25, 2);
+  // 핀 3개 이상이 몰리는 것을 막는다.
+  // 주의: 이건 실제 위경도(km) 기준 뭉침 방지이고, 화면 px 기준 뭉침/겹침 방지는
+  // components/map/KoreaMap.tsx의 nudgedPositions(핀)·labelPlacement(라벨)가 별도로
+  // 담당한다. 두 로직은 서로 참조하지 않는 독립된 안전장치이니, 한쪽을 단순화하거나
+  // 제거할 때는 반드시 다른 쪽이 같은 문제를 커버하는지 KoreaMap.tsx도 같이 확인할 것.
+  //
+  // 반경을 라운드 시작 전에 미리 고정값으로 계산해두면(예: correct.km나 검색 풀의
+  // decoyCount번째 거리 기준) 문제가 생긴다 - 실제 지도가 얼마나 확대/축소될지는
+  // "이번에 실제로 뽑힌 후보들이 서로 얼마나 떨어져 있는지"에 달려 있는데, 그중
+  // 하나라도 훨씬 먼 후보(예: 22km짜리 외딴 후보)가 섞이면 지도가 그만큼 축소되면서
+  // 나머지 가까운 후보들끼리는 "고정 반경" 기준으로는 안 뭉쳐 보여도 실제 화면에서는
+  // 잔뜩 눌려 붙어 보인다(전라남도 여수시 소라면 실사례로 확인: 가까운 4곳이 서로
+  // 1.7~6.4km 안에 모여 있는데 정답 대비 3배 가까운 22km짜리 외딴 후보 하나 때문에
+  // 지도가 그 거리까지 다 보여주려고 축소돼, 그 4곳이 화면에서 거의 붙어 보였다).
+  // 그래서 후보를 추가해볼 때마다(tentative 집합 자체의) 가장 먼 두 점 사이 거리를
+  // "이번 라운드가 실제로 그려질 지도 규모"의 대리값으로 삼아 반경을 매번 다시
+  // 계산한다 - 외딴 후보를 넣어보는 순간 스팬이 확 커지면 반경도 같이 커져서, 이미
+  // 뽑아둔 가까운 후보들이 그 새 스케일 기준으로는 서로 너무 가깝다는 게 드러나
+  // 자연히 그 외딴 후보 자체가 걸러진다(별도의 "선호 거리비율" 단계도 예외 없이
+  // 똑같이 적용한다 - 간격비만 맞고 서로 가까운 후보 2개보다는, 뭉치지 않는 후보
+  // 조합을 우선한다).
+  const spanKmOf = (points: NearestChoice[]) => {
+    let max = 0;
+    for (let i = 0; i < points.length; i++) {
+      for (let j = i + 1; j < points.length; j++) {
+        const d = haversineKm(points[i].center, points[j].center);
+        if (d > max) max = d;
+      }
+    }
+    return max;
+  };
+  const CLUSTER_RADIUS_FRACTION = 0.15;
+  const CLUSTER_RADIUS_FLOOR_KM = 2;
 
   const chosen: NearestChoice[] = [correct];
   const tryFill = (pool: NearestChoice[], respectSeparation: boolean, respectCluster: boolean) => {
@@ -78,13 +101,16 @@ export function selectNearestChoices(
       if (chosen.length - 1 >= decoyCount) break;
       if (chosen.some((c) => c.id === candidate.id)) continue;
       const tooClose = respectSeparation && chosen.some((c) => haversineKm(c.center, candidate.center) < minSeparationKm);
-      // 후보 추가 후 전체 집합에서 3개 이상 뭉치는지 검사한다.
-      const tentative = respectCluster ? [...chosen, candidate] : null;
-      const wouldCluster =
-        respectCluster &&
-        tentative!.some(
-          (p) => tentative!.filter((q) => q !== p && haversineKm(p.center, q.center) < clusterRadiusKm).length >= 2,
+      // 후보를 넣어봤을 때 그 집합의 실제 스팬 기준으로 반경을 다시 계산해,
+      // 그 반경 안에 2곳 이상 몰리는 점이 생기는지 검사한다.
+      let wouldCluster = false;
+      if (respectCluster) {
+        const tentative = [...chosen, candidate];
+        const clusterRadiusKm = Math.max(spanKmOf(tentative) * CLUSTER_RADIUS_FRACTION, CLUSTER_RADIUS_FLOOR_KM);
+        wouldCluster = tentative.some(
+          (p) => tentative.filter((q) => q !== p && haversineKm(p.center, q.center) < clusterRadiusKm).length >= 2,
         );
+      }
       if (!tooClose && !wouldCluster) chosen.push(candidate);
     }
   };

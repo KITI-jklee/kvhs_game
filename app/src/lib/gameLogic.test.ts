@@ -64,13 +64,15 @@ describe('게임① 가장 가까운 위탁병원 찾기 로직', () => {
     expect(pointsForPick(round.ranked, 'no-such-id')).toBe(0);
   });
 
-  it('오답은 정답의 1.15~1.8배 사이(적당히 가깝고 헷갈리는) 후보를 우선 뽑는다', () => {
+  it('오답은 정답의 1.15~1.8배 사이(적당히 가깝고 헷갈리는) 후보를 우선 뽑되, 그 후보끼리도 서로 뭉치면 하나는 양보한다', () => {
     // 정답(near) 5km. 너무 가까운 tooClose(1.05배, 거의 같은 거리라 판단
-    // 불가능)와 너무 먼 tooFar(3배, "딱 봐도 아니네"로 한눈에 배제됨)는
-    // 둘 다 피하고, 적당히 가까운 good1/good2(1.3배·1.6배)를 오답으로
-    // 뽑아야 한다 - 화면상 거리만 보고 바로 맞히는 문제를 막는 규칙.
-    // (다섯 곳 모두 같은 경도 위에 놓아, 서로 간 실제 거리 = 원점 기준 거리
-    // 차이와 같게 만들어서 minSeparationKm과 안 충돌하게 했다.)
+    // 불가능)는 피하고, 적당히 가까운 good1/good2(1.3배·1.6배)를 오답 후보로
+    // 우선 본다 - 화면상 거리만 보고 바로 맞히는 문제를 막는 규칙. 다만
+    // good1과 good2는 서로 1.5km밖에 안 떨어져 있어(다섯 곳 모두 같은 경도 위에
+    // 둬서 서로 간 실제 거리 = 원점 기준 거리 차이와 같다) 정답과 함께 셋 다
+    // 뽑히면 지도에서 세 핀이 붙어 보인다 - 그래서 간격비 조건을 만족해도 뭉침
+    // 방지가 우선이라 둘 중 하나만 뽑히고, 남은 자리는 뭉치지 않는 tooFar(3배,
+    // 한눈에 배제될 만큼 멀지만 뭉치지는 않는 거리)가 채운다.
     const bandHospitals: HospitalPoint[] = [
       { id: 'near', name: '정답', center: { lat: 37.044916, lng: 127.0 }, province: '경기도' }, // 5km
       { id: 'tooClose', name: '너무가까운오답', center: { lat: 37.047161, lng: 127.0 }, province: '경기도' }, // 5.25km
@@ -81,7 +83,11 @@ describe('게임① 가장 가까운 위탁병원 찾기 로직', () => {
     const round = selectNearestChoices(bandHospitals, origin, 2, 10);
     expect(round.ranked[0].id).toBe('near');
     const decoyIds = round.ranked.slice(1).map((c) => c.id);
-    expect(decoyIds.sort()).toEqual(['good1', 'good2']);
+    expect(decoyIds).toHaveLength(2);
+    expect(decoyIds).not.toContain('tooClose');
+    const fromPreferredBand = decoyIds.filter((id) => id === 'good1' || id === 'good2');
+    expect(fromPreferredBand).toHaveLength(1); // good1·good2 둘 다는 절대 같이 뽑히지 않는다
+    expect(decoyIds).toContain('tooFar');
   });
 });
 
