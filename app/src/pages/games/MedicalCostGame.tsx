@@ -1,5 +1,5 @@
-import { useMemo, useRef, useState } from 'react';
-import type { PointerEvent as ReactPointerEvent, ReactNode } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
+import type { CSSProperties, PointerEvent as ReactPointerEvent, ReactNode } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { BrandBar } from '../../components/layout/BrandBar';
 import { FullScreenNotice } from '../../components/FullScreenNotice';
@@ -14,6 +14,8 @@ import { useGame } from '../../state/gameState';
 import {
   MAX_TOTAL_SCORE,
   ROUND_COUNT,
+  SLIDER_MAX,
+  SLIDER_MIN,
   buildRounds,
   pricePositionRatio,
   scoreBudgetPicks,
@@ -64,6 +66,55 @@ function shuffledDisplayOrder(items: MedicalCostItem[]): MedicalCostItem[] {
   return order;
 }
 
+/** ±1만/±1천 버튼을 꾹 누르고 있으면 계속 반복 실행되게 한다.
+ * "짧게 탭"과 "꾹 눌러 반복"을 겹치지 않는 두 경로로 완전히 분리한다:
+ * - 짧은 탭 1회 반영은 항상 click 이벤트에만 맡긴다(마우스·터치·키보드
+ *   Enter/Space 전부 click을 정확히 1번만 발생시키므로 가장 안전하다).
+ * - pointerdown은 그 자체로는 아무것도 반영하지 않고, 450ms 뒤에도 계속
+ *   눌려있으면 그때 반복 모드로 전환해 90ms 간격으로 반영한다.
+ * repeatStartedRef 하나로 "이번 누름이 반복 모드로 전환됐는지"만 표시해,
+ * click이 그 경우엔 스스로를 건너뛴다 - 두 경로가 절대 같은 타이밍에
+ * 겹쳐 실행되지 않으므로 한 번 눌러 값이 2배로 뛰는 일이 구조적으로
+ * 불가능하다. */
+function useHoldStep(onTick: () => void) {
+  const onTickRef = useRef(onTick);
+  onTickRef.current = onTick;
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const repeatStartedRef = useRef(false);
+
+  const clearTimers = () => {
+    if (timeoutRef.current !== null) clearTimeout(timeoutRef.current);
+    if (intervalRef.current !== null) clearInterval(intervalRef.current);
+    timeoutRef.current = null;
+    intervalRef.current = null;
+  };
+
+  useEffect(() => clearTimers, []);
+
+  return {
+    onPointerDown: () => {
+      clearTimers();
+      repeatStartedRef.current = false;
+      timeoutRef.current = setTimeout(() => {
+        repeatStartedRef.current = true;
+        onTickRef.current(); // 반복 모드로 전환되는 순간의 첫 틱
+        intervalRef.current = setInterval(() => onTickRef.current(), 90);
+      }, 450);
+    },
+    onPointerUp: clearTimers,
+    onPointerLeave: clearTimers,
+    onPointerCancel: clearTimers,
+    onClick: () => {
+      if (repeatStartedRef.current) {
+        repeatStartedRef.current = false;
+        return; // 이미 반복 모드에서 반영됐으니 click 몫은 건너뛴다
+      }
+      onTickRef.current(); // 짧은 탭 - 정확히 1번
+    },
+  };
+}
+
 export function MedicalCostGame() {
   const navigate = useNavigate();
   const { finishGame } = useGame();
@@ -85,7 +136,7 @@ export function MedicalCostGame() {
   // 라운드별 상호작용 상태 - 라운드가 바뀔 때마다 리셋한다. 밴드/예산/
   // 하이로우는 고르는 즉시 바로 채점(finishRound)하며, 그때 넘긴 index/id가
   // 결과 카드 안에 그대로 클로저로 남으니 별도 "선택값" 상태는 필요 없다.
-  const [sliderPos, setSliderPos] = useState(SLIDER_STEPS / 2);
+  const [sliderPrice, setSliderPrice] = useState(() => sliderPositionToPrice(0.5));
   const [reorderOrder, setReorderOrder] = useState<MedicalCostItem[]>(() => {
     const firstRound = rounds?.[0];
     return firstRound?.kind === 'reorder' ? shuffledDisplayOrder(firstRound.items) : [];
@@ -107,9 +158,18 @@ export function MedicalCostGame() {
     setRecords((r) => [...r, { label: recordLabel, points }]);
   };
 
+  const adjustSliderPrice = (amount: number) => {
+    setSliderPrice((price) => Math.min(SLIDER_MAX, Math.max(SLIDER_MIN, price + amount)));
+  };
+
+  const stepMinusCoarse = useHoldStep(() => adjustSliderPrice(-10_000));
+  const stepMinusFine = useHoldStep(() => adjustSliderPrice(-1_000));
+  const stepPlusFine = useHoldStep(() => adjustSliderPrice(1_000));
+  const stepPlusCoarse = useHoldStep(() => adjustSliderPrice(10_000));
+
   const handleSliderConfirm = () => {
     if (!round || round.kind !== 'slider') return;
-    const guess = sliderPositionToPrice(sliderPos / SLIDER_STEPS);
+    const guess = sliderPrice;
     const { points, label, errorPercent } = scoreSlider(guess, round.item.cost);
     finishRound(
       points,
@@ -319,7 +379,7 @@ export function MedicalCostGame() {
     }
     const nextIndex = roundIndex + 1;
     const nextRound = rounds?.[nextIndex];
-    setSliderPos(SLIDER_STEPS / 2);
+    setSliderPrice(sliderPositionToPrice(0.5));
     setReorderOrder(nextRound?.kind === 'reorder' ? shuffledDisplayOrder(nextRound.items) : []);
     setBudgetPicks(new Set());
     setRoundIndex(nextIndex);
@@ -410,32 +470,90 @@ export function MedicalCostGame() {
               <span className={styles.cardHint}>공개 비급여 수가는 어느 정도일까요?</span>
               {!revealed ? (
                 <>
-                  <span className={styles.sliderValue}>{formatWon(sliderPositionToPrice(sliderPos / SLIDER_STEPS))}</span>
+                  {/* 마이너스 - 값 - 플러스를 화면 크기에 상관없이 항상 한
+                      줄에 나란히 둔다(모바일에서 값 아래로 따로 떨어뜨리지
+                      않는다). 값 표시는 폭을 고정해서(styles.sliderValue)
+                      자릿수가 바뀌어도(10,000원 ↔ 1,200,000원) 버튼이 전혀
+                      움직이지 않는다 - 꾹 누르는 도중 숫자가 커지면서 버튼이
+                      손가락 밑에서 밀려나 홀드가 끊기는 문제가 이걸로
+                      없어진다. 좁은 화면에서는 값·버튼을 함께 줄여 한 줄
+                      폭에 맞춘다(모듈 CSS의 max-width:480px 구간). */}
+                  <div className={styles.sliderValueRow} aria-label="가격 미세 조정">
+                    <div className={styles.stepperSide}>
+                      <button
+                        type="button"
+                        className={cx(styles.stepBtn, styles.stepBtnCoarse)}
+                        disabled={disabled || sliderPrice <= SLIDER_MIN}
+                        {...stepMinusCoarse}
+                        aria-label="1만원 감소, 꾹 누르면 계속 감소"
+                      >
+                        <span className={styles.stepBtnSign}>−</span>
+                        <span className={styles.stepBtnAmt}>1만</span>
+                      </button>
+                      <button
+                        type="button"
+                        className={cx(styles.stepBtn, styles.stepBtnFine)}
+                        disabled={disabled || sliderPrice <= SLIDER_MIN}
+                        {...stepMinusFine}
+                        aria-label="1천원 감소, 꾹 누르면 계속 감소"
+                      >
+                        <span className={styles.stepBtnSign}>−</span>
+                        <span className={styles.stepBtnAmt}>1천</span>
+                      </button>
+                    </div>
+                    <span className={styles.sliderValue}>{formatWon(sliderPrice)}</span>
+                    <div className={styles.stepperSide}>
+                      <button
+                        type="button"
+                        className={cx(styles.stepBtn, styles.stepBtnFine)}
+                        disabled={disabled || sliderPrice >= SLIDER_MAX}
+                        {...stepPlusFine}
+                        aria-label="1천원 증가, 꾹 누르면 계속 증가"
+                      >
+                        <span className={styles.stepBtnSign}>+</span>
+                        <span className={styles.stepBtnAmt}>1천</span>
+                      </button>
+                      <button
+                        type="button"
+                        className={cx(styles.stepBtn, styles.stepBtnCoarse)}
+                        disabled={disabled || sliderPrice >= SLIDER_MAX}
+                        {...stepPlusCoarse}
+                        aria-label="1만원 증가, 꾹 누르면 계속 증가"
+                      >
+                        <span className={styles.stepBtnSign}>+</span>
+                        <span className={styles.stepBtnAmt}>1만</span>
+                      </button>
+                    </div>
+                  </div>
                   <input
                     type="range"
                     className={styles.slider}
                     min={0}
                     max={SLIDER_STEPS}
-                    value={sliderPos}
+                    value={Math.round(pricePositionRatio(sliderPrice) * SLIDER_STEPS)}
                     disabled={disabled}
-                    onChange={(e) => setSliderPos(Number(e.target.value))}
+                    style={{ '--fill': pricePositionRatio(sliderPrice) } as CSSProperties}
+                    onChange={(e) => setSliderPrice(sliderPositionToPrice(Number(e.target.value) / SLIDER_STEPS))}
                   />
                   <div className={styles.sliderTicks}>
-                    {SLIDER_TICKS.map((t, i) => {
-                      const percent = pricePositionRatio(t) * 100;
-                      // 양 끝 눈금은 라벨을 중앙 정렬하면 트랙 밖으로 삐져나가므로
-                      // 각각 왼쪽/오른쪽 끝에 붙이고, 중간 눈금만 실제 로그 위치에
-                      // 맞춰 중앙 정렬한다.
-                      const align = i === 0 ? 'left' : i === SLIDER_TICKS.length - 1 ? 'right' : 'center';
+                    {SLIDER_TICKS.map((t) => {
+                      // 손잡이·채우기와 같은 공식(calc(분수 * (100% - 손잡이크기)
+                      // + 손잡이크기/2))으로 위치를 계산해야 셋이 항상 같은
+                      // 지점을 가리킨다. i === 0 || i === length-1 검사로
+                      // 트랙 밖으로 삐져나가지 않게 따로 보정할 필요도 없어졌다.
+                      const fraction = pricePositionRatio(t);
+                      // 현재 값이 이 눈금을 지나왔으면 채워진 트랙과 같은 색으로
+                      // 활성 표시해 "지금 어디쯤 있는지"를 눈금에서도 읽히게 한다.
+                      // 로그 스케일에서는 %차이가 구간마다 다르므로 %가 아니라
+                      // 실제 가격으로 직접 비교해야 정확하다.
+                      const isActive = sliderPrice >= t;
                       return (
                         <span
                           key={t}
-                          className={styles.sliderTick}
-                          style={{
-                            left: `${percent}%`,
-                            transform: align === 'left' ? 'none' : align === 'right' ? 'translateX(-100%)' : 'translateX(-50%)',
-                          }}
+                          className={cx(styles.sliderTick, isActive && styles.sliderTickActive)}
+                          style={{ left: `calc(${fraction} * (100% - var(--slider-thumb-size)) + var(--slider-thumb-size) / 2)` }}
                         >
+                          <span className={styles.sliderTickMark} aria-hidden />
                           {t >= 10000 ? `${t / 10000}만` : `${t}`}
                         </span>
                       );

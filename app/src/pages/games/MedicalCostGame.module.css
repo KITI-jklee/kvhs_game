@@ -104,6 +104,9 @@
 }
 
 .roundCard {
+  /* 슬라이더 손잡이·채우기·눈금이 모두 같은 손잡이 크기를 기준으로
+     위치를 계산하도록 여기서 한 번만 선언해 공유한다. */
+  --slider-thumb-size: 20px;
   background: linear-gradient(180deg, #ffffff 0%, #f2f9f6 100%);
   border-radius: 20px;
   padding: 26px 22px;
@@ -164,31 +167,252 @@
 }
 
 .sliderValue {
-  font: 700 32px 'Pretendard Variable';
+  font: 700 34px 'Pretendard Variable';
   color: var(--color-accent-strong);
   letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+  /* 가장 긴 값("1,200,000원")도 줄바꿈 없이 들어가는 고정 폭 + 가운데
+     정렬 - 자릿수가 바뀌어도 이 박스 크기 자체가 안 바뀌니 버튼이
+     절대 움직이지 않는다. white-space:nowrap도 필수 - 한글(원)은 숫자
+     뒤에 붙어 있어도 CJK 줄바꿈 규칙상 폭이 아주 살짝만 빠듯해도
+     "원"만 다음 줄로 떨어질 수 있어서, 폭 여유와 별개로 아예 줄바꿈
+     자체를 막아야 한다. */
+  width: 200px;
+  text-align: center;
+  white-space: nowrap;
+  flex: none;
+}
+
+/* ---- 가격 스테퍼: 마이너스 - 값 - 플러스를 항상 한 줄에 나란히
+   둔다(모바일도 동일 - 값 아래로 따로 떨어뜨리지 않는다). 좁은 화면에서는
+   버튼·값을 함께 줄여서 한 줄 폭에 맞춘다(아래 480px 구간 참고).
+   그래도 화면이 지나치게 좁으면 flex-wrap이 안전망 역할을 한다.
+   조정 폭(큰 폭=바깥/진하게, 미세=안쪽/연하게)은 크기·색으로 구분한다. ---- */
+.sliderValueRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  width: 100%;
+}
+
+/* 기하학적으로는 좌우 간격이 완전히 같지만(값 텍스트도 박스 안에서
+   정확히 중앙 정렬), "원"이 빈틈없이 꽉 찬 한글 글자라 오른쪽(값→플러스)
+   간격이 왼쪽(마이너스→값)보다 더 좁아 보이는 착시가 있다. DOM 순서상
+   항상 마지막에 오는 플러스 그룹에 살짝 더 여백을 얹어 시각적으로
+   맞춘다. */
+.stepperSide:last-of-type {
+  margin-left: 4px;
+}
+
+.stepperSide {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.stepBtn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1px;
+  flex: none;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.12s ease, background 0.12s ease, box-shadow 0.12s ease, border-color 0.12s ease;
+}
+
+.stepBtn:active:not(:disabled) {
+  transform: scale(0.92);
+}
+
+.stepBtn:disabled {
+  cursor: default;
+  opacity: 0.35;
+}
+
+.stepBtnCoarse {
+  width: 50px;
+  height: 50px;
+  border-radius: 16px;
+  background: var(--color-accent-strong);
+  color: #fff;
+  box-shadow: 0 4px 10px rgba(42, 191, 158, 0.28);
+}
+
+.stepBtnFine {
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  background: var(--color-tint-1);
+  color: var(--color-accent-strong);
+  border: 1px solid var(--color-chip-line);
+}
+
+/* 터치 화면은 마우스 오버 개념이 없어서 탭을 hover로 흉내내는데, 다른
+   곳을 탭하기 전까지 그 상태가 안 풀려 "누른 채로 계속 활성화된 것"처럼
+   보인다. 실제 마우스가 있는 기기에서만 hover 스타일을 적용해 이 현상을
+   막는다. */
+@media (hover: hover) {
+  .stepBtnCoarse:hover:not(:disabled) {
+    filter: brightness(1.06);
+  }
+
+  .stepBtnFine:hover:not(:disabled) {
+    background: #fff;
+    border-color: var(--color-accent);
+  }
+}
+
+.stepBtnSign {
+  font: 700 17px 'Pretendard Variable';
+  line-height: 1;
+}
+
+.stepBtnCoarse .stepBtnSign {
+  font-size: 19px;
+}
+
+.stepBtnAmt {
+  font: 600 9px 'Pretendard Variable';
+  letter-spacing: -0.01em;
+  opacity: 0.9;
+}
+
+/* 모바일(데스크톱이 아닌 모든 화면)에서는 큰 폭(±1만) 버튼을 숨기고
+   미세조정(±1천)만 남긴다 - 어차피 큰 폭 이동은 슬라이더로 하면 되고,
+   버튼 개수가 줄면 값 옆에 나란히 두기도 훨씬 여유로워진다. */
+@media (max-width: 1023px) {
+  .stepBtnCoarse {
+    display: none;
+  }
+}
+
+/* 아주 좁은 화면(모바일에선 이미 미세조정(±1천) 버튼 2개만 남으니
+   여유가 많지만, 오래된/작은 기기 대비 값 폭만 살짝 줄여 안전하게
+   한 줄에 맞춘다). */
+@media (max-width: 400px) {
+  .sliderValue {
+    width: 170px;
+    font-size: 30px;
+  }
+  .sliderValueRow {
+    gap: 10px;
+  }
+  .stepperSide:last-of-type {
+    margin-left: 3px;
+  }
+  .stepperSide {
+    gap: 5px;
+  }
 }
 
 .slider {
+  /* --slider-thumb-size는 .roundCard에서 물려받는다(눈금과 같은 값 공유). */
+  /* 0~1 사이 분수값(퍼센트 기호 없음) - 트랙 전체 폭이 아니라 손잡이가
+     실제로 이동하는 범위(양 끝에서 손잡이 반지름만큼 안쪽)를 기준으로
+     채우기 위치를 계산해야 눈금·손잡이 위치와 어긋나지 않는다. */
+  --fill: 0.5;
+  --fill-pos: calc(var(--fill) * (100% - var(--slider-thumb-size)) + var(--slider-thumb-size) / 2);
   width: 100%;
-  accent-color: var(--color-accent-strong);
+  appearance: none;
+  background: transparent;
   height: 6px;
+  /* 브라우저 기본값(input[type=range]의 좌우 margin 2px)을 지워야
+     트랙이 부모 폭에 정확히 맞아 눈금·채우기 위치가 어긋나지 않는다. */
+  margin: 4px 0 0;
 }
 
-/* 눈금을 로그 스케일의 실제 위치에 배치한다. */
+.slider::-webkit-slider-runnable-track {
+  height: 6px;
+  border-radius: 999px;
+  background: linear-gradient(to right, var(--color-accent-strong) var(--fill-pos), var(--color-line) var(--fill-pos));
+}
+
+.slider::-webkit-slider-thumb {
+  appearance: none;
+  width: var(--slider-thumb-size);
+  height: var(--slider-thumb-size);
+  margin-top: -7px;
+  border: none;
+  border-radius: 50%;
+  background: var(--color-accent-strong);
+  /* 흰 테두리를 border 대신 box-shadow로 그린다 - border는 실제 손잡이
+     박스 크기를 키워서(20px+6px) 눈금·채우기 계산이 가정하는
+     --slider-thumb-size(20px)와 어긋나게 만들었다. box-shadow는
+     레이아웃 크기에 영향을 주지 않아 이동범위 계산과 항상 일치한다. */
+  box-shadow: 0 0 0 3px #fff, 0 2px 6px rgba(0, 0, 0, 0.22);
+  transition: transform 0.12s ease;
+}
+
+.slider:active::-webkit-slider-thumb {
+  transform: scale(1.12);
+}
+
+.slider::-moz-range-track {
+  height: 6px;
+  border-radius: 999px;
+  background: var(--color-line);
+}
+
+.slider::-moz-range-progress {
+  height: 6px;
+  border-radius: 999px;
+  background: var(--color-accent-strong);
+}
+
+.slider::-moz-range-thumb {
+  width: var(--slider-thumb-size);
+  height: var(--slider-thumb-size);
+  border: none;
+  border-radius: 50%;
+  background: var(--color-accent-strong);
+  box-shadow: 0 0 0 3px #fff, 0 2px 6px rgba(0, 0, 0, 0.22);
+}
+
+/* 눈금을 로그 스케일의 실제 위치에 배치한다.
+   너비를 margin+calc(100%-20px)로 좁혀서 안쪽으로 미는 방식은 그만뒀다 -
+   부모(.roundCard)가 align-items:center라서, 폭을 줄이고 한쪽 margin만
+   주면 flex가 "남는 여백"을 한 번 더 나눠 얹어버려 의도한 것보다 더
+   밀리는 부작용이 있었다(margin-left:10px인데 실제로는 15px만큼 밀림).
+   대신 컨테이너는 입력창과 똑같이 width:100%로 두고(그러면 여백이
+   0이라 이 부작용 자체가 없다), 각 눈금의 위치를 손잡이 위치와 같은
+   calc(분수 * (100% - 손잡이크기) + 손잡이크기/2) 공식으로 직접 계산한다. */
 .sliderTicks {
   position: relative;
   width: 100%;
-  height: 14px;
+  height: 24px;
   font: 500 10.5px 'Pretendard Variable';
   color: var(--color-muted-2);
-  margin-top: -8px;
+  margin-top: -2px;
 }
 
 .sliderTick {
   position: absolute;
   top: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
   white-space: nowrap;
+  transform: translateX(-50%);
+}
+
+.sliderTickMark {
+  width: 1px;
+  height: 5px;
+  background: var(--color-line);
+}
+
+.sliderTickActive {
+  color: var(--color-accent-strong);
+  font-weight: 700;
+}
+
+.sliderTickActive .sliderTickMark {
+  background: var(--color-accent-strong);
 }
 
 /* ---- 라운드② 4지선다 / 공통 카드 그리드 ---- */
