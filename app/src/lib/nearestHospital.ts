@@ -62,7 +62,15 @@ export function selectNearestChoices(
   const fallbackPool = [...searchPool].sort((a, b) => a.km - b.km);
 
   // 지도 규모에 비례한 반경으로 핀 3개 이상이 몰리는 것을 막는다.
-  const clusterRadiusKm = Math.max(correct.km * preferredGapMax * 0.18, 2);
+  // correct.km에만 비례하면, 정답은 아주 가까운데(예: 1.6km) 후보 풀이
+  // 희박해 디코이가 훨씬 멀리서(10~14km) 뽑히는 지역(예: 옥천군)에서는
+  // 반경이 지나치게 작게 나와 화면상 뭉쳐 보여도 못 잡아낸다. 실제 지도
+  // 스케일은 정답 거리가 아니라 "이번에 뽑힐 만한 오답들이 실제로 얼마나
+  // 떨어져 있는지"로 정해야 한다 - 제약 없이 그냥 가까운 순으로
+  // decoyCount개를 뽑았을 때 나올 거리(검색 풀의 decoyCount번째)를 그
+  // 라운드의 자연스러운 스케일로 쓴다.
+  const scaleRefKm = searchPool[Math.min(decoyCount - 1, searchPool.length - 1)]?.km ?? correct.km;
+  const clusterRadiusKm = Math.max(scaleRefKm * 0.25, 2);
 
   const chosen: NearestChoice[] = [correct];
   const tryFill = (pool: NearestChoice[], respectSeparation: boolean, respectCluster: boolean) => {
