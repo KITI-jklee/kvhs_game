@@ -173,7 +173,7 @@ export function MatchGame() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [roundIndex, showIntro]);
 
-  const pairs = roundsPairs[roundIndex] ?? [];
+  const pairs = useMemo(() => roundsPairs[roundIndex] ?? [], [roundsPairs, roundIndex]);
   const isSelected = (card: DeckCard) => selected.some((c) => c.key === card.key);
   const isMatched = (card: DeckCard) => matchedCardKeys.includes(card.key);
 

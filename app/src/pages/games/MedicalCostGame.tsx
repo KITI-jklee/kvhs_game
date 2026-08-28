@@ -78,7 +78,9 @@ function shuffledDisplayOrder(items: MedicalCostItem[]): MedicalCostItem[] {
  * 불가능하다. */
 function useHoldStep(onTick: () => void) {
   const onTickRef = useRef(onTick);
-  onTickRef.current = onTick;
+  useEffect(() => {
+    onTickRef.current = onTick;
+  }, [onTick]);
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const repeatStartedRef = useRef(false);
