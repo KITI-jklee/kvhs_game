@@ -33,7 +33,11 @@ const PREVIEW_MS = 3000;
 /** FR-G3-03: 매 라운드 다른 항목 조합. 풀이 부족하면(8장 예외) 재사용을 허용한다. */
 function pickRoundPairs(pool: MedicalTermPair[]): MedicalTermPair[][] {
   const used = new Set<string>();
-  return ROUND_SIZES.map((size) => {
+  const results: MedicalTermPair[][] = new Array(ROUND_SIZES.length);
+  // 분류 중복을 줄이기 위해 카드 수가 많은 라운드부터 항목을 확보한다.
+  const sizeOrder = ROUND_SIZES.map((_, i) => i).sort((a, b) => ROUND_SIZES[b] - ROUND_SIZES[a]);
+  for (const roundIdx of sizeOrder) {
+    const size = ROUND_SIZES[roundIdx];
     const available = pool.filter((p) => !used.has(p.id));
     const byCategory = new Map<string, MedicalTermPair[]>();
     available.forEach((pair) => {
@@ -85,8 +89,9 @@ function pickRoundPairs(pool: MedicalTermPair[]): MedicalTermPair[][] {
       picked = drawCandidate();
     }
     picked.forEach((p) => used.add(p.id));
-    return picked;
-  });
+    results[roundIdx] = picked;
+  }
+  return results;
 }
 
 export function MatchGame() {
@@ -172,6 +177,13 @@ export function MatchGame() {
   const isSelected = (card: DeckCard) => selected.some((c) => c.key === card.key);
   const isMatched = (card: DeckCard) => matchedCardKeys.includes(card.key);
 
+  // 중복 분류가 생기면 분류만 같아도 매칭할 수 있도록 기록한다.
+  const duplicatedCategories = useMemo(() => {
+    const counts = new Map<string, number>();
+    pairs.forEach((p) => counts.set(p.kind_mid, (counts.get(p.kind_mid) ?? 0) + 1));
+    return new Set([...counts.entries()].filter(([, n]) => n > 1).map(([category]) => category));
+  }, [pairs]);
+
   const finalize = (finalMissCount: number) => {
     doneRef.current = true;
     scheduleTransition(() => {
@@ -206,7 +218,12 @@ export function MatchGame() {
     }
     const [a, b] = next;
     setSelected(next);
-    if (a.pairIndex === b.pairIndex) {
+    const aCategory = pairs[a.pairIndex]?.kind_mid;
+    const bCategory = pairs[b.pairIndex]?.kind_mid;
+    // 중복된 분류는 정확한 쌍이 아니어도 같은 분류끼리 정답으로 인정한다.
+    const isFallbackCategoryMatch =
+      a.kind !== b.kind && aCategory !== undefined && aCategory === bCategory && duplicatedCategories.has(aCategory);
+    if (a.pairIndex === b.pairIndex || isFallbackCategoryMatch) {
       const nextMatchedCardKeys = [...matchedCardKeys, a.key, b.key];
       scheduleTransition(() => {
         setMatchedCardKeys(nextMatchedCardKeys);
