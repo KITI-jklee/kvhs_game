@@ -292,7 +292,7 @@ export function MedicalCostGame() {
       <>
         {sorted.map((item, i) => (
           <div key={item.id} className={styles.bandResultRow}>
-            <span>
+            <span className={styles.resultName}>
               {i + 1}. {item.name}
             </span>
             <b className={styles.priceStrong}>{formatWon(item.cost)}</b>
@@ -332,7 +332,7 @@ export function MedicalCostGame() {
           // 같이 보면 적중/오답/놓침도 자연히 읽힌다.
           return (
             <div key={item.id} className={cx(styles.bandResultRow, wasPicked && styles.bandResultCorrect)}>
-              <span>{item.name}</span>
+              <span className={styles.resultName}>{item.name}</span>
               <span>
                 <b className={styles.priceStrong}>{formatWon(item.cost)}</b>{' '}
                 <b className={isFit ? styles.tagOk : styles.tagMiss}>{isFit ? '예산 내' : '예산 초과'}</b>
@@ -361,7 +361,7 @@ export function MedicalCostGame() {
             key={item.id}
             className={cx(styles.bandResultRow, item.id === pricierId && styles.bandResultCorrect)}
           >
-            <span>{item.name}</span>
+            <span className={styles.resultName}>{item.name}</span>
             <span>
               <b className={styles.priceStrong}>{formatWon(item.cost)}</b>{' '}
               {item.id === pricierId && <b className={styles.tagOk}>더 비쌈</b>}
