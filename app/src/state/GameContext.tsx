@@ -35,7 +35,7 @@ export function GameProvider({ children }: { children: ReactNode }) {
     [grades],
   );
 
-  const overallScore = overallScoreFromBestScores(bestScores);
+  const overallScore = overallScoreFromBestScores(bestScores, playedGames);
   const overallProgress = useMemo(() => getGradeProgress(overallScore, grades), [overallScore, grades]);
 
   const value = useMemo<GameContextValue>(

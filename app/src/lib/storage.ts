@@ -51,12 +51,23 @@ const EMPTY_PLAYED: PlayedGames = { location: false, medical_cost: false, term_m
 export function readPlayedGames(): PlayedGames {
   try {
     const raw = window.localStorage.getItem(LS_PLAYED_GAMES);
-    if (!raw) return { ...EMPTY_PLAYED };
+    const best = readBestScores();
+    if (!raw) {
+      // `played_games` 키가 도입되기 전에 쌓인 기존 기록은 양수인 최고점으로
+      // 플레이 여부를 복원한다. 과거의 0점은 미도전과 구별할 정보가 없다.
+      const migrated: PlayedGames = {
+        location: best.location > 0,
+        medical_cost: best.medical_cost > 0,
+        term_match: best.term_match > 0,
+      };
+      writePlayedGames(migrated);
+      return migrated;
+    }
     const parsed = JSON.parse(raw) as Partial<PlayedGames>;
     return {
-      location: parsed.location === true,
-      medical_cost: parsed.medical_cost === true,
-      term_match: parsed.term_match === true,
+      location: parsed.location ?? best.location > 0,
+      medical_cost: parsed.medical_cost ?? best.medical_cost > 0,
+      term_match: parsed.term_match ?? best.term_match > 0,
     };
   } catch {
     return { ...EMPTY_PLAYED };
@@ -95,10 +106,12 @@ function writeLastResult(result: LastResult): void {
 }
 
 /** 종합 점수는 미도전 게임을 제외한 평균이다. */
-export function overallScoreFromBestScores(bestScores: BestScores): number {
-  const played = Object.values(bestScores).filter((score) => score > 0);
-  if (played.length === 0) return 0;
-  return Math.round(played.reduce((sum, score) => sum + score, 0) / played.length);
+export function overallScoreFromBestScores(bestScores: BestScores, playedGames: PlayedGames): number {
+  const scores = (Object.keys(bestScores) as GameId[])
+    .filter((game) => playedGames[game])
+    .map((game) => bestScores[game]);
+  if (scores.length === 0) return 0;
+  return Math.round(scores.reduce((sum, score) => sum + score, 0) / scores.length);
 }
 
 export interface RecordResultOutcome {

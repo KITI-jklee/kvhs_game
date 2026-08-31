@@ -1,11 +1,12 @@
-import { describe, expect, it } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import type { Grade, MedicalCostItem } from '../data/types';
 import { gradeForScore } from '../data/provider';
 import { getGradeProgress } from './grade';
 import { haversineKm } from './geo';
-import { RANK_POINTS, pointsForPick, selectNearestChoices, type HospitalPoint } from './nearestHospital';
+import { isTiedWithNearest, RANK_POINTS, pointsForPick, selectNearestChoices, type HospitalPoint } from './nearestHospital';
 import {
   BUDGET_ITEM_COUNT,
+  buildRounds,
   SLIDER_MAX,
   SLIDER_MIN,
   pickBandChoices,
@@ -18,6 +19,17 @@ import {
   sliderPositionToPrice,
 } from './medicalCost';
 import { computeMatchScore } from './matchScore';
+
+// 무작위 라운드 테스트가 실패했을 때 항상 같은 입력으로 재현되게 한다.
+beforeEach(() => {
+  let state = 0x12345678;
+  vi.spyOn(Math, 'random').mockImplementation(() => {
+    state = (state * 1664525 + 1013904223) >>> 0;
+    return state / 0x1_0000_0000;
+  });
+});
+
+afterEach(() => vi.restoreAllMocks());
 
 const grades: Grade[] = [
   { icon: '🌱', name: '새싹', range: '0~149점', min: 0, max: 149 },
@@ -62,6 +74,17 @@ describe('게임① 가장 가까운 위탁병원 찾기 로직', () => {
     expect(pointsForPick(round.ranked, second.id)).toBe(RANK_POINTS[1]);
     expect(pointsForPick(round.ranked, null)).toBe(0);
     expect(pointsForPick(round.ranked, 'no-such-id')).toBe(0);
+  });
+
+  it('1등과 10% 또는 300m 이내인 후보는 동률 1등으로 처리한다', () => {
+    const ranked = [
+      { ...hospitals[0], km: 2 },
+      { ...hospitals[1], km: 2.25 },
+      { ...hospitals[2], km: 2.31 },
+    ];
+    expect(isTiedWithNearest(ranked, 'mid')).toBe(true);
+    expect(pointsForPick(ranked, 'mid')).toBe(100);
+    expect(isTiedWithNearest(ranked, 'far1')).toBe(false);
   });
 
   it('오답은 정답의 1.15~1.8배 사이(적당히 가깝고 헷갈리는) 후보를 우선 뽑되, 그 후보끼리도 서로 뭉치면 하나는 양보한다', () => {
@@ -215,6 +238,16 @@ describe('게임② 의료비 감각 테스트 로직', () => {
       const ratio = Math.max(round.refItem.cost, round.nextItem.cost) / Math.min(round.refItem.cost, round.nextItem.cost);
       expect(ratio).toBeLessThanOrEqual(3);
     }
+  });
+
+  it('전체 라운드 생성 시 다섯 종류를 순서대로 만들고 각 라운드의 필수 데이터를 채운다', () => {
+    const rounds = buildRounds(pool);
+    expect(rounds.map((round) => round.kind)).toEqual(['slider', 'band', 'reorder', 'budget', 'higherLower']);
+    expect(rounds[0]).toHaveProperty('item');
+    expect(rounds[1]).toMatchObject({ kind: 'band', bands: expect.any(Array), correctIndex: expect.any(Number) });
+    expect(rounds[2]).toMatchObject({ kind: 'reorder', items: expect.any(Array) });
+    expect(rounds[3]).toMatchObject({ kind: 'budget', items: expect.any(Array), fitIds: expect.any(Array) });
+    expect(rounds[4]).toMatchObject({ kind: 'higherLower', isHigher: expect.any(Boolean) });
   });
 });
 
