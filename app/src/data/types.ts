@@ -28,7 +28,9 @@ export interface HospitalLocation {
   addr_hint: string;
   latitude: number;
   longitude: number;
-  /** 의외성 있는 병원(최북단·최남단 등). 있으면 회차당 최소 1회 출제 가중치 대상. */
+  /** 공식 도서·벽지 지정 위탁병원 여부(odcloud 컬럼 확장분 기준). */
+  is_remote_area: boolean;
+  /** 의외성 있는 병원(최북단·최남단 등) - 도서·벽지는 위 is_remote_area로 따로 표시하므로 여기 안 섞는다. */
   region_note?: string;
 }
 

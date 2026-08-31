@@ -170,6 +170,17 @@
   padding: 3px 8px;
 }
 
+/* 점수 배지(.detailChipBadge)와 헷갈리지 않게, 도서·벽지 같은 위치 특성
+   태그는 숫자가 아니라는 게 한눈에 구분되도록 무채색으로 뒀다. */
+.detailChipTag {
+  margin-top: 2px;
+  font: 600 9px 'Pretendard Variable';
+  color: var(--color-muted);
+  background: var(--color-line);
+  border-radius: 999px;
+  padding: 2px 7px;
+}
+
 .detailsNote {
   font: 500 10.5px/1.6 'Pretendard Variable';
   color: var(--color-muted);

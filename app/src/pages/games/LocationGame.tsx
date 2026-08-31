@@ -75,6 +75,8 @@ interface RevealInfo {
   correctName: string;
   correctAddr: string;
   correctKm: number;
+  /** 정답 병원이 공식 도서·벽지 지정 위탁병원인지. */
+  correctIsRemoteArea: boolean;
   pickedName: string | null;
   pickedAddr: string | null;
   pickedKm: number | null;
@@ -86,6 +88,7 @@ interface RoundRecord {
   countyLabel: string;
   correctName: string;
   points: number;
+  isRemoteArea: boolean;
 }
 
 export function LocationGame() {
@@ -131,6 +134,7 @@ export function LocationGame() {
           center: { lat: h.latitude, lng: h.longitude },
           province: h.addr_hint.split(' ')[0],
           addr: dongName ? `${h.addr_hint} ${dongName}` : h.addr_hint,
+          isRemoteArea: h.is_remote_area,
         };
       });
       // 쿼리 파라미터로 테스트할 첫 지역을 지정할 수 있다.
@@ -221,8 +225,10 @@ export function LocationGame() {
     const { ranked } = rc.round;
     const correct = ranked[0];
     const picked = pickedId ? ranked.find((c) => c.id === pickedId) ?? null : null;
-    const points = pointsForPick(ranked, pickedId);
-    const tieCredited = Boolean(picked) && picked!.id !== correct.id && isTiedWithNearest(ranked, pickedId);
+    // 병원 addr과 같은 형식("도/시 시/군/구 읍/면/동")으로 맞춰야 비교가 된다.
+    const originAddr = rc.dong ? `${rc.countyAddr} ${rc.dong.name}` : rc.countyAddr;
+    const points = pointsForPick(ranked, pickedId, originAddr);
+    const tieCredited = Boolean(picked) && picked!.id !== correct.id && isTiedWithNearest(ranked, pickedId, originAddr);
     setRevealed(true);
     setScore((s) => s + points);
     setReveal({
@@ -231,12 +237,16 @@ export function LocationGame() {
       correctName: correct.name,
       correctAddr: correct.addr ?? '',
       correctKm: Math.round(correct.km * 10) / 10,
+      correctIsRemoteArea: Boolean(correct.isRemoteArea),
       pickedName: picked && picked.id !== correct.id ? picked.name : null,
       pickedAddr: picked && picked.id !== correct.id ? picked.addr ?? '' : null,
       pickedKm: picked && picked.id !== correct.id ? Math.round(picked.km * 10) / 10 : null,
       tieCredited,
     });
-    setRecords((r) => [...r, { countyLabel: cityLabel(rc.countyAddr), correctName: correct.name, points }]);
+    setRecords((r) => [
+      ...r,
+      { countyLabel: cityLabel(rc.countyAddr), correctName: correct.name, points, isRemoteArea: Boolean(correct.isRemoteArea) },
+    ]);
   }, []);
 
   // 라운드 제한시간. 확인하지 않고 시간이 끝나면 그때까지 고른 후보로(안 골랐으면 오답으로) 채점한다.
@@ -274,6 +284,8 @@ export function LocationGame() {
   const handleNext = () => {
     if (isLastRound) {
       const bestCount = records.filter((r) => r.points === RANK_POINTS[0]).length;
+      const remoteCount = records.filter((r) => r.isRemoteArea).length;
+      const remoteNote = remoteCount > 0 ? ` · 이번 판에서 도서·벽지 위탁병원 ${remoteCount}곳을 만났어요` : '';
       finishGame({
         gameId: 'location',
         title: '가장 가까운 위탁병원 찾기 완료',
@@ -288,8 +300,9 @@ export function LocationGame() {
           label: `R${i + 1} · ${r.countyLabel}`,
           value: r.correctName,
           badge: `${r.points}점`,
+          tag: r.isRemoteArea ? '도서·벽지' : undefined,
         })),
-        note: `${bestCount} / ${ROUND_COUNT}라운드 정답 · 가까운 순서에 따라 최대 100점부터 차등 채점됩니다.`,
+        note: `${bestCount} / ${ROUND_COUNT}라운드 정답 · 가까운 순서에 따라 최대 100점부터 차등 채점됩니다.${remoteNote}`,
       });
       navigate('/result');
       return;
@@ -398,12 +411,20 @@ export function LocationGame() {
           {revealed && reveal ? (
             <div className={styles.resultCard}>
               <span className={styles.verdict}>{reveal.verdict}</span>
+              {reveal.correctIsRemoteArea && <span className={styles.remoteBadge}>📍 도서·벽지 위탁병원</span>}
               <span className={styles.km}>
                 정답: {reveal.correctName}
                 {reveal.correctAddr && ` (${reveal.correctAddr})`} · 약 {reveal.correctKm}km
-                {reveal.pickedName &&
-                  ` · 내 선택: ${reveal.pickedName}${reveal.pickedAddr ? ` (${reveal.pickedAddr})` : ''} · 약 ${reveal.pickedKm}km`}
-                {reveal.tieCredited && ' · 거리 차이가 미미해 정답으로 함께 인정했어요'}
+                {reveal.pickedName && reveal.tieCredited ? (
+                  // 동률 인정된 경우 "정답 vs 내 선택"처럼 둘을 대립시키지 않고,
+                  // 정답이 여러 개였고 그중 내가 고른 게 이거라는 식으로 나란히 보여준다.
+                  // 병원 하나의 정보(이름·거리)는 "·"로 묶고, 병원과 병원 사이는
+                  // "/"로 구분해 어디까지가 한 병원 정보인지 헷갈리지 않게 한다.
+                  ` / ${reveal.pickedName}${reveal.pickedAddr ? ` (${reveal.pickedAddr})` : ''} · 약 ${reveal.pickedKm}km (내 선택)`
+                ) : (
+                  reveal.pickedName &&
+                  ` · 내 선택: ${reveal.pickedName}${reveal.pickedAddr ? ` (${reveal.pickedAddr})` : ''} · 약 ${reveal.pickedKm}km`
+                )}
               </span>
               <span className={styles.gain}>+{reveal.points}</span>
               <Button variant="ink" className={styles.next} onClick={handleNext}>

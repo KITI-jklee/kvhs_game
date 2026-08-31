@@ -11,6 +11,7 @@ const locations = Array.from({ length: 5 }, (_, i) => ({
   addr_hint: '서울특별시 종로구',
   latitude: 37.5 + i * 0.01,
   longitude: 127 + i * 0.01,
+  is_remote_area: i === 0,
   ...(i === 0 ? { region_note: '서울권' } : {}),
 }));
 const costs = Array.from({ length: 12 }, (_, i) => ({ id: `c${i}`, name: `항목 ${i}`, category: '검사', cost: i + 1 }));

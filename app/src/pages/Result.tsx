@@ -100,6 +100,7 @@ export function Result() {
                 <span className={styles.detailChipLabel}>{d.label}</span>
                 <span className={styles.detailChipValue}>{d.value}</span>
                 {d.badge && <span className={styles.detailChipBadge}>{d.badge}</span>}
+                {d.tag && <span className={styles.detailChipTag}>{d.tag}</span>}
               </div>
             ))}
           </div>

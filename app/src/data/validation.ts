@@ -29,11 +29,13 @@ export function validateLocations(value: unknown): HospitalLocation[] {
       && isFiniteNumber(row.longitude)
       && row.longitude >= 124
       && row.longitude <= 132
+      && typeof row.is_remote_area === 'boolean'
       && (row.region_note === undefined || isNonEmptyString(row.region_note));
   });
   if (rows.length !== value.length) throw new Error('hospital_locations contains an invalid record');
   if (rows.length < 5) throw new Error('hospital_locations requires at least 5 records');
   if (!rows.some((row) => row.region_note)) throw new Error('hospital_locations requires a region_note record');
+  if (!rows.some((row) => row.is_remote_area)) throw new Error('hospital_locations requires an is_remote_area record');
   if (!hasUniqueIds(rows)) throw new Error('hospital_locations contains duplicate ids');
   return rows;
 }

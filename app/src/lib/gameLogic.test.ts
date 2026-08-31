@@ -87,6 +87,33 @@ describe('게임① 가장 가까운 위탁병원 찾기 로직', () => {
     expect(isTiedWithNearest(ranked, 'far1')).toBe(false);
   });
 
+  it('거리 차이가 커도 같은 읍/면/동(addr) 안이면 동률 1등으로 처리한다 - 문제 자체가 읍/면/동 단위로만 위치를 알려주기 때문', () => {
+    const ranked = [
+      { ...hospitals[0], addr: '전라남도 신안군 압해읍', km: 0.2 },
+      { ...hospitals[1], addr: '전라남도 신안군 압해읍', km: 1.4 }, // 10%/300m 허용 범위 밖이지만 같은 읍
+      { ...hospitals[2], addr: '전라남도 신안군 지도읍', km: 5 }, // 다른 읍이고 거리 허용치도 벗어나면 동률 아님
+    ];
+    expect(isTiedWithNearest(ranked, 'mid')).toBe(true);
+    expect(pointsForPick(ranked, 'mid')).toBe(100);
+    expect(isTiedWithNearest(ranked, 'far1')).toBe(false);
+  });
+
+  it('정답이 다른 동네 병원이어도, 내 선택이 문제에서 알려준 그 동네(originAddr) 안이면 동률 1등으로 처리한다', () => {
+    // "정답: 미소들노인전문병원(구로구 개봉1동) 1km · 내 선택: 강승훈치과의원(양천구 신정3동) 1.3km"
+    // 실제로 신고된 케이스 - 문제 자체가 "양천구 신정3동 인근"이라고 알려줬으니
+    // 내가 고른 병원이 그 동네 안이면, 정답이 직선거리로 조금 더 가까운 다른
+    // 구의 병원이더라도 동률로 인정해야 한다.
+    const ranked = [
+      { ...hospitals[0], addr: '서울특별시 구로구 개봉1동', km: 1 },
+      { ...hospitals[1], addr: '서울특별시 양천구 신정3동', km: 1.3 },
+    ];
+    const originAddr = '서울특별시 양천구 신정3동';
+    expect(isTiedWithNearest(ranked, 'mid', originAddr)).toBe(true);
+    expect(pointsForPick(ranked, 'mid', originAddr)).toBe(100);
+    // originAddr 없이 부르면(기존 동작) 여전히 거리 기준으로만 판단한다.
+    expect(isTiedWithNearest(ranked, 'mid')).toBe(false);
+  });
+
   it('오답은 정답의 1.15~1.8배 사이(적당히 가깝고 헷갈리는) 후보를 우선 뽑되, 그 후보끼리도 서로 뭉치면 하나는 양보한다', () => {
     // 정답(near) 5km. 너무 가까운 tooClose(1.05배, 거의 같은 거리라 판단
     // 불가능)는 피하고, 적당히 가까운 good1/good2(1.3배·1.6배)를 오답 후보로

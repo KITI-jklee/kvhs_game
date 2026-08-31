@@ -140,6 +140,16 @@
   color: var(--color-ink);
 }
 
+.remoteBadge {
+  order: 1;
+  background: var(--color-tint-1);
+  color: var(--color-accent-strong);
+  border-radius: 999px;
+  padding: 3px 10px;
+  font: 600 11px 'Pretendard Variable';
+  white-space: nowrap;
+}
+
 .gain {
   order: 2;
   margin-left: auto;

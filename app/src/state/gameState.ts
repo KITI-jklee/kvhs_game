@@ -4,7 +4,7 @@ import type { GradeProgress } from '../lib/grade';
 import type { BestScores, PlayedGames } from '../lib/storage';
 
 export interface StatTile { icon: string; label: string; value: string; }
-export interface DetailChip { icon?: string; label: string; value: string; badge?: string; }
+export interface DetailChip { icon?: string; label: string; value: string; badge?: string; tag?: string; }
 export interface PlayResult {
   gameId: GameId;
   title: string;

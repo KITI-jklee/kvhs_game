@@ -10,10 +10,11 @@ data/ 아래의 원본 공공데이터 3종(1회성 수집 결과)을 게임용 
 입력 (data/):
   - witak_보훈병원_위탁병원정보.json          (게임②: 진짜 병원명)
   - witak2_보훈병원_위탁병원정보_위경도포함.json (게임①: 위치)
+  - witak3_보훈병원_위탁병원정보_도서지역포함.json (게임①: 공식 도서·벽지 여부, pid로 join)
   - suga_보훈병원_비급여수가정보.json           (게임③: 용어 짝맞추기)
 
 출력 (app/public/data/):
-  - hospital_locations.json   { id, name, addr_hint, latitude, longitude, region_note? }[]
+  - hospital_locations.json   { id, name, addr_hint, latitude, longitude, is_remote_area, region_note? }[]
   - hospital_names.json       { id, name, is_real, reviewed }[]
   - medical_term_pairs.json   { id, item_name, kind_mid, cost }[]
 
@@ -74,6 +75,13 @@ def expand_addr_hint(addr1: str) -> str:
 
 def build_locations():
     raw = load("witak2_보훈병원_위탁병원정보_위경도포함.json")
+    # 공식 도서·벽지 여부(odcloud 컬럼 확장분) - pid로 원본과 1:1 매칭된다.
+    # 예전엔 이름/주소에 "울릉·제주·옹진" 같은 문자열이 들어있는지로 대충
+    # 추측했는데(24건), 실제 공식 데이터는 63건 - 완도·신안·흑산도·강화·
+    # 정선·화천·철원·영월처럼 이름만 봐선 알 수 없던 곳이 훨씬 많았다.
+    island_raw = load("witak3_보훈병원_위탁병원정보_도서지역포함.json")
+    remote_pids = {rec["pid"] for rec in island_raw if rec.get("island_area") == "포함"}
+
     valid = []
     for rec in raw:
         try:
@@ -93,7 +101,8 @@ def build_locations():
     if not valid:
         raise SystemExit("hospital_locations: no valid records after filtering")
 
-    # 의외성 있는 병원 태깅: 4극단 + 도서·벽지(울릉/제주/서귀포/옹진) 보너스
+    # 의외성 있는 병원 태깅(4극단) - 도서·벽지는 이제 위 공식 데이터로 별도
+    # 필드(is_remote_area)에 정확히 표시하므로, 여기 region_note에는 섞지 않는다.
     notes = {}
 
     def tag(idx, note):
@@ -106,13 +115,6 @@ def build_locations():
     tag(max(range(len(valid)), key=lambda i: valid[i]["lng"]), "최동단")
     tag(min(range(len(valid)), key=lambda i: valid[i]["lng"]), "최서단")
 
-    island_markers = ["울릉", "독도", "서귀포", "제주", "옹진", "백령"]
-    for v in valid:
-        if v["pid"] in notes:
-            continue
-        if any(m in v["addr1"] or m in v["name"] for m in island_markers):
-            notes[v["pid"]] = ["도서·벽지"]
-
     out = []
     for v in valid:
         item = {
@@ -121,6 +123,7 @@ def build_locations():
             "addr_hint": expand_addr_hint(v["addr1"]),
             "latitude": round(v["lat"], 6),
             "longitude": round(v["lng"], 6),
+            "is_remote_area": v["pid"] in remote_pids,
         }
         if v["pid"] in notes:
             item["region_note"] = "·".join(dict.fromkeys(notes[v["pid"]])) + " 위탁병원"

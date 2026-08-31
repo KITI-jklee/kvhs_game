@@ -22,6 +22,8 @@ export interface HospitalPoint {
   /** addr_hint 전체("도 시/군/구") - 정답/오답 병원이 실제로 어디 소속인지
    * 보여줄 때 쓴다. 테스트 픽스처에서는 생략 가능하도록 선택 필드로 둔다. */
   addr?: string;
+  /** 공식 도서·벽지 지정 위탁병원 여부. 테스트 픽스처에서는 생략 가능. */
+  isRemoteArea?: boolean;
 }
 
 export interface NearestChoice extends HospitalPoint {
@@ -129,20 +131,28 @@ export function selectNearestChoices(
   return { ranked, shuffled: shuffle(ranked) };
 }
 
-/** 1등과의 차이가 10% 또는 300m 이내면 동률로 인정한다. */
-export function isTiedWithNearest(ranked: NearestChoice[], pickedId: string | null): boolean {
+/** 1등과의 차이가 10% 또는 300m 이내거나, 같은 읍/면/동 안에 있으면 동률로
+ * 인정한다. 문제 자체가 "OO읍 인근에 있습니다" 식으로 읍/면/동 단위로만
+ * 위치를 알려주므로:
+ * - 정답과 내 선택이 같은 읍/면/동이면(픽·정답이 우연히 같은 동네) 무조건 동률
+ * - 내 선택이 "문제에서 알려준 그 동네"(originAddr) 안이면, 정답이 직선거리상
+ *   조금 더 가까운 다른 동네에 있더라도(예: 구가 다른 옆 동네 병원) 동률로
+ *   인정한다 - 실제로는 자기 동네 병원이 훨씬 자연스러운 선택이기 때문. */
+export function isTiedWithNearest(ranked: NearestChoice[], pickedId: string | null, originAddr?: string): boolean {
   if (!ranked.length || !pickedId) return false;
   const correct = ranked[0];
   if (pickedId === correct.id) return true;
   const picked = ranked.find((c) => c.id === pickedId);
   if (!picked) return false;
+  if (picked.addr && correct.addr && picked.addr === correct.addr) return true;
+  if (originAddr && picked.addr === originAddr) return true;
   const tolerance = Math.max(correct.km * 0.1, 0.3);
   return picked.km - correct.km <= tolerance;
 }
 
 /** 선택한 병원의 순위 점수를 반환하며, 동률은 1등으로 처리한다. */
-export function pointsForPick(ranked: NearestChoice[], pickedId: string | null): number {
-  if (isTiedWithNearest(ranked, pickedId)) return RANK_POINTS[0];
+export function pointsForPick(ranked: NearestChoice[], pickedId: string | null, originAddr?: string): number {
+  if (isTiedWithNearest(ranked, pickedId, originAddr)) return RANK_POINTS[0];
   const index = ranked.findIndex((c) => c.id === pickedId);
   if (index < 0 || index >= RANK_POINTS.length) return 0;
   return RANK_POINTS[index];
