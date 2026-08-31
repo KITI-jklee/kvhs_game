@@ -38,7 +38,7 @@ function wrapText(ctx: CanvasRenderingContext2D, text: string, x: number, y: num
 }
 
 /** SCR-91 / FR-CM-11 / 6-3: 점수·등급·게임 아이콘이 담긴 카드 이미지를 Canvas로 렌더링한다. */
-function drawCard(canvas: HTMLCanvasElement, result: FinishedResult, grade: Grade) {
+function drawCard(canvas: HTMLCanvasElement, result: ShareableResult, grade: Grade) {
   const ctx = canvas.getContext('2d');
   if (!ctx) throw new Error('2d context unavailable');
   const W = canvas.width;
