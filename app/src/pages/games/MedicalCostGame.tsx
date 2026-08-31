@@ -292,9 +292,12 @@ export function MedicalCostGame() {
       <>
         {sorted.map((item, i) => (
           <div key={item.id} className={styles.bandResultRow}>
-            <span className={styles.resultName}>
-              {i + 1}. {item.name}
-            </span>
+            <div className={styles.resultNameCol}>
+              <span className={styles.resultName}>
+                {i + 1}. {item.name}
+              </span>
+              <span className={styles.itemCategory}>{item.category}</span>
+            </div>
             <b className={styles.priceStrong}>{formatWon(item.cost)}</b>
           </div>
         ))}
@@ -332,7 +335,10 @@ export function MedicalCostGame() {
           // 같이 보면 적중/오답/놓침도 자연히 읽힌다.
           return (
             <div key={item.id} className={cx(styles.bandResultRow, wasPicked && styles.bandResultCorrect)}>
-              <span className={styles.resultName}>{item.name}</span>
+              <div className={styles.resultNameCol}>
+                <span className={styles.resultName}>{item.name}</span>
+                <span className={styles.itemCategory}>{item.category}</span>
+              </div>
               <span>
                 <b className={styles.priceStrong}>{formatWon(item.cost)}</b>{' '}
                 <b className={isFit ? styles.tagOk : styles.tagMiss}>{isFit ? '예산 내' : '예산 초과'}</b>
@@ -361,7 +367,10 @@ export function MedicalCostGame() {
             key={item.id}
             className={cx(styles.bandResultRow, item.id === pricierId && styles.bandResultCorrect)}
           >
-            <span className={styles.resultName}>{item.name}</span>
+            <div className={styles.resultNameCol}>
+              <span className={styles.resultName}>{item.name}</span>
+              <span className={styles.itemCategory}>{item.category}</span>
+            </div>
             <span>
               <b className={styles.priceStrong}>{formatWon(item.cost)}</b>{' '}
               {item.id === pricierId && <b className={styles.tagOk}>더 비쌈</b>}
@@ -636,7 +645,10 @@ export function MedicalCostGame() {
                         onPointerCancel={handleReorderPointerUp}
                       >
                         <span className={styles.bandNum}>{i + 1}</span>
-                        <span className={styles.reorderName}>{item.name}</span>
+                        <div className={styles.reorderNameCol}>
+                          <span className={styles.reorderName}>{item.name}</span>
+                          <span className={styles.itemCategory}>{item.category}</span>
+                        </div>
                         <span className={styles.reorderGrip} aria-hidden>
                           ⠿
                         </span>
@@ -674,7 +686,10 @@ export function MedicalCostGame() {
                           onClick={() => toggleBudgetPick(item.id)}
                         >
                           <span className={styles.bandNum}>{['A', 'B', 'C', 'D', 'E'][i]}</span>
-                          <span>{item.name}</span>
+                          <div className={styles.budgetNameCol}>
+                            <span>{item.name}</span>
+                            <span className={styles.itemCategory}>{item.category}</span>
+                          </div>
                           {picked && <span aria-hidden>✓</span>}
                         </button>
                       );

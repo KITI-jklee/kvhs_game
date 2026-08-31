@@ -480,6 +480,22 @@
   flex: 1 1 auto;
   min-width: 0;
 }
+
+.resultNameCol {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+/* .itemCategory의 기본 색(--color-muted)은 흰 카드(.roundCard) 위를
+   전제로 한다. .bandResultRow는 흰 카드가 아니라 어두운 페이지 배경
+   위에 뜨는 반투명 패널(.resultBox)이라 같은 색을 쓰면 거의 안 보인다 -
+   이 안에서만 accent-pale 계열로 덮어쓴다. */
+.bandResultRow .itemCategory {
+  color: rgba(169, 211, 199, 0.75);
+}
 .bandResultRow b {
   font-weight: 700;
 }
@@ -522,11 +538,27 @@
   transition: none;
 }
 
-.reorderName {
+.reorderNameCol {
   flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
   text-align: left;
+}
+
+.reorderName {
   font: 600 13.5px 'Pretendard Variable';
   color: var(--color-ink);
+}
+
+/* 순서 맞추기/예산 챌린지는 항목이 여러 개 나열돼 있어, 위쪽처럼
+   카드 상단 pill 하나로는 각 항목이 무슨 분류인지 알려줄 수 없다
+   (예: "즉시 또는 임시폐쇄장치"가 치과 항목인지 이 글자만 보고는
+   알기 어려움) - 항목명 바로 아래 카테고리를 작게 붙여 보완한다. */
+.itemCategory {
+  font: 500 10.5px 'Pretendard Variable';
+  color: var(--color-muted);
 }
 
 .reorderGrip {
@@ -562,6 +594,14 @@
   font: 600 13.5px 'Pretendard Variable';
   color: var(--color-ink);
   text-align: left;
+}
+
+.budgetNameCol {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
 }
 .budgetCard:disabled {
   cursor: default;
