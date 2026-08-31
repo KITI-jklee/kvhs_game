@@ -1,7 +1,7 @@
 import { createContext, useContext } from 'react';
 import type { GameId, Grade } from '../data/types';
 import type { GradeProgress } from '../lib/grade';
-import type { BestScores } from '../lib/storage';
+import type { BestScores, PlayedGames } from '../lib/storage';
 
 export interface StatTile { icon: string; label: string; value: string; }
 export interface DetailChip { icon?: string; label: string; value: string; badge?: string; }
@@ -23,6 +23,7 @@ export interface FinishedResult extends PlayResult {
 export interface GameContextValue {
   grades: Grade[];
   bestScores: BestScores;
+  playedGames: PlayedGames;
   overallScore: number;
   overallProgress: GradeProgress;
   lastResult: FinishedResult | null;

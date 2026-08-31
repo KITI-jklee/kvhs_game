@@ -92,17 +92,15 @@ export function pickBandChoices(actualCost: number): BandRound {
   // (다른 셋은 "약 OO만원"인데 하나만 "OO만원"이면 바로 눈에 띔), 이 경우엔
   // 오답 3개도 똑같이 "약" 없이 보여줘서 넷 다 표기 형식이 같게 만든다.
   const isExactManwon = actualCost >= 10_000 && actualCost % 10_000 === 0;
-  if (isExactManwon) {
-    const decoyBands = decoyIdx.slice(0, 3).map((i) => ({ value: BAND_LADDER[i], label: bandLabel(BAND_LADDER[i], true) }));
-    const correctBand = { value: actualCost, label: bandLabel(actualCost, true) };
-    const order = shuffle([0, 1, 2, 3]);
-    const all = [correctBand, ...decoyBands];
-    return { bands: order.map((i) => all[i]), correctIndex: order.indexOf(0) };
-  }
+  const correctValue = isExactManwon ? actualCost : BAND_LADDER[closestIdx];
+  const correctBand = { value: correctValue, label: bandLabel(correctValue, isExactManwon) };
+  const decoyBands = decoyIdx
+    .slice(0, 3)
+    .map((i) => ({ value: BAND_LADDER[i], label: bandLabel(BAND_LADDER[i], isExactManwon) }));
 
-  const allIdx = shuffle([closestIdx, ...decoyIdx.slice(0, 3)]);
-  const bands = allIdx.map((i) => ({ value: BAND_LADDER[i], label: bandLabel(BAND_LADDER[i]) }));
-  return { bands, correctIndex: allIdx.indexOf(closestIdx) };
+  const order = shuffle([0, 1, 2, 3]);
+  const all = [correctBand, ...decoyBands];
+  return { bands: order.map((i) => all[i]), correctIndex: order.indexOf(0) };
 }
 
 export const REORDER_ITEM_COUNT = 4;

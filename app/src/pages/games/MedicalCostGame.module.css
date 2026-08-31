@@ -481,12 +481,15 @@
   min-width: 0;
 }
 
-.resultNameCol {
+/* 항목명 + 카테고리를 세로로 쌓는 컨테이너 - 순서맞추기/예산챌린지/결과공개
+   3곳(원래 이름은 각각 달랐지만 규칙이 완전히 같아 하나로 합침)에서 공용으로 쓴다. */
+.nameCol {
   flex: 1 1 auto;
   min-width: 0;
   display: flex;
   flex-direction: column;
   gap: 2px;
+  text-align: left;
 }
 
 /* .itemCategory의 기본 색(--color-muted)은 흰 카드(.roundCard) 위를
@@ -494,7 +497,7 @@
    위에 뜨는 반투명 패널(.resultBox)이라 같은 색을 쓰면 거의 안 보인다 -
    이 안에서만 accent-pale 계열로 덮어쓴다. */
 .bandResultRow .itemCategory {
-  color: rgba(169, 211, 199, 0.75);
+  color: color-mix(in srgb, var(--color-accent-pale) 75%, transparent);
 }
 .bandResultRow b {
   font-weight: 700;
@@ -536,15 +539,6 @@
   border-color: var(--color-accent);
   box-shadow: 0 10px 22px rgba(0, 0, 0, 0.16);
   transition: none;
-}
-
-.reorderNameCol {
-  flex: 1;
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  text-align: left;
 }
 
 .reorderName {
@@ -596,13 +590,6 @@
   text-align: left;
 }
 
-.budgetNameCol {
-  flex: 1;
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
 .budgetCard:disabled {
   cursor: default;
   opacity: 0.6;

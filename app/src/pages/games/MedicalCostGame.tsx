@@ -292,7 +292,7 @@ export function MedicalCostGame() {
       <>
         {sorted.map((item, i) => (
           <div key={item.id} className={styles.bandResultRow}>
-            <div className={styles.resultNameCol}>
+            <div className={styles.nameCol}>
               <span className={styles.resultName}>
                 {i + 1}. {item.name}
               </span>
@@ -335,7 +335,7 @@ export function MedicalCostGame() {
           // 같이 보면 적중/오답/놓침도 자연히 읽힌다.
           return (
             <div key={item.id} className={cx(styles.bandResultRow, wasPicked && styles.bandResultCorrect)}>
-              <div className={styles.resultNameCol}>
+              <div className={styles.nameCol}>
                 <span className={styles.resultName}>{item.name}</span>
                 <span className={styles.itemCategory}>{item.category}</span>
               </div>
@@ -367,7 +367,7 @@ export function MedicalCostGame() {
             key={item.id}
             className={cx(styles.bandResultRow, item.id === pricierId && styles.bandResultCorrect)}
           >
-            <div className={styles.resultNameCol}>
+            <div className={styles.nameCol}>
               <span className={styles.resultName}>{item.name}</span>
               <span className={styles.itemCategory}>{item.category}</span>
             </div>
@@ -645,7 +645,7 @@ export function MedicalCostGame() {
                         onPointerCancel={handleReorderPointerUp}
                       >
                         <span className={styles.bandNum}>{i + 1}</span>
-                        <div className={styles.reorderNameCol}>
+                        <div className={styles.nameCol}>
                           <span className={styles.reorderName}>{item.name}</span>
                           <span className={styles.itemCategory}>{item.category}</span>
                         </div>
@@ -686,7 +686,7 @@ export function MedicalCostGame() {
                           onClick={() => toggleBudgetPick(item.id)}
                         >
                           <span className={styles.bandNum}>{['A', 'B', 'C', 'D', 'E'][i]}</span>
-                          <div className={styles.budgetNameCol}>
+                          <div className={styles.nameCol}>
                             <span>{item.name}</span>
                             <span className={styles.itemCategory}>{item.category}</span>
                           </div>

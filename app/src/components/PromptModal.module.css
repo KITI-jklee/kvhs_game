@@ -24,12 +24,12 @@
   box-shadow: var(--shadow-pop);
 }
 
-.icon {
+.iconSlot {
   margin-bottom: 4px;
 }
 
 .title {
-  font: 600 17px 'Pretendard Variable';
+  font: 600 var(--prompt-title-size, 17px) 'Pretendard Variable';
   color: var(--color-ink);
   letter-spacing: -0.02em;
 }
