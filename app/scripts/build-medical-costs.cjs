@@ -1,6 +1,22 @@
 /**
  * Build a readable, deduplicated medical-cost quiz pool from the public source.
  * Run from app/: node scripts/build-medical-costs.cjs
+ *
+ * 주의: 이 스크립트를 그대로 재실행하면(2026-08-31 기준 742건) 실제 배포 중인
+ * public/data/medical_costs.json(544건)보다 훨씬 큰 결과가 나온다 - 원본 데이터도
+ * 스크립트 자체도 안 바뀌었는데 결과가 다르다. 이유는 확인됐다: 이 스크립트(Codex가
+ * 작성)의 출력은 "1차 후보 풀"일 뿐이고, 실제 배포본은 그 후 별도의 긴 Claude Code
+ * 세션(세션명 "카드 짝맞추기 게임 첫 라운드 레이아웃", 2026-08-25)에서 100턴 넘게
+ * 대화하며 이상한 표기·중복·과도하게 세분화된 항목(테슬라 스펙별 MRI, 입원료 신구
+ * 코드 중복 등)을 사람이 하나하나 검토해 555건까지 수동으로 골라낸 결과다 - 이
+ * 스크립트의 필터 규칙만으로는 재현이 안 된다. 그 555건에서 이후 다시 소수 항목만
+ * (예: "즉시 or 임시폐쇄장치"의 "or"→"또는" 표기 수정, 성기·성기능을 직접 지칭하는
+ * 노골적 항목 11건 제거) 손으로 추가 수정해 지금의 544건이 됐다.
+ * 따라서 이 스크립트를 재실행해 출력을 그대로 덮어쓰면 그 수동 큐레이션이 통째로
+ * 사라진다 - 재실행이 필요하면 출력을 REVIEW_CSV_PATH로 다시 검토해 필요한 항목만
+ * 골라 반영해야 한다. 그 검토를 실제로 어떤 기준·순서로 했는지는
+ * ../../docs/medical_costs_curation_guide.md 에 재현 가능하게 정리해뒀다 -
+ * 재검토를 다시 하게 되면 이 문서부터 읽을 것.
  */
 const fs = require('fs');
 const path = require('path');
@@ -24,6 +40,10 @@ const EXCLUDED_NAME_PATTERNS = [
   /(유전자|염색체|분자병리|중합효소|대립유전자|면역글로불린|핵산증폭|세포병리|항[A-Z0-9]+항체)/i,
   /\d+(\.\d+)?\s*(ml|mg|mcg|iu|vial|syringe|cc|cm|mm|fr|ea|box)\b/i,
   /(단체협약|VIP|숙박형|원폭피해|치료\s*보조기구)/i,
+  // 가벼운 아케이드 게임에서 큰 글씨로 보여주기엔 과하게 노골적인 성기·
+  // 성기능 직접 지칭 항목만 제외한다(유방암·자궁경부암 검진, 요실금,
+  // 전립선 MRI 같은 보편적 건강검진 주제는 성적인 내용이 아니므로 남긴다).
+  /(생식기|음경|음낭|발기능|사정력|소음순\s*절제)/,
 ];
 
 // A category cap prevents hundreds of MRI, ultrasound, and dental variants from
