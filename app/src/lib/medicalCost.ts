@@ -59,9 +59,10 @@ export interface PriceBand {
   label: string;
 }
 
-function bandLabel(value: number): string {
-  if (value >= 10_000) return `약 ${Math.round(value / 10_000)}만원`;
-  return `약 ${value.toLocaleString('ko-KR')}원`;
+function bandLabel(value: number, exact = false): string {
+  const prefix = exact ? '' : '약 ';
+  if (value >= 10_000) return `${prefix}${Math.round(value / 10_000)}만원`;
+  return `${prefix}${value.toLocaleString('ko-KR')}원`;
 }
 
 export interface BandRound {
@@ -84,6 +85,21 @@ export function pickBandChoices(actualCost: number): BandRound {
     if (closestIdx - d >= 0) decoyIdx.push(closestIdx - d);
     if (decoyIdx.length < 3 && closestIdx + d < BAND_LADDER.length) decoyIdx.push(closestIdx + d);
   }
+
+  // 실제 가격이 만원 단위로 딱 떨어지면(예: 40,000원) 사다리에서 로그상 가장
+  // 가까운 값(예: 5만원)으로 뭉뚱그리지 않고 실제 가격 그대로를 정답으로
+  // 보여준다. 이때 정답 라벨에서만 "약"을 빼면 그 자체가 힌트가 되므로
+  // (다른 셋은 "약 OO만원"인데 하나만 "OO만원"이면 바로 눈에 띔), 이 경우엔
+  // 오답 3개도 똑같이 "약" 없이 보여줘서 넷 다 표기 형식이 같게 만든다.
+  const isExactManwon = actualCost >= 10_000 && actualCost % 10_000 === 0;
+  if (isExactManwon) {
+    const decoyBands = decoyIdx.slice(0, 3).map((i) => ({ value: BAND_LADDER[i], label: bandLabel(BAND_LADDER[i], true) }));
+    const correctBand = { value: actualCost, label: bandLabel(actualCost, true) };
+    const order = shuffle([0, 1, 2, 3]);
+    const all = [correctBand, ...decoyBands];
+    return { bands: order.map((i) => all[i]), correctIndex: order.indexOf(0) };
+  }
+
   const allIdx = shuffle([closestIdx, ...decoyIdx.slice(0, 3)]);
   const bands = allIdx.map((i) => ({ value: BAND_LADDER[i], label: bandLabel(BAND_LADDER[i]) }));
   return { bands, correctIndex: allIdx.indexOf(closestIdx) };

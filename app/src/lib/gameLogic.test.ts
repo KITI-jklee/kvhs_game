@@ -112,14 +112,22 @@ describe('게임② 의료비 감각 테스트 로직', () => {
   it('라운드② 4지선다: 정답 밴드가 로그상 가장 가까운 사다리값이고, 오답은 그다음으로 가까운 것부터 채운다', () => {
     const { bands, correctIndex } = pickBandChoices(127_780); // "뇌혈류 초음파" 실제 가격
     expect(bands).toHaveLength(4);
-    expect(bands[correctIndex].value).toBe(100_000);
+    expect(bands[correctIndex]).toEqual({ value: 100_000, label: '약 10만원' });
     const decoyValues = bands.filter((_, i) => i !== correctIndex).map((b) => b.value);
     expect(decoyValues.sort((a, b) => a - b)).toEqual([50_000, 70_000, 200_000]);
   });
 
-  it('라운드② 4지선다: 실제 가격이 사다리 위에 딱 맞아떨어지면(예: 7만원) 그 값 자체가 정답 보기로 나온다', () => {
-    const { bands, correctIndex } = pickBandChoices(70_000);
-    expect(bands[correctIndex]).toEqual({ value: 70_000, label: '약 7만원' });
+  it('라운드② 4지선다: 실제 가격이 만원 단위로 딱 떨어지면(예: 4만원) 사다리값으로 뭉개지 않고 실제 가격 그대로가 정답으로 나오고, 오답 3개도 "약" 없이 같은 표기 형식으로 나온다(정답만 표기가 달라서 티나지 않게)', () => {
+    const { bands, correctIndex } = pickBandChoices(40_000);
+    expect(bands[correctIndex]).toEqual({ value: 40_000, label: '4만원' });
+    // 3만원도 로그상 4만원과 동일한 거리라 오답 후보로 나올 수 있지만, 넷 다
+    // "약" 없이 같은 형식이라 정답이 뭔지 표기만 보고는 알 수 없다.
+    bands.forEach((b) => expect(b.label).not.toMatch(/^약/));
+  });
+
+  it('라운드② 4지선다: 만원 단위로 안 떨어지는 가격(예: 219,900원)은 종전대로 사다리값에 "약"을 붙여 보여준다', () => {
+    const { bands } = pickBandChoices(219_900);
+    bands.forEach((b) => expect(b.label).toMatch(/^약 /));
   });
 
   it('라운드③ 순서 맞추기: 4개 모두 서로 1.15배 이상 차이 나는 항목을 뽑고, 고정점 0/1/2/4개로 채점한다', () => {
