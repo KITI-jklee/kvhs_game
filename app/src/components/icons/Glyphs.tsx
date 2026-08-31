@@ -32,7 +32,7 @@ export function LogoMark({ size = 32 }: { size?: number }) {
   );
 }
 
-/** Pin / map marker glyph - used on the 위치감각게임 card and question panel. */
+/** Pin / map marker glyph - used on the 가장 가까운 위탁병원 찾기 card and question panel. */
 export function LocationGlyph({ accent }: { accent: string }) {
   return (
     <>
@@ -62,7 +62,7 @@ export function LocationGlyph({ accent }: { accent: string }) {
   );
 }
 
-/** Hospital building + cross glyph - used on the 위치감각게임 question card. */
+/** Hospital building + cross glyph - used on the 가장 가까운 위탁병원 찾기 question card. */
 export function HospitalGlyph({ accent, size = 20 }: { accent: string; size?: number }) {
   return (
     <>
