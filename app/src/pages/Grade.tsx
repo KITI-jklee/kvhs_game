@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { BrandBar } from '../components/layout/BrandBar';
 import { GameHud } from '../components/layout/GameHud';
@@ -6,14 +7,19 @@ import { GradeList } from '../components/grade/GradeList';
 import { GameGlyph } from '../components/icons/GameGlyph';
 import { IconTile } from '../components/icons/IconTile';
 import { Button } from '../components/Button';
+import { ShareOverlay } from '../components/ShareOverlay';
+import { GradeRecordModal } from '../components/GradeRecordModal';
 import { useGame } from '../state/gameState';
 import { getGames, gradeForScore } from '../data/provider';
+import type { GameSummary } from '../data/types';
 import styles from './Grade.module.css';
 
 export function Grade() {
   const navigate = useNavigate();
   const { grades, bestScores, overallScore, overallProgress } = useGame();
   const games = getGames();
+  const [activeGame, setActiveGame] = useState<GameSummary | null>(null);
+  const activeScore = activeGame ? bestScores[activeGame.id] : 0;
 
   return (
     <div className={styles.page}>
@@ -38,7 +44,7 @@ export function Grade() {
             const score = bestScores[game.id];
             const grade = gradeForScore(score, grades);
             return (
-              <button key={game.id} type="button" className={styles.breakdownRow} onClick={() => navigate(game.path)}>
+              <button key={game.id} type="button" className={styles.breakdownRow} onClick={() => setActiveGame(game)}>
                 <IconTile size={38} background="var(--color-tint-1)">
                   <GameGlyph gameId={game.id} />
                 </IconTile>
@@ -47,6 +53,7 @@ export function Grade() {
                   <span className={styles.breakdownGrade}>보훈 {grade.name}</span>
                 </div>
                 <span className={styles.breakdownScore}>{score > 0 ? `${score}점` : '미도전'}</span>
+                <span className={styles.breakdownChevron} aria-hidden="true">›</span>
               </button>
             );
           })}
@@ -61,6 +68,22 @@ export function Grade() {
           </Button>
         </div>
       </section>
+
+      {activeGame && activeScore > 0 && (
+        <ShareOverlay
+          result={{ gameId: activeGame.id, title: activeGame.title, score: activeScore }}
+          grade={gradeForScore(activeScore, grades)}
+          onClose={() => setActiveGame(null)}
+          onReplay={() => navigate(activeGame.path)}
+        />
+      )}
+      {activeGame && activeScore <= 0 && (
+        <GradeRecordModal
+          game={activeGame}
+          onClose={() => setActiveGame(null)}
+          onChallenge={() => navigate(activeGame.path)}
+        />
+      )}
     </div>
   );
 }

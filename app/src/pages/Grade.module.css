@@ -84,6 +84,13 @@
   flex: none;
 }
 
+.breakdownChevron {
+  font: 600 18px 'Pretendard Variable';
+  color: var(--color-line);
+  flex: none;
+  line-height: 1;
+}
+
 @media (min-width: 768px) {
   .heroPad {
     padding: 40px 56px 28px;

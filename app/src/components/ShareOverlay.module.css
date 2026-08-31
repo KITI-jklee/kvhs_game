@@ -85,14 +85,13 @@
 
 .actions {
   display: flex;
-  flex-wrap: wrap;
   gap: 8px;
   margin-top: 14px;
 }
 
 .actions > * {
   flex: 1;
-  min-width: 100px;
+  min-width: 0;
 }
 
 .iosNote {

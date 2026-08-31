@@ -1,14 +1,23 @@
 import { useEffect, useRef, useState } from 'react';
-import type { Grade } from '../data/types';
-import type { FinishedResult } from '../state/gameState';
+import type { GameId, Grade } from '../data/types';
 import { Button } from './Button';
 import styles from './ShareOverlay.module.css';
 import { useLockBodyScroll } from '../lib/useLockBodyScroll';
 
+/** 카드 렌더링에 필요한 최소 정보. `FinishedResult`(방금 끝난 판)도, 등급 페이지의
+ * 저장된 최고기록(점수만 있음)도 이 모양만 만족하면 그대로 넘길 수 있다. */
+export interface ShareableResult {
+  gameId: GameId;
+  title: string;
+  score: number;
+}
+
 interface ShareOverlayProps {
-  result: FinishedResult;
+  result: ShareableResult;
   grade: Grade;
   onClose: () => void;
+  /** 넘기면 공유/다운로드 옆에 "다시 도전하기" 버튼이 추가된다(등급 페이지의 최고기록 모달에서 사용). */
+  onReplay?: () => void;
 }
 
 function wrapText(ctx: CanvasRenderingContext2D, text: string, x: number, y: number, maxWidth: number, lineHeight: number) {
@@ -95,7 +104,7 @@ function isIOS(): boolean {
   return isAppleTouch || isIPadOS13Plus;
 }
 
-export function ShareOverlay({ result, grade, onClose }: ShareOverlayProps) {
+export function ShareOverlay({ result, grade, onClose, onReplay }: ShareOverlayProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [ready, setReady] = useState(false);
   const [failed, setFailed] = useState(false);
@@ -193,16 +202,18 @@ export function ShareOverlay({ result, grade, onClose }: ShareOverlayProps) {
         </div>
 
         <div className={styles.actions}>
-          <Button variant="outlineMuted" onClick={onClose}>
-            닫기
-          </Button>
+          {onReplay && (
+            <Button variant="ink" onClick={onReplay}>
+              ↻ 다시하기
+            </Button>
+          )}
           {canShare && (
             <Button variant="ink" onClick={handleShare} disabled={!ready || failed}>
               공유하기
             </Button>
           )}
           <Button variant="accent" onClick={handleDownload} disabled={!ready || failed}>
-            {iosFallback ? '이미지 새 탭에서 열기' : '이미지 다운로드'}
+            {iosFallback ? '새 탭 열기' : '저장하기'}
           </Button>
         </div>
         {iosFallback && (

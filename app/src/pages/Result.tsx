@@ -106,12 +106,12 @@ export function Result() {
           {lastResult.note && <span className={styles.detailsNote}>{lastResult.note}</span>}
         </div>
 
-        <div className={styles.previewPanel}>
+        <button type="button" className={styles.previewPanel} onClick={() => setSharing(true)}>
           <div className={styles.previewText}>
             <span className={styles.previewEyebrow}>GRADE CARD PREVIEW</span>
             <span className={styles.previewTitle}>획득한 보훈 등급을 간직해 보세요</span>
             <span className={styles.previewDesc}>
-              결과 공유하기를 누르면 점수와 보훈 등급이 함께 기록되는 카드 이미지를 내려받을 수 있습니다.
+              카드를 누르면 점수와 보훈 등급이 함께 기록되는 카드 이미지를 저장·공유할 수 있습니다.
             </span>
           </div>
           <div className={styles.previewCard}>
@@ -120,7 +120,7 @@ export function Result() {
             <span className={styles.previewCardScore}>{lastResult.score} / 500점</span>
             <span className={styles.previewCardGrade}>보훈 {grade.name}</span>
           </div>
-        </div>
+        </button>
 
         <div className={styles.actions}>
           <Button variant="accent" onClick={() => navigate(replayPath)}>
@@ -128,9 +128,6 @@ export function Result() {
           </Button>
           <Button variant="outlineMuted" onClick={() => navigate('/')}>
             다른 게임 하기
-          </Button>
-          <Button variant="ink" onClick={() => setSharing(true)}>
-            결과 공유하기
           </Button>
         </div>
 

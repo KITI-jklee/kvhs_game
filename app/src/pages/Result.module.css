@@ -176,6 +176,7 @@
 }
 
 .previewPanel {
+  width: 100%;
   background: #fff;
   border: 1px solid var(--color-line);
   border-radius: var(--radius-lg);
@@ -183,6 +184,19 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  transition: border-color 0.12s ease, transform 0.12s ease;
+}
+
+.previewPanel:hover {
+  border-color: var(--color-accent-strong);
+}
+
+.previewPanel:active {
+  transform: scale(0.99);
 }
 
 .previewText {
