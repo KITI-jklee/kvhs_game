@@ -71,11 +71,10 @@ interface KoreaMapProps {
   highlight: MapHighlight | null;
   pins: MapPin[];
   selectedId: string | null;
-  /** `revealed`가 true일 때만 의미 있음. */
-  correctId: string | null;
-  /** 1등과는 다른 핀을 골랐지만 거리가 사실상 같아 정답으로 인정된 경우 - `revealed`가
-   * true일 때만 의미 있고, 이때는 고른 핀도 오답(✕)이 아니라 정답으로 그려야 한다. */
-  tieCredited?: boolean;
+  /** 1등과 동률인 정답 핀 id 전부(1등 자신 포함) - `revealed`가 true일 때만 의미
+   * 있음. 대부분은 원소가 1개뿐이지만, 같은 동네에 정답이 여럿이면 전부 체크 표시로
+   * 그려야 한다(내가 그중 뭘 골랐는지와 무관하게). */
+  correctIds: string[];
   revealed: boolean;
   disabled?: boolean;
   onSelect: (id: string) => void;
@@ -93,8 +92,7 @@ export function KoreaMap({
   highlight,
   pins,
   selectedId,
-  correctId,
-  tieCredited = false,
+  correctIds,
   revealed,
   disabled,
   onSelect,
@@ -162,11 +160,22 @@ export function KoreaMap({
   // 충돌은 여백을 제외한 실제 지도 영역의 px 기준으로 계산한다.
   const pxScale = projection && contentBox.height > 0 ? contentBox.height / projection.height : 1;
 
-  // 실제 좌표는 유지하고 겹친 핀의 표시 위치만 반발시킨다.
+  // 실제 좌표는 유지하고, 클릭 타겟으로 구분 가능할 정도(MIN_PIN_SEPARATION_PX)로만
+  // 겹친 핀의 표시 위치를 아주 살짝 반발시킨다.
   // 주의: 이건 화면 px 기준 뭉침/겹침 방지이고, 실제 위경도(km) 기준 뭉침 방지는
   // lib/nearestHospital.ts의 selectNearestChoices(clusterRadiusKm/wouldCluster)가
   // 별도로 담당한다. 두 로직은 서로 참조하지 않는 독립된 안전장치이니, 한쪽을
   // 단순화하거나 제거할 때는 반드시 다른 쪽이 같은 문제를 커버하는지 확인할 것.
+  //
+  // 라벨(글자)이 겹치지 않게 하려고 이 반발 거리를 라벨 폭만큼 늘렸던 적이
+  // 있는데(실제 병원 이름이 60~90px로 핀보다 훨씬 넓어서), 그러면 실제로는
+  // 370m밖에 안 떨어진 두 병원(예: 증평군의 병원 두 곳)의 핀이 화면에서 수 km
+  // 떨어진 것처럼 크게 밀려나 버려서 - "어느 쪽이 더 가까운지" 자체를 지도가
+  // 왜곡해서 보여주는 더 심각한 문제가 생겼다(실제 신고 사례: 정답이 6km 밖으로
+  // 밀려나 보임). 핀 위치는 실제 좌표에 최대한 붙어있어야 "가까운 정도"를 왜곡
+  // 안 하니, 라벨 간격 확보는 여기서 하지 않고 아래 labelPlacement의 지시선
+  // (leader line) 배치에 전적으로 맡긴다 - 라벨은 멀리 떼어놓아도 되지만 핀
+  // 자체는 실제 위치에서 크게 벗어나면 안 되기 때문.
   const nudgedPositions = useMemo(() => {
     const positions = new Map(projectedPins.map(({ id, p }) => [id, { ...p }]));
     const ids = projectedPins.map((p) => p.id);
@@ -198,8 +207,15 @@ export function KoreaMap({
       }
       if (!moved) break;
     }
+    // 반발로 밀려난 핀이 지도 밖으로 나가지 않게 뷰박스 안으로 되돌린다.
+    if (projection) {
+      for (const pos of positions.values()) {
+        pos.x = Math.max(0, Math.min(projection.width, pos.x));
+        pos.y = Math.max(0, Math.min(projection.height, pos.y));
+      }
+    }
     return positions;
-  }, [projectedPins, pxScale]);
+  }, [projectedPins, pxScale, projection]);
 
   // 핀과 라벨 충돌을 같은 화면 px 단위로 계산한다.
   const labelPlacement = useMemo(() => {
@@ -369,12 +385,11 @@ export function KoreaMap({
     if (!projection) return [];
     return pins.map((pin) => {
       const isSelected = selectedId === pin.id;
-      // 1등 핀은 항상 정답으로 표시하고, 1등과 다른 핀이라도 거리가 미미해 정답으로
-      // 인정된 픽(tieCredited)이면 오답(✕)이 아니라 정답으로 그린다 - 점수/문구와
-      // 지도 표시가 서로 다른 답을 말하는 모순을 막는다.
-      const isTiedPick = revealed && isSelected && tieCredited && pin.id !== correctId;
-      const isCorrect = revealed && (pin.id === correctId || isTiedPick);
-      const isWrongPick = revealed && isSelected && pin.id !== correctId && !isTiedPick;
+      // 동률 정답이 여럿이면(correctIds에 2개 이상) 내가 뭘 골랐는지와 무관하게
+      // 전부 체크 표시로 그린다 - 점수/문구와 지도 표시가 서로 다른 답을 말하는
+      // 모순을 막는다.
+      const isCorrect = revealed && correctIds.includes(pin.id);
+      const isWrongPick = revealed && isSelected && !isCorrect;
       return {
         pin,
         p: nudgedPositions.get(pin.id) ?? projection.project(pin.center),
@@ -384,7 +399,7 @@ export function KoreaMap({
         placement: labelPlacement.get(pin.id) ?? { dy: LABEL_BELOW_BASE, dx: 0, needsLeader: false },
       };
     });
-  }, [pins, projection, nudgedPositions, selectedId, revealed, correctId, tieCredited, labelPlacement]);
+  }, [pins, projection, nudgedPositions, selectedId, revealed, correctIds, labelPlacement]);
 
   const highlightPaths = useMemo(() => {
     if (!highlight || !projection) return [];

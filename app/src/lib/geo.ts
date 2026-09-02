@@ -136,3 +136,61 @@ export function haversineKm(a: LatLng, b: LatLng): number {
   const h = Math.sin(dLat / 2) ** 2 + Math.cos(lat1) * Math.cos(lat2) * Math.sin(dLng / 2) ** 2;
   return 2 * R * Math.asin(Math.min(1, Math.sqrt(h)));
 }
+
+// ray casting - dongOutline.ts의 findDongName도 이 함수를 그대로 가져다 쓴다
+// (동/시군 경계 안/밖 판정 로직을 여기 한 곳에만 둔다 - build-dong-outlines.cjs
+// 스크립트는 빌드타임 전용이라 여전히 별도 복사본을 갖고 있다).
+export function pointInRing(px: number, py: number, ring: [number, number][]): boolean {
+  let inside = false;
+  for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
+    const [xi, yi] = ring[i];
+    const [xj, yj] = ring[j];
+    if (yi === yj) continue;
+    if (py < Math.min(yi, yj) || py >= Math.max(yi, yj)) continue;
+    const xIntersect = xi + ((py - yi) / (yj - yi)) * (xj - xi);
+    if (px < xIntersect) inside = !inside;
+  }
+  return inside;
+}
+
+/** 점 p에서 선분 a-b까지의 최소거리(km) - 위경도를 로컬 등장방형 평면(kx/ky)으로
+ * 근사 투영해 계산한다. 동/시군 단위의 작은 영역에서는 이 근사가 충분히 정확하다. */
+function pointToSegmentKm(p: LatLng, a: LatLng, b: LatLng, kx: number, ky: number): number {
+  const ax = a.lng * kx;
+  const ay = a.lat * ky;
+  const bx = b.lng * kx;
+  const by = b.lat * ky;
+  const px = p.lng * kx;
+  const py = p.lat * ky;
+  const dx = bx - ax;
+  const dy = by - ay;
+  const len2 = dx * dx + dy * dy;
+  let t = len2 > 0 ? ((px - ax) * dx + (py - ay) * dy) / len2 : 0;
+  t = Math.max(0, Math.min(1, t));
+  const cx = ax + t * dx;
+  const cy = ay + t * dy;
+  return Math.hypot(px - cx, py - cy);
+}
+
+/** 병원이 다각형(읍/면/동 경계) 안에 있으면 0, 밖이면 가장 가까운 경계선까지의
+ * 최소거리(km) - "보훈 대상자가 OO동 인근에 있습니다"는 사람이 그 동 전체
+ * 어딘가에 있을 수 있다는 뜻이라, 중심점 한 점까지의 거리보다 이 방식이 실제
+ * 설정과 더 잘 맞는다(중심점 기준으로는 동이 길쭉하거나 찌그러진 모양일 때
+ * "중심에서 더 가까운 병원"이 "경계에서 가장 먼저 만나는 병원"과 달라지는
+ * 경우가 잦았다 - 시뮬레이션으로 전국 동의 15.5%에서 정답이 바뀌는 걸 확인). */
+export function distanceToRegionKm(rings: [number, number][][], point: LatLng, regionCenter: LatLng): number {
+  const inside = rings.some((ring) => pointInRing(point.lng, point.lat, ring));
+  if (inside) return 0;
+  const kx = 111.32 * Math.cos((regionCenter.lat * Math.PI) / 180);
+  const ky = 111.32;
+  let minKm = Infinity;
+  for (const ring of rings) {
+    for (let i = 0; i < ring.length; i++) {
+      const [ax, ay] = ring[i];
+      const [bx, by] = ring[(i + 1) % ring.length];
+      const d = pointToSegmentKm(point, { lng: ax, lat: ay }, { lng: bx, lat: by }, kx, ky);
+      if (d < minKm) minKm = d;
+    }
+  }
+  return minKm;
+}
