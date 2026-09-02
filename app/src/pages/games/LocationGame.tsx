@@ -2,6 +2,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { BrandBar } from '../../components/layout/BrandBar';
 import { FullScreenNotice } from '../../components/FullScreenNotice';
+import { DataLoadErrorNotice } from '../../components/DataLoadErrorNotice';
 import { GameHud } from '../../components/layout/GameHud';
 import { DesktopContextBar } from '../../components/layout/DesktopContextBar';
 import { KoreaMap, type MapPin, type MapRegion } from '../../components/map/KoreaMap';
@@ -237,6 +238,10 @@ export function LocationGame() {
     () => (roundChoice ? roundChoice.round.shuffled.map((c) => ({ id: c.id, center: c.center, label: c.name })) : []),
     [roundChoice],
   );
+  // pins와 같은 이유로 reveal이 바뀌지 않는 한 같은 배열 참조를 유지한다 - 이게
+  // 없으면 5초 타이머가 100ms마다 리렌더할 때(reveal은 계속 null)마다 매번 새
+  // []가 만들어져 KoreaMap의 pinViews useMemo가 불필요하게 다시 돈다.
+  const correctIds = useMemo(() => reveal?.tiedAnswers.map((a) => a.id) ?? [], [reveal]);
 
   // 배경은 관련 도 전체, 줌은 실제 후보 위치를 기준으로 잡는다.
   useEffect(() => {
@@ -416,18 +421,13 @@ export function LocationGame() {
 
   if (loadError) {
     return (
-      <FullScreenNotice
+      <DataLoadErrorNotice
         variant="modal"
-        icon="⚠️"
-        title="게임 데이터를 불러오지 못했어요"
-        subtitle="네트워크 상태를 확인한 뒤 다시 시도해 주세요."
-        actionLabel="다시 시도"
-        onAction={() => {
+        onRetry={() => {
           setLoadError(false);
           setRetryKey((k) => k + 1);
         }}
-        secondaryLabel="메인으로 돌아가기"
-        onSecondary={() => navigate('/')}
+        onHome={() => navigate('/')}
       />
     );
   }
@@ -534,7 +534,7 @@ export function LocationGame() {
             highlight={highlight}
             pins={pins}
             selectedId={selectedId}
-            correctIds={reveal?.tiedAnswers.map((a) => a.id) ?? []}
+            correctIds={correctIds}
             revealed={revealed}
             disabled={paused || showIntro}
             onSelect={handleSelect}

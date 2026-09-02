@@ -205,14 +205,23 @@ export function KoreaMap({
           b.y += uy * push;
         }
       }
-      if (!moved) break;
-    }
-    // 반발로 밀려난 핀이 지도 밖으로 나가지 않게 뷰박스 안으로 되돌린다.
-    if (projection) {
-      for (const pos of positions.values()) {
-        pos.x = Math.max(0, Math.min(projection.width, pos.x));
-        pos.y = Math.max(0, Math.min(projection.height, pos.y));
+      // 반발로 밀려난 핀이 지도 밖으로 나가지 않게 뷰박스 안으로 되돌린다 - 루프
+      // "안에서" 매 반복마다 되돌려야 한다. 루프가 다 끝난 뒤 딱 한 번만 클램프하면,
+      // 가장자리 쪽으로 밀려난 핀이 그 자리에 그대로 눌려버려서 방금 반발로 확보한
+      // 간격을 클램프가 도로 좁혀버릴 수 있다(예: 두 핀이 같은 가장자리로 밀려나
+      // 똑같이 0/width로 잘려 다시 붙어버림). 매 반복 후 클램프하고, 그로 인해
+      // 위치가 바뀌었으면(=간격이 다시 좁아졌을 수 있으면) moved를 세워 다음
+      // 반복에서 재검사·재반발할 기회를 준다.
+      if (projection) {
+        for (const pos of positions.values()) {
+          const cx = Math.max(0, Math.min(projection.width, pos.x));
+          const cy = Math.max(0, Math.min(projection.height, pos.y));
+          if (cx !== pos.x || cy !== pos.y) moved = true;
+          pos.x = cx;
+          pos.y = cy;
+        }
       }
+      if (!moved) break;
     }
     return positions;
   }, [projectedPins, pxScale, projection]);

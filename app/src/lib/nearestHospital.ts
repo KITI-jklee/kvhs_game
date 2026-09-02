@@ -66,13 +66,24 @@ const GAP_TIERS: readonly [number, number][] = [
  * decoy가 "옆 시/군 정도" 거리에 그쳐 지도가 터무니없이 넓어지진 않는다 - 20km부터는
  * 개선 폭이 급격히 줄고(1.0%), 상한을 없애면 다시 100km대 이상치가 나온다. */
 const FINAL_FALLBACK_MAX_GAP_KM = 15;
-/** 정답이 공식 도서·벽지 지정 위탁병원이면 위 상한을 아예 적용하지 않는다.
- * 도서·벽지 지역(예: 울릉도·백령도)은 그 군 전체에 위탁병원이 1~2곳뿐이라, 15km
- * 안에서 decoy를 못 찾는 게 당연하다 - 그렇다고 재추첨으로 건너뛰면 "이런 곳에도
- * 위탁병원이 있다"는 걸 보여줄 기회 자체가 없어진다(전국 198곳 중 17곳이 이렇게
- * 스킵되고 있었다). 이런 곳은 흔치 않고(전체 라운드의 일부일 뿐) 보여주는 의미가
- * 크므로, 육지까지 멀리 떨어진 decoy라도 예외적으로 허용한다. */
-const REMOTE_AREA_HAS_NO_FALLBACK_CAP = true;
+
+/** 최종 fallback 단계에서 decoy를 얼마나 멀리까지 끌어올 수 있는지(km)를
+ * 정답 후보 하나를 기준으로 정한다 - 항상 켜져 있는 boolean 플래그
+ * (`REMOTE_AREA_HAS_NO_FALLBACK_CAP` 같은) 대신 함수로 열어두는 이유는, 나중에
+ * "이 경우엔 상한을 다르게 둔다"는 예외가 하나 더 생겨도 이 함수 안에 분기를
+ * 추가하기만 하면 되고, selectNearestChoices 본문에 `조건 && 플래그 ? ... : ...`
+ * 식 특례가 계속 늘어나지 않게 하기 위함이다.
+ *
+ * 정답이 공식 도서·벽지 지정 위탁병원이면 위 FINAL_FALLBACK_MAX_GAP_KM 상한을
+ * 아예 적용하지 않는다. 도서·벽지 지역(예: 울릉도·백령도)은 그 군 전체에
+ * 위탁병원이 1~2곳뿐이라, 15km 안에서 decoy를 못 찾는 게 당연하다 - 그렇다고
+ * 재추첨으로 건너뛰면 "이런 곳에도 위탁병원이 있다"는 걸 보여줄 기회 자체가
+ * 없어진다(전국 198곳 중 17곳이 이렇게 스킵되고 있었다). 이런 곳은 흔치 않고
+ * (전체 라운드의 일부일 뿐) 보여주는 의미가 크므로, 육지까지 멀리 떨어진 decoy라도
+ * 예외적으로 허용한다. */
+function resolveFinalFallbackMaxGapKm(correct: NearestChoice): number {
+  return correct.isRemoteArea ? Infinity : FINAL_FALLBACK_MAX_GAP_KM;
+}
 
 /** 거리 계산과 핀 간격을 우선하고, 후보가 부족하면 조건을 단계적으로 완화한다.
  *
@@ -171,19 +182,25 @@ export function selectNearestChoices(
         if (!tooClose && !wouldCluster) chosen.push(candidate);
       }
     };
-    // gap 단계를 좁은 순서(0.3~1.5 -> 0.2~2.5 -> 0.1~5)로 넓혀가며, 각 단계마다
-    // 간격 조건만 단계적으로 완화해 후보 수를 채운다(뭉침 회피는 위에서처럼 항상 유지).
-    for (const [gapMin, gapMax] of GAP_TIERS) {
-      const tierPool = searchPool.filter((c) => c.gapKm >= gapMin && c.gapKm <= gapMax).sort((a, b) => a.gapKm - b.gapKm);
-      tryFill(shuffle(tierPool), true);
-      tryFill(tierPool, false);
-    }
+    // gap 단계를 좁은 순서(0.3~1.5 -> 0.2~2.5 -> 0.1~5)로 넓혀가며 후보 수를 채운다.
+    // 간격(separation) 완화는 "모든 단계에 걸쳐 간격을 지키는 후보를 먼저 다
+    // 찾아본 뒤에야" 적용한다(단계별로 그 자리에서 바로 완화하지 않음) - 그래야
+    // 가까운 단계(1단계)에 마침 서로 붙어있는 후보 두 개가 있어도 간격을 포기하고
+    // 그 둘을 채워버리는 대신, 더 먼 단계(2·3단계)에 있는 간격을 지키는 후보가
+    // 항상 먼저 고려된다. 단계 안에서만 완화 여부를 결정하면(이전 버전의 버그),
+    // 결과가 "몇 번째 단계인가"에 순서상 인질로 잡혀 더 멀지만 뭉치지 않는 후보를
+    // 놓치는 경우가 있었다.
+    const tierPools = GAP_TIERS.map(([gapMin, gapMax]) =>
+      searchPool.filter((c) => c.gapKm >= gapMin && c.gapKm <= gapMax).sort((a, b) => a.gapKm - b.gapKm),
+    );
+    for (const tierPool of tierPools) tryFill(shuffle(tierPool), true);
+    for (const tierPool of tierPools) tryFill(tierPool, false);
     // 3단계(5km)까지도 못 채웠으면 절대 상한(FINAL_FALLBACK_MAX_GAP_KM) 안에서만
     // 가까운 순서대로 채운다(뭉침 회피는 여기서도 유지) - 그래도 부족하면 decoy를
     // 덜 보여준다(강제로 채우지 않음 - 억지로 끌어온 먼 후보나 뭉친 후보보다 낫다).
     // 다만 정답이 도서·벽지 지정 병원이면 이 상한 자체를 적용하지 않는다(위 주석 참고).
     if (chosen.length - 1 < decoyCount) {
-      const capKm = correct.isRemoteArea && REMOTE_AREA_HAS_NO_FALLBACK_CAP ? Infinity : FINAL_FALLBACK_MAX_GAP_KM;
+      const capKm = resolveFinalFallbackMaxGapKm(correct);
       const finalPool = searchPool.filter((c) => c.gapKm <= capKm).sort((a, b) => a.gapKm - b.gapKm);
       tryFill(finalPool, false);
     }

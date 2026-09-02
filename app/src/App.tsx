@@ -6,6 +6,7 @@ import { GameDataProvider } from './data/loader';
 import { useGameData } from './data/gameDataContext';
 import { consumeIntentionalRestartFlag } from './lib/restart';
 import { FullScreenNotice } from './components/FullScreenNotice';
+import { DataLoadErrorNotice } from './components/DataLoadErrorNotice';
 import { Home } from './pages/Home';
 import { LocationGame } from './pages/games/LocationGame';
 import { MedicalCostGame } from './pages/games/MedicalCostGame';
@@ -52,17 +53,7 @@ function GameDataGate({ children }: { children: ReactNode }) {
     return <FullScreenNotice variant="modal" icon="⏳" title="게임 데이터를 불러오는 중입니다..." />;
   }
   if (status === 'error') {
-    return (
-      <FullScreenNotice
-        icon="⚠️"
-        title="게임 데이터를 불러오지 못했어요"
-        subtitle="네트워크 상태를 확인한 뒤 다시 시도해 주세요."
-        actionLabel="다시 시도"
-        onAction={retry}
-        secondaryLabel="메인으로 돌아가기"
-        onSecondary={() => navigate('/')}
-      />
-    );
+    return <DataLoadErrorNotice onRetry={retry} onHome={() => navigate('/')} />;
   }
   return <>{children}</>;
 }

@@ -90,18 +90,21 @@ function shuffle(arr) {
   return a;
 }
 
+// attemptFill·selectDecoys 양쪽에서 다 쓰므로 한 번만 선언한다(예전엔 두 곳에
+// 똑같이 복붙돼 있었다 - 비교 기준을 바꿀 때 한쪽만 고치고 잊기 쉬웠다).
+function spanKmOf(points) {
+  let max = 0;
+  for (let i = 0; i < points.length; i++)
+    for (let j = i + 1; j < points.length; j++) {
+      const d = haversineKm(points[i].center, points[j].center);
+      if (d > max) max = d;
+    }
+  return max;
+}
+
 function attemptFill(distancedAll) {
   const correct = distancedAll[0];
   const pool = distancedAll.slice(1).map((h) => ({ ...h, gapKm: h.km - correct.km }));
-  const spanKmOf = (points) => {
-    let max = 0;
-    for (let i = 0; i < points.length; i++)
-      for (let j = i + 1; j < points.length; j++) {
-        const d = haversineKm(points[i].center, points[j].center);
-        if (d > max) max = d;
-      }
-    return max;
-  };
   const chosen = [correct];
   const tryFill = (candidates, respectSeparation) => {
     for (const candidate of candidates) {
@@ -114,11 +117,13 @@ function attemptFill(distancedAll) {
       if (!tooClose && !wouldCluster) chosen.push(candidate);
     }
   };
-  for (const [gMin, gMax] of GAP_TIERS) {
-    const tierPool = pool.filter((c) => c.gapKm >= gMin && c.gapKm <= gMax).sort((a, b) => a.gapKm - b.gapKm);
-    tryFill(shuffle(tierPool), true);
-    tryFill(tierPool, false);
-  }
+  // nearestHospital.ts와 동일하게, 간격(separation) 완화는 "모든 단계에 걸쳐
+  // 간격을 지키는 후보를 먼저 다 찾아본 뒤에야" 적용한다(단계별로 그 자리에서
+  // 바로 완화하지 않음) - 단계 안에서 완화하면 가까운 단계에 뭉친 후보 둘을
+  // 채워버리고 더 먼 단계의 안 뭉친 후보를 못 보는 경우가 있었다.
+  const tierPools = GAP_TIERS.map(([gMin, gMax]) => pool.filter((c) => c.gapKm >= gMin && c.gapKm <= gMax).sort((a, b) => a.gapKm - b.gapKm));
+  for (const tierPool of tierPools) tryFill(shuffle(tierPool), true);
+  for (const tierPool of tierPools) tryFill(tierPool, false);
   if (chosen.length - 1 < DECOY_COUNT) {
     const capKm = correct.isRemoteArea ? Infinity : FINAL_FALLBACK_MAX_GAP_KM;
     const finalPool = pool.filter((c) => c.gapKm <= capKm).sort((a, b) => a.gapKm - b.gapKm);
@@ -131,15 +136,6 @@ function selectDecoys(distancedAll) {
   let best = attemptFill(distancedAll);
   for (let i = 1; i < FILL_ATTEMPTS && best.length - 1 < DECOY_COUNT; i++) {
     const candidate = attemptFill(distancedAll);
-    const spanKmOf = (points) => {
-      let max = 0;
-      for (let a = 0; a < points.length; a++)
-        for (let b = a + 1; b < points.length; b++) {
-          const d = haversineKm(points[a].center, points[b].center);
-          if (d > max) max = d;
-        }
-      return max;
-    };
     if (candidate.length > best.length || (candidate.length === best.length && spanKmOf(candidate) < spanKmOf(best))) {
       best = candidate;
     }
