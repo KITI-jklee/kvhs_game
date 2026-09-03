@@ -10,7 +10,7 @@ import { MatchGame } from './MatchGame';
 const termPairs: MedicalTermPair[] = Array.from({ length: 24 }, (_, i) => ({
   id: `term-${i}`,
   item_name: `항목-${i}`,
-  kind_mid: `분류-${i}`,
+  category: `분류-${i}`,
   cost: i,
 }));
 

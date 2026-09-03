@@ -1,9 +1,10 @@
 /**
  * Build a readable, deduplicated medical-cost quiz pool from the public source.
  * Run from app/: node scripts/build-medical-costs.cjs
+ * 검토 파일 생성: node scripts/build-medical-costs.cjs --review
  *
- * 주의: 이 스크립트를 그대로 재실행하면(2026-08-31 기준 742건) 실제 배포 중인
- * public/data/medical_costs.json(544건)보다 훨씬 큰 결과가 나온다 - 원본 데이터도
+ * 이 스크립트는 1차 후보와 검토 자료만 만든다. 실제 배포 중인
+ * public/data/medical_costs.json(540건)은 덮어쓰지 않는다 - 원본 데이터도
  * 스크립트 자체도 안 바뀌었는데 결과가 다르다. 이유는 확인됐다: 이 스크립트(Codex가
  * 작성)의 출력은 "1차 후보 풀"일 뿐이고, 실제 배포본은 그 후 별도의 긴 Claude Code
  * 세션(세션명 "카드 짝맞추기 게임 첫 라운드 레이아웃", 2026-08-25)에서 100턴 넘게
@@ -12,8 +13,8 @@
  * 스크립트의 필터 규칙만으로는 재현이 안 된다. 그 555건에서 이후 다시 소수 항목만
  * (예: "즉시 or 임시폐쇄장치"의 "or"→"또는" 표기 수정, 성기·성기능을 직접 지칭하는
  * 노골적 항목 11건 제거) 손으로 추가 수정해 지금의 544건이 됐다.
- * 따라서 이 스크립트를 재실행해 출력을 그대로 덮어쓰면 그 수동 큐레이션이 통째로
- * 사라진다 - 재실행이 필요하면 출력을 REVIEW_CSV_PATH로 다시 검토해 필요한 항목만
+ * 따라서 이 스크립트를 재실행해도 수동 큐레이션 파일은 보존한다. 후보를
+ * REVIEW_CSV_PATH에서 다시 검토해 필요한 항목만
  * 골라 반영해야 한다. 그 검토를 실제로 어떤 기준·순서로 했는지는
  * ../../docs/medical_costs_curation_guide.md 에 재현 가능하게 정리해뒀다 -
  * 재검토를 다시 하게 되면 이 문서부터 읽을 것.
@@ -23,13 +24,12 @@ const path = require('path');
 
 const ROOT = path.join(__dirname, '..');
 const SOURCE_PATH = path.join(ROOT, '..', 'data', 'suga_보훈병원_비급여수가정보.json');
-const OUTPUT_PATH = path.join(ROOT, 'public', 'data', 'medical_costs.json');
 const REVIEW_CSV_PATH = path.join(ROOT, '..', 'docs', 'medical_costs_review.csv');
 const SUMMARY_PATH = path.join(ROOT, '..', 'docs', 'medical_costs_summary.md');
+const WRITE_REVIEW = process.argv.includes('--review');
 
 // These limits match the current logarithmic slider used by game 2.
 const MIN_COST = 10_000;
-const MAX_COST = 1_200_000;
 const MIN_FINAL_ITEMS = 100;
 
 const EXCLUDED_BIG_CATEGORIES = new Set(['제증명수수료', '제증명료', '치료재료']);
@@ -180,7 +180,7 @@ const candidates = [];
 
 for (const row of raw) {
   const cost = Number(row.cost);
-  if (!Number.isFinite(cost) || cost < MIN_COST || cost > MAX_COST) {
+  if (!Number.isFinite(cost) || cost < MIN_COST) {
     rejected.invalidPrice += 1;
     continue;
   }
@@ -244,8 +244,6 @@ if (items.length < MIN_FINAL_ITEMS) {
   throw new Error(`정제 결과가 ${items.length}건으로 목표(${MIN_FINAL_ITEMS}건)보다 적습니다.`);
 }
 
-fs.writeFileSync(OUTPUT_PATH, `${JSON.stringify(items)}\n`, 'utf8');
-
 const categoryCounts = Object.entries(
   items.reduce((counts, item) => {
     counts[item.category] = (counts[item.category] ?? 0) + 1;
@@ -270,18 +268,20 @@ const csvRows = items.map((item) => [
   item.code ?? '',
 ]);
 // BOM makes Korean text open correctly in Excel on Windows.
-fs.writeFileSync(
-  REVIEW_CSV_PATH,
-  `\uFEFF${[csvHeader, ...csvRows].map((row) => row.map(csvCell).join(',')).join('\r\n')}\r\n`,
-  'utf8',
-);
+if (WRITE_REVIEW) {
+  fs.writeFileSync(
+    REVIEW_CSV_PATH,
+    `\uFEFF${[csvHeader, ...csvRows].map((row) => row.map(csvCell).join(',')).join('\r\n')}\r\n`,
+    'utf8',
+  );
+}
 
 const priceBands = [
   ['1만~5만원 미만', 10_000, 50_000],
   ['5만~10만원 미만', 50_000, 100_000],
   ['10만~30만원 미만', 100_000, 300_000],
   ['30만~60만원 미만', 300_000, 600_000],
-  ['60만~120만원', 600_000, 1_200_001],
+  ['60만원 이상', 600_000, Number.POSITIVE_INFINITY],
 ].map(([label, min, max]) => [label, items.filter((item) => item.cost >= min && item.cost < max).length]);
 const mergedItems = items.filter((item) => item.sampleCount > 1);
 const wideRangeItems = items
@@ -322,12 +322,15 @@ ${table(priceBands.map(([label, count]) => [label, count.toLocaleString('ko-KR')
 | --- | --- | --- | ---: | ---: | ---: |
 ${table(wideRangeItems.map((item) => [item.id, item.category, item.name.replace(/\|/g, '\\|'), won(item.cost), `${won(item.minCost)}~${won(item.maxCost)}`, item.sampleCount])) || '| - | - | 해당 없음 | - | - | - |'}
 `;
-fs.writeFileSync(SUMMARY_PATH, summary, 'utf8');
+if (WRITE_REVIEW) {
+  fs.writeFileSync(SUMMARY_PATH, summary, 'utf8');
+}
 
 console.log(`원본 ${raw.length}건 -> 후보 ${candidates.length}건 -> 고유 항목 ${items.length}건`);
 console.log(`제외: 가격 ${rejected.invalidPrice}, 분류 ${rejected.category}, 이름 ${rejected.name}`);
 console.log(`가격 범위: ${Math.min(...items.map((item) => item.cost))} ~ ${Math.max(...items.map((item) => item.cost))}`);
 console.log(`분류: ${categoryCounts.map(([name, count]) => `${name} ${count}`).join(', ')}`);
-console.log(`저장: ${OUTPUT_PATH}`);
-console.log(`검토용 CSV: ${REVIEW_CSV_PATH}`);
-console.log(`요약 문서: ${SUMMARY_PATH}`);
+if (WRITE_REVIEW) {
+  console.log(`검토용 CSV: ${REVIEW_CSV_PATH}`);
+  console.log(`요약 문서: ${SUMMARY_PATH}`);
+}

@@ -48,12 +48,16 @@ export interface MedicalCostItem {
   code?: string;
 }
 
-/** 게임③ 콘텐츠 - API 명세서 B-3 */
+/** 게임③ 콘텐츠 - API 명세서 B-3
+ * id는 큐레이션 후보의 고유 ID를 `term_XXXX`로 바꾼 값이다. 정답 판정은
+ * 카드 텍스트(category)가 아니라 이 ID가 가리키는 같은 항목인지로 한다. */
 export interface MedicalTermPair {
   id: string;
   /** 비급여 진료 항목 (카드 앞면) */
   item_name: string;
-  /** 짝이 되는 분류값 (카드 뒷면) */
-  kind_mid: string;
+  /** 짝이 되는 세부 분류값 (카드 뒷면). 원본 분류를 참고해 사람이
+   * medical_term_curation.json에서 항목별로 확정한다.
+   * 정답은 표시 문자열이 아니라 항목 ID로 판정한다. */
+  category: string;
   cost: number;
 }

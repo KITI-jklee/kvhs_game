@@ -62,18 +62,18 @@ export function validateTermPairs(value: unknown): MedicalTermPair[] {
     if (!isRecord(row)) return false;
     return isNonEmptyString(row.id)
       && isNonEmptyString(row.item_name)
-      && isNonEmptyString(row.kind_mid)
+      && isNonEmptyString(row.category)
       && isFiniteNumber(row.cost)
       && row.cost >= 0;
   });
   if (rows.length !== value.length) throw new Error('medical_term_pairs contains an invalid record');
   if (rows.length < 24) throw new Error('medical_term_pairs requires at least 24 records');
-  if (new Set(rows.map((row) => row.kind_mid)).size < 10) {
+  if (new Set(rows.map((row) => row.category)).size < 10) {
     throw new Error('medical_term_pairs requires at least 10 categories');
   }
+  // 정답 판정은 항목 id로 하므로 id만 전량 고유하면 된다 - item_name은
+  // 서로 다른 분류에 걸쳐 중복될 수 있고(원본 데이터의 특성), 한 라운드
+  // 안에서 카드 텍스트가 겹치지 않는 건 MatchGame의 라운드 뽑기가 보장한다.
   if (!hasUniqueIds(rows)) throw new Error('medical_term_pairs contains duplicate ids');
-  if (new Set(rows.map((row) => row.item_name)).size !== rows.length) {
-    throw new Error('medical_term_pairs contains duplicate item names');
-  }
   return rows;
 }

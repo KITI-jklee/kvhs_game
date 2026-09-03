@@ -2,3241 +2,3343 @@
   {
     "id": "term_0001",
     "item_name": "체성분 검사",
-    "kind_mid": "검사",
+    "category": "내분비검사",
     "cost": 15000
   },
   {
     "id": "term_0002",
-    "item_name": "무릎 인대 안정성 검사",
-    "kind_mid": "검사",
+    "item_name": "관절계를 이용한 무릎관절인대검사",
+    "category": "외피·근골기능검사",
     "cost": 50000
   },
   {
     "id": "term_0003",
-    "item_name": "선천성 대사이상 정밀검사",
-    "kind_mid": "검사",
+    "item_name": "광범위 선천성대사이상검사-Y",
+    "category": "세포유전검사",
     "cost": 24000
   },
   {
     "id": "term_0004",
     "item_name": "내시경 척추 신경성형술",
-    "kind_mid": "검사",
+    "category": "처치·수술",
     "cost": 500000
   },
   {
     "id": "term_0005",
-    "item_name": "눈 길이 계측검사(한쪽)",
-    "kind_mid": "검사",
+    "item_name": "레이저 눈 계측검사(한쪽)",
+    "category": "시기능검사",
     "cost": 50000
   },
   {
     "id": "term_0006",
-    "item_name": "눈 길이 계측검사",
-    "kind_mid": "검사",
+    "item_name": "레이저 눈 계측검사",
+    "category": "시기능검사",
     "cost": 50000
   },
   {
     "id": "term_0007",
     "item_name": "체수분 상태 검사",
-    "kind_mid": "검사",
+    "category": "기능검사",
     "cost": 15000
   },
   {
     "id": "term_0008",
-    "item_name": "주간 졸림 수면검사",
-    "kind_mid": "검사",
+    "item_name": "다중수면잠복기검사",
+    "category": "검사",
     "cost": 523700
   },
   {
     "id": "term_0009",
     "item_name": "시각 단기기억력 검사",
-    "kind_mid": "검사",
+    "category": "신경계기능검사",
     "cost": 30000
   },
   {
     "id": "term_0010",
     "item_name": "청각 단기기억력 검사",
-    "kind_mid": "검사",
+    "category": "신경계기능검사",
     "cost": 30000
   },
   {
     "id": "term_0011",
     "item_name": "당화알부민 검사",
-    "kind_mid": "검사",
+    "category": "일반화학검사",
     "cost": 12000
   },
   {
     "id": "term_0012",
-    "item_name": "움직임 균형감각 검사",
-    "kind_mid": "검사",
+    "item_name": "동적 균형 검사",
+    "category": "평형·청각기능검사",
     "cost": 40000
   },
   {
     "id": "term_0013",
     "item_name": "발음·발성 검사",
-    "kind_mid": "검사",
+    "category": "신경계기능검사",
     "cost": 50000
   },
   {
     "id": "term_0014",
     "item_name": "비디오전기안진검사",
-    "kind_mid": "검사",
+    "category": "평형·청각기능검사",
     "cost": 50000
   },
   {
     "id": "term_0015",
     "item_name": "비디오전기안진검사(정밀 안구운동검사)",
-    "kind_mid": "검사",
+    "category": "평형·청각기능검사",
     "cost": 100000
   },
   {
-    "id": "term_0016",
-    "item_name": "성인 언어능력 진단검사",
-    "kind_mid": "검사",
-    "cost": 20000
-  },
-  {
     "id": "term_0017",
-    "item_name": "성인 이해력 진단검사",
-    "kind_mid": "검사",
+    "item_name": "성인 언어능력 진단검사",
+    "category": "신경계기능검사",
     "cost": 20000
   },
   {
     "id": "term_0018",
-    "item_name": "성호르몬 결합 단백질 검사",
-    "kind_mid": "검사",
-    "cost": 17300
+    "item_name": "성인 이해력 진단검사",
+    "category": "신경계기능검사",
+    "cost": 20000
   },
   {
     "id": "term_0019",
-    "item_name": "손가락 두드리기 검사",
-    "kind_mid": "검사",
-    "cost": 15000
+    "item_name": "성호르몬 결합 단백질 검사",
+    "category": "내분비검사",
+    "cost": 17300
   },
   {
     "id": "term_0020",
-    "item_name": "시청각자극발기측정",
-    "kind_mid": "검사",
-    "cost": 100000
-  },
-  {
-    "id": "term_0021",
-    "item_name": "신경인지 검사(유형1·3~5개 검사)",
-    "kind_mid": "검사",
-    "cost": 29100
-  },
-  {
-    "id": "term_0022",
-    "item_name": "신경인지 검사(유형1·6~8개 검사)",
-    "kind_mid": "검사",
-    "cost": 49700
+    "item_name": "손가락 두드리기 검사",
+    "category": "신경계기능검사",
+    "cost": 15000
   },
   {
     "id": "term_0023",
-    "item_name": "신경인지 검사(유형1·9개 이상 검사)",
-    "kind_mid": "검사",
-    "cost": 87400
-  },
-  {
-    "id": "term_0024",
-    "item_name": "신경인지 검사(유형2·1~3개 검사)",
-    "kind_mid": "검사",
+    "item_name": "신경인지 검사(유형1·3~5개 검사)",
+    "category": "신경계기능검사",
     "cost": 29100
   },
   {
+    "id": "term_0024",
+    "item_name": "신경인지 검사(유형1·6~8개 검사)",
+    "category": "신경계기능검사",
+    "cost": 49700
+  },
+  {
     "id": "term_0025",
-    "item_name": "신경인지 검사(유형2·4개 이상)",
-    "kind_mid": "검사",
-    "cost": 70300
+    "item_name": "신경인지 검사(유형1·9개 이상 검사)",
+    "category": "신경계기능검사",
+    "cost": 87400
   },
   {
     "id": "term_0026",
-    "item_name": "신경인지 검사(유형3·사물 이름대기(60문항))",
-    "kind_mid": "검사",
-    "cost": 29900
+    "item_name": "신경인지 검사(유형2·1~3개 검사)",
+    "category": "신경계기능검사",
+    "cost": 29100
   },
   {
     "id": "term_0027",
-    "item_name": "신경인지 검사(주의력·선 잇기)",
-    "kind_mid": "검사",
-    "cost": 20000
+    "item_name": "신경인지 검사(유형2·4개 이상)",
+    "category": "신경계기능검사",
+    "cost": 70300
   },
   {
     "id": "term_0028",
-    "item_name": "신경인지 검사(주의력·경계력(시각))",
-    "kind_mid": "검사",
-    "cost": 25000
-  },
-  {
-    "id": "term_0029",
-    "item_name": "신경인지 검사(주의력·경계력(청각))",
-    "kind_mid": "검사",
-    "cost": 25000
-  },
-  {
-    "id": "term_0030",
-    "item_name": "신경인지 검사(주의력·기호 잇기)",
-    "kind_mid": "검사",
-    "cost": 15000
+    "item_name": "신경인지 검사(유형3·사물 이름대기(60문항))",
+    "category": "신경계기능검사",
+    "cost": 29900
   },
   {
     "id": "term_0031",
-    "item_name": "신경인지 검사(주의력·무시증후군)",
-    "kind_mid": "검사",
-    "cost": 25000
+    "item_name": "신경인지 검사(주의력·선 잇기)",
+    "category": "신경계기능검사",
+    "cost": 20000
   },
   {
     "id": "term_0032",
-    "item_name": "신경인지 검사(주의력·숫자·기호 바꾸기)",
-    "kind_mid": "검사",
-    "cost": 15000
+    "item_name": "신경인지 검사(주의력·경계력(시각))",
+    "category": "신경계기능검사",
+    "cost": 25000
   },
   {
     "id": "term_0033",
-    "item_name": "신경인지 검사(주의력·지속수행력(시각))",
-    "kind_mid": "검사",
-    "cost": 30000
+    "item_name": "신경인지 검사(주의력·경계력(청각))",
+    "category": "신경계기능검사",
+    "cost": 25000
   },
   {
     "id": "term_0034",
-    "item_name": "신경인지 검사(주의력·지속수행력(청각))",
-    "kind_mid": "검사",
-    "cost": 30000
+    "item_name": "신경인지 검사(주의력·기호 잇기)",
+    "category": "신경계기능검사",
+    "cost": 15000
   },
   {
     "id": "term_0035",
-    "item_name": "신경인지 검사(감각운동 협응·손잡이)",
-    "kind_mid": "검사",
-    "cost": 13000
+    "item_name": "신경인지 검사(주의력·무시증후군)",
+    "category": "신경계기능검사",
+    "cost": 25000
   },
   {
     "id": "term_0036",
-    "item_name": "신경인지 검사(개별검사·유형3·레이 복합도형)",
-    "kind_mid": "검사",
-    "cost": 29900
+    "item_name": "신경인지 검사(주의력·숫자·기호 바꾸기)",
+    "category": "신경계기능검사",
+    "cost": 15000
   },
   {
     "id": "term_0037",
-    "item_name": "신경인지 검사(개별검사·유형3·카드 분류)",
-    "kind_mid": "검사",
-    "cost": 29900
+    "item_name": "신경인지 검사(주의력·지속수행력(시각))",
+    "category": "신경계기능검사",
+    "cost": 30000
   },
   {
     "id": "term_0038",
-    "item_name": "신경인지 검사(개별검사·유형3·표정 인식)",
-    "kind_mid": "검사",
-    "cost": 29900
-  },
-  {
-    "id": "term_0039",
-    "item_name": "신경인지 검사(개별검사·유형4·벤톤 신경심리)",
-    "kind_mid": "검사",
-    "cost": 51300
+    "item_name": "신경인지 검사(주의력·지속수행력(청각))",
+    "category": "신경계기능검사",
+    "cost": 30000
   },
   {
     "id": "term_0040",
-    "item_name": "신경인지 검사(개별검사·유형4·서울 언어학습)",
-    "kind_mid": "검사",
-    "cost": 51300
+    "item_name": "신경인지 검사(감각운동 협응·손잡이)",
+    "category": "신경계기능검사",
+    "cost": 13000
   },
   {
     "id": "term_0041",
-    "item_name": "신경인지 검사(개별검사·유형6·웨스턴 실어증)",
-    "kind_mid": "검사",
-    "cost": 83800
+    "item_name": "신경인지 검사(개별검사·유형3·레이 복합도형)",
+    "category": "신경계기능검사",
+    "cost": 29900
   },
   {
     "id": "term_0042",
-    "item_name": "신경인지 검사(경계력(시각))",
-    "kind_mid": "검사",
-    "cost": 30000
+    "item_name": "신경인지 검사(개별검사·유형3·카드 분류)",
+    "category": "신경계기능검사",
+    "cost": 29900
   },
   {
     "id": "term_0043",
-    "item_name": "신경인지 검사(구성능력)",
-    "kind_mid": "검사",
-    "cost": 20000
+    "item_name": "신경인지 검사(개별검사·유형3·표정 인식)",
+    "category": "신경계기능검사",
+    "cost": 29900
   },
   {
     "id": "term_0044",
-    "item_name": "신경인지 검사(기억력·캘리포니아언어학습검사)",
-    "kind_mid": "검사",
-    "cost": 25000
+    "item_name": "신경인지 검사(개별검사·유형4·벤톤 신경심리)",
+    "category": "신경계기능검사",
+    "cost": 51300
   },
   {
     "id": "term_0045",
-    "item_name": "신경인지 검사(기억력·단기기억력(시각))",
-    "kind_mid": "검사",
-    "cost": 25000
+    "item_name": "신경인지 검사(개별검사·유형4·서울 언어학습)",
+    "category": "신경계기능검사",
+    "cost": 51300
   },
   {
     "id": "term_0046",
-    "item_name": "신경인지 검사(기억력·단기기억력(청각))",
-    "kind_mid": "검사",
-    "cost": 25000
+    "item_name": "신경인지 검사(개별검사·유형6·웨스턴 실어증)",
+    "category": "신경계기능검사",
+    "cost": 83800
   },
   {
     "id": "term_0047",
-    "item_name": "신경인지 검사(기억력·웩슬러 기억척도)",
-    "kind_mid": "검사",
-    "cost": 45400
+    "item_name": "신경인지 검사(경계력(시각))",
+    "category": "신경계기능검사",
+    "cost": 30000
   },
   {
     "id": "term_0048",
-    "item_name": "신경인지 검사(기억력·홉킨스 언어학습)",
-    "kind_mid": "검사",
-    "cost": 35000
+    "item_name": "신경인지 검사(구성능력)",
+    "category": "신경계기능검사",
+    "cost": 20000
   },
   {
     "id": "term_0049",
-    "item_name": "신경인지 검사(단어·색채)",
-    "kind_mid": "검사",
-    "cost": 20000
-  },
-  {
-    "id": "term_0050",
-    "item_name": "신경인지 검사(선 잇기)",
-    "kind_mid": "검사",
-    "cost": 20000
-  },
-  {
-    "id": "term_0051",
-    "item_name": "신경인지 검사(시각 학습)",
-    "kind_mid": "검사",
-    "cost": 30000
-  },
-  {
-    "id": "term_0052",
-    "item_name": "신경인지 검사(어휘력)",
-    "kind_mid": "검사",
-    "cost": 15000
-  },
-  {
-    "id": "term_0053",
-    "item_name": "신경인지 검사(언어능력·단어 유창성)",
-    "kind_mid": "검사",
-    "cost": 15000
-  },
-  {
-    "id": "term_0054",
-    "item_name": "신경인지 검사(언어능력·사물 이름대기)",
-    "kind_mid": "검사",
-    "cost": 30000
-  },
-  {
-    "id": "term_0055",
-    "item_name": "신경인지 검사(언어능력·어휘력)",
-    "kind_mid": "검사",
-    "cost": 15000
-  },
-  {
-    "id": "term_0056",
-    "item_name": "신경인지 검사(지속수행력(시각))",
-    "kind_mid": "검사",
-    "cost": 30000
-  },
-  {
-    "id": "term_0057",
-    "item_name": "신경인지 검사(지속수행력(청각))",
-    "kind_mid": "검사",
-    "cost": 30000
-  },
-  {
-    "id": "term_0058",
-    "item_name": "신경인지 검사(전두엽·고위인지·논리 사고력)",
-    "kind_mid": "검사",
+    "item_name": "신경인지 검사(기억력·캘리포니아언어학습검사)",
+    "category": "신경계기능검사",
     "cost": 25000
   },
   {
-    "id": "term_0059",
-    "item_name": "신경인지 검사(전두엽·고위인지·단어·색채)",
-    "kind_mid": "검사",
+    "id": "term_0050",
+    "item_name": "신경인지 검사(기억력·단기기억력(시각))",
+    "category": "신경계기능검사",
+    "cost": 25000
+  },
+  {
+    "id": "term_0051",
+    "item_name": "신경인지 검사(기억력·단기기억력(청각))",
+    "category": "신경계기능검사",
+    "cost": 25000
+  },
+  {
+    "id": "term_0052",
+    "item_name": "신경인지 검사(기억력·웩슬러 기억척도)",
+    "category": "신경계기능검사",
+    "cost": 45400
+  },
+  {
+    "id": "term_0054",
+    "item_name": "신경인지 검사(기억력·홉킨스 언어학습)",
+    "category": "신경계기능검사",
+    "cost": 35000
+  },
+  {
+    "id": "term_0057",
+    "item_name": "신경인지 검사(단어·색채)",
+    "category": "신경계기능검사",
     "cost": 20000
   },
   {
-    "id": "term_0060",
-    "item_name": "신경인지 검사(전두엽·고위인지·보속성)",
-    "kind_mid": "검사",
-    "cost": 18000
+    "id": "term_0058",
+    "item_name": "신경인지 검사(선 잇기)",
+    "category": "신경계기능검사",
+    "cost": 20000
   },
   {
     "id": "term_0061",
-    "item_name": "신경인지 검사(전두엽·고위인지·스트룹)",
-    "kind_mid": "검사",
-    "cost": 20000
+    "item_name": "신경인지 검사(시각 학습)",
+    "category": "신경계기능검사",
+    "cost": 30000
   },
   {
     "id": "term_0062",
-    "item_name": "신경인지 검사(전두엽·고위인지·실행증)",
-    "kind_mid": "검사",
-    "cost": 18000
+    "item_name": "신경인지 검사(어휘력)",
+    "category": "신경계기능검사",
+    "cost": 15000
   },
   {
     "id": "term_0063",
-    "item_name": "신경인지 검사(전두엽·고위인지·카테고리)",
-    "kind_mid": "검사",
-    "cost": 22700
+    "item_name": "신경인지 검사(언어능력·단어 유창성)",
+    "category": "신경계기능검사",
+    "cost": 15000
   },
   {
     "id": "term_0064",
-    "item_name": "신경인지 검사(종합·서울 신경심리)",
-    "kind_mid": "검사",
-    "cost": 315400
-  },
-  {
-    "id": "term_0065",
-    "item_name": "신경인지 검사(종합·CERAD 평가)",
-    "kind_mid": "검사",
-    "cost": 138100
+    "item_name": "신경인지 검사(언어능력·사물 이름대기)",
+    "category": "신경계기능검사",
+    "cost": 30000
   },
   {
     "id": "term_0066",
-    "item_name": "신경인지 검사(지각·시공간·구성능력)",
-    "kind_mid": "검사",
-    "cost": 20000
+    "item_name": "신경인지 검사(언어능력·어휘력)",
+    "category": "신경계기능검사",
+    "cost": 15000
   },
   {
     "id": "term_0067",
-    "item_name": "신경인지 검사(지각·시공간·레이 복합도형검사)",
-    "kind_mid": "검사",
+    "item_name": "신경인지 검사(지속수행력(시각))",
+    "category": "신경계기능검사",
     "cost": 30000
   },
   {
     "id": "term_0068",
-    "item_name": "신경인지 검사(지각·시공간·인식력(시각))",
-    "kind_mid": "검사",
-    "cost": 22800
-  },
-  {
-    "id": "term_0069",
-    "item_name": "신경인지 검사(지각·시공간·좌우 구분)",
-    "kind_mid": "검사",
-    "cost": 20000
+    "item_name": "신경인지 검사(지속수행력(청각))",
+    "category": "신경계기능검사",
+    "cost": 30000
   },
   {
     "id": "term_0070",
-    "item_name": "신경인지 검사(카드 분류)",
-    "kind_mid": "검사",
-    "cost": 20000
+    "item_name": "신경인지 검사(전두엽·고위인지·논리 사고력)",
+    "category": "신경계기능검사",
+    "cost": 25000
   },
   {
     "id": "term_0071",
-    "item_name": "신경인지 검사(페그보드)",
-    "kind_mid": "검사",
-    "cost": 15000
-  },
-  {
-    "id": "term_0072",
-    "item_name": "신경인지 검사(홉킨스 언어학습)",
-    "kind_mid": "검사",
-    "cost": 35000
-  },
-  {
-    "id": "term_0073",
-    "item_name": "언어능력 평가(시간 추가)",
-    "kind_mid": "검사",
-    "cost": 10000
-  },
-  {
-    "id": "term_0074",
-    "item_name": "언어능력 평가(기본 30분)",
-    "kind_mid": "검사",
+    "item_name": "신경인지 검사(전두엽·고위인지·단어·색채)",
+    "category": "신경계기능검사",
     "cost": 20000
   },
   {
+    "id": "term_0072",
+    "item_name": "신경인지 검사(전두엽·고위인지·보속성)",
+    "category": "신경계기능검사",
+    "cost": 18000
+  },
+  {
+    "id": "term_0073",
+    "item_name": "신경인지 검사(전두엽·고위인지·스트룹)",
+    "category": "신경계기능검사",
+    "cost": 20000
+  },
+  {
+    "id": "term_0074",
+    "item_name": "신경인지 검사(전두엽·고위인지·실행증)",
+    "category": "신경계기능검사",
+    "cost": 18000
+  },
+  {
     "id": "term_0075",
-    "item_name": "종합 언어진단검사",
-    "kind_mid": "검사",
-    "cost": 25000
+    "item_name": "신경인지 검사(전두엽·고위인지·카테고리)",
+    "category": "신경계기능검사",
+    "cost": 22700
   },
   {
     "id": "term_0076",
-    "item_name": "독감 A·B 항원검사",
-    "kind_mid": "검사",
-    "cost": 25000
+    "item_name": "신경인지 검사(종합·서울 신경심리)",
+    "category": "신경계기능검사",
+    "cost": 315400
   },
   {
     "id": "term_0077",
-    "item_name": "유방 3차원 절제생검",
-    "kind_mid": "검사",
-    "cost": 1000000
+    "item_name": "신경인지 검사(종합·CERAD 평가)",
+    "category": "신경계기능검사",
+    "cost": 138100
   },
   {
     "id": "term_0078",
-    "item_name": "자궁경부암 세포검사",
-    "kind_mid": "검사",
-    "cost": 10000
+    "item_name": "신경인지 검사(지각·시공간·구성능력)",
+    "category": "신경계기능검사",
+    "cost": 20000
   },
   {
     "id": "term_0079",
-    "item_name": "자전적 기억 평가면접",
-    "kind_mid": "검사",
+    "item_name": "신경인지 검사(지각·시공간·레이 복합도형검사)",
+    "category": "신경계기능검사",
     "cost": 30000
   },
   {
     "id": "term_0080",
-    "item_name": "자율신경 이상검사(발살바)",
-    "kind_mid": "검사",
-    "cost": 30000
+    "item_name": "신경인지 검사(지각·시공간·인식력(시각))",
+    "category": "신경계기능검사",
+    "cost": 22800
   },
   {
     "id": "term_0081",
-    "item_name": "자율신경 이상검사(심박변이도)",
-    "kind_mid": "검사",
-    "cost": 30000
-  },
-  {
-    "id": "term_0082",
-    "item_name": "장기복무 제대군인 건강검진",
-    "kind_mid": "검사",
-    "cost": 27800
-  },
-  {
-    "id": "term_0083",
-    "item_name": "적외선 체열검사(목·팔)",
-    "kind_mid": "검사",
-    "cost": 50000
-  },
-  {
-    "id": "term_0084",
-    "item_name": "적외선 체열검사(기타 부위)",
-    "kind_mid": "검사",
-    "cost": 50000
-  },
-  {
-    "id": "term_0085",
-    "item_name": "적외선 체열검사(머리·부비동)",
-    "kind_mid": "검사",
-    "cost": 50000
-  },
-  {
-    "id": "term_0086",
-    "item_name": "적외선 체열검사(복부)",
-    "kind_mid": "검사",
-    "cost": 50000
-  },
-  {
-    "id": "term_0087",
-    "item_name": "적외선 체열검사(턱관절)",
-    "kind_mid": "검사",
-    "cost": 50000
-  },
-  {
-    "id": "term_0088",
-    "item_name": "적외선 체열검사(허리·다리)",
-    "kind_mid": "검사",
-    "cost": 50000
-  },
-  {
-    "id": "term_0089",
-    "item_name": "적외선 체열검사(유방)",
-    "kind_mid": "검사",
-    "cost": 50000
-  },
-  {
-    "id": "term_0090",
-    "item_name": "적외선 체열검사(전신)",
-    "kind_mid": "검사",
-    "cost": 100000
-  },
-  {
-    "id": "term_0091",
-    "item_name": "적외선 체열검사(등뼈)",
-    "kind_mid": "검사",
-    "cost": 50000
-  },
-  {
-    "id": "term_0092",
-    "item_name": "적외선 체열검사(발)",
-    "kind_mid": "검사",
-    "cost": 50000
-  },
-  {
-    "id": "term_0093",
-    "item_name": "전신 종합검진",
-    "kind_mid": "검사",
-    "cost": 865000
-  },
-  {
-    "id": "term_0094",
-    "item_name": "땀 분비 신경 검사",
-    "kind_mid": "검사",
-    "cost": 100000
-  },
-  {
-    "id": "term_0095",
-    "item_name": "감각 기능 정밀검사",
-    "kind_mid": "검사",
-    "cost": 30000
-  },
-  {
-    "id": "term_0096",
-    "item_name": "종합검진(고급형)",
-    "kind_mid": "검사",
-    "cost": 209800
-  },
-  {
-    "id": "term_0097",
-    "item_name": "종합검진(남성·위장조영 포함)",
-    "kind_mid": "검사",
-    "cost": 200000
-  },
-  {
-    "id": "term_0098",
-    "item_name": "종합검진(수면내시경)",
-    "kind_mid": "검사",
-    "cost": 325300
-  },
-  {
-    "id": "term_0099",
-    "item_name": "종합검진(남성·위투시 포함)",
-    "kind_mid": "검사",
-    "cost": 250000
-  },
-  {
-    "id": "term_0100",
-    "item_name": "종합검진(여성·위장조영 포함)",
-    "kind_mid": "검사",
-    "cost": 240000
-  },
-  {
-    "id": "term_0101",
-    "item_name": "종합검진(여성·위투시 포함)",
-    "kind_mid": "검사",
-    "cost": 270000
-  },
-  {
-    "id": "term_0102",
-    "item_name": "종합검진(20종)",
-    "kind_mid": "검사",
-    "cost": 114000
-  },
-  {
-    "id": "term_0103",
-    "item_name": "종합검진(24종)",
-    "kind_mid": "검사",
-    "cost": 163000
-  },
-  {
-    "id": "term_0104",
-    "item_name": "종합검진(28종)",
-    "kind_mid": "검사",
-    "cost": 199000
-  },
-  {
-    "id": "term_0105",
-    "item_name": "증상·행동 평가(방어기제 평가)",
-    "kind_mid": "검사",
+    "item_name": "신경인지 검사(지각·시공간·좌우 구분)",
+    "category": "신경계기능검사",
     "cost": 20000
   },
   {
-    "id": "term_0106",
-    "item_name": "증상·행동 평가(불안 평가)",
-    "kind_mid": "검사",
+    "id": "term_0082",
+    "item_name": "신경인지 검사(카드 분류)",
+    "category": "신경계기능검사",
+    "cost": 20000
+  },
+  {
+    "id": "term_0084",
+    "item_name": "신경인지 검사(페그보드)",
+    "category": "신경계기능검사",
+    "cost": 15000
+  },
+  {
+    "id": "term_0085",
+    "item_name": "신경인지 검사(홉킨스 언어학습)",
+    "category": "신경계기능검사",
     "cost": 35000
   },
   {
-    "id": "term_0107",
-    "item_name": "증상·행동 평가(우울 평가)",
-    "kind_mid": "검사",
-    "cost": 35000
+    "id": "term_0089",
+    "item_name": "언어능력 평가(시간 추가)",
+    "category": "신경계기능검사",
+    "cost": 10000
   },
   {
-    "id": "term_0108",
-    "item_name": "수면내시경 환자관리료 I",
-    "kind_mid": "검사",
-    "cost": 53800
+    "id": "term_0090",
+    "item_name": "언어능력 평가(기본 30분)",
+    "category": "신경계기능검사",
+    "cost": 20000
   },
   {
-    "id": "term_0109",
-    "item_name": "수면내시경 환자관리료 II",
-    "kind_mid": "검사",
-    "cost": 78100
+    "id": "term_0093",
+    "item_name": "종합 언어진단검사",
+    "category": "신경계기능검사",
+    "cost": 25000
   },
   {
-    "id": "term_0110",
-    "item_name": "수면내시경 환자관리료 III",
-    "kind_mid": "검사",
-    "cost": 119600
+    "id": "term_0095",
+    "item_name": "독감 A·B 항원검사",
+    "category": "감염검사",
+    "cost": 25000
   },
   {
-    "id": "term_0111",
-    "item_name": "수면내시경 환자관리료 IV",
-    "kind_mid": "검사",
-    "cost": 165400
+    "id": "term_0097",
+    "item_name": "입체적 유방절제생검술",
+    "category": "검사",
+    "cost": 1000000
   },
   {
-    "id": "term_0112",
-    "item_name": "수면내시경 관리료 I",
-    "kind_mid": "검사",
-    "cost": 52700
+    "id": "term_0098",
+    "item_name": "자궁경부암 세포검사",
+    "category": "검사",
+    "cost": 10000
   },
   {
-    "id": "term_0113",
-    "item_name": "수면내시경 관리료 II",
-    "kind_mid": "검사",
-    "cost": 76500
-  },
-  {
-    "id": "term_0114",
-    "item_name": "수면내시경 관리료 IV",
-    "kind_mid": "검사",
-    "cost": 162100
-  },
-  {
-    "id": "term_0115",
-    "item_name": "언어학습 기억력 검사",
-    "kind_mid": "검사",
+    "id": "term_0099",
+    "item_name": "자전적 기억 평가면접",
+    "category": "신경계기능검사",
     "cost": 30000
   },
   {
+    "id": "term_0100",
+    "item_name": "자율신경 이상검사(발살바)",
+    "category": "신경계기능검사",
+    "cost": 30000
+  },
+  {
+    "id": "term_0101",
+    "item_name": "자율신경 이상검사(심박변이도)",
+    "category": "신경계기능검사",
+    "cost": 30000
+  },
+  {
+    "id": "term_0102",
+    "item_name": "장기복무 제대군인 건강검진",
+    "category": "종합검진",
+    "cost": 27800
+  },
+  {
+    "id": "term_0103",
+    "item_name": "적외선 체열검사(목·팔)",
+    "category": "외피·근골기능검사",
+    "cost": 50000
+  },
+  {
+    "id": "term_0104",
+    "item_name": "적외선 체열검사(기타 부위)",
+    "category": "외피·근골기능검사",
+    "cost": 50000
+  },
+  {
+    "id": "term_0105",
+    "item_name": "적외선 체열검사(머리·부비동)",
+    "category": "외피·근골기능검사",
+    "cost": 50000
+  },
+  {
+    "id": "term_0106",
+    "item_name": "적외선 체열검사(복부)",
+    "category": "외피·근골기능검사",
+    "cost": 50000
+  },
+  {
+    "id": "term_0108",
+    "item_name": "적외선 체열검사(턱관절)",
+    "category": "외피·근골기능검사",
+    "cost": 50000
+  },
+  {
+    "id": "term_0109",
+    "item_name": "적외선 체열검사(허리·다리)",
+    "category": "외피·근골기능검사",
+    "cost": 50000
+  },
+  {
+    "id": "term_0110",
+    "item_name": "적외선 체열검사(유방)",
+    "category": "외피·근골기능검사",
+    "cost": 50000
+  },
+  {
+    "id": "term_0111",
+    "item_name": "적외선 체열검사(전신)",
+    "category": "외피·근골기능검사",
+    "cost": 100000
+  },
+  {
+    "id": "term_0112",
+    "item_name": "적외선 체열검사(등뼈)",
+    "category": "외피·근골기능검사",
+    "cost": 50000
+  },
+  {
+    "id": "term_0113",
+    "item_name": "적외선 체열검사(발)",
+    "category": "외피·근골기능검사",
+    "cost": 50000
+  },
+  {
+    "id": "term_0114",
+    "item_name": "전신 종합검진",
+    "category": "종합검진",
+    "cost": 865000
+  },
+  {
     "id": "term_0116",
-    "item_name": "코골이 수면검사",
-    "kind_mid": "검사",
+    "item_name": "땀 분비 자율신경 검사",
+    "category": "신경계기능검사",
     "cost": 100000
   },
   {
     "id": "term_0117",
-    "item_name": "침 분비·산도 검사",
-    "kind_mid": "검사",
-    "cost": 10000
-  },
-  {
-    "id": "term_0118",
-    "item_name": "성격 평가검사",
-    "kind_mid": "검사",
+    "item_name": "정량적감각기능검사",
+    "category": "신경계기능검사",
     "cost": 30000
   },
   {
     "id": "term_0119",
-    "item_name": "난소 예비력 호르몬 검사",
-    "kind_mid": "검사",
-    "cost": 22300
-  },
-  {
-    "id": "term_0120",
-    "item_name": "난소 예비력 호르몬 정밀검사",
-    "kind_mid": "검사",
-    "cost": 56400
-  },
-  {
-    "id": "term_0121",
-    "item_name": "후각 기능 검사(인지·역치)",
-    "kind_mid": "검사",
-    "cost": 20000
+    "item_name": "종합검진(고급형)",
+    "category": "종합검진",
+    "cost": 209800
   },
   {
     "id": "term_0122",
-    "item_name": "후각 기능검사(인지·역치)",
-    "kind_mid": "검사",
-    "cost": 20000
+    "item_name": "종합검진(남성·위장조영 포함)",
+    "category": "종합검진",
+    "cost": 200000
   },
   {
     "id": "term_0123",
-    "item_name": "도수치료",
-    "kind_mid": "물리·재활치료",
-    "cost": 40000
+    "item_name": "종합검진(수면내시경)",
+    "category": "종합검진",
+    "cost": 325300
   },
   {
     "id": "term_0124",
-    "item_name": "동작분석 검사",
-    "kind_mid": "물리·재활치료",
-    "cost": 80000
-  },
-  {
-    "id": "term_0125",
-    "item_name": "보툴리눔 주사치료",
-    "kind_mid": "물리·재활치료",
-    "cost": 150000
-  },
-  {
-    "id": "term_0126",
-    "item_name": "무통증 신호치료",
-    "kind_mid": "물리·재활치료",
-    "cost": 100000
-  },
-  {
-    "id": "term_0127",
-    "item_name": "신장분사 치료",
-    "kind_mid": "물리·재활치료",
-    "cost": 18000
-  },
-  {
-    "id": "term_0128",
-    "item_name": "언어치료(인지장애 동반)",
-    "kind_mid": "물리·재활치료",
-    "cost": 10000
+    "item_name": "종합검진(남성·위투시 포함)",
+    "category": "종합검진",
+    "cost": 250000
   },
   {
     "id": "term_0129",
-    "item_name": "언어치료(기본 30분)",
-    "kind_mid": "물리·재활치료",
-    "cost": 30000
-  },
-  {
-    "id": "term_0130",
-    "item_name": "언어치료(시간 추가)",
-    "kind_mid": "물리·재활치료",
-    "cost": 10000
+    "item_name": "종합검진(여성·위장조영 포함)",
+    "category": "종합검진",
+    "cost": 240000
   },
   {
     "id": "term_0131",
-    "item_name": "삼킴 재활 전기자극 치료",
-    "kind_mid": "물리·재활치료",
-    "cost": 50000
-  },
-  {
-    "id": "term_0132",
-    "item_name": "이명 재훈련 치료",
-    "kind_mid": "물리·재활치료",
-    "cost": 50000
-  },
-  {
-    "id": "term_0133",
-    "item_name": "컴퓨터 인지재활치료",
-    "kind_mid": "물리·재활치료",
-    "cost": 35000
-  },
-  {
-    "id": "term_0134",
-    "item_name": "증식치료(팔다리 관절)",
-    "kind_mid": "물리·재활치료",
-    "cost": 20000
-  },
-  {
-    "id": "term_0135",
-    "item_name": "증식치료(척추)",
-    "kind_mid": "물리·재활치료",
-    "cost": 30000
+    "item_name": "종합검진(여성·위투시 포함)",
+    "category": "종합검진",
+    "cost": 270000
   },
   {
     "id": "term_0136",
-    "item_name": "골반 자기장 치료(배뇨통·골반통)",
-    "kind_mid": "물리·재활치료",
-    "cost": 20000
+    "item_name": "종합검진(20종)",
+    "category": "종합검진",
+    "cost": 114000
   },
   {
     "id": "term_0137",
-    "item_name": "골반 자기장 치료(요실금)",
-    "kind_mid": "물리·재활치료",
-    "cost": 30000
+    "item_name": "종합검진(24종)",
+    "category": "종합검진",
+    "cost": 163000
   },
   {
     "id": "term_0138",
-    "item_name": "체외충격파 치료",
-    "kind_mid": "물리·재활치료",
-    "cost": 50000
+    "item_name": "종합검진(28종)",
+    "category": "종합검진",
+    "cost": 199000
   },
   {
     "id": "term_0139",
-    "item_name": "방사선 치료(중간 강도)",
-    "kind_mid": "영상진단",
-    "cost": 76800
-  },
-  {
-    "id": "term_0140",
-    "item_name": "방사선 치료(낮은 강도)",
-    "kind_mid": "영상진단",
-    "cost": 59100
+    "item_name": "증상·행동 평가(방어기제 평가)",
+    "category": "신경계기능검사",
+    "cost": 20000
   },
   {
     "id": "term_0141",
-    "item_name": "방사선 치료(높은 강도)",
-    "kind_mid": "영상진단",
-    "cost": 94500
+    "item_name": "증상·행동 평가(불안 평가)",
+    "category": "신경계기능검사",
+    "cost": 35000
   },
   {
     "id": "term_0142",
-    "item_name": "방사선 치료계획(최초)",
-    "kind_mid": "영상진단",
-    "cost": 41200
+    "item_name": "증상·행동 평가(우울 평가)",
+    "category": "신경계기능검사",
+    "cost": 35000
   },
   {
     "id": "term_0143",
-    "item_name": "방사선 치료계획(반복)",
-    "kind_mid": "영상진단",
-    "cost": 25000
+    "item_name": "수면내시경 환자관리료 I",
+    "category": "내시경",
+    "cost": 53800
   },
   {
     "id": "term_0144",
-    "item_name": "표면 유도 방사선치료",
-    "kind_mid": "영상진단",
-    "cost": 50000
+    "item_name": "수면내시경 환자관리료 II",
+    "category": "내시경",
+    "cost": 78100
   },
   {
     "id": "term_0145",
-    "item_name": "표면 유도 방사선 치료계획",
-    "kind_mid": "영상진단",
-    "cost": 200000
+    "item_name": "수면내시경 환자관리료 III",
+    "category": "내시경",
+    "cost": 119600
   },
   {
     "id": "term_0146",
-    "item_name": "눈 정밀 단층촬영",
-    "kind_mid": "영상진단",
-    "cost": 50000
+    "item_name": "수면내시경 환자관리료 IV",
+    "category": "내시경",
+    "cost": 165400
   },
   {
     "id": "term_0147",
-    "item_name": "자궁경부 확대촬영검사",
-    "kind_mid": "영상진단",
-    "cost": 25000
+    "item_name": "수면내시경 관리료 I",
+    "category": "검사",
+    "cost": 52700
   },
   {
     "id": "term_0148",
-    "item_name": "CT 방사선 치료계획(최초)",
-    "kind_mid": "영상진단",
-    "cost": 125000
+    "item_name": "수면내시경 관리료 II",
+    "category": "검사",
+    "cost": 76500
   },
   {
     "id": "term_0149",
-    "item_name": "CT 방사선 치료계획(반복)",
-    "kind_mid": "영상진단",
-    "cost": 75000
-  },
-  {
-    "id": "term_0150",
-    "item_name": "몸통·뇌 PET-CT 검진",
-    "kind_mid": "영상진단",
-    "cost": 906000
-  },
-  {
-    "id": "term_0151",
-    "item_name": "폐렴구균 예방접종(성인·프리베나13)",
-    "kind_mid": "예방접종·주사",
-    "cost": 100000
-  },
-  {
-    "id": "term_0152",
-    "item_name": "독감 예방접종(4가·소아)",
-    "kind_mid": "예방접종·주사",
-    "cost": 40000
+    "item_name": "수면내시경 관리료 IV",
+    "category": "검사",
+    "cost": 162100
   },
   {
     "id": "term_0153",
-    "item_name": "HPV 예방접종(가다실9)",
-    "kind_mid": "예방접종·주사",
-    "cost": 200000
+    "item_name": "캘리포니아 언어학습검사",
+    "category": "신경계기능검사",
+    "cost": 30000
   },
   {
     "id": "term_0154",
-    "item_name": "HPV 예방접종(가다실)",
-    "kind_mid": "예방접종·주사",
-    "cost": 170000
+    "item_name": "코골이 수면검사",
+    "category": "신경계기능검사",
+    "cost": 100000
   },
   {
     "id": "term_0155",
-    "item_name": "결핵 예방접종(BCG)",
-    "kind_mid": "예방접종·주사",
-    "cost": 60000
+    "item_name": "침 분비·점도·산도 검사",
+    "category": "검사",
+    "cost": 10000
   },
   {
     "id": "term_0156",
-    "item_name": "뇌수막염 예방접종(뉴힙주)",
-    "kind_mid": "예방접종·주사",
+    "item_name": "성격 평가검사",
+    "category": "신경계기능검사",
     "cost": 30000
   },
   {
     "id": "term_0157",
-    "item_name": "디프테리아·파상풍 예방접종",
-    "kind_mid": "예방접종·주사",
-    "cost": 30000
+    "item_name": "항뮬러관호르몬(AMH) 검사",
+    "category": "내분비검사",
+    "cost": 22300
   },
   {
     "id": "term_0158",
-    "item_name": "로타바이러스 예방접종(로타릭스)",
-    "kind_mid": "예방접종·주사",
-    "cost": 130000
-  },
-  {
-    "id": "term_0159",
-    "item_name": "로타바이러스 예방접종(로타텍)",
-    "kind_mid": "예방접종·주사",
-    "cost": 100000
+    "item_name": "항뮬러관호르몬(AMH) 정밀검사",
+    "category": "내분비검사",
+    "cost": 56400
   },
   {
     "id": "term_0160",
-    "item_name": "수막구균 예방접종(멘비오)",
-    "kind_mid": "예방접종·주사",
-    "cost": 150000
+    "item_name": "후각 기능검사(인지·역치)",
+    "category": "기능검사",
+    "cost": 20000
   },
   {
     "id": "term_0161",
-    "item_name": "수두 예방접종(바리엘)",
-    "kind_mid": "예방접종·주사",
-    "cost": 30000
-  },
-  {
-    "id": "term_0162",
-    "item_name": "독감 예방접종(4가·성인·백시플루)",
-    "kind_mid": "예방접종·주사",
-    "cost": 30000
+    "item_name": "도수치료",
+    "category": "물리치료",
+    "cost": 40000
   },
   {
     "id": "term_0163",
-    "item_name": "디프테리아·파상풍·백일해 예방접종(보령)",
-    "kind_mid": "예방접종·주사",
-    "cost": 26200
+    "item_name": "동작분석 검사",
+    "category": "외피·근골기능검사",
+    "cost": 80000
   },
   {
     "id": "term_0164",
-    "item_name": "신종 독감 예방접종",
-    "kind_mid": "예방접종·주사",
-    "cost": 15000
+    "item_name": "보툴리눔 주사치료",
+    "category": "물리치료",
+    "cost": 150000
   },
   {
     "id": "term_0165",
-    "item_name": "일본뇌염 예방접종(씨디제박스)",
-    "kind_mid": "예방접종·주사",
-    "cost": 35000
+    "item_name": "무통증 신호치료",
+    "category": "물리치료",
+    "cost": 100000
   },
   {
     "id": "term_0166",
-    "item_name": "디프테리아·파상풍 예방접종(에스케이티디)",
-    "kind_mid": "예방접종·주사",
-    "cost": 30000
+    "item_name": "신장분사 치료",
+    "category": "물리치료",
+    "cost": 18000
   },
   {
     "id": "term_0167",
-    "item_name": "MMR 예방접종",
-    "kind_mid": "예방접종·주사",
-    "cost": 26000
-  },
-  {
-    "id": "term_0168",
-    "item_name": "뇌수막염 예방접종(유히브주)",
-    "kind_mid": "예방접종·주사",
-    "cost": 41000
+    "item_name": "언어치료(인지장애 동반)",
+    "category": "언어치료",
+    "cost": 10000
   },
   {
     "id": "term_0169",
-    "item_name": "일본뇌염 예방접종(보령)",
-    "kind_mid": "예방접종·주사",
-    "cost": 30300
+    "item_name": "언어치료(기본 30분)",
+    "category": "언어치료",
+    "cost": 30000
   },
   {
     "id": "term_0170",
-    "item_name": "일본뇌염 예방접종(사백신)",
-    "kind_mid": "예방접종·주사",
-    "cost": 20000
+    "item_name": "언어치료(시간 추가)",
+    "category": "언어치료",
+    "cost": 10000
   },
   {
     "id": "term_0171",
-    "item_name": "대상포진 예방접종(조스타박스)",
-    "kind_mid": "예방접종·주사",
-    "cost": 190000
+    "item_name": "삼킴 재활 전기자극 치료",
+    "category": "물리치료",
+    "cost": 50000
   },
   {
     "id": "term_0172",
-    "item_name": "독감 예방접종(3가·지시플루)",
-    "kind_mid": "예방접종·주사",
-    "cost": 25000
+    "item_name": "이명 재훈련 치료",
+    "category": "물리치료",
+    "cost": 50000
   },
   {
     "id": "term_0173",
-    "item_name": "소아마비 예방접종(폴리오)",
-    "kind_mid": "예방접종·주사",
-    "cost": 25000
-  },
-  {
-    "id": "term_0174",
-    "item_name": "디프테리아·파상풍·백일해·소아마비 예방접종(테트락심)",
-    "kind_mid": "예방접종·주사",
-    "cost": 47000
-  },
-  {
-    "id": "term_0175",
-    "item_name": "디프테리아·파상풍·백일해·소아마비·뇌수막염 예방접종(펜탁심)",
-    "kind_mid": "예방접종·주사",
-    "cost": 68600
-  },
-  {
-    "id": "term_0176",
-    "item_name": "폐렴구균 예방접종(뉴모23)",
-    "kind_mid": "예방접종·주사",
-    "cost": 40000
-  },
-  {
-    "id": "term_0177",
-    "item_name": "폐렴구균 예방접종(프로디악스23)",
-    "kind_mid": "예방접종·주사",
-    "cost": 40000
-  },
-  {
-    "id": "term_0178",
-    "item_name": "폐렴구균 예방접종(소아·프리베나13)",
-    "kind_mid": "예방접종·주사",
-    "cost": 150000
-  },
-  {
-    "id": "term_0179",
-    "item_name": "독감 예방접종(비강분무·플루미스트)",
-    "kind_mid": "예방접종·주사",
+    "item_name": "컴퓨터 인지재활치료",
+    "category": "물리치료",
     "cost": 35000
   },
   {
+    "id": "term_0176",
+    "item_name": "증식치료(팔다리 관절)",
+    "category": "물리치료",
+    "cost": 20000
+  },
+  {
+    "id": "term_0177",
+    "item_name": "증식치료(척추)",
+    "category": "물리치료",
+    "cost": 30000
+  },
+  {
+    "id": "term_0179",
+    "item_name": "골반 자기장 치료(배뇨통·골반통)",
+    "category": "물리치료",
+    "cost": 20000
+  },
+  {
     "id": "term_0180",
-    "item_name": "B형간염 면역주사(헤파빅주)",
-    "kind_mid": "예방접종·주사",
-    "cost": 32300
+    "item_name": "골반 자기장 치료(요실금)",
+    "category": "물리치료",
+    "cost": 30000
   },
   {
     "id": "term_0181",
-    "item_name": "디프테리아·파상풍·백일해 예방접종(인판릭스)",
-    "kind_mid": "예방접종·주사",
-    "cost": 32000
-  },
-  {
-    "id": "term_0182",
-    "item_name": "1인실 추가요금(일반 진료과)",
-    "kind_mid": "입원",
-    "cost": 150400
+    "item_name": "체외충격파 치료",
+    "category": "근골격계",
+    "cost": 50000
   },
   {
     "id": "term_0183",
-    "item_name": "1인실 추가요금(간호·간병·내과/소아과/정신과)",
-    "kind_mid": "입원",
-    "cost": 219900
+    "item_name": "기본 체외조사(2.5~5.0Gy 미만·1회당)",
+    "category": "방사선치료",
+    "cost": 76800
   },
   {
     "id": "term_0184",
-    "item_name": "1인실 추가요금(간호·간병·일반과)",
-    "kind_mid": "입원",
-    "cost": 207200
+    "item_name": "기본 체외조사(2.5Gy 미만·1회당)",
+    "category": "방사선치료",
+    "cost": 59100
   },
   {
     "id": "term_0185",
-    "item_name": "1인실 추가요금(외박 관리)",
-    "kind_mid": "입원",
-    "cost": 86600
+    "item_name": "기본 체외조사(5.0Gy 이상·1회당)",
+    "category": "방사선치료",
+    "cost": 94500
   },
   {
     "id": "term_0186",
-    "item_name": "1인실 추가요금(기본)",
-    "kind_mid": "입원",
-    "cost": 70000
+    "item_name": "방사선 치료계획(최초)",
+    "category": "방사선치료",
+    "cost": 41200
   },
   {
     "id": "term_0187",
-    "item_name": "1인실 추가요금(내과/소아과/정신과)",
-    "kind_mid": "입원",
-    "cost": 150400
+    "item_name": "방사선 치료계획(반복)",
+    "category": "방사선치료",
+    "cost": 25000
   },
   {
     "id": "term_0188",
-    "item_name": "특실 입원료",
-    "kind_mid": "입원",
-    "cost": 295800
+    "item_name": "표면 유도 방사선치료",
+    "category": "방사선치료",
+    "cost": 50000
   },
   {
     "id": "term_0189",
-    "item_name": "반복 뇌 자기자극 치료",
-    "kind_mid": "처치·수술",
-    "cost": 60000
+    "item_name": "표면 유도 방사선 치료계획",
+    "category": "방사선치료",
+    "cost": 200000
   },
   {
     "id": "term_0190",
-    "item_name": "척추 척추 신경 통증 시술",
-    "kind_mid": "처치·수술",
-    "cost": 500000
-  },
-  {
-    "id": "term_0191",
-    "item_name": "풍선 척추 척추 신경 통증 시술",
-    "kind_mid": "처치·수술",
-    "cost": 500000
-  },
-  {
-    "id": "term_0192",
-    "item_name": "광치료",
-    "kind_mid": "처치·수술",
-    "cost": 15000
+    "item_name": "안구 광학단층촬영",
+    "category": "시기능검사",
+    "cost": 50000
   },
   {
     "id": "term_0193",
-    "item_name": "기미·주근깨·점 제거(대)",
-    "kind_mid": "처치·수술",
-    "cost": 30000
+    "item_name": "자궁경부 확대촬영검사",
+    "category": "검사",
+    "cost": 25000
   },
   {
     "id": "term_0194",
-    "item_name": "기미·주근깨·점 제거(소)",
-    "kind_mid": "처치·수술",
-    "cost": 10000
+    "item_name": "CT 방사선 치료계획(최초)",
+    "category": "방사선치료",
+    "cost": 125000
   },
   {
     "id": "term_0195",
-    "item_name": "기미·주근깨·점 제거(중)",
-    "kind_mid": "처치·수술",
-    "cost": 20000
+    "item_name": "CT 방사선 치료계획(반복)",
+    "category": "방사선치료",
+    "cost": 75000
   },
   {
     "id": "term_0196",
-    "item_name": "보형물 제거술(대)",
-    "kind_mid": "처치·수술",
-    "cost": 500000
-  },
-  {
-    "id": "term_0197",
-    "item_name": "보형물 제거술(소)",
-    "kind_mid": "처치·수술",
-    "cost": 200000
+    "item_name": "몸통·뇌 PET-CT 검진",
+    "category": "종합검진",
+    "cost": 906000
   },
   {
     "id": "term_0198",
-    "item_name": "보형물 제거술(중)",
-    "kind_mid": "처치·수술",
-    "cost": 300000
-  },
-  {
-    "id": "term_0199",
-    "item_name": "나팔관 피임 수술(양쪽)",
-    "kind_mid": "처치·수술",
-    "cost": 300000
-  },
-  {
-    "id": "term_0200",
-    "item_name": "메조테라피(비만)",
-    "kind_mid": "처치·수술",
-    "cost": 14000
+    "item_name": "폐렴구균 예방접종(성인·프리베나13)",
+    "category": "예방접종",
+    "cost": 100000
   },
   {
     "id": "term_0201",
-    "item_name": "메조테라피",
-    "kind_mid": "처치·수술",
-    "cost": 17000
-  },
-  {
-    "id": "term_0202",
-    "item_name": "모발 이식술(소)",
-    "kind_mid": "처치·수술",
-    "cost": 300000
+    "item_name": "독감 예방접종(4가·소아)",
+    "category": "예방접종",
+    "cost": 40000
   },
   {
     "id": "term_0203",
-    "item_name": "미레나 삽입술",
-    "kind_mid": "처치·수술",
-    "cost": 90000
+    "item_name": "HPV 예방접종(가다실9)",
+    "category": "예방접종",
+    "cost": 200000
   },
   {
     "id": "term_0204",
-    "item_name": "피부 화학 박피(대)",
-    "kind_mid": "처치·수술",
-    "cost": 100000
-  },
-  {
-    "id": "term_0205",
-    "item_name": "피부 화학 박피(소)",
-    "kind_mid": "처치·수술",
-    "cost": 30000
+    "item_name": "HPV 예방접종(가다실)",
+    "category": "예방접종",
+    "cost": 170000
   },
   {
     "id": "term_0206",
-    "item_name": "피부 화학 박피(중)",
-    "kind_mid": "처치·수술",
-    "cost": 50000
-  },
-  {
-    "id": "term_0207",
-    "item_name": "병변 주사요법(B등급)",
-    "kind_mid": "처치·수술",
-    "cost": 10000
-  },
-  {
-    "id": "term_0208",
-    "item_name": "사마귀 제거(대)",
-    "kind_mid": "처치·수술",
-    "cost": 10000
-  },
-  {
-    "id": "term_0209",
-    "item_name": "맹장 수술(산부인과)",
-    "kind_mid": "처치·수술",
-    "cost": 100000
-  },
-  {
-    "id": "term_0210",
-    "item_name": "색소 레이저 치료(소)",
-    "kind_mid": "처치·수술",
-    "cost": 10000
-  },
-  {
-    "id": "term_0211",
-    "item_name": "하지정맥류 접착 폐색술(한쪽)",
-    "kind_mid": "처치·수술",
-    "cost": 1000000
-  },
-  {
-    "id": "term_0212",
-    "item_name": "쌍꺼풀 수술(대)",
-    "kind_mid": "처치·수술",
-    "cost": 300000
-  },
-  {
-    "id": "term_0213",
-    "item_name": "쌍꺼풀 수술(소)",
-    "kind_mid": "처치·수술",
-    "cost": 250000
-  },
-  {
-    "id": "term_0214",
-    "item_name": "안구 표면 양막이식술",
-    "kind_mid": "처치·수술",
-    "cost": 250000
-  },
-  {
-    "id": "term_0215",
-    "item_name": "약물 유도 사정 시술",
-    "kind_mid": "처치·수술",
-    "cost": 100000
-  },
-  {
-    "id": "term_0216",
-    "item_name": "여드름 제거(대)",
-    "kind_mid": "처치·수술",
-    "cost": 10000
-  },
-  {
-    "id": "term_0217",
-    "item_name": "여드름 치료(대)",
-    "kind_mid": "처치·수술",
-    "cost": 10000
-  },
-  {
-    "id": "term_0218",
-    "item_name": "요실금 수술(개복)",
-    "kind_mid": "처치·수술",
-    "cost": 522300
-  },
-  {
-    "id": "term_0219",
-    "item_name": "요실금 수술(인공물질·자가지방)",
-    "kind_mid": "처치·수술",
-    "cost": 244000
-  },
-  {
-    "id": "term_0220",
-    "item_name": "요실금 질강 수술(기타)",
-    "kind_mid": "처치·수술",
-    "cost": 256800
-  },
-  {
-    "id": "term_0221",
-    "item_name": "요실금 질강 수술(자가근막)",
-    "kind_mid": "처치·수술",
-    "cost": 380900
-  },
-  {
-    "id": "term_0222",
-    "item_name": "유리체 주입술",
-    "kind_mid": "처치·수술",
-    "cost": 84300
-  },
-  {
-    "id": "term_0223",
-    "item_name": "인공 괄약근 설치술",
-    "kind_mid": "처치·수술",
-    "cost": 1000000
-  },
-  {
-    "id": "term_0224",
-    "item_name": "자궁내 장치 삽입술",
-    "kind_mid": "처치·수술",
-    "cost": 30000
-  },
-  {
-    "id": "term_0225",
-    "item_name": "자기장 치료(골반통·전립선통·성교통)",
-    "kind_mid": "처치·수술",
-    "cost": 20000
-  },
-  {
-    "id": "term_0226",
-    "item_name": "자기장 치료(요실금)",
-    "kind_mid": "처치·수술",
-    "cost": 30000
-  },
-  {
-    "id": "term_0227",
-    "item_name": "정관절제술",
-    "kind_mid": "처치·수술",
-    "cost": 200000
-  },
-  {
-    "id": "term_0228",
-    "item_name": "질·회음부 성형술(대)",
-    "kind_mid": "처치·수술",
-    "cost": 1000000
-  },
-  {
-    "id": "term_0229",
-    "item_name": "질·회음부 성형술(소)",
-    "kind_mid": "처치·수술",
-    "cost": 500000
-  },
-  {
-    "id": "term_0230",
-    "item_name": "질·회음부 성형술(중)",
-    "kind_mid": "처치·수술",
-    "cost": 800000
-  },
-  {
-    "id": "term_0231",
-    "item_name": "디스크 고주파 열응고술",
-    "kind_mid": "처치·수술",
-    "cost": 500000
-  },
-  {
-    "id": "term_0232",
-    "item_name": "디스크 고주파 열치료술",
-    "kind_mid": "처치·수술",
-    "cost": 500000
-  },
-  {
-    "id": "term_0233",
-    "item_name": "맹장 수술",
-    "kind_mid": "처치·수술",
-    "cost": 100000
-  },
-  {
-    "id": "term_0234",
-    "item_name": "코골이 성형술",
-    "kind_mid": "처치·수술",
-    "cost": 200000
-  },
-  {
-    "id": "term_0235",
-    "item_name": "코골이 수술(고주파)",
-    "kind_mid": "처치·수술",
-    "cost": 100000
-  },
-  {
-    "id": "term_0236",
-    "item_name": "척추 신경 유착 풀기 시술(풍선확장 포함)",
-    "kind_mid": "처치·수술",
-    "cost": 300000
-  },
-  {
-    "id": "term_0237",
-    "item_name": "피부 전기·냉동 치료(대)",
-    "kind_mid": "처치·수술",
-    "cost": 100000
-  },
-  {
-    "id": "term_0238",
-    "item_name": "피부 전기·냉동 치료(소)",
-    "kind_mid": "처치·수술",
-    "cost": 30000
-  },
-  {
-    "id": "term_0239",
-    "item_name": "피부 전기·냉동 치료(중)",
-    "kind_mid": "처치·수술",
-    "cost": 50000
-  },
-  {
-    "id": "term_0240",
-    "item_name": "하지정맥류 고주파 치료",
-    "kind_mid": "처치·수술",
-    "cost": 800000
-  },
-  {
-    "id": "term_0241",
-    "item_name": "하지정맥류 레이저 폐쇄술",
-    "kind_mid": "처치·수술",
-    "cost": 1000000
-  },
-  {
-    "id": "term_0242",
-    "item_name": "IPL 코밑 제모(여성·1회차)",
-    "kind_mid": "처치·수술",
-    "cost": 100000
-  },
-  {
-    "id": "term_0243",
-    "item_name": "IPL 코밑 제모(여성·2회차)",
-    "kind_mid": "처치·수술",
-    "cost": 50000
-  },
-  {
-    "id": "term_0244",
-    "item_name": "IPL 코밑 제모(여성·3회차)",
-    "kind_mid": "처치·수술",
-    "cost": 50000
-  },
-  {
-    "id": "term_0245",
-    "item_name": "기관지 내시경 초음파(가이드 포함)",
-    "kind_mid": "초음파",
-    "cost": 770000
-  },
-  {
-    "id": "term_0246",
-    "item_name": "기본 초음파(단순)",
-    "kind_mid": "초음파",
-    "cost": 23200
-  },
-  {
-    "id": "term_0247",
-    "item_name": "내시경 초음파 유도 세침흡인검사",
-    "kind_mid": "초음파",
-    "cost": 800000
-  },
-  {
-    "id": "term_0248",
-    "item_name": "동맥경화·혈관막힘 검사(1부위)",
-    "kind_mid": "초음파",
-    "cost": 30000
-  },
-  {
-    "id": "term_0249",
-    "item_name": "동맥경화·혈관막힘 검사(2부위)",
-    "kind_mid": "초음파",
-    "cost": 50000
-  },
-  {
-    "id": "term_0250",
-    "item_name": "두개외 혈관 도플러 초음파",
-    "kind_mid": "초음파",
-    "cost": 56900
-  },
-  {
-    "id": "term_0251",
-    "item_name": "복부 초음파(항문)",
-    "kind_mid": "초음파",
-    "cost": 107500
-  },
-  {
-    "id": "term_0252",
-    "item_name": "소아 복부 초음파",
-    "kind_mid": "초음파",
-    "cost": 219700
-  },
-  {
-    "id": "term_0253",
-    "item_name": "팔다리 신경 종합 초음파",
-    "kind_mid": "초음파",
-    "cost": 154200
-  },
-  {
-    "id": "term_0254",
-    "item_name": "팔다리 혈관 도플러 초음파(투석혈관 협착)",
-    "kind_mid": "초음파",
-    "cost": 44100
-  },
-  {
-    "id": "term_0255",
-    "item_name": "팔다리 혈관 도플러 초음파(하지정맥류)",
-    "kind_mid": "초음파",
-    "cost": 155300
-  },
-  {
-    "id": "term_0256",
-    "item_name": "심장초음파(선천성 심질환)",
-    "kind_mid": "초음파",
-    "cost": 34800
-  },
-  {
-    "id": "term_0257",
-    "item_name": "조영 유도 초음파",
-    "kind_mid": "초음파",
-    "cost": 409100
-  },
-  {
-    "id": "term_0258",
-    "item_name": "생검·세침흡인 유도 초음파",
-    "kind_mid": "초음파",
-    "cost": 106400
-  },
-  {
-    "id": "term_0259",
-    "item_name": "천자·배액 유도 초음파",
-    "kind_mid": "초음파",
-    "cost": 53200
-  },
-  {
-    "id": "term_0260",
-    "item_name": "응급 단일 표적 초음파(1부위)",
-    "kind_mid": "초음파",
-    "cost": 29900
-  },
-  {
-    "id": "term_0261",
-    "item_name": "응급 단일 표적 초음파(2부위 이상)",
-    "kind_mid": "초음파",
-    "cost": 59800
-  },
-  {
-    "id": "term_0262",
-    "item_name": "응급 복합 표적 초음파",
-    "kind_mid": "초음파",
-    "cost": 154000
-  },
-  {
-    "id": "term_0263",
-    "item_name": "임산부 초음파(초기·기형아 정밀)",
-    "kind_mid": "초음파",
-    "cost": 186100
-  },
-  {
-    "id": "term_0264",
-    "item_name": "임산부 초음파(초기·임신 확인)",
-    "kind_mid": "초음파",
-    "cost": 55200
-  },
-  {
-    "id": "term_0265",
-    "item_name": "전립선·정낭 초음파(복부)",
-    "kind_mid": "초음파",
-    "cost": 62900
-  },
-  {
-    "id": "term_0266",
-    "item_name": "복부 제한 초음파",
-    "kind_mid": "초음파",
-    "cost": 61200
-  },
-  {
-    "id": "term_0267",
-    "item_name": "유방생검 유도 초음파",
-    "kind_mid": "초음파",
-    "cost": 800000
-  },
-  {
-    "id": "term_0268",
-    "item_name": "갑상선·부갑상선 제한 초음파",
-    "kind_mid": "초음파",
-    "cost": 45500
-  },
-  {
-    "id": "term_0269",
-    "item_name": "기타 부위 제한 초음파",
-    "kind_mid": "초음파",
-    "cost": 45500
-  },
-  {
-    "id": "term_0270",
-    "item_name": "갑상선·부갑상선 전체 초음파",
-    "kind_mid": "초음파",
-    "cost": 92300
-  },
-  {
-    "id": "term_0271",
-    "item_name": "기타 부위 전체 초음파",
-    "kind_mid": "초음파",
-    "cost": 92300
-  },
-  {
-    "id": "term_0272",
-    "item_name": "엉덩관절 초음파(한쪽)",
-    "kind_mid": "초음파",
-    "cost": 90100
-  },
-  {
-    "id": "term_0273",
-    "item_name": "류마티스 관절 초음파(3부위 이상)",
-    "kind_mid": "초음파",
-    "cost": 139700
-  },
-  {
-    "id": "term_0274",
-    "item_name": "발가락 초음파(한쪽)",
-    "kind_mid": "초음파",
-    "cost": 65300
-  },
-  {
-    "id": "term_0275",
-    "item_name": "손가락 초음파",
-    "kind_mid": "초음파",
-    "cost": 65300
-  },
-  {
-    "id": "term_0276",
-    "item_name": "무릎관절 초음파(한쪽)",
-    "kind_mid": "초음파",
-    "cost": 71900
-  },
-  {
-    "id": "term_0277",
-    "item_name": "복부 초음파",
-    "kind_mid": "초음파",
-    "cost": 120700
-  },
-  {
-    "id": "term_0278",
-    "item_name": "복부 조영 초음파",
-    "kind_mid": "초음파",
-    "cost": 155000
-  },
-  {
-    "id": "term_0279",
-    "item_name": "진단 초음파(복부·항문)",
-    "kind_mid": "초음파",
-    "cost": 109700
-  },
-  {
-    "id": "term_0280",
-    "item_name": "코·부비동 초음파",
-    "kind_mid": "초음파",
-    "cost": 60900
-  },
-  {
-    "id": "term_0281",
-    "item_name": "신장·부신 초음파",
-    "kind_mid": "초음파",
-    "cost": 89000
-  },
-  {
-    "id": "term_0282",
-    "item_name": "신장·부신·방광 초음파",
-    "kind_mid": "초음파",
-    "cost": 98500
-  },
-  {
-    "id": "term_0283",
-    "item_name": "중추신경계 초음파(1세 미만·뇌)",
-    "kind_mid": "초음파",
-    "cost": 198200
-  },
-  {
-    "id": "term_0284",
-    "item_name": "중추신경계 초음파(1세 미만·척수)",
-    "kind_mid": "초음파",
-    "cost": 198200
-  },
-  {
-    "id": "term_0285",
-    "item_name": "말초신경 초음파(한쪽)",
-    "kind_mid": "초음파",
-    "cost": 58700
-  },
-  {
-    "id": "term_0286",
-    "item_name": "가슴 심장초음파",
-    "kind_mid": "초음파",
-    "cost": 112300
-  },
-  {
-    "id": "term_0287",
-    "item_name": "약물 부하 심장초음파",
-    "kind_mid": "초음파",
-    "cost": 307600
-  },
-  {
-    "id": "term_0288",
-    "item_name": "운동 부하 심장초음파",
-    "kind_mid": "초음파",
-    "cost": 292400
-  },
-  {
-    "id": "term_0289",
-    "item_name": "가슴 심장초음파(전문)",
-    "kind_mid": "초음파",
-    "cost": 258500
-  },
-  {
-    "id": "term_0290",
-    "item_name": "태아 정밀 심장초음파",
-    "kind_mid": "초음파",
-    "cost": 388400
-  },
-  {
-    "id": "term_0291",
-    "item_name": "눈 계측 초음파(양쪽)",
-    "kind_mid": "초음파",
-    "cost": 91900
-  },
-  {
-    "id": "term_0292",
-    "item_name": "눈 초음파",
-    "kind_mid": "초음파",
-    "cost": 91300
-  },
-  {
-    "id": "term_0293",
-    "item_name": "연부조직 초음파",
-    "kind_mid": "초음파",
-    "cost": 65300
-  },
-  {
-    "id": "term_0294",
-    "item_name": "임산부 초음파(중·후기·고위험)",
-    "kind_mid": "초음파",
-    "cost": 149700
-  },
-  {
-    "id": "term_0295",
-    "item_name": "진단 초음파(임산부 초기·기형아 정밀)",
-    "kind_mid": "초음파",
-    "cost": 186100
-  },
-  {
-    "id": "term_0296",
-    "item_name": "임산부 초음파(중·후기·기형아 정밀)",
-    "kind_mid": "초음파",
-    "cost": 289100
-  },
-  {
-    "id": "term_0297",
-    "item_name": "임산부 초음파(초기)",
-    "kind_mid": "초음파",
-    "cost": 81300
-  },
-  {
-    "id": "term_0298",
-    "item_name": "임산부 초음파(중·후기)",
-    "kind_mid": "초음파",
-    "cost": 115100
-  },
-  {
-    "id": "term_0299",
-    "item_name": "진단 초음파(임산부 초기·임신 확인)",
-    "kind_mid": "초음파",
-    "cost": 55200
-  },
-  {
-    "id": "term_0300",
-    "item_name": "목동맥 도플러 초음파",
-    "kind_mid": "초음파",
-    "cost": 110600
-  },
-  {
-    "id": "term_0301",
-    "item_name": "진단 초음파(두개외 혈관 도플러)",
-    "kind_mid": "초음파",
-    "cost": 58100
-  },
-  {
-    "id": "term_0302",
-    "item_name": "팔다리 혈관 도플러 초음파(투석혈관 혈류·협착)",
-    "kind_mid": "초음파",
-    "cost": 45900
-  },
-  {
-    "id": "term_0303",
-    "item_name": "팔다리 혈관 도플러 초음파(팔 동맥)",
-    "kind_mid": "초음파",
-    "cost": 87900
-  },
-  {
-    "id": "term_0304",
-    "item_name": "팔다리 혈관 도플러 초음파(팔 정맥)",
-    "kind_mid": "초음파",
-    "cost": 87900
-  },
-  {
-    "id": "term_0305",
-    "item_name": "진단 초음파(하지정맥류·혈관 도플러)",
-    "kind_mid": "초음파",
-    "cost": 158500
-  },
-  {
-    "id": "term_0306",
-    "item_name": "팔다리 혈관 도플러 초음파(다리 동맥)",
-    "kind_mid": "초음파",
-    "cost": 139200
-  },
-  {
-    "id": "term_0307",
-    "item_name": "팔다리 혈관 도플러 초음파(다리 정맥)",
-    "kind_mid": "초음파",
-    "cost": 139200
-  },
-  {
-    "id": "term_0308",
-    "item_name": "뇌혈류 초음파",
-    "kind_mid": "초음파",
-    "cost": 129600
-  },
-  {
-    "id": "term_0309",
-    "item_name": "대동맥 도플러 초음파",
-    "kind_mid": "초음파",
-    "cost": 86000
-  },
-  {
-    "id": "term_0310",
-    "item_name": "흉부 초음파",
-    "kind_mid": "초음파",
-    "cost": 86000
-  },
-  {
-    "id": "term_0311",
-    "item_name": "유방·겨드랑이 초음파",
-    "kind_mid": "초음파",
-    "cost": 124300
-  },
-  {
-    "id": "term_0312",
-    "item_name": "두개강내 뇌혈류 도플러 초음파",
-    "kind_mid": "초음파",
-    "cost": 150000
-  },
-  {
-    "id": "term_0313",
-    "item_name": "동맥경화도 초음파",
-    "kind_mid": "초음파",
-    "cost": 30000
-  },
-  {
-    "id": "term_0314",
-    "item_name": "동맥경화·혈관막힘 초음파(1부위)",
-    "kind_mid": "초음파",
-    "cost": 40000
-  },
-  {
-    "id": "term_0315",
-    "item_name": "양수천자 유도 초음파",
-    "kind_mid": "초음파",
-    "cost": 90000
-  },
-  {
-    "id": "term_0316",
-    "item_name": "근육·관절 검사 유도 초음파(간단)",
-    "kind_mid": "초음파",
-    "cost": 30000
-  },
-  {
-    "id": "term_0317",
-    "item_name": "근육·관절 검사 유도 초음파(복잡)",
-    "kind_mid": "초음파",
-    "cost": 120000
-  },
-  {
-    "id": "term_0318",
-    "item_name": "기관지 내시경 초음파",
-    "kind_mid": "초음파",
-    "cost": 400000
-  },
-  {
-    "id": "term_0319",
-    "item_name": "내시경 초음파",
-    "kind_mid": "초음파",
-    "cost": 200000
-  },
-  {
-    "id": "term_0320",
-    "item_name": "내시경 초음파(직장 중부)",
-    "kind_mid": "초음파",
-    "cost": 80000
-  },
-  {
-    "id": "term_0321",
-    "item_name": "내시경 초음파(항문)",
-    "kind_mid": "초음파",
-    "cost": 40000
-  },
-  {
-    "id": "term_0322",
-    "item_name": "식도 심장초음파(선천성 심질환)",
-    "kind_mid": "초음파",
-    "cost": 35500
-  },
-  {
-    "id": "term_0323",
-    "item_name": "식도 심장초음파",
-    "kind_mid": "초음파",
-    "cost": 291000
-  },
-  {
-    "id": "term_0324",
-    "item_name": "심장내 초음파",
-    "kind_mid": "초음파",
-    "cost": 320100
-  },
-  {
-    "id": "term_0325",
-    "item_name": "부분 틀니(고주파 비귀금속)",
-    "kind_mid": "치과",
-    "cost": 1200000
-  },
-  {
-    "id": "term_0326",
-    "item_name": "부분 틀니(비귀금속)",
-    "kind_mid": "치과",
-    "cost": 1200000
-  },
-  {
-    "id": "term_0327",
-    "item_name": "틀니 연결장치 교환",
-    "kind_mid": "치과",
-    "cost": 150000
-  },
-  {
-    "id": "term_0328",
-    "item_name": "틀니 자석 교환",
-    "kind_mid": "치과",
-    "cost": 150000
-  },
-  {
-    "id": "term_0329",
-    "item_name": "틀니용 금속 인공치",
-    "kind_mid": "치과",
-    "cost": 250000
-  },
-  {
-    "id": "term_0330",
-    "item_name": "어금니 경질 레진",
-    "kind_mid": "치과",
-    "cost": 30000
-  },
-  {
-    "id": "term_0331",
-    "item_name": "앞니 경질 레진",
-    "kind_mid": "치과",
-    "cost": 20000
-  },
-  {
-    "id": "term_0332",
-    "item_name": "잇몸 뼈이식(단순)",
-    "kind_mid": "치과",
-    "cost": 200000
-  },
-  {
-    "id": "term_0333",
-    "item_name": "잇몸 뼈이식(복잡)",
-    "kind_mid": "치과",
-    "cost": 1000000
-  },
-  {
-    "id": "term_0334",
-    "item_name": "금니 크라운",
-    "kind_mid": "치과",
-    "cost": 440000
-  },
-  {
-    "id": "term_0335",
-    "item_name": "잇몸뼈 증대술",
-    "kind_mid": "치과",
-    "cost": 500000
-  },
-  {
-    "id": "term_0336",
-    "item_name": "레진 충전",
-    "kind_mid": "치과",
-    "cost": 80000
-  },
-  {
-    "id": "term_0337",
-    "item_name": "글래스아이오노머 충전",
-    "kind_mid": "치과",
-    "cost": 80000
-  },
-  {
-    "id": "term_0338",
-    "item_name": "레진 충전(치면 수별)",
-    "kind_mid": "치과",
-    "cost": 80000
-  },
-  {
-    "id": "term_0339",
-    "item_name": "치아교정 월 관리비",
-    "kind_mid": "치과",
+    "item_name": "결핵 예방접종(BCG)",
+    "category": "예방접종",
     "cost": 60000
   },
   {
+    "id": "term_0209",
+    "item_name": "뇌수막염 예방접종(뉴힙주)",
+    "category": "예방접종",
+    "cost": 30000
+  },
+  {
+    "id": "term_0211",
+    "item_name": "디프테리아·파상풍 예방접종",
+    "category": "예방접종",
+    "cost": 30000
+  },
+  {
+    "id": "term_0212",
+    "item_name": "로타바이러스 예방접종(로타릭스)",
+    "category": "예방접종",
+    "cost": 130000
+  },
+  {
+    "id": "term_0213",
+    "item_name": "로타바이러스 예방접종(로타텍)",
+    "category": "예방접종",
+    "cost": 100000
+  },
+  {
+    "id": "term_0215",
+    "item_name": "수막구균 예방접종(멘비오)",
+    "category": "예방접종",
+    "cost": 150000
+  },
+  {
+    "id": "term_0217",
+    "item_name": "수두 예방접종(바리엘)",
+    "category": "예방접종",
+    "cost": 30000
+  },
+  {
+    "id": "term_0221",
+    "item_name": "독감 예방접종(4가·성인·백시플루)",
+    "category": "예방접종",
+    "cost": 30000
+  },
+  {
+    "id": "term_0222",
+    "item_name": "디프테리아·파상풍·백일해 예방접종(보령)",
+    "category": "예방접종",
+    "cost": 26200
+  },
+  {
+    "id": "term_0227",
+    "item_name": "신종 독감 예방접종",
+    "category": "예방접종",
+    "cost": 15000
+  },
+  {
+    "id": "term_0229",
+    "item_name": "일본뇌염 예방접종(씨디제박스)",
+    "category": "예방접종",
+    "cost": 35000
+  },
+  {
+    "id": "term_0232",
+    "item_name": "디프테리아·파상풍 예방접종(에스케이티디)",
+    "category": "예방접종",
+    "cost": 30000
+  },
+  {
+    "id": "term_0235",
+    "item_name": "MMR 예방접종",
+    "category": "예방접종",
+    "cost": 26000
+  },
+  {
+    "id": "term_0236",
+    "item_name": "뇌수막염 예방접종(유히브주)",
+    "category": "예방접종",
+    "cost": 41000
+  },
+  {
+    "id": "term_0238",
+    "item_name": "일본뇌염 예방접종(보령)",
+    "category": "예방접종",
+    "cost": 30300
+  },
+  {
+    "id": "term_0239",
+    "item_name": "일본뇌염 예방접종(사백신)",
+    "category": "예방접종",
+    "cost": 20000
+  },
+  {
+    "id": "term_0242",
+    "item_name": "대상포진 예방접종(조스타박스)",
+    "category": "예방접종",
+    "cost": 190000
+  },
+  {
+    "id": "term_0243",
+    "item_name": "독감 예방접종(3가·지시플루)",
+    "category": "예방접종",
+    "cost": 25000
+  },
+  {
+    "id": "term_0244",
+    "item_name": "소아마비 예방접종(폴리오)",
+    "category": "예방접종",
+    "cost": 25000
+  },
+  {
+    "id": "term_0245",
+    "item_name": "디프테리아·파상풍·백일해·소아마비 예방접종(테트락심)",
+    "category": "예방접종",
+    "cost": 47000
+  },
+  {
+    "id": "term_0246",
+    "item_name": "펜탁심주",
+    "category": "예방접종",
+    "cost": 68600
+  },
+  {
+    "id": "term_0247",
+    "item_name": "폐렴구균 예방접종(뉴모23)",
+    "category": "예방접종",
+    "cost": 40000
+  },
+  {
+    "id": "term_0252",
+    "item_name": "폐렴구균 예방접종(프로디악스23)",
+    "category": "예방접종",
+    "cost": 40000
+  },
+  {
+    "id": "term_0253",
+    "item_name": "폐렴구균 예방접종(소아·프리베나13)",
+    "category": "예방접종",
+    "cost": 150000
+  },
+  {
+    "id": "term_0255",
+    "item_name": "독감 예방접종(비강분무·플루미스트)",
+    "category": "예방접종",
+    "cost": 35000
+  },
+  {
+    "id": "term_0258",
+    "item_name": "B형간염 면역주사(헤파빅주)",
+    "category": "예방접종",
+    "cost": 32300
+  },
+  {
+    "id": "term_0260",
+    "item_name": "디프테리아·파상풍·백일해 예방접종(인판릭스)",
+    "category": "예방접종",
+    "cost": 32000
+  },
+  {
+    "id": "term_0261",
+    "item_name": "1인실 추가요금(일반 진료과)",
+    "category": "상급병실료",
+    "cost": 150400
+  },
+  {
+    "id": "term_0262",
+    "item_name": "1인실 추가요금(간호·간병·내과/소아과/정신과)",
+    "category": "상급병실료",
+    "cost": 219900
+  },
+  {
+    "id": "term_0263",
+    "item_name": "1인실 추가요금(간호·간병·일반과)",
+    "category": "상급병실료",
+    "cost": 207200
+  },
+  {
+    "id": "term_0267",
+    "item_name": "1인실 추가요금(외박 관리)",
+    "category": "상급병실료",
+    "cost": 86600
+  },
+  {
+    "id": "term_0268",
+    "item_name": "1인실 추가요금(기본)",
+    "category": "상급병실료",
+    "cost": 70000
+  },
+  {
+    "id": "term_0269",
+    "item_name": "1인실 추가요금(내과/소아과/정신과)",
+    "category": "상급병실료",
+    "cost": 150400
+  },
+  {
+    "id": "term_0271",
+    "item_name": "특실 입원료",
+    "category": "상급병실료",
+    "cost": 295800
+  },
+  {
+    "id": "term_0272",
+    "item_name": "반복적 경두개 자기자극술",
+    "category": "처치·수술",
+    "cost": 60000
+  },
+  {
+    "id": "term_0273",
+    "item_name": "척추 신경 주변 유착 완화 시술",
+    "category": "처치·수술",
+    "cost": 500000
+  },
+  {
+    "id": "term_0274",
+    "item_name": "풍선확장 척추 신경 주변 유착 완화 시술",
+    "category": "처치·수술",
+    "cost": 500000
+  },
+  {
+    "id": "term_0276",
+    "item_name": "광치료",
+    "category": "정신치료",
+    "cost": 15000
+  },
+  {
+    "id": "term_0277",
+    "item_name": "기미·주근깨·점 제거(대)",
+    "category": "피부 및 연부조직",
+    "cost": 30000
+  },
+  {
+    "id": "term_0278",
+    "item_name": "기미·주근깨·점 제거(소)",
+    "category": "피부 및 연부조직",
+    "cost": 10000
+  },
+  {
+    "id": "term_0279",
+    "item_name": "기미·주근깨·점 제거(중)",
+    "category": "피부 및 연부조직",
+    "cost": 20000
+  },
+  {
+    "id": "term_0280",
+    "item_name": "보형물 제거술(대)",
+    "category": "처치·수술",
+    "cost": 500000
+  },
+  {
+    "id": "term_0281",
+    "item_name": "보형물 제거술(소)",
+    "category": "처치·수술",
+    "cost": 200000
+  },
+  {
+    "id": "term_0282",
+    "item_name": "보형물 제거술(중)",
+    "category": "처치·수술",
+    "cost": 300000
+  },
+  {
+    "id": "term_0283",
+    "item_name": "난관 결찰술(양측)",
+    "category": "처치·수술",
+    "cost": 300000
+  },
+  {
+    "id": "term_0285",
+    "item_name": "메조테라피(비만)",
+    "category": "처치·수술",
+    "cost": 14000
+  },
+  {
+    "id": "term_0286",
+    "item_name": "메조테라피",
+    "category": "처치·수술",
+    "cost": 17000
+  },
+  {
+    "id": "term_0287",
+    "item_name": "모발 이식술(소)",
+    "category": "피부 및 연부조직",
+    "cost": 300000
+  },
+  {
+    "id": "term_0288",
+    "item_name": "미레나 삽입술",
+    "category": "처치·수술",
+    "cost": 90000
+  },
+  {
+    "id": "term_0289",
+    "item_name": "피부 화학 박피(대)",
+    "category": "피부 및 연부조직",
+    "cost": 100000
+  },
+  {
+    "id": "term_0290",
+    "item_name": "피부 화학 박피(소)",
+    "category": "피부 및 연부조직",
+    "cost": 30000
+  },
+  {
+    "id": "term_0291",
+    "item_name": "피부 화학 박피(중)",
+    "category": "피부 및 연부조직",
+    "cost": 50000
+  },
+  {
+    "id": "term_0292",
+    "item_name": "병변 주사요법(B등급)",
+    "category": "피부 및 연부조직",
+    "cost": 10000
+  },
+  {
+    "id": "term_0293",
+    "item_name": "사마귀 제거(대)",
+    "category": "피부 및 연부조직",
+    "cost": 10000
+  },
+  {
+    "id": "term_0294",
+    "item_name": "산부인과 충수절제술",
+    "category": "처치·수술",
+    "cost": 100000
+  },
+  {
+    "id": "term_0295",
+    "item_name": "색소 레이저(소)",
+    "category": "성형",
+    "cost": 10000
+  },
+  {
+    "id": "term_0297",
+    "item_name": "하지정맥류 접착 폐색술(한쪽)",
+    "category": "처치·수술",
+    "cost": 1000000
+  },
+  {
+    "id": "term_0298",
+    "item_name": "쌍꺼풀 수술(대)",
+    "category": "성형",
+    "cost": 300000
+  },
+  {
+    "id": "term_0299",
+    "item_name": "쌍꺼풀 수술(소)",
+    "category": "성형",
+    "cost": 250000
+  },
+  {
+    "id": "term_0300",
+    "item_name": "안구 표면 양막이식술",
+    "category": "처치·수술",
+    "cost": 250000
+  },
+  {
+    "id": "term_0301",
+    "item_name": "약물 유도 사정 시술",
+    "category": "처치·수술",
+    "cost": 100000
+  },
+  {
+    "id": "term_0302",
+    "item_name": "여드름 제거(대)",
+    "category": "피부 및 연부조직",
+    "cost": 10000
+  },
+  {
+    "id": "term_0303",
+    "item_name": "여드름 치료(대)",
+    "category": "피부 및 연부조직",
+    "cost": 10000
+  },
+  {
+    "id": "term_0304",
+    "item_name": "요실금 수술(개복)",
+    "category": "처치·수술",
+    "cost": 522300
+  },
+  {
+    "id": "term_0305",
+    "item_name": "요실금 수술(인공물질·자가지방)",
+    "category": "처치·수술",
+    "cost": 244000
+  },
+  {
+    "id": "term_0306",
+    "item_name": "요실금 질강 수술(기타)",
+    "category": "처치·수술",
+    "cost": 256800
+  },
+  {
+    "id": "term_0307",
+    "item_name": "요실금 질강 수술(자가근막)",
+    "category": "처치·수술",
+    "cost": 380900
+  },
+  {
+    "id": "term_0308",
+    "item_name": "유리체 주입술",
+    "category": "처치·수술",
+    "cost": 84300
+  },
+  {
+    "id": "term_0316",
+    "item_name": "인공 괄약근 설치술",
+    "category": "처치·수술",
+    "cost": 1000000
+  },
+  {
+    "id": "term_0317",
+    "item_name": "자궁내 장치 삽입술",
+    "category": "처치·수술",
+    "cost": 30000
+  },
+  {
+    "id": "term_0318",
+    "item_name": "자기장 치료(골반통·전립선통·성교통)",
+    "category": "처치·수술",
+    "cost": 20000
+  },
+  {
+    "id": "term_0319",
+    "item_name": "자기장 치료(요실금)",
+    "category": "처치·수술",
+    "cost": 30000
+  },
+  {
+    "id": "term_0322",
+    "item_name": "정관절제술",
+    "category": "처치·수술",
+    "cost": 200000
+  },
+  {
+    "id": "term_0327",
+    "item_name": "질·회음부 성형술(대)",
+    "category": "처치·수술",
+    "cost": 1000000
+  },
+  {
+    "id": "term_0328",
+    "item_name": "질·회음부 성형술(소)",
+    "category": "처치·수술",
+    "cost": 500000
+  },
+  {
+    "id": "term_0329",
+    "item_name": "질·회음부 성형술(중)",
+    "category": "처치·수술",
+    "cost": 800000
+  },
+  {
+    "id": "term_0330",
+    "item_name": "디스크 고주파 열응고술",
+    "category": "근골격계",
+    "cost": 500000
+  },
+  {
+    "id": "term_0331",
+    "item_name": "디스크 고주파 열치료술",
+    "category": "근골격계",
+    "cost": 500000
+  },
+  {
+    "id": "term_0332",
+    "item_name": "충수절제술",
+    "category": "처치·수술",
+    "cost": 100000
+  },
+  {
+    "id": "term_0333",
+    "item_name": "코골이 성형술",
+    "category": "처치·수술",
+    "cost": 200000
+  },
+  {
+    "id": "term_0335",
+    "item_name": "코골이 수술(고주파)",
+    "category": "처치·수술",
+    "cost": 100000
+  },
+  {
+    "id": "term_0338",
+    "item_name": "척추 신경 유착 풀기 시술(풍선확장 포함)",
+    "category": "처치·수술",
+    "cost": 300000
+  },
+  {
+    "id": "term_0339",
+    "item_name": "피부 전기·냉동 치료(대)",
+    "category": "피부 및 연부조직",
+    "cost": 100000
+  },
+  {
     "id": "term_0340",
-    "item_name": "턱관절·이갈이 장치 관리",
-    "kind_mid": "치과",
+    "item_name": "피부 전기·냉동 치료(소)",
+    "category": "피부 및 연부조직",
     "cost": 30000
   },
   {
     "id": "term_0341",
-    "item_name": "이갈이·턱관절 장치(단순)",
-    "kind_mid": "치과",
-    "cost": 300000
-  },
-  {
-    "id": "term_0342",
-    "item_name": "이갈이·턱관절 장치(복잡)",
-    "kind_mid": "치과",
-    "cost": 600000
-  },
-  {
-    "id": "term_0343",
-    "item_name": "구강 검사·상담",
-    "kind_mid": "치과",
-    "cost": 30000
-  },
-  {
-    "id": "term_0344",
-    "item_name": "입냄새 검사",
-    "kind_mid": "치과",
-    "cost": 30000
+    "item_name": "피부 전기·냉동 치료(중)",
+    "category": "피부 및 연부조직",
+    "cost": 50000
   },
   {
     "id": "term_0345",
-    "item_name": "메리랜드 금 크라운(귀금속)",
-    "kind_mid": "치과",
-    "cost": 370000
-  },
-  {
-    "id": "term_0346",
-    "item_name": "기성 금관",
-    "kind_mid": "치과",
-    "cost": 60000
+    "item_name": "하지정맥류 고주파 정맥내막 폐쇄술",
+    "category": "처치·수술",
+    "cost": 800000
   },
   {
     "id": "term_0347",
-    "item_name": "나선형 고정",
-    "kind_mid": "치과",
-    "cost": 70000
+    "item_name": "하지정맥류 레이저 폐쇄술",
+    "category": "처치·수술",
+    "cost": 1000000
   },
   {
     "id": "term_0348",
-    "item_name": "임플란트 수술 가이드(4개 이하)",
-    "kind_mid": "치과",
-    "cost": 1000000
+    "item_name": "IPL 코밑 제모(여성·1회차)",
+    "category": "피부 및 연부조직",
+    "cost": 100000
   },
   {
     "id": "term_0349",
-    "item_name": "도재 크라운(귀금속·A등급)",
-    "kind_mid": "치과",
-    "cost": 520000
+    "item_name": "IPL 코밑 제모(여성·2회차)",
+    "category": "피부 및 연부조직",
+    "cost": 50000
   },
   {
     "id": "term_0350",
-    "item_name": "도재 크라운(귀금속·B등급)",
-    "kind_mid": "치과",
-    "cost": 450000
-  },
-  {
-    "id": "term_0351",
-    "item_name": "도재 크라운(무깃·귀금속)",
-    "kind_mid": "치과",
-    "cost": 520000
-  },
-  {
-    "id": "term_0352",
-    "item_name": "도재 크라운(무깃·비귀금속)",
-    "kind_mid": "치과",
-    "cost": 380000
-  },
-  {
-    "id": "term_0353",
-    "item_name": "도재 크라운(비귀금속·A등급)",
-    "kind_mid": "치과",
-    "cost": 370000
-  },
-  {
-    "id": "term_0354",
-    "item_name": "도재 크라운(비귀금속·B등급)",
-    "kind_mid": "치과",
-    "cost": 350000
+    "item_name": "IPL 코밑 제모(여성·3회차)",
+    "category": "피부 및 연부조직",
+    "cost": 50000
   },
   {
     "id": "term_0355",
-    "item_name": "레이저 접합",
-    "kind_mid": "치과",
-    "cost": 60000
+    "item_name": "기관지 내시경 초음파(가이드 포함)",
+    "category": "초음파",
+    "cost": 770000
   },
   {
     "id": "term_0356",
-    "item_name": "레진 틀니(치아 1개당)",
-    "kind_mid": "치과",
-    "cost": 30000
+    "item_name": "기본 초음파(단순)",
+    "category": "초음파",
+    "cost": 23200
   },
   {
     "id": "term_0357",
-    "item_name": "로케이터 장치(G등급)",
-    "kind_mid": "치과",
-    "cost": 500000
+    "item_name": "내시경 초음파 유도 세침흡인검사",
+    "category": "초음파",
+    "cost": 800000
   },
   {
     "id": "term_0358",
-    "item_name": "임플란트 시술(국산·G등급)",
-    "kind_mid": "치과",
-    "cost": 1000000
+    "item_name": "동맥경화·혈관막힘 검사(1부위)",
+    "category": "초음파",
+    "cost": 30000
   },
   {
     "id": "term_0359",
-    "item_name": "임플란트 시술(자성체)",
-    "kind_mid": "치과",
-    "cost": 500000
-  },
-  {
-    "id": "term_0360",
-    "item_name": "임플란트 시술(헤더바)",
-    "kind_mid": "치과",
-    "cost": 1150000
+    "item_name": "동맥경화·혈관막힘 검사(2부위)",
+    "category": "초음파",
+    "cost": 50000
   },
   {
     "id": "term_0361",
-    "item_name": "임플란트 도재 크라운(귀금속)",
-    "kind_mid": "치과",
-    "cost": 800000
-  },
-  {
-    "id": "term_0362",
-    "item_name": "임플란트 도재 크라운(비귀금속)",
-    "kind_mid": "치과",
-    "cost": 600000
+    "item_name": "두개외 혈관 도플러 초음파",
+    "category": "초음파",
+    "cost": 56900
   },
   {
     "id": "term_0363",
-    "item_name": "임플란트 금 크라운(백금)",
-    "kind_mid": "치과",
-    "cost": 660000
+    "item_name": "복부 초음파(항문)",
+    "category": "초음파",
+    "cost": 107500
   },
   {
     "id": "term_0364",
-    "item_name": "임플란트 금 크라운(슈퍼골드)",
-    "kind_mid": "치과",
-    "cost": 620000
+    "item_name": "소아 복부 초음파",
+    "category": "초음파",
+    "cost": 219700
   },
   {
     "id": "term_0365",
-    "item_name": "치아 본뜨기(분석용)",
-    "kind_mid": "치과",
-    "cost": 30000
+    "item_name": "팔다리 신경 종합 초음파",
+    "category": "초음파",
+    "cost": 154200
   },
   {
     "id": "term_0366",
-    "item_name": "치아 공간 유지장치(탈착식)",
-    "kind_mid": "치과",
-    "cost": 100000
+    "item_name": "팔다리 혈관 도플러 초음파(투석혈관 협착)",
+    "category": "초음파",
+    "cost": 44100
   },
   {
     "id": "term_0367",
-    "item_name": "치아 공간 유지장치(고정식)",
-    "kind_mid": "치과",
-    "cost": 50000
+    "item_name": "팔다리 혈관 도플러 초음파(하지정맥류)",
+    "category": "초음파",
+    "cost": 155300
   },
   {
     "id": "term_0368",
-    "item_name": "보철 치료 진행 중",
-    "kind_mid": "치과",
-    "cost": 10000
-  },
-  {
-    "id": "term_0369",
-    "item_name": "부착장치(단순)",
-    "kind_mid": "치과",
-    "cost": 300000
+    "item_name": "심장초음파(선천성 심질환)",
+    "category": "초음파",
+    "cost": 34800
   },
   {
     "id": "term_0370",
-    "item_name": "부착장치(보통)",
-    "kind_mid": "치과",
-    "cost": 350000
+    "item_name": "조영 유도 초음파",
+    "category": "초음파",
+    "cost": 409100
   },
   {
     "id": "term_0371",
-    "item_name": "부착장치(복잡)",
-    "kind_mid": "치과",
-    "cost": 440000
+    "item_name": "생검·세침흡인 유도 초음파",
+    "category": "초음파",
+    "cost": 106400
   },
   {
     "id": "term_0372",
-    "item_name": "불소 도포",
-    "kind_mid": "치과",
-    "cost": 100000
+    "item_name": "천자·배액 유도 초음파",
+    "category": "초음파",
+    "cost": 53200
   },
   {
     "id": "term_0373",
-    "item_name": "비수술 교정술(대)",
-    "kind_mid": "치과",
-    "cost": 500000
+    "item_name": "응급 단일 표적 초음파(1부위)",
+    "category": "초음파",
+    "cost": 29900
   },
   {
     "id": "term_0374",
-    "item_name": "비수술 교정술(소)",
-    "kind_mid": "치과",
-    "cost": 200000
+    "item_name": "응급 단일 표적 초음파(2부위 이상)",
+    "category": "초음파",
+    "cost": 59800
   },
   {
     "id": "term_0375",
-    "item_name": "비수술 교정술(중)",
-    "kind_mid": "치과",
-    "cost": 300000
+    "item_name": "응급 복합 표적 초음파",
+    "category": "초음파",
+    "cost": 154000
   },
   {
     "id": "term_0376",
-    "item_name": "수술용 가이드 스텐트(단순)",
-    "kind_mid": "치과",
-    "cost": 50000
+    "item_name": "임산부 초음파(초기·기형아 정밀)",
+    "category": "초음파",
+    "cost": 186100
   },
   {
     "id": "term_0377",
-    "item_name": "수술용 가이드 스텐트(복잡)",
-    "kind_mid": "치과",
-    "cost": 100000
+    "item_name": "임산부 초음파(초기·임신 확인)",
+    "category": "초음파",
+    "cost": 55200
   },
   {
     "id": "term_0378",
-    "item_name": "반고정 연결장치",
-    "kind_mid": "치과",
-    "cost": 150000
+    "item_name": "전립선·정낭 초음파(복부)",
+    "category": "초음파",
+    "cost": 62900
   },
   {
     "id": "term_0379",
-    "item_name": "심미 레진 충전",
-    "kind_mid": "치과",
-    "cost": 250000
+    "item_name": "복부 제한 초음파",
+    "category": "초음파",
+    "cost": 61200
   },
   {
     "id": "term_0380",
-    "item_name": "안면 형태 분석",
-    "kind_mid": "치과",
-    "cost": 200000
-  },
-  {
-    "id": "term_0381",
-    "item_name": "안면·두개기저 임플란트 촬영(3D·혈관조영)",
-    "kind_mid": "치과",
-    "cost": 164300
-  },
-  {
-    "id": "term_0382",
-    "item_name": "오버덴처 O-링 교체",
-    "kind_mid": "치과",
-    "cost": 20000
-  },
-  {
-    "id": "term_0383",
-    "item_name": "오버덴처 클립 교체",
-    "kind_mid": "치과",
-    "cost": 10000
-  },
-  {
-    "id": "term_0384",
-    "item_name": "유구치 크라운",
-    "kind_mid": "치과",
-    "cost": 150000
-  },
-  {
-    "id": "term_0385",
-    "item_name": "틀니 리라이닝(간접·단순)",
-    "kind_mid": "치과",
-    "cost": 190000
-  },
-  {
-    "id": "term_0386",
-    "item_name": "틀니 리라이닝(간접·복잡)",
-    "kind_mid": "치과",
-    "cost": 300000
-  },
-  {
-    "id": "term_0387",
-    "item_name": "틀니 리라이닝(직접·단순)",
-    "kind_mid": "치과",
-    "cost": 100000
-  },
-  {
-    "id": "term_0388",
-    "item_name": "틀니 리라이닝(직접·복잡)",
-    "kind_mid": "치과",
-    "cost": 150000
-  },
-  {
-    "id": "term_0389",
-    "item_name": "틀니 수리(단순)",
-    "kind_mid": "치과",
-    "cost": 50000
-  },
-  {
-    "id": "term_0390",
-    "item_name": "틀니 수리(복잡)",
-    "kind_mid": "치과",
-    "cost": 100000
-  },
-  {
-    "id": "term_0391",
-    "item_name": "임플란트 UCLA 스크류 교체(재료비)",
-    "kind_mid": "치과",
-    "cost": 50000
-  },
-  {
-    "id": "term_0392",
-    "item_name": "임플란트 자석 교체",
-    "kind_mid": "치과",
-    "cost": 200000
-  },
-  {
-    "id": "term_0393",
-    "item_name": "임플란트 코핑 스크류 교체(재료비)",
-    "kind_mid": "치과",
-    "cost": 30000
-  },
-  {
-    "id": "term_0394",
-    "item_name": "임플란트 크라운 재제작(A등급)",
-    "kind_mid": "치과",
-    "cost": 100000
-  },
-  {
-    "id": "term_0395",
-    "item_name": "임플란트 크라운 재제작(B등급)",
-    "kind_mid": "치과",
-    "cost": 200000
-  },
-  {
-    "id": "term_0396",
-    "item_name": "인레이(귀금속·단순)",
-    "kind_mid": "치과",
-    "cost": 300000
-  },
-  {
-    "id": "term_0397",
-    "item_name": "인레이(귀금속·복잡)",
-    "kind_mid": "치과",
-    "cost": 350000
-  },
-  {
-    "id": "term_0398",
-    "item_name": "인레이(세라믹/레진·단순)",
-    "kind_mid": "치과",
-    "cost": 270000
-  },
-  {
-    "id": "term_0399",
-    "item_name": "인레이(세라믹/레진·복잡)",
-    "kind_mid": "치과",
-    "cost": 280000
-  },
-  {
-    "id": "term_0400",
-    "item_name": "금 인레이·온레이 충전",
-    "kind_mid": "치과",
-    "cost": 250000
-  },
-  {
-    "id": "term_0401",
-    "item_name": "치아 본뜨기·모형 제작",
-    "kind_mid": "치과",
-    "cost": 30000
-  },
-  {
-    "id": "term_0402",
-    "item_name": "임시 부분 틀니",
-    "kind_mid": "치과",
-    "cost": 430000
-  },
-  {
-    "id": "term_0403",
-    "item_name": "임시 틀니(단순)",
-    "kind_mid": "치과",
-    "cost": 50000
-  },
-  {
-    "id": "term_0404",
-    "item_name": "임시치아(복잡)",
-    "kind_mid": "치과",
-    "cost": 150000
-  },
-  {
-    "id": "term_0405",
-    "item_name": "임플란트 2차 수술(간단)",
-    "kind_mid": "치과",
-    "cost": 100000
-  },
-  {
-    "id": "term_0406",
-    "item_name": "임플란트 2차 수술(잇몸뼈)",
-    "kind_mid": "치과",
-    "cost": 500000
-  },
-  {
-    "id": "term_0407",
-    "item_name": "임플란트 2차 수술(잇몸)",
-    "kind_mid": "치과",
-    "cost": 300000
-  },
-  {
-    "id": "term_0408",
-    "item_name": "임플란트 주위염 치료",
-    "kind_mid": "치과",
-    "cost": 100000
-  },
-  {
-    "id": "term_0409",
-    "item_name": "임플란트용 레이저 치료",
-    "kind_mid": "치과",
-    "cost": 100000
-  },
-  {
-    "id": "term_0410",
-    "item_name": "임플란트용 상악동 거상술(측방접근·단순)",
-    "kind_mid": "치과",
-    "cost": 1000000
-  },
-  {
-    "id": "term_0411",
-    "item_name": "임플란트용 상악동 거상술(한쪽)",
-    "kind_mid": "치과",
-    "cost": 300000
-  },
-  {
-    "id": "term_0412",
-    "item_name": "임플란트용 하치조 측방전위술(한쪽)",
-    "kind_mid": "치과",
-    "cost": 1000000
-  },
-  {
-    "id": "term_0413",
-    "item_name": "칫솔질 교육",
-    "kind_mid": "치과",
-    "cost": 30000
-  },
-  {
-    "id": "term_0414",
-    "item_name": "자석장치",
-    "kind_mid": "치과",
-    "cost": 340000
-  },
-  {
-    "id": "term_0415",
-    "item_name": "세라믹 크라운(순면버니어)",
-    "kind_mid": "치과",
-    "cost": 400000
-  },
-  {
-    "id": "term_0416",
-    "item_name": "올세라믹 크라운",
-    "kind_mid": "치과",
-    "cost": 470000
-  },
-  {
-    "id": "term_0417",
-    "item_name": "메리랜드 크라운(비귀금속)",
-    "kind_mid": "치과",
-    "cost": 290000
-  },
-  {
-    "id": "term_0418",
-    "item_name": "금 크라운(금합금)",
-    "kind_mid": "치과",
-    "cost": 420000
-  },
-  {
-    "id": "term_0419",
-    "item_name": "금 크라운(백금합금)",
-    "kind_mid": "치과",
-    "cost": 460000
-  },
-  {
-    "id": "term_0420",
-    "item_name": "금속 크라운(Pd 합금)",
-    "kind_mid": "치과",
-    "cost": 350000
-  },
-  {
-    "id": "term_0421",
-    "item_name": "즉시·임시 폐쇄장치",
-    "kind_mid": "치과",
-    "cost": 400000
-  },
-  {
-    "id": "term_0422",
-    "item_name": "즉시 전체 틀니(망사)",
-    "kind_mid": "치과",
-    "cost": 600000
-  },
-  {
-    "id": "term_0423",
-    "item_name": "즉시 전체 틀니(레진)",
-    "kind_mid": "치과",
-    "cost": 500000
-  },
-  {
-    "id": "term_0424",
-    "item_name": "전체 틀니(레진)",
-    "kind_mid": "치과",
-    "cost": 1200000
-  },
-  {
-    "id": "term_0425",
-    "item_name": "치아 노출술",
-    "kind_mid": "치과",
-    "cost": 100000
-  },
-  {
-    "id": "term_0426",
-    "item_name": "치아 홈 메우기(실란트)",
-    "kind_mid": "치과",
-    "cost": 30000
-  },
-  {
-    "id": "term_0427",
-    "item_name": "치아 이식 진단료(단순)",
-    "kind_mid": "치과",
-    "cost": 50000
-  },
-  {
-    "id": "term_0428",
-    "item_name": "치아 이식 진단료(복잡)",
-    "kind_mid": "치과",
-    "cost": 100000
-  },
-  {
-    "id": "term_0429",
-    "item_name": "치아 미백(단순)",
-    "kind_mid": "치과",
-    "cost": 30000
-  },
-  {
-    "id": "term_0430",
-    "item_name": "치아 미백(복잡)",
-    "kind_mid": "치과",
-    "cost": 50000
-  },
-  {
-    "id": "term_0431",
-    "item_name": "임플란트 보철 수리(단순)",
-    "kind_mid": "치과",
-    "cost": 50000
-  },
-  {
-    "id": "term_0432",
-    "item_name": "임플란트 보철 수리(복잡)",
-    "kind_mid": "치과",
-    "cost": 100000
-  },
-  {
-    "id": "term_0433",
-    "item_name": "임플란트 UCLA 스크류 교체",
-    "kind_mid": "치과",
-    "cost": 100000
-  },
-  {
-    "id": "term_0434",
-    "item_name": "임플란트 임시 레진치(단순)",
-    "kind_mid": "치과",
-    "cost": 50000
-  },
-  {
-    "id": "term_0435",
-    "item_name": "임플란트 임시 레진치(복잡)",
-    "kind_mid": "치과",
-    "cost": 200000
-  },
-  {
-    "id": "term_0436",
-    "item_name": "임플란트 자석체 교체",
-    "kind_mid": "치과",
-    "cost": 300000
-  },
-  {
-    "id": "term_0437",
-    "item_name": "임플란트 지대주 교체",
-    "kind_mid": "치과",
-    "cost": 300000
-  },
-  {
-    "id": "term_0438",
-    "item_name": "임플란트 코핑 스크류 교체",
-    "kind_mid": "치과",
-    "cost": 50000
-  },
-  {
-    "id": "term_0439",
-    "item_name": "치아지지 틀니 O-링·ERA 교환",
-    "kind_mid": "치과",
-    "cost": 50000
-  },
-  {
-    "id": "term_0440",
-    "item_name": "치아지지 틀니 자석체 교환",
-    "kind_mid": "치과",
-    "cost": 200000
-  },
-  {
-    "id": "term_0441",
-    "item_name": "치아지지 틀니 클립 교환",
-    "kind_mid": "치과",
-    "cost": 50000
-  },
-  {
-    "id": "term_0442",
-    "item_name": "치주 테스트(인공치아)",
-    "kind_mid": "치과",
-    "cost": 50000
-  },
-  {
-    "id": "term_0443",
-    "item_name": "치태 관리·예방처치(단순)",
-    "kind_mid": "치과",
-    "cost": 10000
-  },
-  {
-    "id": "term_0444",
-    "item_name": "치태 관리·예방처치(복잡)",
-    "kind_mid": "치과",
-    "cost": 30000
-  },
-  {
-    "id": "term_0445",
-    "item_name": "CAD/CAM 세라믹 크라운",
-    "kind_mid": "치과",
-    "cost": 550000
-  },
-  {
-    "id": "term_0446",
-    "item_name": "CAD/CAM 세라믹 크라운(임플란트용·단순)",
-    "kind_mid": "치과",
-    "cost": 700000
-  },
-  {
-    "id": "term_0447",
-    "item_name": "CAD/CAM 세라믹 크라운(임플란트용·복잡)",
-    "kind_mid": "치과",
+    "item_name": "유방생검 유도 초음파",
+    "category": "초음파",
     "cost": 800000
   },
   {
-    "id": "term_0448",
-    "item_name": "텔레스코픽 크라운(밀링 포함)",
-    "kind_mid": "치과",
-    "cost": 100000
+    "id": "term_0382",
+    "item_name": "갑상선·부갑상선 제한 초음파",
+    "category": "초음파",
+    "cost": 45500
   },
   {
-    "id": "term_0449",
-    "item_name": "특수 이중관 크라운(귀금속)",
-    "kind_mid": "치과",
-    "cost": 650000
+    "id": "term_0383",
+    "item_name": "기타 부위 제한 초음파",
+    "category": "초음파",
+    "cost": 45500
+  },
+  {
+    "id": "term_0384",
+    "item_name": "갑상선·부갑상선 전체 초음파",
+    "category": "초음파",
+    "cost": 92300
+  },
+  {
+    "id": "term_0385",
+    "item_name": "기타 부위 전체 초음파",
+    "category": "초음파",
+    "cost": 92300
+  },
+  {
+    "id": "term_0388",
+    "item_name": "엉덩관절 초음파(한쪽)",
+    "category": "초음파",
+    "cost": 90100
+  },
+  {
+    "id": "term_0389",
+    "item_name": "류마티스 관절 초음파(3부위 이상)",
+    "category": "초음파",
+    "cost": 139700
+  },
+  {
+    "id": "term_0390",
+    "item_name": "발가락 초음파(한쪽)",
+    "category": "초음파",
+    "cost": 65300
+  },
+  {
+    "id": "term_0391",
+    "item_name": "손가락 초음파",
+    "category": "초음파",
+    "cost": 65300
+  },
+  {
+    "id": "term_0392",
+    "item_name": "무릎관절 초음파(한쪽)",
+    "category": "초음파",
+    "cost": 71900
+  },
+  {
+    "id": "term_0398",
+    "item_name": "복부 초음파",
+    "category": "초음파",
+    "cost": 120700
+  },
+  {
+    "id": "term_0400",
+    "item_name": "복부 조영 초음파",
+    "category": "초음파",
+    "cost": 155000
+  },
+  {
+    "id": "term_0402",
+    "item_name": "진단 초음파(복부·항문)",
+    "category": "초음파",
+    "cost": 109700
+  },
+  {
+    "id": "term_0403",
+    "item_name": "코·부비동 초음파",
+    "category": "초음파",
+    "cost": 60900
+  },
+  {
+    "id": "term_0406",
+    "item_name": "신장·부신 초음파",
+    "category": "초음파",
+    "cost": 89000
+  },
+  {
+    "id": "term_0407",
+    "item_name": "신장·부신·방광 초음파",
+    "category": "초음파",
+    "cost": 98500
+  },
+  {
+    "id": "term_0409",
+    "item_name": "중추신경계 초음파(1세 미만·뇌)",
+    "category": "초음파",
+    "cost": 198200
+  },
+  {
+    "id": "term_0410",
+    "item_name": "중추신경계 초음파(1세 미만·척수)",
+    "category": "초음파",
+    "cost": 198200
+  },
+  {
+    "id": "term_0412",
+    "item_name": "말초신경 초음파(한쪽)",
+    "category": "초음파",
+    "cost": 58700
+  },
+  {
+    "id": "term_0413",
+    "item_name": "가슴 심장초음파",
+    "category": "초음파",
+    "cost": 112300
+  },
+  {
+    "id": "term_0414",
+    "item_name": "약물 부하 심장초음파",
+    "category": "초음파",
+    "cost": 307600
+  },
+  {
+    "id": "term_0415",
+    "item_name": "운동 부하 심장초음파",
+    "category": "초음파",
+    "cost": 292400
+  },
+  {
+    "id": "term_0417",
+    "item_name": "가슴 심장초음파(전문)",
+    "category": "초음파",
+    "cost": 258500
+  },
+  {
+    "id": "term_0418",
+    "item_name": "태아 정밀 심장초음파",
+    "category": "초음파",
+    "cost": 388400
+  },
+  {
+    "id": "term_0419",
+    "item_name": "눈 계측 초음파(양쪽)",
+    "category": "초음파",
+    "cost": 91900
+  },
+  {
+    "id": "term_0420",
+    "item_name": "눈 초음파",
+    "category": "초음파",
+    "cost": 91300
+  },
+  {
+    "id": "term_0429",
+    "item_name": "연부조직 초음파",
+    "category": "초음파",
+    "cost": 65300
+  },
+  {
+    "id": "term_0431",
+    "item_name": "임산부 초음파(중·후기·고위험)",
+    "category": "초음파",
+    "cost": 149700
+  },
+  {
+    "id": "term_0432",
+    "item_name": "진단 초음파(임산부 초기·기형아 정밀)",
+    "category": "초음파",
+    "cost": 186100
+  },
+  {
+    "id": "term_0433",
+    "item_name": "임산부 초음파(중·후기·기형아 정밀)",
+    "category": "초음파",
+    "cost": 289100
+  },
+  {
+    "id": "term_0435",
+    "item_name": "임산부 초음파(초기)",
+    "category": "초음파",
+    "cost": 81300
+  },
+  {
+    "id": "term_0436",
+    "item_name": "임산부 초음파(중·후기)",
+    "category": "초음파",
+    "cost": 115100
+  },
+  {
+    "id": "term_0437",
+    "item_name": "진단 초음파(임산부 초기·임신 확인)",
+    "category": "초음파",
+    "cost": 55200
+  },
+  {
+    "id": "term_0440",
+    "item_name": "목동맥 도플러 초음파",
+    "category": "초음파",
+    "cost": 110600
+  },
+  {
+    "id": "term_0441",
+    "item_name": "진단 초음파(두개외 혈관 도플러)",
+    "category": "초음파",
+    "cost": 58100
+  },
+  {
+    "id": "term_0442",
+    "item_name": "팔다리 혈관 도플러 초음파(투석혈관 혈류·협착)",
+    "category": "초음파",
+    "cost": 45900
+  },
+  {
+    "id": "term_0443",
+    "item_name": "팔다리 혈관 도플러 초음파(팔 동맥)",
+    "category": "초음파",
+    "cost": 87900
+  },
+  {
+    "id": "term_0445",
+    "item_name": "팔다리 혈관 도플러 초음파(팔 정맥)",
+    "category": "초음파",
+    "cost": 87900
+  },
+  {
+    "id": "term_0447",
+    "item_name": "진단 초음파(하지정맥류·혈관 도플러)",
+    "category": "초음파",
+    "cost": 158500
+  },
+  {
+    "id": "term_0448",
+    "item_name": "팔다리 혈관 도플러 초음파(다리 동맥)",
+    "category": "초음파",
+    "cost": 139200
   },
   {
     "id": "term_0450",
-    "item_name": "특수 이중관 크라운(금합금)",
-    "kind_mid": "치과",
-    "cost": 600000
-  },
-  {
-    "id": "term_0451",
-    "item_name": "특수 이중관 크라운(백금합금)",
-    "kind_mid": "치과",
-    "cost": 700000
+    "item_name": "팔다리 혈관 도플러 초음파(다리 정맥)",
+    "category": "초음파",
+    "cost": 139200
   },
   {
     "id": "term_0452",
-    "item_name": "특수 이중관 크라운(비귀금속)",
-    "kind_mid": "치과",
-    "cost": 550000
+    "item_name": "뇌혈류 초음파",
+    "category": "초음파",
+    "cost": 129600
   },
   {
     "id": "term_0453",
-    "item_name": "특수 이중관 크라운(PD합금)",
-    "kind_mid": "치과",
-    "cost": 500000
-  },
-  {
-    "id": "term_0454",
-    "item_name": "탄성 틀니 리라이닝",
-    "kind_mid": "치과",
-    "cost": 50000
-  },
-  {
-    "id": "term_0455",
-    "item_name": "텔레스코픽 부분 틀니(간단)",
-    "kind_mid": "치과",
-    "cost": 880000
+    "item_name": "대동맥 도플러 초음파",
+    "category": "초음파",
+    "cost": 86000
   },
   {
     "id": "term_0456",
-    "item_name": "텔레스코픽 부분 틀니(복잡)",
-    "kind_mid": "치과",
-    "cost": 1100000
+    "item_name": "흉부 초음파",
+    "category": "초음파",
+    "cost": 86000
   },
   {
     "id": "term_0457",
-    "item_name": "한쪽 부분 틀니(고주파 비귀금속)",
-    "kind_mid": "치과",
-    "cost": 700000
+    "item_name": "유방·겨드랑이 초음파",
+    "category": "초음파",
+    "cost": 124300
   },
   {
     "id": "term_0458",
-    "item_name": "한쪽 부분 틀니(귀금속)",
-    "kind_mid": "치과",
-    "cost": 1200000
+    "item_name": "두개강내 뇌혈류 도플러 초음파",
+    "category": "초음파",
+    "cost": 150000
   },
   {
     "id": "term_0459",
-    "item_name": "한쪽 부분 틀니(비귀금속)",
-    "kind_mid": "치과",
-    "cost": 600000
+    "item_name": "동맥경화도 초음파",
+    "category": "초음파",
+    "cost": 30000
   },
   {
     "id": "term_0460",
-    "item_name": "포세린 크라운 수리(단순)",
-    "kind_mid": "치과",
-    "cost": 100000
+    "item_name": "동맥경화·혈관막힘 초음파(1부위)",
+    "category": "초음파",
+    "cost": 40000
   },
   {
     "id": "term_0461",
-    "item_name": "포세린 크라운 수리(복잡)",
-    "kind_mid": "치과",
-    "cost": 200000
+    "item_name": "양수천자 유도 초음파",
+    "category": "초음파",
+    "cost": 90000
   },
   {
     "id": "term_0462",
-    "item_name": "치아 기둥 크라운(귀금속·단순)",
-    "kind_mid": "치과",
-    "cost": 230000
+    "item_name": "근육·관절 검사 유도 초음파(간단)",
+    "category": "초음파",
+    "cost": 30000
   },
   {
     "id": "term_0463",
-    "item_name": "치아 기둥 크라운(귀금속·복잡)",
-    "kind_mid": "치과",
-    "cost": 260000
+    "item_name": "근육·관절 검사 유도 초음파(복잡)",
+    "category": "초음파",
+    "cost": 120000
   },
   {
     "id": "term_0464",
-    "item_name": "치아 기둥 크라운(글라스파이버)",
-    "kind_mid": "치과",
-    "cost": 220000
+    "item_name": "기관지 내시경 초음파",
+    "category": "초음파",
+    "cost": 400000
   },
   {
     "id": "term_0465",
-    "item_name": "치아 기둥 크라운(파라 포스트)",
-    "kind_mid": "치과",
-    "cost": 180000
+    "item_name": "내시경 초음파",
+    "category": "초음파",
+    "cost": 200000
   },
   {
     "id": "term_0466",
-    "item_name": "PRP 치료",
-    "kind_mid": "치과",
-    "cost": 100000
+    "item_name": "내시경 초음파(직장 중부)",
+    "category": "초음파",
+    "cost": 80000
   },
   {
     "id": "term_0467",
-    "item_name": "약침 치료",
-    "kind_mid": "한방",
-    "cost": 15000
+    "item_name": "내시경 초음파(항문)",
+    "category": "초음파",
+    "cost": 40000
   },
   {
     "id": "term_0468",
-    "item_name": "자율훈련 치료",
-    "kind_mid": "한방",
-    "cost": 30000
+    "item_name": "식도 심장초음파(선천성 심질환)",
+    "category": "초음파",
+    "cost": 35500
   },
   {
     "id": "term_0469",
-    "item_name": "간 MRI",
-    "kind_mid": "MRI",
-    "cost": 470000
+    "item_name": "식도 심장초음파",
+    "category": "초음파",
+    "cost": 291000
   },
   {
     "id": "term_0470",
-    "item_name": "어깨관절 MRI",
-    "kind_mid": "MRI",
-    "cost": 470000
+    "item_name": "심장내 초음파",
+    "category": "초음파",
+    "cost": 320100
   },
   {
     "id": "term_0471",
-    "item_name": "목 MRI",
-    "kind_mid": "MRI",
-    "cost": 470000
+    "item_name": "부분 틀니(고주파 비귀금속)",
+    "category": "치과보철",
+    "cost": 1200000
   },
   {
     "id": "term_0472",
-    "item_name": "목 혈관 MRI",
-    "kind_mid": "MRI",
-    "cost": 428300
+    "item_name": "부분 틀니(비귀금속)",
+    "category": "치과보철",
+    "cost": 1200000
   },
   {
     "id": "term_0473",
-    "item_name": "목뼈 MRI",
-    "kind_mid": "MRI",
-    "cost": 470000
+    "item_name": "틀니 연결장치 교환",
+    "category": "치과보철",
+    "cost": 150000
   },
   {
     "id": "term_0474",
-    "item_name": "엉덩관절 MRI",
-    "kind_mid": "MRI",
-    "cost": 470000
+    "item_name": "틀니 자석 교환",
+    "category": "치과보철",
+    "cost": 150000
   },
   {
     "id": "term_0475",
-    "item_name": "골반 MRI",
-    "kind_mid": "MRI",
-    "cost": 470000
+    "item_name": "틀니용 금속 인공치",
+    "category": "치과보철",
+    "cost": 250000
   },
   {
     "id": "term_0476",
-    "item_name": "관류 MRI(3D 포함)",
-    "kind_mid": "MRI",
-    "cost": 344200
+    "item_name": "어금니 경질 레진",
+    "category": "치과보철",
+    "cost": 30000
   },
   {
     "id": "term_0477",
-    "item_name": "관류 MRI(3D·기본검사 포함)",
-    "kind_mid": "MRI",
-    "cost": 190500
+    "item_name": "앞니 경질 레진",
+    "category": "치과보철",
+    "cost": 20000
   },
   {
     "id": "term_0478",
-    "item_name": "팔(관절 외) MRI",
-    "kind_mid": "MRI",
-    "cost": 470000
+    "item_name": "잇몸 뼈이식(단순)",
+    "category": "치과 처치·수술",
+    "cost": 200000
   },
   {
     "id": "term_0479",
-    "item_name": "다리(관절 외) MRI",
-    "kind_mid": "MRI",
-    "cost": 470000
+    "item_name": "잇몸 뼈이식(복잡)",
+    "category": "치과 처치·수술",
+    "cost": 1000000
   },
   {
     "id": "term_0480",
-    "item_name": "기능 MRI(3D 포함)",
-    "kind_mid": "MRI",
-    "cost": 590100
+    "item_name": "금니 크라운",
+    "category": "치과보철",
+    "cost": 440000
   },
   {
     "id": "term_0481",
-    "item_name": "뇌 MRI",
-    "kind_mid": "MRI",
-    "cost": 392300
-  },
-  {
-    "id": "term_0482",
-    "item_name": "뇌혈관 MRI",
-    "kind_mid": "MRI",
-    "cost": 428300
+    "item_name": "잇몸뼈 증대술",
+    "category": "치과보철",
+    "cost": 500000
   },
   {
     "id": "term_0483",
-    "item_name": "담관·췌관 MRI",
-    "kind_mid": "MRI",
-    "cost": 470000
+    "item_name": "레진 충전",
+    "category": "치과보철",
+    "cost": 80000
   },
   {
     "id": "term_0484",
-    "item_name": "무릎관절 MRI",
-    "kind_mid": "MRI",
-    "cost": 470000
+    "item_name": "글래스아이오노머 충전",
+    "category": "치과 처치·수술",
+    "cost": 80000
   },
   {
     "id": "term_0485",
-    "item_name": "발목관절 MRI",
-    "kind_mid": "MRI",
-    "cost": 470000
-  },
-  {
-    "id": "term_0486",
-    "item_name": "복부 MRI",
-    "kind_mid": "MRI",
-    "cost": 470000
-  },
-  {
-    "id": "term_0487",
-    "item_name": "복부 혈관 MRI",
-    "kind_mid": "MRI",
-    "cost": 400000
+    "item_name": "레진 충전(치면 수별)",
+    "category": "치과 처치·수술",
+    "cost": 80000
   },
   {
     "id": "term_0488",
-    "item_name": "코 주변 부비동 MRI",
-    "kind_mid": "MRI",
-    "cost": 448200
+    "item_name": "교합안정장치 관리",
+    "category": "치과보철",
+    "cost": 30000
   },
   {
     "id": "term_0489",
-    "item_name": "분광 MRI",
-    "kind_mid": "MRI",
-    "cost": 227300
+    "item_name": "턱관절 교합안정장치(단순)",
+    "category": "치과보철",
+    "cost": 300000
   },
   {
     "id": "term_0490",
-    "item_name": "분광 MRI(기본검사 포함)",
-    "kind_mid": "MRI",
-    "cost": 131300
-  },
-  {
-    "id": "term_0491",
-    "item_name": "팔다리 혈관 MRI",
-    "kind_mid": "MRI",
-    "cost": 400000
+    "item_name": "턱관절 교합안정장치(복잡)",
+    "category": "치과보철",
+    "cost": 600000
   },
   {
     "id": "term_0492",
-    "item_name": "손목관절 MRI",
-    "kind_mid": "MRI",
-    "cost": 470000
+    "item_name": "구강 검사·상담",
+    "category": "치아검사",
+    "cost": 30000
   },
   {
     "id": "term_0493",
-    "item_name": "신장·부신 MRI",
-    "kind_mid": "MRI",
-    "cost": 470000
-  },
-  {
-    "id": "term_0494",
-    "item_name": "심장 MRI",
-    "kind_mid": "MRI",
-    "cost": 470000
+    "item_name": "입냄새 검사",
+    "category": "치아검사",
+    "cost": 30000
   },
   {
     "id": "term_0495",
-    "item_name": "심장 혈관 MRI",
-    "kind_mid": "MRI",
-    "cost": 400000
+    "item_name": "메리랜드 금 크라운(귀금속)",
+    "category": "치과보철",
+    "cost": 370000
   },
   {
     "id": "term_0496",
-    "item_name": "심장 혈관 MRI(3D)",
-    "kind_mid": "MRI",
-    "cost": 400000
-  },
-  {
-    "id": "term_0497",
-    "item_name": "얼굴 MRI",
-    "kind_mid": "MRI",
-    "cost": 470000
+    "item_name": "기성 금관",
+    "category": "치과보철",
+    "cost": 60000
   },
   {
     "id": "term_0498",
-    "item_name": "눈 주위 MRI",
-    "kind_mid": "MRI",
-    "cost": 448200
-  },
-  {
-    "id": "term_0499",
-    "item_name": "동적 MRI(3D 포함)",
-    "kind_mid": "MRI",
-    "cost": 514300
+    "item_name": "임플란트 수술 가이드(4개 이하)",
+    "category": "치과 처치·수술",
+    "cost": 1000000
   },
   {
     "id": "term_0500",
-    "item_name": "외부 MRI 판독",
-    "kind_mid": "MRI",
-    "cost": 50000
+    "item_name": "도재 크라운(귀금속·A등급)",
+    "category": "치과보철",
+    "cost": 520000
   },
   {
     "id": "term_0501",
-    "item_name": "허리·엉치 MRI",
-    "kind_mid": "MRI",
-    "cost": 470000
+    "item_name": "도재 크라운(귀금속·B등급)",
+    "category": "치과보철",
+    "cost": 450000
   },
   {
     "id": "term_0502",
-    "item_name": "허리·엉치·등뼈 MRI(동시 촬영)",
-    "kind_mid": "MRI",
-    "cost": 225000
+    "item_name": "도재 크라운(무깃·귀금속)",
+    "category": "치과보철",
+    "cost": 520000
   },
   {
     "id": "term_0503",
-    "item_name": "유방 MRI",
-    "kind_mid": "MRI",
-    "cost": 470000
-  },
-  {
-    "id": "term_0504",
-    "item_name": "전립선 MRI",
-    "kind_mid": "MRI",
-    "cost": 470000
+    "item_name": "도재 크라운(무깃·비귀금속)",
+    "category": "치과보철",
+    "cost": 380000
   },
   {
     "id": "term_0505",
-    "item_name": "팔꿈치관절 MRI",
-    "kind_mid": "MRI",
-    "cost": 470000
+    "item_name": "도재 크라운(비귀금속·A등급)",
+    "category": "치과보철",
+    "cost": 370000
   },
   {
     "id": "term_0506",
-    "item_name": "척추관 MRI",
-    "kind_mid": "MRI",
-    "cost": 470000
+    "item_name": "도재 크라운(비귀금속·B등급)",
+    "category": "치과보철",
+    "cost": 350000
   },
   {
     "id": "term_0507",
-    "item_name": "척추관 MRI(목·등·허리 동시)",
-    "kind_mid": "MRI",
-    "cost": 460000
+    "item_name": "레이저 접합",
+    "category": "치과",
+    "cost": 60000
   },
   {
     "id": "term_0508",
-    "item_name": "천장관절 MRI",
-    "kind_mid": "MRI",
-    "cost": 470000
+    "item_name": "레진 틀니(치아 1개당)",
+    "category": "치과보철",
+    "cost": 30000
   },
   {
     "id": "term_0509",
-    "item_name": "췌장 MRI",
-    "kind_mid": "MRI",
-    "cost": 470000
+    "item_name": "로케이터 장치(G등급)",
+    "category": "치과보철",
+    "cost": 500000
   },
   {
     "id": "term_0510",
-    "item_name": "관자뼈 MRI",
-    "kind_mid": "MRI",
-    "cost": 470000
+    "item_name": "임플란트 시술(국산·G등급)",
+    "category": "치과",
+    "cost": 1000000
   },
   {
     "id": "term_0511",
-    "item_name": "턱관절 MRI",
-    "kind_mid": "MRI",
-    "cost": 470000
+    "item_name": "임플란트 시술(자성체)",
+    "category": "치과",
+    "cost": 500000
   },
   {
     "id": "term_0512",
-    "item_name": "확산 MRI(기본검사 포함)",
-    "kind_mid": "MRI",
-    "cost": 121600
+    "item_name": "임플란트 시술(헤더바)",
+    "category": "치과",
+    "cost": 1150000
   },
   {
     "id": "term_0513",
-    "item_name": "가슴 MRI",
-    "kind_mid": "MRI",
-    "cost": 470000
+    "item_name": "임플란트 도재 크라운(귀금속)",
+    "category": "치과보철",
+    "cost": 800000
   },
   {
     "id": "term_0514",
-    "item_name": "가슴 혈관 MRI",
-    "kind_mid": "MRI",
-    "cost": 470000
+    "item_name": "임플란트 도재 크라운(비귀금속)",
+    "category": "치과보철",
+    "cost": 600000
   },
   {
     "id": "term_0515",
-    "item_name": "등뼈 MRI",
-    "kind_mid": "MRI",
-    "cost": 470000
+    "item_name": "임플란트 금 크라운(백금)",
+    "category": "치과보철",
+    "cost": 660000
   },
   {
     "id": "term_0516",
-    "item_name": "목 혈관 MRI(일반)",
-    "kind_mid": "MRI",
-    "cost": 411800
+    "item_name": "임플란트 금 크라운(슈퍼골드)",
+    "category": "치과보철",
+    "cost": 620000
   },
   {
     "id": "term_0517",
-    "item_name": "목 혈관 MRI(조영 전후)",
-    "kind_mid": "MRI",
-    "cost": 545800
+    "item_name": "치아 본뜨기(분석용)",
+    "category": "치아검사",
+    "cost": 30000
   },
   {
     "id": "term_0518",
-    "item_name": "목뼈 MRI(제한적)",
-    "kind_mid": "MRI",
-    "cost": 198200
+    "item_name": "치아 공간 유지장치(탈착식)",
+    "category": "치과보철",
+    "cost": 100000
   },
   {
     "id": "term_0519",
-    "item_name": "목뼈 MRI(조영제 포함)",
-    "kind_mid": "MRI",
-    "cost": 486400
+    "item_name": "치아 공간 유지장치(고정식)",
+    "category": "치과보철",
+    "cost": 50000
   },
   {
     "id": "term_0520",
-    "item_name": "뇌 MRI(조영제 포함)",
-    "kind_mid": "MRI",
-    "cost": 511500
+    "item_name": "보철 치료 진행 중",
+    "category": "치과보철",
+    "cost": 10000
   },
   {
     "id": "term_0521",
-    "item_name": "뇌혈관 MRI(조영제 포함)",
-    "kind_mid": "MRI",
-    "cost": 545800
+    "item_name": "부착장치(단순)",
+    "category": "치과보철",
+    "cost": 300000
   },
   {
     "id": "term_0522",
-    "item_name": "코 주변 부비동 MRI(조영제 포함)",
-    "kind_mid": "MRI",
-    "cost": 555400
+    "item_name": "부착장치(보통)",
+    "category": "치과보철",
+    "cost": 350000
   },
   {
     "id": "term_0523",
-    "item_name": "허리·엉치 MRI(제한적)",
-    "kind_mid": "MRI",
-    "cost": 198200
+    "item_name": "부착장치(복잡)",
+    "category": "치과보철",
+    "cost": 440000
   },
   {
     "id": "term_0524",
-    "item_name": "허리·엉치 MRI(조영제 포함)",
-    "kind_mid": "MRI",
-    "cost": 486400
+    "item_name": "불소 도포",
+    "category": "치과 처치·수술",
+    "cost": 100000
   },
   {
     "id": "term_0525",
-    "item_name": "등뼈 MRI(제한적)",
-    "kind_mid": "MRI",
-    "cost": 198200
+    "item_name": "비변형 교정술(대)",
+    "category": "치과",
+    "cost": 500000
   },
   {
     "id": "term_0526",
-    "item_name": "등뼈 MRI(조영제 포함)",
-    "kind_mid": "MRI",
-    "cost": 486400
+    "item_name": "비변형 교정술(소)",
+    "category": "치과",
+    "cost": 200000
   },
   {
     "id": "term_0527",
-    "item_name": "등뼈·허리·엉치 MRI(동시 촬영·조영제 포함)",
-    "kind_mid": "MRI",
-    "cost": 707400
+    "item_name": "비변형 교정술(중)",
+    "category": "치과",
+    "cost": 300000
   },
   {
     "id": "term_0528",
-    "item_name": "목 혈관 MRI(촬영)",
-    "kind_mid": "MRI",
-    "cost": 330900
+    "item_name": "수술용 가이드 스텐트(단순)",
+    "category": "치과 처치·수술",
+    "cost": 50000
   },
   {
     "id": "term_0529",
-    "item_name": "독감 예방접종(4가·성인)",
-    "kind_mid": "예방접종·주사",
-    "cost": 30000
+    "item_name": "수술용 가이드 스텐트(복잡)",
+    "category": "치과 처치·수술",
+    "cost": 100000
   },
   {
     "id": "term_0530",
-    "item_name": "독감 예방접종(4가·박씨그리프테트라)",
-    "kind_mid": "예방접종·주사",
-    "cost": 30000
+    "item_name": "반고정 연결장치",
+    "category": "치과보철",
+    "cost": 150000
   },
   {
     "id": "term_0531",
-    "item_name": "독감 예방접종(4가·성인·스카이셀플루)",
-    "kind_mid": "예방접종·주사",
-    "cost": 30000
+    "item_name": "심미 레진 충전",
+    "category": "치과 처치·수술",
+    "cost": 250000
   },
   {
     "id": "term_0532",
-    "item_name": "독감 예방접종(4가·플루아릭스)",
-    "kind_mid": "예방접종·주사",
-    "cost": 30000
+    "item_name": "안면 체형",
+    "category": "치아검사",
+    "cost": 200000
   },
   {
     "id": "term_0533",
-    "item_name": "독감 예방접종(4가·소아·백시플루)",
-    "kind_mid": "예방접종·주사",
-    "cost": 40000
+    "item_name": "안면·두개기저 임플란트 촬영(3D·혈관조영)",
+    "category": "임플란트CT",
+    "cost": 164300
   },
   {
     "id": "term_0534",
-    "item_name": "독감 예방접종(4가·플루아릭스·3세 이상)",
-    "kind_mid": "예방접종·주사",
-    "cost": 40000
+    "item_name": "오버덴처 O-링 교체",
+    "category": "치과보철",
+    "cost": 20000
   },
   {
     "id": "term_0535",
-    "item_name": "뇌수막염 예방접종",
-    "kind_mid": "예방접종·주사",
-    "cost": 41000
-  },
-  {
-    "id": "term_0536",
-    "item_name": "뇌수막염 예방접종(악티브주)",
-    "kind_mid": "예방접종·주사",
-    "cost": 41000
-  },
-  {
-    "id": "term_0537",
-    "item_name": "디프테리아·파상풍·백일해 예방접종",
-    "kind_mid": "예방접종·주사",
-    "cost": 32000
-  },
-  {
-    "id": "term_0538",
-    "item_name": "소아마비 예방접종(폴리오 백신)",
-    "kind_mid": "예방접종·주사",
-    "cost": 25000
+    "item_name": "오버덴처 클립 교체",
+    "category": "치과보철",
+    "cost": 10000
   },
   {
     "id": "term_0539",
-    "item_name": "수두 예방접종(녹십자)",
-    "kind_mid": "예방접종·주사",
-    "cost": 29000
+    "item_name": "틀니 리라이닝(간접·단순)",
+    "category": "치과보철",
+    "cost": 190000
   },
   {
     "id": "term_0540",
-    "item_name": "수두 예방접종",
-    "kind_mid": "예방접종·주사",
+    "item_name": "틀니 리라이닝(간접·복잡)",
+    "category": "치과보철",
+    "cost": 300000
+  },
+  {
+    "id": "term_0542",
+    "item_name": "틀니 리라이닝(직접·단순)",
+    "category": "치과보철",
+    "cost": 100000
+  },
+  {
+    "id": "term_0543",
+    "item_name": "틀니 리라이닝(직접·복잡)",
+    "category": "치과보철",
+    "cost": 150000
+  },
+  {
+    "id": "term_0544",
+    "item_name": "틀니 수리(단순)",
+    "category": "치과보철",
+    "cost": 50000
+  },
+  {
+    "id": "term_0545",
+    "item_name": "틀니 수리(복잡)",
+    "category": "치과보철",
+    "cost": 100000
+  },
+  {
+    "id": "term_0546",
+    "item_name": "임플란트 UCLA 스크류 교체(재료비)",
+    "category": "치과",
+    "cost": 50000
+  },
+  {
+    "id": "term_0547",
+    "item_name": "임플란트 자석 교체",
+    "category": "치과",
+    "cost": 200000
+  },
+  {
+    "id": "term_0549",
+    "item_name": "임플란트 크라운 재제작(A등급)",
+    "category": "치과",
+    "cost": 100000
+  },
+  {
+    "id": "term_0550",
+    "item_name": "임플란트 크라운 재제작(B등급)",
+    "category": "치과",
+    "cost": 200000
+  },
+  {
+    "id": "term_0552",
+    "item_name": "인레이(귀금속·단순)",
+    "category": "치과보철",
+    "cost": 300000
+  },
+  {
+    "id": "term_0553",
+    "item_name": "인레이(귀금속·복잡)",
+    "category": "치과보철",
+    "cost": 350000
+  },
+  {
+    "id": "term_0554",
+    "item_name": "인레이(세라믹/레진·단순)",
+    "category": "치과보철",
+    "cost": 270000
+  },
+  {
+    "id": "term_0555",
+    "item_name": "인레이(세라믹/레진·복잡)",
+    "category": "치과보철",
+    "cost": 280000
+  },
+  {
+    "id": "term_0556",
+    "item_name": "금 인레이·온레이 충전",
+    "category": "치과 처치·수술",
+    "cost": 250000
+  },
+  {
+    "id": "term_0557",
+    "item_name": "치아 본뜨기·모형 제작",
+    "category": "치아검사",
+    "cost": 30000
+  },
+  {
+    "id": "term_0558",
+    "item_name": "임시 부분 틀니",
+    "category": "치과보철",
+    "cost": 430000
+  },
+  {
+    "id": "term_0559",
+    "item_name": "임시 틀니(단순)",
+    "category": "치과보철",
+    "cost": 50000
+  },
+  {
+    "id": "term_0560",
+    "item_name": "임시치아(복잡)",
+    "category": "치과보철",
+    "cost": 150000
+  },
+  {
+    "id": "term_0561",
+    "item_name": "임플란트 2차 수술(간단)",
+    "category": "치과 처치·수술",
+    "cost": 100000
+  },
+  {
+    "id": "term_0562",
+    "item_name": "임플란트 2차 수술(잇몸뼈)",
+    "category": "치과 처치·수술",
+    "cost": 500000
+  },
+  {
+    "id": "term_0563",
+    "item_name": "임플란트 2차 수술(잇몸)",
+    "category": "치과 처치·수술",
+    "cost": 300000
+  },
+  {
+    "id": "term_0564",
+    "item_name": "임플란트 주위염 치료",
+    "category": "치과 처치·수술",
+    "cost": 100000
+  },
+  {
+    "id": "term_0565",
+    "item_name": "임플란트용 레이저 치료",
+    "category": "치과보철",
+    "cost": 100000
+  },
+  {
+    "id": "term_0566",
+    "item_name": "임플란트용 상악동 거상술(측방접근·단순)",
+    "category": "치과보철",
+    "cost": 1000000
+  },
+  {
+    "id": "term_0567",
+    "item_name": "임플란트용 상악동 거상술(한쪽)",
+    "category": "치과보철",
+    "cost": 300000
+  },
+  {
+    "id": "term_0568",
+    "item_name": "임플란트용 하치조 측방전위술(한쪽)",
+    "category": "치과보철",
+    "cost": 1000000
+  },
+  {
+    "id": "term_0570",
+    "item_name": "칫솔질 교육",
+    "category": "치과",
+    "cost": 30000
+  },
+  {
+    "id": "term_0571",
+    "item_name": "자석장치",
+    "category": "치과보철",
+    "cost": 340000
+  },
+  {
+    "id": "term_0572",
+    "item_name": "세라믹 크라운(순면버니어)",
+    "category": "치과보철",
+    "cost": 400000
+  },
+  {
+    "id": "term_0573",
+    "item_name": "올세라믹 크라운",
+    "category": "치과보철",
+    "cost": 470000
+  },
+  {
+    "id": "term_0574",
+    "item_name": "메리랜드 크라운(비귀금속)",
+    "category": "치과보철",
+    "cost": 290000
+  },
+  {
+    "id": "term_0575",
+    "item_name": "금 크라운(금합금)",
+    "category": "치과보철",
+    "cost": 420000
+  },
+  {
+    "id": "term_0576",
+    "item_name": "금 크라운(백금합금)",
+    "category": "치과보철",
+    "cost": 460000
+  },
+  {
+    "id": "term_0577",
+    "item_name": "금속 크라운(Pd 합금)",
+    "category": "치과보철",
+    "cost": 350000
+  },
+  {
+    "id": "term_0578",
+    "item_name": "즉시·임시 폐쇄장치",
+    "category": "치과보철",
+    "cost": 400000
+  },
+  {
+    "id": "term_0579",
+    "item_name": "즉시 전체 틀니(망사)",
+    "category": "치과보철",
+    "cost": 600000
+  },
+  {
+    "id": "term_0580",
+    "item_name": "즉시 전체 틀니(레진)",
+    "category": "치과보철",
+    "cost": 500000
+  },
+  {
+    "id": "term_0582",
+    "item_name": "전체 틀니(레진)",
+    "category": "치과보철",
+    "cost": 1200000
+  },
+  {
+    "id": "term_0583",
+    "item_name": "치아 노출술",
+    "category": "구강외과 수술",
+    "cost": 100000
+  },
+  {
+    "id": "term_0584",
+    "item_name": "치아 홈 메우기(실란트)",
+    "category": "치과 처치·수술",
+    "cost": 30000
+  },
+  {
+    "id": "term_0586",
+    "item_name": "치아 매식 진단료(단순)",
+    "category": "치아검사",
+    "cost": 50000
+  },
+  {
+    "id": "term_0587",
+    "item_name": "치아 매식 진단료(복잡)",
+    "category": "치아검사",
+    "cost": 100000
+  },
+  {
+    "id": "term_0588",
+    "item_name": "치아 미백(단순)",
+    "category": "치과 처치·수술",
+    "cost": 30000
+  },
+  {
+    "id": "term_0589",
+    "item_name": "치아 미백(복잡)",
+    "category": "치과 처치·수술",
+    "cost": 50000
+  },
+  {
+    "id": "term_0590",
+    "item_name": "임플란트 보철 수리(단순)",
+    "category": "치과",
+    "cost": 50000
+  },
+  {
+    "id": "term_0591",
+    "item_name": "임플란트 보철 수리(복잡)",
+    "category": "치과",
+    "cost": 100000
+  },
+  {
+    "id": "term_0592",
+    "item_name": "임플란트 UCLA 스크류 교체",
+    "category": "치과",
+    "cost": 100000
+  },
+  {
+    "id": "term_0594",
+    "item_name": "임플란트 임시 레진치(단순)",
+    "category": "치과",
+    "cost": 50000
+  },
+  {
+    "id": "term_0595",
+    "item_name": "임플란트 임시 레진치(복잡)",
+    "category": "치과",
+    "cost": 200000
+  },
+  {
+    "id": "term_0596",
+    "item_name": "임플란트 자석체 교체",
+    "category": "치과",
+    "cost": 300000
+  },
+  {
+    "id": "term_0597",
+    "item_name": "임플란트 지대주 교체",
+    "category": "치과",
+    "cost": 300000
+  },
+  {
+    "id": "term_0598",
+    "item_name": "임플란트 코핑 스크류 교체",
+    "category": "치과 처치·수술",
+    "cost": 50000
+  },
+  {
+    "id": "term_0599",
+    "item_name": "치아지지 틀니 O-링·ERA 교환",
+    "category": "치과보철",
+    "cost": 50000
+  },
+  {
+    "id": "term_0600",
+    "item_name": "치아지지 틀니 자석체 교환",
+    "category": "치과보철",
+    "cost": 200000
+  },
+  {
+    "id": "term_0601",
+    "item_name": "치아지지 틀니 클립 교환",
+    "category": "치과보철",
+    "cost": 50000
+  },
+  {
+    "id": "term_0602",
+    "item_name": "치주 테스트(인공치아)",
+    "category": "치아검사",
+    "cost": 50000
+  },
+  {
+    "id": "term_0603",
+    "item_name": "치태 관리·예방처치(단순)",
+    "category": "치과보철",
+    "cost": 10000
+  },
+  {
+    "id": "term_0604",
+    "item_name": "치태 관리·예방처치(복잡)",
+    "category": "치과보철",
+    "cost": 30000
+  },
+  {
+    "id": "term_0605",
+    "item_name": "CAD/CAM 세라믹 크라운",
+    "category": "치과보철",
+    "cost": 550000
+  },
+  {
+    "id": "term_0607",
+    "item_name": "CAD/CAM 세라믹 크라운(임플란트용·단순)",
+    "category": "치과보철",
+    "cost": 700000
+  },
+  {
+    "id": "term_0608",
+    "item_name": "CAD/CAM 세라믹 크라운(임플란트용·복잡)",
+    "category": "치과보철",
+    "cost": 800000
+  },
+  {
+    "id": "term_0609",
+    "item_name": "텔레스코픽 크라운(밀링 포함)",
+    "category": "치과보철",
+    "cost": 100000
+  },
+  {
+    "id": "term_0611",
+    "item_name": "특수 이중관 크라운(귀금속)",
+    "category": "치과보철",
+    "cost": 650000
+  },
+  {
+    "id": "term_0612",
+    "item_name": "특수 이중관 크라운(금합금)",
+    "category": "치과보철",
+    "cost": 600000
+  },
+  {
+    "id": "term_0613",
+    "item_name": "특수 이중관 크라운(백금합금)",
+    "category": "치과보철",
+    "cost": 700000
+  },
+  {
+    "id": "term_0614",
+    "item_name": "특수 이중관 크라운(비귀금속)",
+    "category": "치과보철",
+    "cost": 550000
+  },
+  {
+    "id": "term_0615",
+    "item_name": "특수 이중관 크라운(PD합금)",
+    "category": "치과보철",
+    "cost": 500000
+  },
+  {
+    "id": "term_0617",
+    "item_name": "탄성 틀니 리라이닝",
+    "category": "치과보철",
+    "cost": 50000
+  },
+  {
+    "id": "term_0619",
+    "item_name": "텔레스코픽 부분 틀니(간단)",
+    "category": "치과보철",
+    "cost": 880000
+  },
+  {
+    "id": "term_0620",
+    "item_name": "텔레스코픽 부분 틀니(복잡)",
+    "category": "치과보철",
+    "cost": 1100000
+  },
+  {
+    "id": "term_0621",
+    "item_name": "한쪽 부분 틀니(고주파 비귀금속)",
+    "category": "치과보철",
+    "cost": 700000
+  },
+  {
+    "id": "term_0622",
+    "item_name": "한쪽 부분 틀니(귀금속)",
+    "category": "치과보철",
+    "cost": 1200000
+  },
+  {
+    "id": "term_0623",
+    "item_name": "한쪽 부분 틀니(비귀금속)",
+    "category": "치과보철",
+    "cost": 600000
+  },
+  {
+    "id": "term_0624",
+    "item_name": "포세린 크라운 수리(단순)",
+    "category": "치과보철",
+    "cost": 100000
+  },
+  {
+    "id": "term_0625",
+    "item_name": "포세린 크라운 수리(복잡)",
+    "category": "치과보철",
+    "cost": 200000
+  },
+  {
+    "id": "term_0626",
+    "item_name": "치아 기둥 크라운(귀금속·단순)",
+    "category": "치과보철",
+    "cost": 230000
+  },
+  {
+    "id": "term_0627",
+    "item_name": "치아 기둥 크라운(귀금속·복잡)",
+    "category": "치과보철",
+    "cost": 260000
+  },
+  {
+    "id": "term_0628",
+    "item_name": "치아 기둥 크라운(글라스파이버)",
+    "category": "치과보철",
+    "cost": 220000
+  },
+  {
+    "id": "term_0629",
+    "item_name": "치아 기둥 크라운(파라 포스트)",
+    "category": "치과보철",
+    "cost": 180000
+  },
+  {
+    "id": "term_0630",
+    "item_name": "치과 자가 혈소판 풍부혈장(PRP) 치료",
+    "category": "치과 처치·수술",
+    "cost": 100000
+  },
+  {
+    "id": "term_0631",
+    "item_name": "약침 치료",
+    "category": "한방 시술",
+    "cost": 15000
+  },
+  {
+    "id": "term_0633",
+    "item_name": "간 MRI",
+    "category": "MRI",
+    "cost": 470000
+  },
+  {
+    "id": "term_0635",
+    "item_name": "견관절 MRI",
+    "category": "MRI",
+    "cost": 470000
+  },
+  {
+    "id": "term_0637",
+    "item_name": "경부 MRI",
+    "category": "MRI",
+    "cost": 470000
+  },
+  {
+    "id": "term_0639",
+    "item_name": "경부혈관 MRI",
+    "category": "MRI",
+    "cost": 428300
+  },
+  {
+    "id": "term_0641",
+    "item_name": "경추 MRI",
+    "category": "MRI",
+    "cost": 470000
+  },
+  {
+    "id": "term_0643",
+    "item_name": "고관절 MRI",
+    "category": "MRI",
+    "cost": 470000
+  },
+  {
+    "id": "term_0645",
+    "item_name": "골반 MRI",
+    "category": "MRI",
+    "cost": 470000
+  },
+  {
+    "id": "term_0647",
+    "item_name": "관류 MRI(3차원 포함)",
+    "category": "MRI",
+    "cost": 344200
+  },
+  {
+    "id": "term_0648",
+    "item_name": "관류 MRI(3차원 포함·기본검사 동시)",
+    "category": "MRI",
+    "cost": 190500
+  },
+  {
+    "id": "term_0649",
+    "item_name": "관절외 상지 MRI",
+    "category": "MRI",
+    "cost": 470000
+  },
+  {
+    "id": "term_0651",
+    "item_name": "관절외 하지 MRI",
+    "category": "MRI",
+    "cost": 470000
+  },
+  {
+    "id": "term_0653",
+    "item_name": "기능적 MRI(3차원 포함)",
+    "category": "MRI",
+    "cost": 590100
+  },
+  {
+    "id": "term_0654",
+    "item_name": "뇌 MRI",
+    "category": "MRI",
+    "cost": 392300
+  },
+  {
+    "id": "term_0657",
+    "item_name": "뇌혈관 MRI",
+    "category": "MRI",
+    "cost": 428300
+  },
+  {
+    "id": "term_0659",
+    "item_name": "담췌관 MRI",
+    "category": "MRI",
+    "cost": 470000
+  },
+  {
+    "id": "term_0664",
+    "item_name": "무릎관절 MRI",
+    "category": "MRI",
+    "cost": 470000
+  },
+  {
+    "id": "term_0666",
+    "item_name": "발목관절 MRI",
+    "category": "MRI",
+    "cost": 470000
+  },
+  {
+    "id": "term_0668",
+    "item_name": "복부 MRI",
+    "category": "MRI",
+    "cost": 470000
+  },
+  {
+    "id": "term_0670",
+    "item_name": "복부혈관 MRI",
+    "category": "MRI",
+    "cost": 400000
+  },
+  {
+    "id": "term_0672",
+    "item_name": "부비동 MRI",
+    "category": "MRI",
+    "cost": 448200
+  },
+  {
+    "id": "term_0674",
+    "item_name": "분광영상 MRI",
+    "category": "MRI",
+    "cost": 227300
+  },
+  {
+    "id": "term_0675",
+    "item_name": "분광영상 MRI(기본검사 동시)",
+    "category": "MRI",
+    "cost": 131300
+  },
+  {
+    "id": "term_0676",
+    "item_name": "사지혈관 MRI",
+    "category": "MRI",
+    "cost": 400000
+  },
+  {
+    "id": "term_0678",
+    "item_name": "수관절 MRI",
+    "category": "MRI",
+    "cost": 470000
+  },
+  {
+    "id": "term_0682",
+    "item_name": "신장 및 부신 MRI",
+    "category": "MRI",
+    "cost": 470000
+  },
+  {
+    "id": "term_0684",
+    "item_name": "심장 MRI",
+    "category": "MRI",
+    "cost": 470000
+  },
+  {
+    "id": "term_0686",
+    "item_name": "심혈관 MRI",
+    "category": "MRI",
+    "cost": 400000
+  },
+  {
+    "id": "term_0688",
+    "item_name": "심혈관 MRI(3차원)",
+    "category": "MRI",
+    "cost": 400000
+  },
+  {
+    "id": "term_0689",
+    "item_name": "안면 MRI",
+    "category": "MRI",
+    "cost": 470000
+  },
+  {
+    "id": "term_0691",
+    "item_name": "안와 MRI",
+    "category": "MRI",
+    "cost": 448200
+  },
+  {
+    "id": "term_0693",
+    "item_name": "영화 MRI(3차원 포함)",
+    "category": "MRI",
+    "cost": 514300
+  },
+  {
+    "id": "term_0694",
+    "item_name": "외부필름 판독 MRI",
+    "category": "MRI",
+    "cost": 50000
+  },
+  {
+    "id": "term_0695",
+    "item_name": "요천추 MRI",
+    "category": "MRI",
+    "cost": 470000
+  },
+  {
+    "id": "term_0697",
+    "item_name": "요천추·흉추 MRI(동시 촬영)",
+    "category": "MRI",
+    "cost": 225000
+  },
+  {
+    "id": "term_0699",
+    "item_name": "유방 MRI",
+    "category": "MRI",
+    "cost": 470000
+  },
+  {
+    "id": "term_0703",
+    "item_name": "전립선 MRI",
+    "category": "MRI",
+    "cost": 470000
+  },
+  {
+    "id": "term_0705",
+    "item_name": "주관절 MRI",
+    "category": "MRI",
+    "cost": 470000
+  },
+  {
+    "id": "term_0707",
+    "item_name": "척추강 MRI",
+    "category": "MRI",
+    "cost": 470000
+  },
+  {
+    "id": "term_0710",
+    "item_name": "척추강 MRI(경추·흉추·요천추 동시 촬영)",
+    "category": "MRI",
+    "cost": 460000
+  },
+  {
+    "id": "term_0711",
+    "item_name": "천장골관절 MRI",
+    "category": "MRI",
+    "cost": 470000
+  },
+  {
+    "id": "term_0713",
+    "item_name": "췌장 MRI",
+    "category": "MRI",
+    "cost": 470000
+  },
+  {
+    "id": "term_0715",
+    "item_name": "측두골 MRI",
+    "category": "MRI",
+    "cost": 470000
+  },
+  {
+    "id": "term_0717",
+    "item_name": "측두하악관절 MRI",
+    "category": "MRI",
+    "cost": 470000
+  },
+  {
+    "id": "term_0719",
+    "item_name": "확산 MRI(기본검사 동시)",
+    "category": "MRI",
+    "cost": 121600
+  },
+  {
+    "id": "term_0720",
+    "item_name": "흉부 MRI",
+    "category": "MRI",
+    "cost": 470000
+  },
+  {
+    "id": "term_0722",
+    "item_name": "흉부혈관 MRI",
+    "category": "MRI",
+    "cost": 470000
+  },
+  {
+    "id": "term_0724",
+    "item_name": "흉추 MRI",
+    "category": "MRI",
+    "cost": 470000
+  },
+  {
+    "id": "term_0726",
+    "item_name": "경부혈관 MRI(일반 촬영·판독)",
+    "category": "MRI",
+    "cost": 411800
+  },
+  {
+    "id": "term_0727",
+    "item_name": "경부혈관 MRI(조영제 전·후 촬영·판독)",
+    "category": "MRI",
+    "cost": 545800
+  },
+  {
+    "id": "term_0729",
+    "item_name": "경추 MRI(제한적)",
+    "category": "MRI",
+    "cost": 198200
+  },
+  {
+    "id": "term_0731",
+    "item_name": "경추 MRI(조영제 포함)",
+    "category": "MRI",
+    "cost": 486400
+  },
+  {
+    "id": "term_0734",
+    "item_name": "뇌 MRI(조영제 포함)",
+    "category": "MRI",
+    "cost": 511500
+  },
+  {
+    "id": "term_0737",
+    "item_name": "뇌혈관 MRI(조영제 포함)",
+    "category": "MRI",
+    "cost": 545800
+  },
+  {
+    "id": "term_0738",
+    "item_name": "부비동 MRI(PNS·촬영·판독·조영제 사용)",
+    "category": "MRI",
+    "cost": 555400
+  },
+  {
+    "id": "term_0740",
+    "item_name": "요천추 MRI(제한적)",
+    "category": "MRI",
+    "cost": 198200
+  },
+  {
+    "id": "term_0742",
+    "item_name": "요천추 MRI(조영제 포함)",
+    "category": "MRI",
+    "cost": 486400
+  },
+  {
+    "id": "term_0745",
+    "item_name": "흉추 MRI(제한적)",
+    "category": "MRI",
+    "cost": 198200
+  },
+  {
+    "id": "term_0747",
+    "item_name": "흉추 MRI(조영제 포함)",
+    "category": "MRI",
+    "cost": 486400
+  },
+  {
+    "id": "term_0748",
+    "item_name": "흉추·요천추 MRI(동시 촬영·조영제 사용)",
+    "category": "MRI",
+    "cost": 707400
+  },
+  {
+    "id": "term_0749",
+    "item_name": "경부혈관 MRI(촬영·판독)",
+    "category": "MRI",
+    "cost": 330900
+  },
+  {
+    "id": "term_0200",
+    "item_name": "독감 예방접종(4가·성인)",
+    "category": "예방접종",
+    "cost": 30000
+  },
+  {
+    "id": "term_0218",
+    "item_name": "독감 예방접종(4가·박씨그리프테트라)",
+    "category": "예방접종",
+    "cost": 30000
+  },
+  {
+    "id": "term_0226",
+    "item_name": "독감 예방접종(4가·성인·스카이셀플루)",
+    "category": "예방접종",
+    "cost": 30000
+  },
+  {
+    "id": "term_0257",
+    "item_name": "독감 예방접종(4가·플루아릭스)",
+    "category": "예방접종",
+    "cost": 30000
+  },
+  {
+    "id": "term_0220",
+    "item_name": "독감 예방접종(4가·소아·백시플루)",
+    "category": "예방접종",
+    "cost": 40000
+  },
+  {
+    "id": "term_0256",
+    "item_name": "독감 예방접종(4가·플루아릭스·3세 이상)",
+    "category": "예방접종",
+    "cost": 40000
+  },
+  {
+    "id": "term_0208",
+    "item_name": "뇌수막염 예방접종",
+    "category": "예방접종",
+    "cost": 41000
+  },
+  {
+    "id": "term_0230",
+    "item_name": "뇌수막염 예방접종(악티브주)",
+    "category": "예방접종",
+    "cost": 41000
+  },
+  {
+    "id": "term_0210",
+    "item_name": "디티에이피 백신주",
+    "category": "예방접종",
+    "cost": 32000
+  },
+  {
+    "id": "term_0223",
+    "item_name": "소아마비 예방접종(폴리오 백신)",
+    "category": "예방접종",
+    "cost": 25000
+  },
+  {
+    "id": "term_0207",
+    "item_name": "수두 예방접종(녹십자)",
+    "category": "예방접종",
     "cost": 29000
+  },
+  {
+    "id": "term_0224",
+    "item_name": "수두 예방접종",
+    "category": "예방접종",
+    "cost": 29000
+  },
+  {
+    "id": "term_extra_0001",
+    "item_name": "수면다원검사",
+    "category": "기능검사",
+    "cost": 671400
+  },
+  {
+    "id": "term_extra_0002",
+    "item_name": "당뇨병 교육·상담",
+    "category": "교육·상담",
+    "cost": 20000
+  },
+  {
+    "id": "term_extra_0003",
+    "item_name": "만성신부전 환자교육",
+    "category": "교육·상담",
+    "cost": 100000
+  },
+  {
+    "id": "term_extra_0004",
+    "item_name": "보행 보조벨트",
+    "category": "보조기류",
+    "cost": 80000
+  },
+  {
+    "id": "term_extra_0005",
+    "item_name": "골반 보조기",
+    "category": "보조기류",
+    "cost": 95000
+  },
+  {
+    "id": "term_extra_0006",
+    "item_name": "고관절 외전 보조기",
+    "category": "보조기류",
+    "cost": 302000
+  },
+  {
+    "id": "term_extra_0007",
+    "item_name": "발목관절 보조기(경성)",
+    "category": "보조기류",
+    "cost": 47000
+  },
+  {
+    "id": "term_extra_0008",
+    "item_name": "손가락관절 보조기(고정형)",
+    "category": "보조기류",
+    "cost": 97000
+  },
+  {
+    "id": "term_extra_0009",
+    "item_name": "어깨 외전 보조기(암슬링)",
+    "category": "보조기류",
+    "cost": 29000
+  },
+  {
+    "id": "term_extra_0010",
+    "item_name": "목뼈 보조기(필라델피아형)",
+    "category": "보조기류",
+    "cost": 26000
+  },
+  {
+    "id": "term_extra_0011",
+    "item_name": "척추 보조기(보스톤형)",
+    "category": "보조기류",
+    "cost": 444000
+  },
+  {
+    "id": "term_extra_0012",
+    "item_name": "한국판 성격평가척도",
+    "category": "신경계기능검사",
+    "cost": 30000
+  },
+  {
+    "id": "term_extra_0013",
+    "item_name": "악안면기형 안골교정술(B등급)",
+    "category": "치과보철",
+    "cost": 2000000
+  },
+  {
+    "id": "term_extra_0014",
+    "item_name": "악안면골 재건정복술(B등급)",
+    "category": "치과보철",
+    "cost": 2000000
+  },
+  {
+    "id": "term_extra_0015",
+    "item_name": "임플란트용 상악동 거상술(측방접근·복잡)",
+    "category": "치과보철",
+    "cost": 1500000
+  },
+  {
+    "id": "term_extra_0016",
+    "item_name": "임플란트용 하치조 측방전위술(양쪽)",
+    "category": "치과보철",
+    "cost": 1500000
+  },
+  {
+    "id": "term_extra_0017",
+    "item_name": "임플란트 지지의치(단순)",
+    "category": "치과보철",
+    "cost": 1500000
+  },
+  {
+    "id": "term_extra_0018",
+    "item_name": "임플란트 지지의치(복잡)",
+    "category": "치과보철",
+    "cost": 1800000
+  },
+  {
+    "id": "term_extra_0019",
+    "item_name": "기립경사훈련",
+    "category": "물리치료",
+    "cost": 6000
+  },
+  {
+    "id": "term_extra_0020",
+    "item_name": "약물검사",
+    "category": "약물검사",
+    "cost": 6000
+  },
+  {
+    "id": "term_extra_0021",
+    "item_name": "목발",
+    "category": "보조기류",
+    "cost": 9375
+  },
+  {
+    "id": "term_extra_0022",
+    "item_name": "깁스 신발",
+    "category": "보조기류",
+    "cost": 2062
+  },
+  {
+    "id": "term_extra_0023",
+    "item_name": "표준 아래팔 의지",
+    "category": "보조기류",
+    "cost": 729000
+  },
+  {
+    "id": "term_extra_0024",
+    "item_name": "귀걸이형 보청기(보급형)",
+    "category": "보조기류",
+    "cost": 440000
   }
 ]

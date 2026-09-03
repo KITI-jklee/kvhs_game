@@ -2,7 +2,7 @@
 
 `app/scripts/build-medical-costs.cjs`(Codex 작성)는 원본 공공데이터에서 **1차 후보 풀**(2026-08-31 기준 742건)을 뽑아줄 뿐이고, 실제 배포 중인 `app/public/data/medical_costs.json`(2026-08-31 세션 기준 540건)은 그 후보를 사람이 대화로 직접 하나하나 검토해서 만든 결과다. 이 문서는 2026-08-25 세션("카드 짝맞추기 게임 첫 라운드 레이아웃", 752→555건 정리)과 이후 세션들(555→544건 노골적 항목 11건 제거, 544→540건 이름 친화화+누락 중복 병합)에서 실제로 어떻게 검토했는지 재현 가능하게 남겨둔다. **나중에 직접 다시 하려고 열어볼 걸 대비한 기록이므로, 스크립트를 재실행하기 전에 반드시 이 문서부터 읽을 것.**
 
-`medical_term_pairs.json`(짝맞추기 게임③)은 `medical_costs.json`에서 매번 다시 변환해서 만든다(category→kind_mid, name→item_name, cost→cost, term_XXXX 순번 id) — **`medical_costs.json`을 고치면 반드시 이것도 같이 재생성할 것**, 안 그러면 게임③에 옛날 데이터(삭제했던 항목 포함)가 그대로 남는다. 실제로 555→544 작업 때 이걸 놓쳐서 노골적 항목 11건이 게임③에만 남아있던 적이 있었다.
+`medical_term_pairs.json`(짝맞추기 게임③)은 원본 분류 충돌과 사용자용 이름을 항목별로 검토한 결과다. 확정한 분류·이름 변경·제외 항목·추가 24개는 `data/medical_term_curation.json` 하나에 저장하며, `build_game_data.py`가 `medical_costs.json`과 이 설정을 결합해 동일한 최종 파일을 재생성한다.
 
 ## 왜 스크립트만으로는 안 되는가
 
@@ -93,7 +93,7 @@
 
 ## 이 프로세스를 다시 하게 된다면
 
-1. `node scripts/build-medical-costs.cjs` (app/ 안에서)를 돌려 최신 원본 기준 후보 풀과 `docs/medical_costs_review.csv`를 새로 뽑는다. **이 시점에는 절대 `medical_costs.json`을 그대로 배포하지 말 것** — 여기서부터가 시작이지 끝이 아니다.
+1. `node scripts/build-medical-costs.cjs --review` (app/ 안에서)를 돌려 최신 원본 기준 후보 풀을 `docs/medical_costs_review.csv`로 새로 뽑는다. `--review` 없는 일반 실행을 포함해 이 스크립트는 수작업 결과인 `medical_costs.json`을 덮어쓰지 않는다.
 2. 위 1~9번 패턴을 순서대로(또는 게임을 플레이하며 눈에 띄는 대로) 적용한다. 매 배치 적용 후 건수와 예시를 사용자에게 보여주고 확인받는다.
-3. 짝맞추기 게임(`medical_term_pairs.json`)도 이 데이터를 그대로 재사용한다(카테고리·이름·가격 구조가 1:1로 대응됨) — 별도로 처음부터 다시 정리할 필요 없음.
+3. 짝맞추기 게임은 `data/medical_term_curation.json`에서 확정 분류·이름·제외·추가 항목을 관리하고 `python build_game_data.py`로 `medical_term_pairs.json`을 재생성한다.
 4. 다 끝나면 중간 스냅샷 CSV/MD 파일들을 정리(최신 상태로 대체된 것들 삭제)한다.

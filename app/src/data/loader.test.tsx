@@ -18,7 +18,7 @@ const costs = Array.from({ length: 12 }, (_, i) => ({ id: `c${i}`, name: `항목
 const terms = Array.from({ length: 24 }, (_, i) => ({
   id: `t${i}`,
   item_name: `용어 ${i}`,
-  kind_mid: `분류 ${i % 10}`,
+  category: `분류 ${i % 10}`,
   cost: i,
 }));
 
@@ -53,7 +53,7 @@ describe('게임 데이터 계약', () => {
   it('중복 ID, 범위 밖 좌표, 부족한 분류를 거부한다', () => {
     expect(() => validateLocations([...locations.slice(0, 4), { ...locations[0], latitude: 99 }])).toThrow();
     expect(() => validateMedicalCosts([...costs.slice(0, 11), { ...costs[0] }])).toThrow(/duplicate ids/);
-    expect(() => validateTermPairs(terms.map((term) => ({ ...term, kind_mid: '한 분류' })))).toThrow(/10 categories/);
+    expect(() => validateTermPairs(terms.map((term) => ({ ...term, category: '한 분류' })))).toThrow(/10 categories/);
   });
 });
 

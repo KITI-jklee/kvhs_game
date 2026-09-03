@@ -10,7 +10,7 @@ import { PauseOverlay } from '../../components/PauseOverlay';
 import { GameIntroOverlay } from '../../components/GameIntroOverlay';
 import { useGameData } from '../../data/gameDataContext';
 import type { MedicalTermPair } from '../../data/types';
-import { buildMatchDeck, isFallbackCategoryMatch, type DeckCard } from '../../lib/matchDeck';
+import { buildMatchDeck, type DeckCard } from '../../lib/matchDeck';
 import { formatClock, formatMinSec } from '../../lib/format';
 import { sample } from '../../lib/array';
 import { useGame } from '../../state/gameState';
@@ -41,9 +41,9 @@ function pickRoundPairs(pool: MedicalTermPair[]): MedicalTermPair[][] {
     const available = pool.filter((p) => !used.has(p.id));
     const byCategory = new Map<string, MedicalTermPair[]>();
     available.forEach((pair) => {
-      const category = byCategory.get(pair.kind_mid) ?? [];
+      const category = byCategory.get(pair.category) ?? [];
       category.push(pair);
-      byCategory.set(pair.kind_mid, category);
+      byCategory.set(pair.category, category);
     });
 
     const categoryEntries = [...byCategory.entries()];
@@ -73,7 +73,7 @@ function pickRoundPairs(pool: MedicalTermPair[]): MedicalTermPair[][] {
     for (let attempt = 0; attempt < 500; attempt += 1) {
       const candidate = drawCandidate();
       if (candidate.length < size) continue; // 풀 자체가 부족한 극단적인 경우만 재시도
-      const visibleLabels = candidate.flatMap((pair) => [pair.item_name, pair.kind_mid]);
+      const visibleLabels = candidate.flatMap((pair) => [pair.item_name, pair.category]);
       const normalizedLabels = visibleLabels.map((label) =>
         label.replace(/[\s.·ㆍ]/g, ''),
       );
@@ -177,13 +177,6 @@ export function MatchGame() {
   const isSelected = (card: DeckCard) => selected.some((c) => c.key === card.key);
   const isMatched = (card: DeckCard) => matchedCardKeys.includes(card.key);
 
-  // 중복 분류가 생기면 분류만 같아도 매칭할 수 있도록 기록한다.
-  const duplicatedCategories = useMemo(() => {
-    const counts = new Map<string, number>();
-    pairs.forEach((p) => counts.set(p.kind_mid, (counts.get(p.kind_mid) ?? 0) + 1));
-    return new Set([...counts.entries()].filter(([, n]) => n > 1).map(([category]) => category));
-  }, [pairs]);
-
   const finalize = (finalMissCount: number) => {
     doneRef.current = true;
     scheduleTransition(() => {
@@ -218,11 +211,8 @@ export function MatchGame() {
     }
     const [a, b] = next;
     setSelected(next);
-    const aCategory = pairs[a.pairIndex]?.kind_mid;
-    const bCategory = pairs[b.pairIndex]?.kind_mid;
-    // 중복된 분류는 정확한 쌍이 아니어도 같은 분류끼리 정답으로 인정한다.
-    const fallbackMatch = isFallbackCategoryMatch(a.kind, b.kind, aCategory, bCategory, duplicatedCategories);
-    if (a.pairIndex === b.pairIndex || fallbackMatch) {
+    // 정답 판정은 오직 pairIndex(= 같은 큐레이션 항목의 카드인지)로만 한다.
+    if (a.pairIndex === b.pairIndex) {
       const nextMatchedCardKeys = [...matchedCardKeys, a.key, b.key];
       scheduleTransition(() => {
         setMatchedCardKeys(nextMatchedCardKeys);
