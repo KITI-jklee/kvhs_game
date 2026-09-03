@@ -561,6 +561,11 @@
 .itemCategory {
   font: 500 10.5px 'Pretendard Variable';
   color: var(--color-muted);
+  display: block;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .reorderGrip {
@@ -647,6 +652,10 @@
 .hlPickDesc {
   font: 500 11.5px 'Pretendard Variable';
   color: var(--color-muted);
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 /* 실제 값을 나타내진 않는 순수 장식용 바 - "가격은 가려져 있다"는
    느낌만 준다. */

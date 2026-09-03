@@ -112,7 +112,7 @@ def validate_term_curation(curation):
     assert_unique_ids(excluded_ids, "medical_term_curation: excluded_base_ids")
     for item_id, category in categories.items():
         require_non_empty_string(item_id, "categories의 ID")
-        require_non_empty_string(category, f"categories[{item_id}]")
+        require_reasonable_name(category, f"categories[{item_id}]")
     # 제외됐다가 나중에 categories에 다시 등록되고 excluded_base_ids에서
     # 빼는 걸 잊으면, 그 항목은 여전히 조용히 빠진 채로 남는다 - 의도한
     # 편집이 실제로는 아무 효과가 없었다는 걸 여기서 바로 알려준다.
@@ -136,7 +136,7 @@ def validate_term_curation(curation):
             )
         require_non_empty_string(addition["id"], f"additions[{index}].id")
         require_reasonable_name(addition["item_name"], f"additions[{index}].item_name")
-        require_non_empty_string(addition["category"], f"additions[{index}].category")
+        require_reasonable_name(addition["category"], f"additions[{index}].category")
         # 카드 앞뒤(item_name/category)가 같은 텍스트면 정답 판정은 id로 되더라도
         # 플레이어 눈엔 똑같은 카드 두 장으로만 보여 절대 못 맞춘다(실제로 이런
         # 항목이 한 번 들어간 적이 있다 - term_extra_0020, "약물검사"/"약물검사").
@@ -258,6 +258,16 @@ def build_medical_data():
         addition["id"].replace("term_", "mc_", 1): addition
         for addition in additions
     }
+    # additions[].id를 mc_ 접두어로 바꾼 값이 실제 base 항목 id와 우연히
+    # 겹치면 shared_items에 같은 id가 두 번 들어가는데, 그걸 나중에 범용
+    # "중복 ID가 있습니다" 에러로만 잡으면 원인(어느 addition이 어느 base
+    # 항목과 충돌했는지)을 알기 어렵다 - 여기서 바로 짚어준다.
+    addition_id_collisions = sorted(cost_ids & set(addition_by_cost_id))
+    if addition_id_collisions:
+        raise SystemExit(
+            "medical_term_curation: additions의 id가 기존 medical_costs_base 항목과 겹칩니다: "
+            f"{addition_id_collisions}"
+        )
     configured_ids = excluded_ids | set(categories)
     missing = sorted(cost_ids - configured_ids)
     unknown = sorted(configured_ids - cost_ids)

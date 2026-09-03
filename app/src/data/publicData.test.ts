@@ -17,10 +17,14 @@ describe('배포용 정적 게임 데이터', () => {
     const pairs = validateTermPairs(readPublicJson('medical_term_pairs.json'));
     expect(costs.length).toBeGreaterThanOrEqual(12);
     expect(costs.every((item) => item.cost >= 10_000 && item.cost <= 1_200_000)).toBe(true);
-    expect(costs.map(({ id, name, cost }) => ({
-      id: id.replace(/^mc_/, 'term_'), item_name: name, cost,
+    // category까지 같이 비교한다 - 게임②·③이 같은 분류 체계를 쓴다는 게
+    // 이 파이프라인의 핵심 불변식인데, id/item_name/cost만 비교하면 그 부분이
+    // 깨져도(예: build_medical_data()가 다시 서로 다른 category를 넣게
+    // 되돌아가도) 테스트가 못 잡는다.
+    expect(costs.map(({ id, name, cost, category }) => ({
+      id: id.replace(/^mc_/, 'term_'), item_name: name, cost, category,
     }))).toEqual(pairs.filter((pair) => pair.cost >= 10_000 && pair.cost <= 1_200_000)
-      .map(({ id, item_name, cost }) => ({ id, item_name, cost })));
+      .map(({ id, item_name, cost, category }) => ({ id, item_name, cost, category })));
     expect(costs.filter((item) => item.id.startsWith('mc_extra_'))).toHaveLength(14);
   });
 

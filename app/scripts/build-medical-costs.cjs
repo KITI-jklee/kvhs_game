@@ -125,6 +125,12 @@ function simplifyGameName(value, category) {
   return name.replace(/\s+/g, ' ').trim();
 }
 
+// 여기서 매기는 category(10개 큰 버킷)는 1차 후보를 CATEGORY_LIMITS로
+// 골고루 추리는 데만 쓰인다 - medical_costs_base.json으로 확정된 뒤에는
+// build_game_data.py가 이 값을 통째로 버리고 data/medical_term_curation.json의
+// categories[id](세분화된 분류, 게임②·③ 공용)로 덮어쓴다. 이 함수의 규칙을
+// 바꿔도 배포된 분류에는 영향이 없다 - 세분화 분류를 바꾸려면 curation
+// 파일을 고쳐야 한다.
 function categoryFor(row, name) {
   const source = [row.kind_big, row.kind_mid, row.kind_small, row.kind, name]
     .map(compact)
