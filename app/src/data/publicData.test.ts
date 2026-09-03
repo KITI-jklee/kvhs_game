@@ -148,7 +148,7 @@ describe('배포용 정적 게임 데이터', () => {
       .every((pair) => pair.category === '방사선치료')).toBe(true);
     expect(pairs.filter((pair) => ['당뇨병 교육·상담', '만성신부전 환자교육'].includes(pair.item_name))
       .every((pair) => pair.category === '교육·상담')).toBe(true);
-    expect(pairs.find((pair) => pair.item_name === '약물검사')?.category).toBe('약물검사');
+    expect(pairs.find((pair) => pair.item_name === '약물검사')?.category).toBe('검사');
     const dentalProstheticIds = [
       'term_0473', 'term_0474', 'term_0476', 'term_0477', 'term_0488', 'term_0489',
       'term_0496', 'term_0508', 'term_0534', 'term_0535', 'term_0542', 'term_0543',

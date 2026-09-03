@@ -31,6 +31,7 @@ const WRITE_REVIEW = process.argv.includes('--review');
 
 // These limits match the current logarithmic slider used by game 2.
 const MIN_COST = 10_000;
+const MAX_COST = 1_200_000;
 const MIN_FINAL_ITEMS = 100;
 
 const EXCLUDED_BIG_CATEGORIES = new Set(['제증명수수료', '제증명료', '치료재료']);
@@ -181,7 +182,7 @@ const candidates = [];
 
 for (const row of raw) {
   const cost = Number(row.cost);
-  if (!Number.isFinite(cost) || cost < MIN_COST) {
+  if (!Number.isFinite(cost) || cost < MIN_COST || cost > MAX_COST) {
     rejected.invalidPrice += 1;
     continue;
   }

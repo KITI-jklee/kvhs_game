@@ -48,7 +48,12 @@ export function validateMedicalCosts(value: unknown): MedicalCostItem[] {
       && isNonEmptyString(row.name)
       && isNonEmptyString(row.category)
       && isFiniteNumber(row.cost)
-      && row.cost > 0;
+      && row.cost > 0
+      // 게임의 가격 슬라이더가 120만원까지만 올라간다(medicalCost.ts의 SLIDER_MAX) -
+      // 빌드 스크립트가 이 상한을 어기고 더 비싼 항목을 내보내면 그 라운드는
+      // 정답을 슬라이더로 표현할 수 없어 절대 못 맞추게 된다. 파이프라인을
+      // 우회해 medical_costs.json이 직접 수정되는 경우까지 대비해 여기서도 막는다.
+      && row.cost <= 1_200_000;
   });
   if (rows.length !== value.length) throw new Error('medical_costs contains an invalid record');
   if (rows.length < 12) throw new Error('medical_costs requires at least 12 records');

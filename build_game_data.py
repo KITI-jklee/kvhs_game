@@ -53,6 +53,41 @@ def require_non_empty_string(value, field: str):
         raise SystemExit(f"medical_term_curation: {field}는 비어 있지 않은 문자열이어야 합니다")
 
 
+# build-medical-costs.cjs의 isReadableName과 같은 상한 - 큐레이션이 직접
+# 다듬은 이름은 그보다 훨씬 짧지만(현재 최대 33자), 지나치게 긴 이름이나
+# 규제 코드가 그대로 섞여 들어오는 실수만 막는 넉넉한 안전장치다.
+MAX_NAME_LENGTH = 45
+
+
+def require_reasonable_name(value, field: str):
+    require_non_empty_string(value, field)
+    if len(value) > MAX_NAME_LENGTH:
+        raise SystemExit(f"medical_term_curation: {field}는 {MAX_NAME_LENGTH}자를 넘을 수 없습니다: {value!r}")
+
+
+def assert_unique_ids(ids, label: str):
+    if len(ids) != len(set(ids)):
+        raise SystemExit(f"{label}에 중복 ID가 있습니다")
+
+
+def validate_base_costs(base_costs):
+    """medical_costs_base.json은 '불변 기준'이라 손으로 검토됐다고 가정하기 쉽지만,
+    실제로는 구조 검증이 전혀 없었다 - id 중복이나 cost 누락이 조용히 통과해
+    build_medical_data()에서야(그것도 KeyError/TypeError로) 터졌다."""
+    ids = []
+    for index, item in enumerate(base_costs):
+        if not isinstance(item, dict):
+            raise SystemExit(f"medical_costs_base[{index}]는 객체여야 합니다")
+        require_non_empty_string(item.get("id"), f"medical_costs_base[{index}].id")
+        require_non_empty_string(item.get("name"), f"medical_costs_base[{index}].name")
+        require_non_empty_string(item.get("category"), f"medical_costs_base[{index}].category")
+        cost = item.get("cost")
+        if isinstance(cost, bool) or not isinstance(cost, (int, float)) or not math.isfinite(cost) or cost <= 0:
+            raise SystemExit(f"medical_costs_base[{index}].cost는 0보다 큰 유한한 숫자여야 합니다")
+        ids.append(item["id"])
+    assert_unique_ids(ids, "medical_costs_base")
+
+
 def validate_term_curation(curation):
     required_fields = {"excluded_base_ids", "categories", "name_overrides", "additions"}
     if not isinstance(curation, dict) or set(curation) != required_fields:
@@ -74,14 +109,22 @@ def validate_term_curation(curation):
 
     for index, item_id in enumerate(excluded_ids):
         require_non_empty_string(item_id, f"excluded_base_ids[{index}]")
-    if len(excluded_ids) != len(set(excluded_ids)):
-        raise SystemExit("medical_term_curation: excluded_base_ids에 중복 ID가 있습니다")
+    assert_unique_ids(excluded_ids, "medical_term_curation: excluded_base_ids")
     for item_id, category in categories.items():
         require_non_empty_string(item_id, "categories의 ID")
         require_non_empty_string(category, f"categories[{item_id}]")
+    # 제외됐다가 나중에 categories에 다시 등록되고 excluded_base_ids에서
+    # 빼는 걸 잊으면, 그 항목은 여전히 조용히 빠진 채로 남는다 - 의도한
+    # 편집이 실제로는 아무 효과가 없었다는 걸 여기서 바로 알려준다.
+    overlap = set(excluded_ids) & set(categories)
+    if overlap:
+        raise SystemExit(
+            "medical_term_curation: excluded_base_ids와 categories에 동시에 등록된 ID가 있습니다: "
+            f"{sorted(overlap)}"
+        )
     for item_id, name in name_overrides.items():
         require_non_empty_string(item_id, "name_overrides의 ID")
-        require_non_empty_string(name, f"name_overrides[{item_id}]")
+        require_reasonable_name(name, f"name_overrides[{item_id}]")
 
     addition_fields = {"id", "item_name", "category", "cost"}
     addition_ids = []
@@ -91,16 +134,24 @@ def validate_term_curation(curation):
                 f"medical_term_curation: additions[{index}]는 "
                 f"{', '.join(sorted(addition_fields))} 필드만 가져야 합니다"
             )
-        for field in ("id", "item_name", "category"):
-            require_non_empty_string(addition[field], f"additions[{index}].{field}")
+        require_non_empty_string(addition["id"], f"additions[{index}].id")
+        require_reasonable_name(addition["item_name"], f"additions[{index}].item_name")
+        require_non_empty_string(addition["category"], f"additions[{index}].category")
+        # 카드 앞뒤(item_name/category)가 같은 텍스트면 정답 판정은 id로 되더라도
+        # 플레이어 눈엔 똑같은 카드 두 장으로만 보여 절대 못 맞춘다(실제로 이런
+        # 항목이 한 번 들어간 적이 있다 - term_extra_0020, "약물검사"/"약물검사").
+        if addition["item_name"].strip() == addition["category"].strip():
+            raise SystemExit(
+                f"medical_term_curation: additions[{index}]의 item_name과 category가 같습니다: "
+                f"{addition['item_name']!r}"
+            )
         if not addition["id"].startswith("term_extra_"):
             raise SystemExit(f"medical_term_curation: additions[{index}].id는 term_extra_로 시작해야 합니다")
         addition_ids.append(addition["id"])
         cost = addition["cost"]
         if isinstance(cost, bool) or not isinstance(cost, (int, float)) or not math.isfinite(cost) or cost <= 0:
             raise SystemExit(f"medical_term_curation: additions[{index}].cost는 0보다 큰 유한한 숫자여야 합니다")
-    if len(addition_ids) != len(set(addition_ids)):
-        raise SystemExit("medical_term_curation: additions에 중복 ID가 있습니다")
+    assert_unique_ids(addition_ids, "medical_term_curation: additions")
 
     return excluded_ids, categories, name_overrides, additions
 
@@ -197,6 +248,7 @@ def build_locations():
 # ---------------------------------------------------------------------------
 def build_medical_data():
     base_costs = load("medical_costs_base.json")
+    validate_base_costs(base_costs)
     curation = load("medical_term_curation.json")
     excluded_list, categories, name_overrides, additions = validate_term_curation(curation)
     excluded_ids = set(excluded_list)
@@ -217,10 +269,16 @@ def build_medical_data():
     if set(name_overrides) - set(categories):
         raise SystemExit("medical_term_curation: 제외되거나 알 수 없는 ID에 이름 변경이 있습니다")
 
+    # 게임②·③이 같은 항목을 서로 다른 분류 체계로 보여주면(코드리뷰에서
+    # 지적된 대로) 시간이 지날수록 어긋나기 쉽다 - 큐레이션이 이미 모든
+    # 항목에 세분화된 분류를 갖고 있으므로, medical_costs_base.json 자체의
+    # (10개 큰 버킷짜리) category는 여기서 버리고 categories[id]로 덮어써서
+    # 두 게임이 정확히 같은 분류를 쓰게 한다.
     shared_items = [
         {
             **item,
             "name": name_overrides.get(item["id"], item["name"]),
+            "category": categories[item["id"]],
         }
         for item in base_costs
         if item["id"] not in excluded_ids
@@ -237,21 +295,29 @@ def build_medical_data():
 
     # 게임②의 가격 슬라이더 범위 밖 항목은 게임②에서만 제외한다.
     medical_costs = [item for item in shared_items if 10_000 <= item["cost"] <= 1_200_000]
-    dump("medical_costs.json", medical_costs)
 
-    out = []
-    for item in shared_items:
-        addition = addition_by_cost_id.get(item["id"])
-        out.append({
+    # shared_items가 이미 통일된 category를 갖고 있으니(base는 위에서
+    # categories[id]로, addition은 자기 자신의 category로) 여기선 그대로
+    # 옮기기만 하면 된다 - addition 여부를 다시 따질 필요가 없다.
+    out = [
+        {
             "id": item["id"].replace("mc_", "term_", 1),
             "item_name": item["name"],
-            "category": addition["category"] if addition else categories[item["id"]],
+            "category": item["category"],
             "cost": item["cost"],
-        })
+        }
+        for item in shared_items
+    ]
 
-    ids = [item["id"] for item in out]
-    if len(ids) != len(set(ids)):
-        raise SystemExit("medical_term_curation: 중복 ID가 있습니다")
+    # 두 출력 다 검증을 통과해야만 둘 다 쓴다 - 하나만 깨진 상태로 배포되고
+    # 다른 하나는 옛날 내용으로 남는 상황을 막는다.
+    assert_unique_ids([item["id"] for item in medical_costs], "medical_costs")
+    assert_unique_ids([item["id"] for item in out], "medical_term_curation: medical_term_pairs")
+    degenerate = sorted(item["id"] for item in out if item["item_name"].strip() == item["category"].strip())
+    if degenerate:
+        raise SystemExit(f"medical_term_curation: item_name과 category가 같은 항목이 있습니다: {degenerate}")
+
+    dump("medical_costs.json", medical_costs)
     dump("medical_term_pairs.json", out)
     print(f"  distinct categories used: {len({item['category'] for item in out})}")
 
