@@ -11,7 +11,7 @@
   },
   {
     "id": "mc_0002",
-    "name": "관절계를 이용한 무릎관절인대검사",
+    "name": "무릎 인대 안정성 검사",
     "cost": 50000,
     "category": "검사",
     "minCost": 50000,
@@ -21,7 +21,7 @@
   },
   {
     "id": "mc_0003",
-    "name": "광범위 선천성대사이상검사-Y",
+    "name": "선천성 대사이상 정밀검사",
     "cost": 24000,
     "category": "검사",
     "minCost": 23950,
@@ -41,7 +41,7 @@
   },
   {
     "id": "mc_0005",
-    "name": "레이저 눈 계측검사(한쪽)",
+    "name": "눈 길이 계측검사(한쪽)",
     "cost": 50000,
     "category": "검사",
     "minCost": 50000,
@@ -51,7 +51,7 @@
   },
   {
     "id": "mc_0006",
-    "name": "레이저 눈 계측검사",
+    "name": "눈 길이 계측검사",
     "cost": 50000,
     "category": "검사",
     "minCost": 50000,
@@ -70,7 +70,7 @@
   },
   {
     "id": "mc_0008",
-    "name": "다중수면잠복기검사",
+    "name": "주간 졸림 수면검사",
     "cost": 523700,
     "category": "검사",
     "minCost": 523660,
@@ -109,7 +109,7 @@
   },
   {
     "id": "mc_0012",
-    "name": "동적 균형 검사",
+    "name": "움직임 균형감각 검사",
     "cost": 40000,
     "category": "검사",
     "minCost": 30000,
@@ -185,6 +185,16 @@
     "maxCost": 15000,
     "sampleCount": 1,
     "code": "FZ441"
+  },
+  {
+    "id": "mc_0021",
+    "name": "시청각자극발기측정",
+    "cost": 100000,
+    "category": "검사",
+    "minCost": 100000,
+    "maxCost": 100000,
+    "sampleCount": 1,
+    "code": "SZ02500"
   },
   {
     "id": "mc_0023",
@@ -732,7 +742,7 @@
   },
   {
     "id": "mc_0097",
-    "name": "입체적 유방절제생검술",
+    "name": "유방 3차원 절제생검",
     "cost": 1000000,
     "category": "검사",
     "minCost": 1000000,
@@ -901,7 +911,7 @@
   },
   {
     "id": "mc_0116",
-    "name": "땀 분비 자율신경 검사",
+    "name": "땀 분비 신경 검사",
     "cost": 100000,
     "category": "검사",
     "minCost": 100000,
@@ -911,7 +921,7 @@
   },
   {
     "id": "mc_0117",
-    "name": "정량적감각기능검사",
+    "name": "감각 기능 정밀검사",
     "cost": 30000,
     "category": "검사",
     "minCost": 30000,
@@ -1101,7 +1111,7 @@
   },
   {
     "id": "mc_0153",
-    "name": "캘리포니아 언어학습검사",
+    "name": "언어학습 기억력 검사",
     "cost": 30000,
     "category": "검사",
     "minCost": 30000,
@@ -1121,7 +1131,7 @@
   },
   {
     "id": "mc_0155",
-    "name": "침 분비·점도·산도 검사",
+    "name": "침 분비·산도 검사",
     "cost": 10000,
     "category": "검사",
     "minCost": 10000,
@@ -1141,7 +1151,7 @@
   },
   {
     "id": "mc_0157",
-    "name": "항뮬러관호르몬(AMH) 검사",
+    "name": "난소 예비력 호르몬 검사",
     "cost": 22300,
     "category": "검사",
     "minCost": 22266,
@@ -1150,13 +1160,23 @@
   },
   {
     "id": "mc_0158",
-    "name": "항뮬러관호르몬(AMH) 정밀검사",
+    "name": "난소 예비력 호르몬 정밀검사",
     "cost": 56400,
     "category": "검사",
     "minCost": 56430,
     "maxCost": 56430,
     "sampleCount": 1,
     "code": "56430"
+  },
+  {
+    "id": "mc_0159",
+    "name": "후각 기능 검사(인지·역치)",
+    "cost": 20000,
+    "category": "검사",
+    "minCost": 20000,
+    "maxCost": 20000,
+    "sampleCount": 1,
+    "code": "SZ09700"
   },
   {
     "id": "mc_0160",
@@ -1325,7 +1345,7 @@
   },
   {
     "id": "mc_0183",
-    "name": "기본 체외조사(2.5~5.0Gy 미만·1회당)",
+    "name": "방사선 치료(중간 강도)",
     "cost": 76800,
     "category": "영상진단",
     "minCost": 76824,
@@ -1335,7 +1355,7 @@
   },
   {
     "id": "mc_0184",
-    "name": "기본 체외조사(2.5Gy 미만·1회당)",
+    "name": "방사선 치료(낮은 강도)",
     "cost": 59100,
     "category": "영상진단",
     "minCost": 59092,
@@ -1345,7 +1365,7 @@
   },
   {
     "id": "mc_0185",
-    "name": "기본 체외조사(5.0Gy 이상·1회당)",
+    "name": "방사선 치료(높은 강도)",
     "cost": 94500,
     "category": "영상진단",
     "minCost": 94545,
@@ -1393,7 +1413,7 @@
   },
   {
     "id": "mc_0190",
-    "name": "안구 광학단층촬영",
+    "name": "눈 정밀 단층촬영",
     "cost": 50000,
     "category": "영상진단",
     "minCost": 50000,
@@ -1819,7 +1839,7 @@
   },
   {
     "id": "mc_0272",
-    "name": "반복적 경두개 자기자극술",
+    "name": "반복 뇌 자기자극 치료",
     "cost": 60000,
     "category": "처치·수술",
     "minCost": 60000,
@@ -1829,7 +1849,7 @@
   },
   {
     "id": "mc_0273",
-    "name": "척추 신경 주변 유착 완화 시술",
+    "name": "척추 척추 신경 통증 시술",
     "cost": 500000,
     "category": "처치·수술",
     "minCost": 500000,
@@ -1838,7 +1858,7 @@
   },
   {
     "id": "mc_0274",
-    "name": "풍선확장 척추 신경 주변 유착 완화 시술",
+    "name": "풍선 척추 척추 신경 통증 시술",
     "cost": 500000,
     "category": "처치·수술",
     "minCost": 300000,
@@ -1918,7 +1938,7 @@
   },
   {
     "id": "mc_0283",
-    "name": "난관 결찰술(양측)",
+    "name": "나팔관 피임 수술(양쪽)",
     "cost": 300000,
     "category": "처치·수술",
     "minCost": 300000,
@@ -2017,7 +2037,7 @@
   },
   {
     "id": "mc_0294",
-    "name": "산부인과 충수절제술",
+    "name": "맹장 수술(산부인과)",
     "cost": 100000,
     "category": "처치·수술",
     "minCost": 100000,
@@ -2026,7 +2046,7 @@
   },
   {
     "id": "mc_0295",
-    "name": "색소 레이저(소)",
+    "name": "색소 레이저 치료(소)",
     "cost": 10000,
     "category": "처치·수술",
     "minCost": 10000,
@@ -2252,7 +2272,7 @@
   },
   {
     "id": "mc_0332",
-    "name": "충수절제술",
+    "name": "맹장 수술",
     "cost": 100000,
     "category": "처치·수술",
     "minCost": 100000,
@@ -2319,7 +2339,7 @@
   },
   {
     "id": "mc_0345",
-    "name": "하지정맥류 고주파 정맥내막 폐쇄술",
+    "name": "하지정맥류 고주파 치료",
     "cost": 800000,
     "category": "처치·수술",
     "minCost": 800000,
@@ -3253,8 +3273,17 @@
     "code": "U0239-U0241"
   },
   {
+    "id": "mc_0487",
+    "name": "치아교정 월 관리비",
+    "cost": 60000,
+    "category": "치과",
+    "minCost": 60000,
+    "maxCost": 60000,
+    "sampleCount": 2
+  },
+  {
     "id": "mc_0488",
-    "name": "교합안정장치 관리",
+    "name": "턱관절·이갈이 장치 관리",
     "cost": 30000,
     "category": "치과",
     "minCost": 30000,
@@ -3263,7 +3292,7 @@
   },
   {
     "id": "mc_0489",
-    "name": "턱관절 교합안정장치(단순)",
+    "name": "이갈이·턱관절 장치(단순)",
     "cost": 300000,
     "category": "치과",
     "minCost": 300000,
@@ -3272,7 +3301,7 @@
   },
   {
     "id": "mc_0490",
-    "name": "턱관절 교합안정장치(복잡)",
+    "name": "이갈이·턱관절 장치(복잡)",
     "cost": 600000,
     "category": "치과",
     "minCost": 600000,
@@ -3315,6 +3344,15 @@
     "minCost": 60000,
     "maxCost": 60000,
     "sampleCount": 2
+  },
+  {
+    "id": "mc_0497",
+    "name": "나선형 고정",
+    "cost": 70000,
+    "category": "치과",
+    "minCost": 70000,
+    "maxCost": 70000,
+    "sampleCount": 4
   },
   {
     "id": "mc_0498",
@@ -3546,7 +3584,7 @@
   },
   {
     "id": "mc_0525",
-    "name": "비변형 교정술(대)",
+    "name": "비수술 교정술(대)",
     "cost": 500000,
     "category": "치과",
     "minCost": 500000,
@@ -3556,7 +3594,7 @@
   },
   {
     "id": "mc_0526",
-    "name": "비변형 교정술(소)",
+    "name": "비수술 교정술(소)",
     "cost": 200000,
     "category": "치과",
     "minCost": 200000,
@@ -3566,7 +3604,7 @@
   },
   {
     "id": "mc_0527",
-    "name": "비변형 교정술(중)",
+    "name": "비수술 교정술(중)",
     "cost": 300000,
     "category": "치과",
     "minCost": 300000,
@@ -3612,7 +3650,7 @@
   },
   {
     "id": "mc_0532",
-    "name": "안면 체형",
+    "name": "안면 형태 분석",
     "cost": 200000,
     "category": "치과",
     "minCost": 200000,
@@ -3646,6 +3684,15 @@
     "minCost": 10000,
     "maxCost": 10000,
     "sampleCount": 1
+  },
+  {
+    "id": "mc_0536",
+    "name": "유구치 크라운",
+    "cost": 150000,
+    "category": "치과",
+    "minCost": 150000,
+    "maxCost": 150000,
+    "sampleCount": 3
   },
   {
     "id": "mc_0539",
@@ -3717,6 +3764,15 @@
     "category": "치과",
     "minCost": 200000,
     "maxCost": 200000,
+    "sampleCount": 1
+  },
+  {
+    "id": "mc_0548",
+    "name": "임플란트 코핑 스크류 교체(재료비)",
+    "cost": 30000,
+    "category": "치과",
+    "minCost": 30000,
+    "maxCost": 30000,
     "sampleCount": 1
   },
   {
@@ -4025,7 +4081,7 @@
   },
   {
     "id": "mc_0586",
-    "name": "치아 매식 진단료(단순)",
+    "name": "치아 이식 진단료(단순)",
     "cost": 50000,
     "category": "치과",
     "minCost": 50000,
@@ -4034,7 +4090,7 @@
   },
   {
     "id": "mc_0587",
-    "name": "치아 매식 진단료(복잡)",
+    "name": "치아 이식 진단료(복잡)",
     "cost": 100000,
     "category": "치과",
     "minCost": 100000,
@@ -4378,7 +4434,7 @@
   },
   {
     "id": "mc_0630",
-    "name": "치과 자가 혈소판 풍부혈장(PRP) 치료",
+    "name": "PRP 치료",
     "cost": 100000,
     "category": "치과",
     "minCost": 100000,
@@ -4395,6 +4451,15 @@
     "sampleCount": 2
   },
   {
+    "id": "mc_0632",
+    "name": "자율훈련 치료",
+    "cost": 30000,
+    "category": "한방",
+    "minCost": 30000,
+    "maxCost": 30000,
+    "sampleCount": 2
+  },
+  {
     "id": "mc_0633",
     "name": "간 MRI",
     "cost": 470000,
@@ -4405,7 +4470,7 @@
   },
   {
     "id": "mc_0635",
-    "name": "견관절 MRI",
+    "name": "어깨관절 MRI",
     "cost": 470000,
     "category": "MRI",
     "minCost": 430000,
@@ -4414,7 +4479,7 @@
   },
   {
     "id": "mc_0637",
-    "name": "경부 MRI",
+    "name": "목 MRI",
     "cost": 470000,
     "category": "MRI",
     "minCost": 426300,
@@ -4423,7 +4488,7 @@
   },
   {
     "id": "mc_0639",
-    "name": "경부혈관 MRI",
+    "name": "목 혈관 MRI",
     "cost": 428300,
     "category": "MRI",
     "minCost": 404380,
@@ -4432,7 +4497,7 @@
   },
   {
     "id": "mc_0641",
-    "name": "경추 MRI",
+    "name": "목뼈 MRI",
     "cost": 470000,
     "category": "MRI",
     "minCost": 430000,
@@ -4441,7 +4506,7 @@
   },
   {
     "id": "mc_0643",
-    "name": "고관절 MRI",
+    "name": "엉덩관절 MRI",
     "cost": 470000,
     "category": "MRI",
     "minCost": 430000,
@@ -4459,7 +4524,7 @@
   },
   {
     "id": "mc_0647",
-    "name": "관류 MRI(3차원 포함)",
+    "name": "관류 MRI(3D 포함)",
     "cost": 344200,
     "category": "MRI",
     "minCost": 331120,
@@ -4468,7 +4533,7 @@
   },
   {
     "id": "mc_0648",
-    "name": "관류 MRI(3차원 포함·기본검사 동시)",
+    "name": "관류 MRI(3D·기본검사 포함)",
     "cost": 190500,
     "category": "MRI",
     "minCost": 179740,
@@ -4477,7 +4542,7 @@
   },
   {
     "id": "mc_0649",
-    "name": "관절외 상지 MRI",
+    "name": "팔(관절 외) MRI",
     "cost": 470000,
     "category": "MRI",
     "minCost": 430000,
@@ -4486,7 +4551,7 @@
   },
   {
     "id": "mc_0651",
-    "name": "관절외 하지 MRI",
+    "name": "다리(관절 외) MRI",
     "cost": 470000,
     "category": "MRI",
     "minCost": 430000,
@@ -4495,7 +4560,7 @@
   },
   {
     "id": "mc_0653",
-    "name": "기능적 MRI(3차원 포함)",
+    "name": "기능 MRI(3D 포함)",
     "cost": 590100,
     "category": "MRI",
     "minCost": 564740,
@@ -4522,7 +4587,7 @@
   },
   {
     "id": "mc_0659",
-    "name": "담췌관 MRI",
+    "name": "담관·췌관 MRI",
     "cost": 470000,
     "category": "MRI",
     "minCost": 430000,
@@ -4559,7 +4624,7 @@
   },
   {
     "id": "mc_0670",
-    "name": "복부혈관 MRI",
+    "name": "복부 혈관 MRI",
     "cost": 400000,
     "category": "MRI",
     "minCost": 400000,
@@ -4568,7 +4633,7 @@
   },
   {
     "id": "mc_0672",
-    "name": "부비동 MRI",
+    "name": "코 주변 부비동 MRI",
     "cost": 448200,
     "category": "MRI",
     "minCost": 426300,
@@ -4577,7 +4642,7 @@
   },
   {
     "id": "mc_0674",
-    "name": "분광영상 MRI",
+    "name": "분광 MRI",
     "cost": 227300,
     "category": "MRI",
     "minCost": 218980,
@@ -4586,7 +4651,7 @@
   },
   {
     "id": "mc_0675",
-    "name": "분광영상 MRI(기본검사 동시)",
+    "name": "분광 MRI(기본검사 포함)",
     "cost": 131300,
     "category": "MRI",
     "minCost": 100000,
@@ -4595,7 +4660,7 @@
   },
   {
     "id": "mc_0676",
-    "name": "사지혈관 MRI",
+    "name": "팔다리 혈관 MRI",
     "cost": 400000,
     "category": "MRI",
     "minCost": 400000,
@@ -4604,7 +4669,7 @@
   },
   {
     "id": "mc_0678",
-    "name": "수관절 MRI",
+    "name": "손목관절 MRI",
     "cost": 470000,
     "category": "MRI",
     "minCost": 430000,
@@ -4613,7 +4678,7 @@
   },
   {
     "id": "mc_0682",
-    "name": "신장 및 부신 MRI",
+    "name": "신장·부신 MRI",
     "cost": 470000,
     "category": "MRI",
     "minCost": 430000,
@@ -4631,7 +4696,7 @@
   },
   {
     "id": "mc_0686",
-    "name": "심혈관 MRI",
+    "name": "심장 혈관 MRI",
     "cost": 400000,
     "category": "MRI",
     "minCost": 400000,
@@ -4640,7 +4705,7 @@
   },
   {
     "id": "mc_0688",
-    "name": "심혈관 MRI(3차원)",
+    "name": "심장 혈관 MRI(3D)",
     "cost": 400000,
     "category": "MRI",
     "minCost": 400000,
@@ -4650,7 +4715,7 @@
   },
   {
     "id": "mc_0689",
-    "name": "안면 MRI",
+    "name": "얼굴 MRI",
     "cost": 470000,
     "category": "MRI",
     "minCost": 426300,
@@ -4659,7 +4724,7 @@
   },
   {
     "id": "mc_0691",
-    "name": "안와 MRI",
+    "name": "눈 주위 MRI",
     "cost": 448200,
     "category": "MRI",
     "minCost": 426300,
@@ -4668,7 +4733,7 @@
   },
   {
     "id": "mc_0693",
-    "name": "영화 MRI(3차원 포함)",
+    "name": "동적 MRI(3D 포함)",
     "cost": 514300,
     "category": "MRI",
     "minCost": 492880,
@@ -4677,7 +4742,7 @@
   },
   {
     "id": "mc_0694",
-    "name": "외부필름 판독 MRI",
+    "name": "외부 MRI 판독",
     "cost": 50000,
     "category": "MRI",
     "minCost": 50000,
@@ -4686,7 +4751,7 @@
   },
   {
     "id": "mc_0695",
-    "name": "요천추 MRI",
+    "name": "허리·엉치 MRI",
     "cost": 470000,
     "category": "MRI",
     "minCost": 430000,
@@ -4695,7 +4760,7 @@
   },
   {
     "id": "mc_0697",
-    "name": "요천추·흉추 MRI(동시 촬영)",
+    "name": "허리·엉치·등뼈 MRI(동시 촬영)",
     "cost": 225000,
     "category": "MRI",
     "minCost": 215000,
@@ -4723,7 +4788,7 @@
   },
   {
     "id": "mc_0705",
-    "name": "주관절 MRI",
+    "name": "팔꿈치관절 MRI",
     "cost": 470000,
     "category": "MRI",
     "minCost": 430000,
@@ -4732,7 +4797,7 @@
   },
   {
     "id": "mc_0707",
-    "name": "척추강 MRI",
+    "name": "척추관 MRI",
     "cost": 470000,
     "category": "MRI",
     "minCost": 450000,
@@ -4741,7 +4806,7 @@
   },
   {
     "id": "mc_0710",
-    "name": "척추강 MRI(경추·흉추·요천추 동시 촬영)",
+    "name": "척추관 MRI(목·등·허리 동시)",
     "cost": 460000,
     "category": "MRI",
     "minCost": 450000,
@@ -4751,7 +4816,7 @@
   },
   {
     "id": "mc_0711",
-    "name": "천장골관절 MRI",
+    "name": "천장관절 MRI",
     "cost": 470000,
     "category": "MRI",
     "minCost": 430000,
@@ -4769,7 +4834,7 @@
   },
   {
     "id": "mc_0715",
-    "name": "측두골 MRI",
+    "name": "관자뼈 MRI",
     "cost": 470000,
     "category": "MRI",
     "minCost": 426300,
@@ -4778,7 +4843,7 @@
   },
   {
     "id": "mc_0717",
-    "name": "측두하악관절 MRI",
+    "name": "턱관절 MRI",
     "cost": 470000,
     "category": "MRI",
     "minCost": 426300,
@@ -4787,7 +4852,7 @@
   },
   {
     "id": "mc_0719",
-    "name": "확산 MRI(기본검사 동시)",
+    "name": "확산 MRI(기본검사 포함)",
     "cost": 121600,
     "category": "MRI",
     "minCost": 116750,
@@ -4796,7 +4861,7 @@
   },
   {
     "id": "mc_0720",
-    "name": "흉부 MRI",
+    "name": "가슴 MRI",
     "cost": 470000,
     "category": "MRI",
     "minCost": 430000,
@@ -4805,7 +4870,7 @@
   },
   {
     "id": "mc_0722",
-    "name": "흉부혈관 MRI",
+    "name": "가슴 혈관 MRI",
     "cost": 470000,
     "category": "MRI",
     "minCost": 430000,
@@ -4814,7 +4879,7 @@
   },
   {
     "id": "mc_0724",
-    "name": "흉추 MRI",
+    "name": "등뼈 MRI",
     "cost": 470000,
     "category": "MRI",
     "minCost": 430000,
@@ -4823,7 +4888,7 @@
   },
   {
     "id": "mc_0726",
-    "name": "경부혈관 MRI(일반 촬영·판독)",
+    "name": "목 혈관 MRI(일반)",
     "cost": 411800,
     "category": "MRI",
     "minCost": 411750,
@@ -4833,7 +4898,7 @@
   },
   {
     "id": "mc_0727",
-    "name": "경부혈관 MRI(조영제 전·후 촬영·판독)",
+    "name": "목 혈관 MRI(조영 전후)",
     "cost": 545800,
     "category": "MRI",
     "minCost": 545800,
@@ -4843,7 +4908,7 @@
   },
   {
     "id": "mc_0729",
-    "name": "경추 MRI(제한적)",
+    "name": "목뼈 MRI(제한적)",
     "cost": 198200,
     "category": "MRI",
     "minCost": 198220,
@@ -4853,7 +4918,7 @@
   },
   {
     "id": "mc_0731",
-    "name": "경추 MRI(조영제 포함)",
+    "name": "목뼈 MRI(조영제 포함)",
     "cost": 486400,
     "category": "MRI",
     "minCost": 486350,
@@ -4882,7 +4947,7 @@
   },
   {
     "id": "mc_0738",
-    "name": "부비동 MRI(PNS·촬영·판독·조영제 사용)",
+    "name": "코 주변 부비동 MRI(조영제 포함)",
     "cost": 555400,
     "category": "MRI",
     "minCost": 544210,
@@ -4891,7 +4956,7 @@
   },
   {
     "id": "mc_0740",
-    "name": "요천추 MRI(제한적)",
+    "name": "허리·엉치 MRI(제한적)",
     "cost": 198200,
     "category": "MRI",
     "minCost": 198220,
@@ -4901,7 +4966,7 @@
   },
   {
     "id": "mc_0742",
-    "name": "요천추 MRI(조영제 포함)",
+    "name": "허리·엉치 MRI(조영제 포함)",
     "cost": 486400,
     "category": "MRI",
     "minCost": 486350,
@@ -4911,7 +4976,7 @@
   },
   {
     "id": "mc_0745",
-    "name": "흉추 MRI(제한적)",
+    "name": "등뼈 MRI(제한적)",
     "cost": 198200,
     "category": "MRI",
     "minCost": 198220,
@@ -4921,7 +4986,7 @@
   },
   {
     "id": "mc_0747",
-    "name": "흉추 MRI(조영제 포함)",
+    "name": "등뼈 MRI(조영제 포함)",
     "cost": 486400,
     "category": "MRI",
     "minCost": 486350,
@@ -4931,7 +4996,7 @@
   },
   {
     "id": "mc_0748",
-    "name": "흉추·요천추 MRI(동시 촬영·조영제 사용)",
+    "name": "등뼈·허리·엉치 MRI(동시 촬영·조영제 포함)",
     "cost": 707400,
     "category": "MRI",
     "minCost": 707410,
@@ -4941,7 +5006,7 @@
   },
   {
     "id": "mc_0749",
-    "name": "경부혈관 MRI(촬영·판독)",
+    "name": "목 혈관 MRI(촬영)",
     "cost": 330900,
     "category": "MRI",
     "minCost": 330860,
@@ -5055,132 +5120,6 @@
     "category": "예방접종·주사",
     "minCost": 29000,
     "maxCost": 29000,
-    "sampleCount": 1
-  },
-  {
-    "id": "mc_extra_0001",
-    "name": "수면다원검사",
-    "cost": 671400,
-    "category": "기능검사",
-    "minCost": 671400,
-    "maxCost": 671400,
-    "sampleCount": 1
-  },
-  {
-    "id": "mc_extra_0002",
-    "name": "당뇨병 교육·상담",
-    "cost": 20000,
-    "category": "교육·상담",
-    "minCost": 20000,
-    "maxCost": 20000,
-    "sampleCount": 1
-  },
-  {
-    "id": "mc_extra_0003",
-    "name": "만성신부전 환자교육",
-    "cost": 100000,
-    "category": "교육·상담",
-    "minCost": 100000,
-    "maxCost": 100000,
-    "sampleCount": 1
-  },
-  {
-    "id": "mc_extra_0004",
-    "name": "보행 보조벨트",
-    "cost": 80000,
-    "category": "보조기류",
-    "minCost": 80000,
-    "maxCost": 80000,
-    "sampleCount": 1
-  },
-  {
-    "id": "mc_extra_0005",
-    "name": "골반 보조기",
-    "cost": 95000,
-    "category": "보조기류",
-    "minCost": 95000,
-    "maxCost": 95000,
-    "sampleCount": 1
-  },
-  {
-    "id": "mc_extra_0006",
-    "name": "고관절 외전 보조기",
-    "cost": 302000,
-    "category": "보조기류",
-    "minCost": 302000,
-    "maxCost": 302000,
-    "sampleCount": 1
-  },
-  {
-    "id": "mc_extra_0007",
-    "name": "발목관절 보조기(경성)",
-    "cost": 47000,
-    "category": "보조기류",
-    "minCost": 47000,
-    "maxCost": 47000,
-    "sampleCount": 1
-  },
-  {
-    "id": "mc_extra_0008",
-    "name": "손가락관절 보조기(고정형)",
-    "cost": 97000,
-    "category": "보조기류",
-    "minCost": 97000,
-    "maxCost": 97000,
-    "sampleCount": 1
-  },
-  {
-    "id": "mc_extra_0009",
-    "name": "어깨 외전 보조기(암슬링)",
-    "cost": 29000,
-    "category": "보조기류",
-    "minCost": 29000,
-    "maxCost": 29000,
-    "sampleCount": 1
-  },
-  {
-    "id": "mc_extra_0010",
-    "name": "목뼈 보조기(필라델피아형)",
-    "cost": 26000,
-    "category": "보조기류",
-    "minCost": 26000,
-    "maxCost": 26000,
-    "sampleCount": 1
-  },
-  {
-    "id": "mc_extra_0011",
-    "name": "척추 보조기(보스톤형)",
-    "cost": 444000,
-    "category": "보조기류",
-    "minCost": 444000,
-    "maxCost": 444000,
-    "sampleCount": 1
-  },
-  {
-    "id": "mc_extra_0012",
-    "name": "한국판 성격평가척도",
-    "cost": 30000,
-    "category": "신경계기능검사",
-    "minCost": 30000,
-    "maxCost": 30000,
-    "sampleCount": 1
-  },
-  {
-    "id": "mc_extra_0023",
-    "name": "표준 아래팔 의지",
-    "cost": 729000,
-    "category": "보조기류",
-    "minCost": 729000,
-    "maxCost": 729000,
-    "sampleCount": 1
-  },
-  {
-    "id": "mc_extra_0024",
-    "name": "귀걸이형 보청기(보급형)",
-    "cost": 440000,
-    "category": "보조기류",
-    "minCost": 440000,
-    "maxCost": 440000,
     "sampleCount": 1
   }
 ]

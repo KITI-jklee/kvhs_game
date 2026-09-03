@@ -13,7 +13,15 @@ describe('배포용 정적 게임 데이터', () => {
   });
 
   it('의료비 JSON이 런타임 계약을 만족한다', () => {
-    expect(validateMedicalCosts(readPublicJson('medical_costs.json')).length).toBeGreaterThanOrEqual(12);
+    const costs = validateMedicalCosts(readPublicJson('medical_costs.json'));
+    const pairs = validateTermPairs(readPublicJson('medical_term_pairs.json'));
+    expect(costs.length).toBeGreaterThanOrEqual(12);
+    expect(costs.every((item) => item.cost >= 10_000 && item.cost <= 1_200_000)).toBe(true);
+    expect(costs.map(({ id, name, cost }) => ({
+      id: id.replace(/^mc_/, 'term_'), item_name: name, cost,
+    }))).toEqual(pairs.filter((pair) => pair.cost >= 10_000 && pair.cost <= 1_200_000)
+      .map(({ id, item_name, cost }) => ({ id, item_name, cost })));
+    expect(costs.filter((item) => item.id.startsWith('mc_extra_'))).toHaveLength(14);
   });
 
   it('용어 짝 JSON이 런타임 계약을 만족한다', () => {
@@ -60,8 +68,10 @@ describe('배포용 정적 게임 데이터', () => {
       item_name: '입체적 유방절제생검술',
       category: '검사',
     });
-    expect(pairs.find((pair) => pair.id === 'term_0210')?.item_name).toBe('디티에이피 백신주');
-    expect(pairs.find((pair) => pair.id === 'term_0246')?.item_name).toBe('펜탁심주');
+    expect(pairs.find((pair) => pair.id === 'term_0210')?.item_name)
+      .toBe('디프테리아·파상풍·백일해 예방접종');
+    expect(pairs.find((pair) => pair.id === 'term_0246')?.item_name)
+      .toBe('디프테리아·파상풍·백일해·소아마비·뇌수막염 예방접종(펜탁심)');
     expect(pairs.find((pair) => pair.id === 'term_0283')?.item_name).toBe('난관 결찰술(양측)');
     expect(pairs.find((pair) => pair.id === 'term_0332')?.item_name).toBe('충수절제술');
     const reviewedNames = new Map([

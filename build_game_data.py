@@ -9,20 +9,20 @@ data/ 아래의 원본 공공데이터를 게임용 정적 JSON으로 변환한�
 입력 (data/):
   - witak2_보훈병원_위탁병원정보_위경도포함.json (게임①: 위치)
   - witak3_보훈병원_위탁병원정보_도서지역포함.json (게임①: 공식 도서·벽지 여부, pid로 join)
+  - medical_costs_base.json (게임②·③: 수작업 검토를 마친 불변 기준 항목)
+  - medical_term_curation.json (게임②·③: 이름·분류·제외·추가 결정)
 
 출력 (app/public/data/):
   - hospital_locations.json   { id, name, addr_hint, latitude, longitude, is_remote_area, region_note? }[]
+  - medical_costs.json        { id, name, category, cost, ... }[]
   - medical_term_pairs.json   { id, item_name, category, cost }[]
 
 원천 데이터가 갱신되면 이 스크립트를 재실행해 출력을 교체한다
 (런타임 자동 동기화 없음 — FR-DT-07).
 
-게임②(medical_costs.json)는 이 스크립트가 만들지 않는다 - `node
-app/scripts/build-medical-costs.cjs`가 원본 suga 수가정보에서 1차 후보
-풀을 뽑고, 그 위에 사람이 직접 검토한 큐레이션이 더해진 결과물이라
-자동 재생성이 안 된다(docs/medical_costs_curation_guide.md 참고).
-게임③은 medical_costs.json에 data/medical_term_curation.json의 항목별
-이름·분류·제외·추가 결정을 적용해 같은 결과를 재생성한다.
+불변 기준 파일에 큐레이션의 이름·제외·추가 결정을 적용해 두 게임이 같은
+이름·가격을 사용하게 한다. 단, 게임②는 슬라이더 범위인 1만~120만원 밖의
+항목을 제외한다. 게임③의 카드 분류도 큐레이션 파일에서 항목별로 관리한다.
 
 """
 
@@ -84,6 +84,7 @@ def validate_term_curation(curation):
         require_non_empty_string(name, f"name_overrides[{item_id}]")
 
     addition_fields = {"id", "item_name", "category", "cost"}
+    addition_ids = []
     for index, addition in enumerate(additions):
         if not isinstance(addition, dict) or set(addition) != addition_fields:
             raise SystemExit(
@@ -92,9 +93,14 @@ def validate_term_curation(curation):
             )
         for field in ("id", "item_name", "category"):
             require_non_empty_string(addition[field], f"additions[{index}].{field}")
+        if not addition["id"].startswith("term_extra_"):
+            raise SystemExit(f"medical_term_curation: additions[{index}].id는 term_extra_로 시작해야 합니다")
+        addition_ids.append(addition["id"])
         cost = addition["cost"]
-        if isinstance(cost, bool) or not isinstance(cost, (int, float)) or not math.isfinite(cost) or cost < 0:
-            raise SystemExit(f"medical_term_curation: additions[{index}].cost는 0 이상의 유한한 숫자여야 합니다")
+        if isinstance(cost, bool) or not isinstance(cost, (int, float)) or not math.isfinite(cost) or cost <= 0:
+            raise SystemExit(f"medical_term_curation: additions[{index}].cost는 0보다 큰 유한한 숫자여야 합니다")
+    if len(addition_ids) != len(set(addition_ids)):
+        raise SystemExit("medical_term_curation: additions에 중복 ID가 있습니다")
 
     return excluded_ids, categories, name_overrides, additions
 
@@ -186,39 +192,62 @@ def build_locations():
 
 
 # ---------------------------------------------------------------------------
-# 게임③ : medical_term_pairs.json
-# 기준 데이터 medical_costs.json에 수작업 검토 결과인 medical_term_curation.json을
-# 적용한다. 분류·이름 변경·제외·추가 항목을 한 파일에서 재현할 수 있다.
+# 게임②·③ 공통 의료 항목
+# 불변 기준에 큐레이션을 적용해 두 출력 파일을 새로 만든다.
 # ---------------------------------------------------------------------------
-def build_term_pairs():
-    costs = json.loads((OUT_DIR / "medical_costs.json").read_text(encoding="utf-8"))
+def build_medical_data():
+    base_costs = load("medical_costs_base.json")
     curation = load("medical_term_curation.json")
     excluded_list, categories, name_overrides, additions = validate_term_curation(curation)
     excluded_ids = set(excluded_list)
 
-    cost_ids = {item["id"] for item in costs}
+    cost_ids = {item["id"] for item in base_costs}
+    addition_by_cost_id = {
+        addition["id"].replace("term_", "mc_", 1): addition
+        for addition in additions
+    }
     configured_ids = excluded_ids | set(categories)
-    if configured_ids != cost_ids:
-        missing = sorted(cost_ids - configured_ids)
-        unknown = sorted(configured_ids - cost_ids)
+    missing = sorted(cost_ids - configured_ids)
+    unknown = sorted(configured_ids - cost_ids)
+    if missing or unknown:
         raise SystemExit(
             "medical_term_curation: medical_costs ID 불일치"
-            f" (미설정={missing[:10]}, 알 수 없음={unknown[:10]})"
+            f" (누락={missing[:10]}, 알 수 없음={unknown[:10]})"
         )
     if set(name_overrides) - set(categories):
         raise SystemExit("medical_term_curation: 제외되거나 알 수 없는 ID에 이름 변경이 있습니다")
 
-    out = [
+    shared_items = [
         {
-            "id": item["id"].replace("mc_", "term_"),
-            "item_name": name_overrides.get(item["id"], item["name"]),
-            "category": categories[item["id"]],
-            "cost": item["cost"],
+            **item,
+            "name": name_overrides.get(item["id"], item["name"]),
         }
-        for item in costs
+        for item in base_costs
         if item["id"] not in excluded_ids
     ]
-    out.extend(additions)
+    shared_items.extend({
+        "id": cost_id,
+        "name": addition["item_name"],
+        "cost": addition["cost"],
+        "category": addition["category"],
+        "minCost": addition["cost"],
+        "maxCost": addition["cost"],
+        "sampleCount": 1,
+    } for cost_id, addition in addition_by_cost_id.items())
+
+    # 게임②의 가격 슬라이더 범위 밖 항목은 게임②에서만 제외한다.
+    medical_costs = [item for item in shared_items if 10_000 <= item["cost"] <= 1_200_000]
+    dump("medical_costs.json", medical_costs)
+
+    out = []
+    for item in shared_items:
+        addition = addition_by_cost_id.get(item["id"])
+        out.append({
+            "id": item["id"].replace("mc_", "term_", 1),
+            "item_name": item["name"],
+            "category": addition["category"] if addition else categories[item["id"]],
+            "cost": item["cost"],
+        })
 
     ids = [item["id"] for item in out]
     if len(ids) != len(set(ids)):
@@ -229,5 +258,5 @@ def build_term_pairs():
 
 if __name__ == "__main__":
     build_locations()
-    build_term_pairs()
+    build_medical_data()
     print("done.")
