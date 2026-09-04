@@ -134,7 +134,22 @@ export function MedicalCostGame() {
   const pool = useMemo(() => data?.medicalCosts ?? [], [data]);
   // pool은 데이터 로드 완료 후 참조가 고정되므로, 매 렌더마다 새로 뽑히지
   // 않는다(로드 1회 -> 라운드 1회 확정).
-  const rounds = useMemo<RoundSpec[] | null>(() => (pool.length ? buildRounds(pool) : null), [pool]);
+  // buildRounds(정확히는 buildFallbackBudgetRound)는 예산 챌린지용 5개 표본을
+  // 도저히 1개/2개로 못 가르는 극단적인 가격 분포에서 예외를 던진다 - 실제
+  // 데이터로는 사실상 안 일어나지만, 이 앱엔 ErrorBoundary가 없어서
+  // (코드리뷰로 발견) 여기서 안 잡으면 화면이 그냥 하얗게 크래시된다.
+  const rounds = useMemo<RoundSpec[] | null>(() => {
+    if (!pool.length) return null;
+    try {
+      return buildRounds(pool);
+    } catch (error) {
+      console.error('의료비 게임 라운드 생성에 실패했습니다.', error);
+      return null;
+    }
+  }, [pool]);
+  // rounds가 null인데 pool은 이미 있다 - 즉 로딩 중이 아니라 위 buildRounds가
+  // 실패한 것이다.
+  const roundsFailed = pool.length > 0 && rounds === null;
 
   const [roundIndex, setRoundIndex] = useState(0);
   const [score, setScore] = useState(0);
@@ -170,6 +185,15 @@ export function MedicalCostGame() {
     if (points === 100) setHitCount((c) => c + 1);
     setReveal({ points, verdictLabel, tone, detail });
     setRecords((r) => [...r, { label: recordLabel, points }]);
+    // handleReorderPointerMove의 disabled 체크가 순서가 더 바뀌는 건 막아도,
+    // 드래그하던 행 자체의 위치(dragIndex/dragY)와 캡처 상태(dragRef)는
+    // 그대로 남는다 - 만약 pointerup/cancel이 끝내 안 오면(코드리뷰로 발견,
+    // handleReorderPointerMove 주석 참고) 재개 후에도 그 행이 계속 붕 뜬
+    // 채로 보일 수 있다. revealed가 되는 시점(=어떤 라운드든 채점 확정)에
+    // 무조건 드래그 상태를 정리한다.
+    dragRef.current = null;
+    setDragIndex(null);
+    setDragY(0);
   };
 
   const adjustSliderPrice = (amount: number) => {
@@ -251,7 +275,12 @@ export function MedicalCostGame() {
 
   const handleReorderPointerMove = (itemCount: number) => (e: ReactPointerEvent<HTMLDivElement>) => {
     const state = dragRef.current;
-    if (!state) return;
+    // useHoldStep과 같은 이유 - 드래그 도중 멀티터치로 다른 손가락이
+    // 일시정지/공개를 눌러도 이 행엔 pointerup/leave/cancel이 안 올 수 있다
+    // (터치는 최초 타깃에 암묵적으로 캡처됨). 여기서 disabled를 안 보면,
+    // 화면엔 일시정지 오버레이가 떠 있는데도 순서가 계속 바뀌었다(코드리뷰로
+    // 발견). pointerup이 오면 어차피 dragRef가 정리되니 여기서만 막으면 된다.
+    if (!state || disabled) return;
     const delta = e.clientY - state.startY;
     const rowStep = state.rowHeight + 8; // .reorderList의 gap(8px) 포함
     const steps = Math.trunc(delta / rowStep);
@@ -411,10 +440,31 @@ export function MedicalCostGame() {
   };
 
   const onBack = () => navigate('/');
-  const handlePause = () => setPaused(true);
+  const handlePause = () => {
+    setPaused(true);
+    // finishRound와 같은 이유(코드리뷰로 발견) - 일시정지 버튼을 누른
+    // 시점에도 드래그 상태를 정리해서, pointerup이 끝내 안 오는 경우에도
+    // 재개 후 행이 붕 뜬 채로 남지 않게 한다.
+    dragRef.current = null;
+    setDragIndex(null);
+    setDragY(0);
+  };
   const handleResume = () => setPaused(false);
   const handleExit = () => navigate('/');
   const handleRestart = restartGame;
+
+  if (roundsFailed) {
+    return (
+      <FullScreenNotice
+        variant="modal"
+        icon="⚠️"
+        title="게임을 준비하지 못했어요"
+        subtitle="잠시 후 메인 화면에서 다시 시작해 주세요."
+        secondaryLabel="메인으로 돌아가기"
+        onSecondary={() => navigate('/')}
+      />
+    );
+  }
 
   if (!round) {
     return <FullScreenNotice variant="modal" icon="⏳" title="게임 데이터를 불러오는 중입니다..." />;
@@ -430,7 +480,13 @@ export function MedicalCostGame() {
           <span className={styles.qPill}>
             ROUND {roundIndex + 1} <span>/ {ROUND_COUNT}</span>
           </span>
-          <button type="button" className={styles.pauseCircle} onClick={handlePause} aria-label="일시정지">
+          <button
+            type="button"
+            className={styles.pauseCircle}
+            onClick={handlePause}
+            aria-label="일시정지"
+            disabled={paused || showIntro}
+          >
             ❚❚
           </button>
         </div>
@@ -444,7 +500,7 @@ export function MedicalCostGame() {
         </div>
       </div>
 
-      <DesktopContextBar onBack={onBack} onPause={handlePause} onDark>
+      <DesktopContextBar onBack={onBack} onPause={handlePause} onDark disabled={paused || showIntro}>
         <div className={styles.deskSide}>
           <span className={styles.scoreText}>
             점수 <b>{score}</b>

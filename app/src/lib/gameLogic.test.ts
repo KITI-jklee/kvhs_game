@@ -6,6 +6,7 @@ import { haversineKm, type LatLng } from './geo';
 import { getTiedGroup, isTiedWithNearest, RANK_POINTS, pointsForPick, selectNearestChoices, type HospitalPoint } from './nearestHospital';
 import {
   BUDGET_ITEM_COUNT,
+  buildFallbackBudgetRound,
   buildRounds,
   SLIDER_MAX,
   SLIDER_MIN,
@@ -309,6 +310,84 @@ describe('게임② 의료비 감각 테스트 로직', () => {
       const actualFitIds = round.items.filter((i) => i.cost <= round.budget).map((i) => i.id);
       expect(actualFitIds.sort()).toEqual([...round.fitIds].sort());
     }
+  });
+
+  // 코드리뷰로 발견: pickBudgetRound가 실패할 때 쓰는 fallback이 "정답
+  // 1개 또는 2개" 규칙을 안 지켰다 - 표본 5개가 전부 사다리 최댓값(100만원)을
+  // 넘으면 정답 0개, 저가 항목이 몰리면 정답 3~5개가 될 수 있었다. 사다리
+  // 한 구간(10만~15만원) 안에 5개가 전부 몰린, pickBudgetRound가 항상
+  // 실패하는 풀로 fallback 자체를 직접 검증한다.
+  it('예산 챌린지 fallback: 사다리 한 구간에 표본이 전부 몰려 있어도 정답이 항상 1개 또는 2개가 되고, 화면 선택지 안에 정확히 들어맞는다', () => {
+    const clusteredPool: MedicalCostItem[] = [
+      { id: 'p1', name: '항목1', cost: 105_000, category: 'X' },
+      { id: 'p2', name: '항목2', cost: 110_000, category: 'X' },
+      { id: 'p3', name: '항목3', cost: 115_000, category: 'X' },
+      { id: 'p4', name: '항목4', cost: 120_000, category: 'X' },
+      { id: 'p5', name: '항목5', cost: 125_000, category: 'X' },
+    ];
+    // 이 풀은 5개뿐이라 sample이 순서만 바꿀 뿐 항상 같은 5개고, 어떤
+    // fitCount(1/2)로도 사다리값이 안 걸려 pickBudgetRound는 항상 null이다.
+    expect(pickBudgetRound(clusteredPool)).toBeNull();
+
+    for (let i = 0; i < 30; i++) {
+      const round = buildFallbackBudgetRound(clusteredPool);
+      expect(round.items).toHaveLength(BUDGET_ITEM_COUNT);
+      expect([1, 2]).toContain(round.fitIds.length);
+      const actualFitIds = round.items.filter((item) => item.cost <= round.budget).map((item) => item.id);
+      expect(actualFitIds.sort()).toEqual([...round.fitIds].sort());
+    }
+  });
+
+  // 코드리뷰로 발견(2차): 위 클러스터 풀은 가격 간격이 5천원이라 반올림
+  // 버그를 못 잡았다. 인접 가격 차이를 100원으로 좁혀서(예: lower=10,400/
+  // upper=10,500) "중간값을 1천원 단위로 반올림하면 lower보다 작아지거나
+  // upper 이상으로 넘어간다"를 직접 재현한다 - fitCount 1/2 두 경계 다
+  // 이 문제가 나게 짜서, 어느 쪽이 뽑히든 반드시 걸리게 했다.
+  it('예산 챌린지 fallback: 인접 가격 차이가 100원처럼 좁아도 반올림 때문에 예산이 경계 밖으로 안 나간다', () => {
+    const tightGapPool: MedicalCostItem[] = [
+      { id: 'p1', name: '항목1', cost: 10_400, category: 'X' }, // fitCount=1 경계(10,400~10,500)
+      { id: 'p2', name: '항목2', cost: 10_500, category: 'X' },
+      { id: 'p3', name: '항목3', cost: 10_600, category: 'X' }, // fitCount=2 경계(10,500~10,600)
+      { id: 'p4', name: '항목4', cost: 50_000, category: 'X' },
+      { id: 'p5', name: '항목5', cost: 60_000, category: 'X' },
+    ];
+    expect(pickBudgetRound(tightGapPool)).toBeNull();
+
+    for (let i = 0; i < 40; i++) {
+      const round = buildFallbackBudgetRound(tightGapPool);
+      expect([1, 2]).toContain(round.fitIds.length);
+      const actualFitIds = round.items.filter((item) => item.cost <= round.budget).map((item) => item.id);
+      expect(actualFitIds.sort()).toEqual([...round.fitIds].sort());
+    }
+  });
+
+  // 코드리뷰로 발견(2차): 표본 5개가 전부 동가면 cost <= budget 판정
+  // 기준으로는 전부가 "정답"인데, fitIds에 1개만 넣어서 어긋났다.
+  it('예산 챌린지 fallback: pool 전체가 동가라 정답 1~2개 규칙을 만들 수 없으면 명시적으로 실패한다', () => {
+    const allTiedPool: MedicalCostItem[] = [
+      { id: 't1', name: '항목1', cost: 77_000, category: 'X' },
+      { id: 't2', name: '항목2', cost: 77_000, category: 'X' },
+      { id: 't3', name: '항목3', cost: 77_000, category: 'X' },
+      { id: 't4', name: '항목4', cost: 77_000, category: 'X' },
+      { id: 't5', name: '항목5', cost: 77_000, category: 'X' },
+    ];
+    expect(() => buildFallbackBudgetRound(allTiedPool)).toThrow(/exactly 1 or 2/);
+  });
+
+  it('전체 라운드 생성에서도 예산 챌린지 fallback이 정답 1~2개 규칙을 지킨다', () => {
+    const clusteredPool: MedicalCostItem[] = [
+      { id: 'p1', name: '항목1', cost: 105_000, category: 'X' },
+      { id: 'p2', name: '항목2', cost: 110_000, category: 'X' },
+      { id: 'p3', name: '항목3', cost: 115_000, category: 'X' },
+      { id: 'p4', name: '항목4', cost: 120_000, category: 'X' },
+      { id: 'p5', name: '항목5', cost: 125_000, category: 'X' },
+    ];
+    const rounds = buildRounds(clusteredPool);
+    const budgetRound = rounds.find((r) => r.kind === 'budget');
+    if (budgetRound?.kind !== 'budget') throw new Error('budget 라운드가 없습니다.');
+    expect([1, 2]).toContain(budgetRound.fitIds.length);
+    const actualFitIds = budgetRound.items.filter((item) => item.cost <= budgetRound.budget).map((item) => item.id);
+    expect(actualFitIds.sort()).toEqual([...budgetRound.fitIds].sort());
   });
 
   it('예산 채점: 정확히 다 맞으면 100점, 잘못 고른 것 없이 일부만 맞으면 50점, 잘못 고른 게 섞이면 20점, 하나도 못 맞히면 0점', () => {

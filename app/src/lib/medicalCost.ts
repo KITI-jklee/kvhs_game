@@ -160,6 +160,49 @@ export function pickBudgetRound(pool: MedicalCostItem[]): BudgetRound | null {
   return null;
 }
 
+/** pickBudgetRound가 사다리 예산으로 라운드를 못 만들었을 때 쓰는 마지막 수단 -
+ * BUDGET_LADDER의 정해진 값에 억지로 맞추려 하지 않고, 방금 뽑은 5개
+ * 표본의 실제 가격 간격 "안"에서 예산을 직접 계산해 "정답 1개 또는 2개"
+ * 규칙을 항상 지킨다(코드리뷰로 발견 - 이전 fallback은 사다리 최댓값(100만원)을
+ * 그대로 예산으로 썼는데, 표본 5개가 전부 100만원을 넘으면 정답이 0개,
+ * 반대로 저가 항목이 몰리면 정답이 3~5개가 될 수 있었다). 가격을 정렬해두면
+ * fitCount번째와 그다음 항목 사이 아무 값이나 예산으로 써도 "앞 fitCount개는
+ * 반드시 포함, 나머지는 반드시 제외"가 보장된다. */
+export function buildFallbackBudgetRound(pool: MedicalCostItem[]): BudgetRound {
+  // 표본 5개가 전부 같은 가격이면 "일부만 정답"이라는 규칙 자체가 성립하지
+  // 않는다(화면 판정 기준 cost <= budget으로는 동가인 나머지도 전부
+  // 정답이 돼버린다) - 가격이 갈리는 표본이 나올 때까지 다시 뽑는다
+  // (코드리뷰로 발견 - 이전엔 동가 표본을 그대로 써서 fitIds엔 1개만
+  // 넣었는데 실제 판정으론 5개 전부가 정답이 돼 서로 어긋났다). 실제
+  // 데이터는 가격이 다양하니 몇 번 안에 대부분 성공한다.
+  const preferredFitCount = sample(BUDGET_FIT_COUNT_OPTIONS, 1)[0];
+  const fitCountOrder = [preferredFitCount, ...BUDGET_FIT_COUNT_OPTIONS.filter((c) => c !== preferredFitCount)];
+  for (const fitCount of fitCountOrder) {
+    const boundaries = [...new Set(pool.map((item) => item.cost))].sort((a, b) => a - b);
+    for (const budget of boundaries) {
+      const fitting = pool.filter((item) => item.cost <= budget);
+      const excluded = pool.filter((item) => item.cost > budget);
+      if (fitting.length < fitCount || excluded.length < BUDGET_ITEM_COUNT - fitCount) continue;
+      // 중간값을 1천원 단위로 반올림하면 lower/upper 경계 밖으로 넘어갈 수
+      // 있었다(코드리뷰로 발견 - 예: lower=10,400/upper=10,500이면 반올림된
+      // 예산이 10,000원이 돼 정답으로 지정한 lower 항목조차 예산 초과가
+      // 됐다). upper > lower가 이미 보장되니 lower를 그대로 예산으로 쓰면
+      // 반올림 없이도 앞 fitCount개(cost <= lower)만 정확히 걸린다.
+      const fitItems = sample(fitting, fitCount);
+      const otherItems = sample(excluded, BUDGET_ITEM_COUNT - fitCount);
+      return {
+        items: shuffle([...fitItems, ...otherItems]),
+        budget,
+        fitIds: fitItems.map((item) => item.id),
+      };
+    }
+  }
+  // 20번을 다시 뽑아도 여전히 5개 전부 동가인, 사실상 풀 전체에 가격이
+  // 사실상 하나뿐인 극단적 경우 - "일부만 정답"을 정의할 수 없으니 전부를
+  // 정답으로 넣어 cost <= budget 불변식을 지킨다.
+  throw new Error('buildFallbackBudgetRound: cannot create a round with exactly 1 or 2 fitting items');
+}
+
 export interface BudgetVerdict {
   points: number;
   correctPickCount: number;
@@ -217,11 +260,7 @@ export function buildRounds(pool: MedicalCostItem[]): RoundSpec[] {
   const [sliderItem, bandItem] = sample(pool, 2);
   const { bands, correctIndex } = pickBandChoices(bandItem.cost);
   const reorderItems = pickReorderItems(pool);
-  const budgetRound = pickBudgetRound(pool) ?? {
-    items: sample(pool, BUDGET_ITEM_COUNT),
-    budget: BUDGET_LADDER[BUDGET_LADDER.length - 1],
-    fitIds: [pool[0].id],
-  };
+  const budgetRound = pickBudgetRound(pool) ?? buildFallbackBudgetRound(pool);
   const hlRound = pickHigherLowerRound(pool) ?? {
     refItem: pool[0],
     nextItem: pool[1] ?? pool[0],

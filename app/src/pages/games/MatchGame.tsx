@@ -111,6 +111,16 @@ export function MatchGame() {
   const [score, setScore] = useState(0);
   const [missCount, setMissCount] = useState(0);
   const [elapsedSec, setElapsedSec] = useState(0);
+  // finalize()는 마지막 정답 탭 시점(handleTap)에서 만들어진 클로저를 통해
+  // MATCH_HOLD_MS(520ms) 뒤에 실행된다. 그 사이 초 단위 인터벌이 한 번 더
+  // 틱하면(경계에 걸리면) 화면 시계(elapsedSec state, 274/305행)는 갱신되는데
+  // finalize 안에서 그대로 elapsedSec을 읽으면 탭 시점의 오래된 값을 써서
+  // 결과 화면 "완료 시간"이 방금 본 시계와 최대 1초 어긋났다(코드리뷰로 발견).
+  // 아래 pausedRef 등과 같은 패턴으로 항상 최신값을 담아두는 ref를 따로 둔다.
+  const elapsedSecRef = useRef(0);
+  useEffect(() => {
+    elapsedSecRef.current = elapsedSec;
+  }, [elapsedSec]);
   const [paused, setPaused] = useState(false);
   const [showIntro, setShowIntro] = useState(true);
   const [previewing, setPreviewing] = useState(true);
@@ -180,7 +190,8 @@ export function MatchGame() {
   const finalize = (finalMissCount: number) => {
     doneRef.current = true;
     scheduleTransition(() => {
-      const finalScore = computeMatchScore(elapsedSec, finalMissCount);
+      const finalElapsedSec = elapsedSecRef.current;
+      const finalScore = computeMatchScore(finalElapsedSec, finalMissCount);
       setScore(finalScore);
       finishGame({
         gameId: 'term_match',
@@ -192,7 +203,7 @@ export function MatchGame() {
         ],
         detailsTitle: '기록 요약',
         details: [
-          { icon: '⏱', label: '완료 시간', value: formatMinSec(elapsedSec) },
+          { icon: '⏱', label: '완료 시간', value: formatMinSec(finalElapsedSec) },
           { icon: '✕', label: '오답', value: `${finalMissCount}회` },
         ],
         note: '완료 시간과 오답 횟수를 기준으로 점수를 환산합니다(최저 100점 보장).',
@@ -267,8 +278,9 @@ export function MatchGame() {
         eyebrow={roundStatusLabel}
         title="보훈의료 용어 짝맞추기"
         score={{ label: 'SCORE', value: score || '-' }}
+        disabled={paused || showIntro}
       />
-      <DesktopContextBar onBack={onBack} onPause={handlePause}>
+      <DesktopContextBar onBack={onBack} onPause={handlePause} disabled={paused || showIntro}>
         <span className={styles.deskBarRound}>
           경과 시간 <b>{formatClock(elapsedSec)}</b>
         </span>

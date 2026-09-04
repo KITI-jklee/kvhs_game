@@ -467,8 +467,9 @@ export function LocationGame() {
         eyebrow={`ROUND ${roundIndex + 1} / ${totalRounds}`}
         title="가장 가까운 위탁병원 찾기"
         score={{ label: 'SCORE', value: score }}
+        disabled={paused || showIntro}
       />
-      <DesktopContextBar onBack={() => navigate('/')} onPause={handlePause}>
+      <DesktopContextBar onBack={() => navigate('/')} onPause={handlePause} disabled={paused || showIntro}>
         <span className={styles.deskRound}>
           라운드 <b>{roundIndex + 1}/{totalRounds}</b>
         </span>

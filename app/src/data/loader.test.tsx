@@ -55,6 +55,14 @@ describe('게임 데이터 계약', () => {
     expect(() => validateMedicalCosts([...costs.slice(0, 11), { ...costs[0] }])).toThrow(/duplicate ids/);
     expect(() => validateTermPairs(terms.map((term) => ({ ...term, category: '한 분류' })))).toThrow(/10 categories/);
   });
+
+  it('정답 1~2개인 예산 라운드를 구성할 수 없는 가격 분포를 거부한다', () => {
+    const allTied = costs.map((item) => ({ ...item, cost: 77_000 }));
+    expect(() => validateMedicalCosts(allTied)).toThrow(/budget round/);
+
+    const tooFewExcluded = costs.map((item, i) => ({ ...item, cost: i === costs.length - 1 ? 80_000 : 77_000 }));
+    expect(() => validateMedicalCosts(tooFewExcluded)).toThrow(/budget round/);
+  });
 });
 
 describe('GameDataProvider 재시도', () => {

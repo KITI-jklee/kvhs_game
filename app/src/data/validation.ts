@@ -58,6 +58,15 @@ export function validateMedicalCosts(value: unknown): MedicalCostItem[] {
   if (rows.length !== value.length) throw new Error('medical_costs contains an invalid record');
   if (rows.length < 12) throw new Error('medical_costs requires at least 12 records');
   if (!hasUniqueIds(rows)) throw new Error('medical_costs contains duplicate ids');
+  const sortedCosts = rows.map((row) => row.cost).sort((a, b) => a - b);
+  const canBuildBudgetRound = sortedCosts.some((budget) => {
+    const fittingCount = sortedCosts.filter((cost) => cost <= budget).length;
+    const excludedCount = sortedCosts.length - fittingCount;
+    return (fittingCount >= 1 && excludedCount >= 4) || (fittingCount >= 2 && excludedCount >= 3);
+  });
+  if (!canBuildBudgetRound) {
+    throw new Error('medical_costs cannot build a budget round with exactly 1 or 2 fitting items');
+  }
   return rows;
 }
 

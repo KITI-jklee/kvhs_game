@@ -1,5 +1,5 @@
 import type { LatLng } from './geo';
-import { pointInRing } from './geo';
+import { pointInRegion } from './geo';
 import { createCachedFetcher } from './fetchOnce';
 
 export interface DongOutline {
@@ -14,7 +14,7 @@ export const loadDongOutlines = createCachedFetcher<Record<string, DongOutline[]
 /** 좌표를 포함하는 동 이름을 찾는다. */
 export function findDongName(dongList: DongOutline[], point: LatLng): string | null {
   for (const dong of dongList) {
-    if (dong.rings.some((ring) => pointInRing(point.lng, point.lat, ring))) return dong.name;
+    if (pointInRegion(point.lng, point.lat, dong.rings)) return dong.name;
   }
   return null;
 }

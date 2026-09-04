@@ -79,6 +79,10 @@ export function boundsForBoxes(boxes: RegionBbox[], paddingRatio = 0.25): Bounds
 
 /** 모든 점을 감싸는 bbox를 만든다. */
 export function bboxOfPoints(points: LatLng[]): RegionBbox {
+  // points가 비어있으면 Math.min(...[])/Math.max(...[])이 각각
+  // Infinity/-Infinity를 반환해 이후 지도 투영 계산이 전부 NaN으로
+  // 오염된다(코드리뷰로 발견) - 조용히 깨지는 대신 바로 알 수 있게 던진다.
+  if (points.length === 0) throw new Error('bboxOfPoints: points가 비어있습니다.');
   return {
     lonMin: Math.min(...points.map((p) => p.lng)),
     lonMax: Math.max(...points.map((p) => p.lng)),
@@ -153,6 +157,23 @@ export function pointInRing(px: number, py: number, ring: [number, number][]): b
   return inside;
 }
 
+/** 여러 ring(섬처럼 떨어진 조각·구멍 포함)으로 이뤄진 행정구역에서 점이
+ * 실제로 그 구역 안에 있는지 판정한다 - 홀수 개의 ring에 걸리면 안,
+ * 짝수 개면 밖(even-odd 규칙). 예전엔 "ring 중 하나라도 걸리면 안"으로
+ * 판정해서, 큰 ring 안에 완전히 둘러싸인 작은 구멍 ring(예: 특정 부지가
+ * 그 동 경계에서 제외된 경우)의 안쪽 점도 "그 동 안"으로 잘못 판정됐다
+ * (코드리뷰로 발견 - dong_outlines.json에서 대전 대덕구 덕암동·포항시
+ * 제철동·나주시 영산동 등 실제로 작은 구멍 ring이 큰 ring 안에 완전히
+ * 포함된 사례를 기하학적으로 직접 확인함). 섬처럼 서로 떨어진 조각들은
+ * 한 점이 최대 1개 ring에만 걸리니 이 규칙으로도 결과가 그대로다. */
+export function pointInRegion(px: number, py: number, rings: [number, number][][]): boolean {
+  let containingCount = 0;
+  for (const ring of rings) {
+    if (pointInRing(px, py, ring)) containingCount += 1;
+  }
+  return containingCount % 2 === 1;
+}
+
 /** 점 p에서 선분 a-b까지의 최소거리(km) - 위경도를 로컬 등장방형 평면(kx/ky)으로
  * 근사 투영해 계산한다. 동/시군 단위의 작은 영역에서는 이 근사가 충분히 정확하다. */
 function pointToSegmentKm(p: LatLng, a: LatLng, b: LatLng, kx: number, ky: number): number {
@@ -179,7 +200,7 @@ function pointToSegmentKm(p: LatLng, a: LatLng, b: LatLng, kx: number, ky: numbe
  * "중심에서 더 가까운 병원"이 "경계에서 가장 먼저 만나는 병원"과 달라지는
  * 경우가 잦았다 - 시뮬레이션으로 전국 동의 15.5%에서 정답이 바뀌는 걸 확인). */
 export function distanceToRegionKm(rings: [number, number][][], point: LatLng, regionCenter: LatLng): number {
-  const inside = rings.some((ring) => pointInRing(point.lng, point.lat, ring));
+  const inside = pointInRegion(point.lng, point.lat, rings);
   if (inside) return 0;
   const kx = 111.32 * Math.cos((regionCenter.lat * Math.PI) / 180);
   const ky = 111.32;
